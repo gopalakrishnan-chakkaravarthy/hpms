@@ -5,6 +5,7 @@ namespace PMS.Web.Apps.Models
     {
         public string SessionLoginEmail { get; set; }
 
+
         public int SessionLoginId { get; set; }
         public string HospitalId { get; set; }
 
