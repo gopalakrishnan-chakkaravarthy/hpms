@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LabManagementModelStoreContainer" CdmEntityContainer="LabManagementEntities">
+    <EntitySetMapping Name="lmsBeds">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsBed">
+        <MappingFragment StoreEntitySet="lmsBeds">
+          <ScalarProperty Name="ChargePerDay" ColumnName="ChargePerDay" />
+          <ScalarProperty Name="BEDID" ColumnName="BEDID" />
+          <ScalarProperty Name="BEDNAME" ColumnName="BEDNAME" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsCityMasters">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsCityMaster">
+        <MappingFragment StoreEntitySet="lmsCityMaster">
+          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+          <ScalarProperty Name="CITYNAME" ColumnName="CITYNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsDischargeSummaries">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsDischargeSummary">
+        <MappingFragment StoreEntitySet="lmsDischargeSummary">
+          <ScalarProperty Name="SUMMARYID" ColumnName="SUMMARYID" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="PATIENTPROBLEM" ColumnName="PATIENTPROBLEM" />
+          <ScalarProperty Name="PATIENTPREVIOUSHISTORY" ColumnName="PATIENTPREVIOUSHISTORY" />
+          <ScalarProperty Name="SUMMARY" ColumnName="SUMMARY" />
+          <ScalarProperty Name="OTHERSUMMARY" ColumnName="OTHERSUMMARY" />
+          <ScalarProperty Name="DISCHARGEDATE" ColumnName="DISCHARGEDATE" />
+          <ScalarProperty Name="CONSULTEDBY" ColumnName="CONSULTEDBY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsDiseaseMasters">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsDiseaseMaster">
+        <MappingFragment StoreEntitySet="lmsDiseaseMaster">
+          <ScalarProperty Name="DISEASEID" ColumnName="DISEASEID" />
+          <ScalarProperty Name="DISEASENAME" ColumnName="DISEASENAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsDrugs">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsDrug">
+        <MappingFragment StoreEntitySet="lmsDrugs">
+          <ScalarProperty Name="RackNumber" ColumnName="RackNumber" />
+          <ScalarProperty Name="AVAILABLEORDER" ColumnName="AVAILABLEORDER" />
+          <ScalarProperty Name="ORDERCOUNT" ColumnName="ORDERCOUNT" />
+          <ScalarProperty Name="DRUGID" ColumnName="DRUGID" />
+          <ScalarProperty Name="DRUGNAME" ColumnName="DRUGNAME" />
+          <ScalarProperty Name="ORDERDATE" ColumnName="ORDERDATE" />
+          <ScalarProperty Name="MANUFACTUREDATE" ColumnName="MANUFACTUREDATE" />
+          <ScalarProperty Name="EXPIRYDATE" ColumnName="EXPIRYDATE" />
+          <ScalarProperty Name="ISEXPIRED" ColumnName="ISEXPIRED" />
+          <ScalarProperty Name="BUYINGPRICE" ColumnName="BUYINGPRICE" />
+          <ScalarProperty Name="SELLINGPRICE" ColumnName="SELLINGPRICE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsHospitalMasters">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsHospitalMaster">
+        <MappingFragment StoreEntitySet="lmsHospitalMaster">
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="HOSPITALID" ColumnName="HOSPITALID" />
+          <ScalarProperty Name="HOSPITALNAME" ColumnName="HOSPITALNAME" />
+          <ScalarProperty Name="MANAGEDBY" ColumnName="MANAGEDBY" />
+          <ScalarProperty Name="ISOCERTIFIED" ColumnName="ISOCERTIFIED" />
+          <ScalarProperty Name="LOGOPATH" ColumnName="LOGOPATH" />
+          <ScalarProperty Name="HOSPITALADDRESS" ColumnName="HOSPITALADDRESS" />
+          <ScalarProperty Name="STATEID" ColumnName="STATEID" />
+          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+          <ScalarProperty Name="EMAILID" ColumnName="EMAILID" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="QUOTE1" ColumnName="QUOTE1" />
+          <ScalarProperty Name="QUOTE2" ColumnName="QUOTE2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsInPatientBillings">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsInPatientBilling">
+        <MappingFragment StoreEntitySet="lmsInPatientBilling">
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="NOOFDAYSTAY" ColumnName="NOOFDAYSTAY" />
+          <ScalarProperty Name="STAFFFEE" ColumnName="STAFFFEE" />
+          <ScalarProperty Name="BEDROOMCHARGE" ColumnName="BEDROOMCHARGE" />
+          <ScalarProperty Name="DOCTORSFEEPERDAY" ColumnName="DOCTORSFEEPERDAY" />
+          <ScalarProperty Name="OPERATIONCOST" ColumnName="OPERATIONCOST" />
+          <ScalarProperty Name="OPERATIINGDOCTORCOST" ColumnName="OPERATIINGDOCTORCOST" />
+          <ScalarProperty Name="OPERATIONTHEATERCOST" ColumnName="OPERATIONTHEATERCOST" />
+          <ScalarProperty Name="ANAESTHESIAFEE" ColumnName="ANAESTHESIAFEE" />
+          <ScalarProperty Name="OVERALLTESTFEE" ColumnName="OVERALLTESTFEE" />
+          <ScalarProperty Name="SCANFEE" ColumnName="SCANFEE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsInventories">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsInventory">
+        <MappingFragment StoreEntitySet="lmsInventory">
+          <ScalarProperty Name="INVENTORYID" ColumnName="INVENTORYID" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="ISWORKING" ColumnName="ISWORKING" />
+          <ScalarProperty Name="BUYINGPRICE" ColumnName="BUYINGPRICE" />
+          <ScalarProperty Name="MANUFACTURIGDATE" ColumnName="MANUFACTURIGDATE" />
+          <ScalarProperty Name="WARRENTYPERIOD" ColumnName="WARRENTYPERIOD" />
+          <ScalarProperty Name="GUARRETYPERIOD" ColumnName="GUARRETYPERIOD" />
+          <ScalarProperty Name="VENDORID" ColumnName="VENDORID" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsLoginRegistrations">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsLoginRegistration">
+        <MappingFragment StoreEntitySet="lmsLoginRegistration">
+          <ScalarProperty Name="LOGINID" ColumnName="LOGINID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="MIDDLENAME" ColumnName="MIDDLENAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="LOGINADDRESS" ColumnName="LOGINADDRESS" />
+          <ScalarProperty Name="STATEID" ColumnName="STATEID" />
+          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+          <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+          <ScalarProperty Name="LOGINEMAILID" ColumnName="LOGINEMAILID" />
+          <ScalarProperty Name="LOGINPASSWORD" ColumnName="LOGINPASSWORD" />
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsMedicalBillings">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsMedicalBilling">
+        <MappingFragment StoreEntitySet="lmsMedicalBilling">
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+          <ScalarProperty Name="BILLNAME" ColumnName="BILLNAME" />
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+          <ScalarProperty Name="DRUGID" ColumnName="DRUGID" />
+          <ScalarProperty Name="BILLAMOUNT" ColumnName="BILLAMOUNT" />
+          <ScalarProperty Name="BILLBY" ColumnName="BILLBY" />
+          <ScalarProperty Name="BILLDATE" ColumnName="BILLDATE" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsMedicalTests">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsMedicalTest">
+        <MappingFragment StoreEntitySet="lmsMedicalTests">
+          <ScalarProperty Name="SELLIGPRICE" ColumnName="SELLIGPRICE" />
+          <ScalarProperty Name="TESTID" ColumnName="TESTID" />
+          <ScalarProperty Name="TESTNAME" ColumnName="TESTNAME" />
+          <ScalarProperty Name="MINAPPROXRANGEBELOW10AGE" ColumnName="MINAPPROXRANGEBELOW10AGE" />
+          <ScalarProperty Name="MAXAPPROXRANGEBELOW10AGE" ColumnName="MAXAPPROXRANGEBELOW10AGE" />
+          <ScalarProperty Name="MINAPPROXRANGEBELOWADULT" ColumnName="MINAPPROXRANGEBELOWADULT" />
+          <ScalarProperty Name="MAXAPPROXRANGEBELOWADULT" ColumnName="MAXAPPROXRANGEBELOWADULT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsPatientRegistrations">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsPatientRegistration">
+        <MappingFragment StoreEntitySet="lmsPatientRegistration">
+          <ScalarProperty Name="WARDID" ColumnName="WARDID" />
+          <ScalarProperty Name="BEDID" ColumnName="BEDID" />
+          <ScalarProperty Name="DOCTORTOCONSULT" ColumnName="DOCTORTOCONSULT" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="PATIENTNAME" ColumnName="PATIENTNAME" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="PATIENTADDRESS" ColumnName="PATIENTADDRESS" />
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+          <ScalarProperty Name="PATIENTEMAILID" ColumnName="PATIENTEMAILID" />
+          <ScalarProperty Name="CONSULTINGDOCTOR" ColumnName="CONSULTINGDOCTOR" />
+          <ScalarProperty Name="CONSULTINGFEE" ColumnName="CONSULTINGFEE" />
+          <ScalarProperty Name="PATIENTTYPE" ColumnName="PATIENTTYPE" />
+          <ScalarProperty Name="DISEASEID" ColumnName="DISEASEID" />
+          <ScalarProperty Name="REGISTEREDATE" ColumnName="REGISTEREDATE" />
+          <ScalarProperty Name="DISCHARGEDATE" ColumnName="DISCHARGEDATE" />
+          <ScalarProperty Name="ISDISCHARGED" ColumnName="ISDISCHARGED" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsRoleMasters">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsRoleMaster">
+        <MappingFragment StoreEntitySet="lmsRoleMaster">
+          <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsScanReportDetails">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsScanReportDetail">
+        <MappingFragment StoreEntitySet="lmsScanReportDetails">
+          <ScalarProperty Name="SCANREPORTDETAILSID" ColumnName="SCANREPORTDETAILSID" />
+          <ScalarProperty Name="SCANREPORTID" ColumnName="SCANREPORTID" />
+          <ScalarProperty Name="REPORTSUMMARY" ColumnName="REPORTSUMMARY" />
+          <ScalarProperty Name="REPORTDESCRIPTION" ColumnName="REPORTDESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsScanReportMasters">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsScanReportMaster">
+        <MappingFragment StoreEntitySet="lmsScanReportMaster">
+          <ScalarProperty Name="SCANREPORTID" ColumnName="SCANREPORTID" />
+          <ScalarProperty Name="SCANID" ColumnName="SCANID" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="REFEREDBY" ColumnName="REFEREDBY" />
+          <ScalarProperty Name="BILLAMOUNT" ColumnName="BILLAMOUNT" />
+          <ScalarProperty Name="BILLDATE" ColumnName="BILLDATE" />
+          <ScalarProperty Name="REPORTDATE" ColumnName="REPORTDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsScans">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsScan">
+        <MappingFragment StoreEntitySet="lmsScans">
+          <ScalarProperty Name="SCANID" ColumnName="SCANID" />
+          <ScalarProperty Name="SCANNAME" ColumnName="SCANNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsStateMasters">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsStateMaster">
+        <MappingFragment StoreEntitySet="lmsStateMaster">
+          <ScalarProperty Name="STATEID" ColumnName="STATEID" />
+          <ScalarProperty Name="STATENAME" ColumnName="STATENAME" />
+          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsVendorBillings">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsVendorBilling">
+        <MappingFragment StoreEntitySet="lmsVendorBilling">
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+          <ScalarProperty Name="BILLNAME" ColumnName="BILLNAME" />
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+          <ScalarProperty Name="INVENTORYID" ColumnName="INVENTORYID" />
+          <ScalarProperty Name="TESTRESULT" ColumnName="TESTRESULT" />
+          <ScalarProperty Name="UNITS" ColumnName="UNITS" />
+          <ScalarProperty Name="TOTALBILLAMOUNT" ColumnName="TOTALBILLAMOUNT" />
+          <ScalarProperty Name="BILLBY" ColumnName="BILLBY" />
+          <ScalarProperty Name="BILLDATE" ColumnName="BILLDATE" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsVendors">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsVendor">
+        <MappingFragment StoreEntitySet="lmsVendors">
+          <ScalarProperty Name="VENDORID" ColumnName="VENDORID" />
+          <ScalarProperty Name="VENDORNAME" ColumnName="VENDORNAME" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsWards">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsWard">
+        <MappingFragment StoreEntitySet="lmsWards">
+          <ScalarProperty Name="ChargePerDay" ColumnName="ChargePerDay" />
+          <ScalarProperty Name="WARDID" ColumnName="WARDID" />
+          <ScalarProperty Name="WARDNAME" ColumnName="WARDNAME" />
+          <ScalarProperty Name="BEDID" ColumnName="BEDID" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsDischargeBills">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsDischargeBill">
+        <MappingFragment StoreEntitySet="lmsDischargeBill">
+          <ScalarProperty Name="PAEDIATRICIANRESUSTFEE" ColumnName="PAEDIATRICIANRESUSTFEE" />
+          <ScalarProperty Name="PHOTOTHERAPYFEE" ColumnName="PHOTOTHERAPYFEE" />
+          <ScalarProperty Name="OXYGENFEE" ColumnName="OXYGENFEE" />
+          <ScalarProperty Name="PAEDIATRICIANFEE" ColumnName="PAEDIATRICIANFEE" />
+          <ScalarProperty Name="WARMERPLUSO2CHARGE" ColumnName="WARMERPLUSO2CHARGE" />
+          <ScalarProperty Name="LABOURROOMCHARGE" ColumnName="LABOURROOMCHARGE" />
+          <ScalarProperty Name="CREATEUSER" ColumnName="CREATEUSER" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+          <ScalarProperty Name="PATIENTDISCOUNT" ColumnName="PATIENTDISCOUNT" />
+          <ScalarProperty Name="PATIENTPAYMENTS" ColumnName="PATIENTPAYMENTS" />
+          <ScalarProperty Name="INSURANCEADJUSTMENT" ColumnName="INSURANCEADJUSTMENT" />
+          <ScalarProperty Name="INSURANCEPROVIDER" ColumnName="INSURANCEPROVIDER" />
+          <ScalarProperty Name="INSURANCEPAYMENT" ColumnName="INSURANCEPAYMENT" />
+          <ScalarProperty Name="TOTALCHARGE" ColumnName="TOTALCHARGE" />
+          <ScalarProperty Name="OTHERSERVICECHARGE" ColumnName="OTHERSERVICECHARGE" />
+          <ScalarProperty Name="NURSECHARGE" ColumnName="NURSECHARGE" />
+          <ScalarProperty Name="ANAESTHESIACHARGE" ColumnName="ANAESTHESIACHARGE" />
+          <ScalarProperty Name="OPERATINGDOCTOR" ColumnName="OPERATINGDOCTOR" />
+          <ScalarProperty Name="SPECILISTDOCTORCHARGE" ColumnName="SPECILISTDOCTORCHARGE" />
+          <ScalarProperty Name="OPERATIONCHARGE" ColumnName="OPERATIONCHARGE" />
+          <ScalarProperty Name="OPERATIONTHEATERCHARGE" ColumnName="OPERATIONTHEATERCHARGE" />
+          <ScalarProperty Name="BEDORROOMCHARGE" ColumnName="BEDORROOMCHARGE" />
+          <ScalarProperty Name="PHARMACCYCHARGE" ColumnName="PHARMACCYCHARGE" />
+          <ScalarProperty Name="NOOFDAYSTAY" ColumnName="NOOFDAYSTAY" />
+          <ScalarProperty Name="DISCHARGEADVICE" ColumnName="DISCHARGEADVICE" />
+          <ScalarProperty Name="SERVICEPROVIDED" ColumnName="SERVICEPROVIDED" />
+          <ScalarProperty Name="DATEOFDISCHARGE" ColumnName="DATEOFDISCHARGE" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="DBILLID" ColumnName="DBILLID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsInvestigationReports">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsInvestigationReport">
+        <MappingFragment StoreEntitySet="lmsInvestigationReport">
+          <ScalarProperty Name="ALBUMIN" ColumnName="ALBUMIN" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+          <ScalarProperty Name="HCV" ColumnName="HCV" />
+          <ScalarProperty Name="HBSAG" ColumnName="HBSAG" />
+          <ScalarProperty Name="HIV" ColumnName="HIV" />
+          <ScalarProperty Name="VDRL" ColumnName="VDRL" />
+          <ScalarProperty Name="TSH" ColumnName="TSH" />
+          <ScalarProperty Name="SRFREET4" ColumnName="SRFREET4" />
+          <ScalarProperty Name="SRFREET3" ColumnName="SRFREET3" />
+          <ScalarProperty Name="SRCREATININE" ColumnName="SRCREATININE" />
+          <ScalarProperty Name="SUGAR" ColumnName="SUGAR" />
+          <ScalarProperty Name="BLOODUREA" ColumnName="BLOODUREA" />
+          <ScalarProperty Name="PLATELET" ColumnName="PLATELET" />
+          <ScalarProperty Name="CT" ColumnName="CT" />
+          <ScalarProperty Name="BT" ColumnName="BT" />
+          <ScalarProperty Name="GROUPINGRHTYPING" ColumnName="GROUPINGRHTYPING" />
+          <ScalarProperty Name="BLOODHAEMOGLOBIN" ColumnName="BLOODHAEMOGLOBIN" />
+          <ScalarProperty Name="EPTHELIALCELL" ColumnName="EPTHELIALCELL" />
+          <ScalarProperty Name="RBC" ColumnName="RBC" />
+          <ScalarProperty Name="PUSCELL" ColumnName="PUSCELL" />
+          <ScalarProperty Name="URINESUGAR" ColumnName="URINESUGAR" />
+          <ScalarProperty Name="REPORTDATE" ColumnName="REPORTDATE" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="REPORTID" ColumnName="REPORTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsLaboratoryBillings">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsLaboratoryBilling">
+        <MappingFragment StoreEntitySet="lmsLaboratoryBilling">
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="BILLDATE" ColumnName="BILLDATE" />
+          <ScalarProperty Name="BILLBY" ColumnName="BILLBY" />
+          <ScalarProperty Name="BILLAMOUNT" ColumnName="BILLAMOUNT" />
+          <ScalarProperty Name="UNITS" ColumnName="UNITS" />
+          <ScalarProperty Name="TESTRESULT" ColumnName="TESTRESULT" />
+          <ScalarProperty Name="TESTID" ColumnName="TESTID" />
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+          <ScalarProperty Name="BILLNAME" ColumnName="BILLNAME" />
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsLaboratoryBillingDetails">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsLaboratoryBillingDetail">
+        <MappingFragment StoreEntitySet="lmsLaboratoryBillingDetails">
+          <ScalarProperty Name="TESTRESULT" ColumnName="TESTRESULT" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="ITEMCOST" ColumnName="ITEMCOST" />
+          <ScalarProperty Name="TESTID" ColumnName="TESTID" />
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+          <ScalarProperty Name="BILLDETAILID" ColumnName="BILLDETAILID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsMedicalBillingDetails">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsMedicalBillingDetail">
+        <MappingFragment StoreEntitySet="lmsMedicalBillingDetails">
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="ITEMCOST" ColumnName="ITEMCOST" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="DRUGID" ColumnName="DRUGID" />
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+          <ScalarProperty Name="BILLDETAILID" ColumnName="BILLDETAILID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsOutPatientDetails">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsOutPatientDetail">
+        <MappingFragment StoreEntitySet="lmsOutPatientDetails">
+          <ScalarProperty Name="PRESCRIOPTION" ColumnName="PRESCRIOPTION" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="ADDITIONALCOMMENTS" ColumnName="ADDITIONALCOMMENTS" />
+          <ScalarProperty Name="PATIENTDESCRIPTION" ColumnName="PATIENTDESCRIPTION" />
+          <ScalarProperty Name="FINDINGS" ColumnName="FINDINGS" />
+          <ScalarProperty Name="OPMASTERID" ColumnName="OPMASTERID" />
+          <ScalarProperty Name="OPDID" ColumnName="OPDID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsOutPatientMasters">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsOutPatientMaster">
+        <MappingFragment StoreEntitySet="lmsOutPatientMaster">
+          <ScalarProperty Name="CONSULTINFEE" ColumnName="CONSULTINFEE" />
+          <ScalarProperty Name="CONSULTINGDOCTOR" ColumnName="CONSULTINGDOCTOR" />
+          <ScalarProperty Name="DISEASEID" ColumnName="DISEASEID" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="DIAGNOSISFOR" ColumnName="DIAGNOSISFOR" />
+          <ScalarProperty Name="HEIGHT" ColumnName="HEIGHT" />
+          <ScalarProperty Name="WIEGHT" ColumnName="WIEGHT" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PATIENTNAME" ColumnName="PATIENTNAME" />
+          <ScalarProperty Name="OPMASTERID" ColumnName="OPMASTERID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsPatientDischargeSummaries">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsPatientDischargeSummary">
+        <MappingFragment StoreEntitySet="lmsPatientDischargeSummary">
+          <ScalarProperty Name="DDATE2" ColumnName="DDATE2" />
+          <ScalarProperty Name="SEX2" ColumnName="SEX2" />
+          <ScalarProperty Name="DTIME2" ColumnName="DTIME2" />
+          <ScalarProperty Name="PWEIGHT2" ColumnName="PWEIGHT2" />
+          <ScalarProperty Name="HIGHRISK" ColumnName="HIGHRISK" />
+          <ScalarProperty Name="OBSTETRICHISTORY" ColumnName="OBSTETRICHISTORY" />
+          <ScalarProperty Name="PRESENTHISTORY" ColumnName="PRESENTHISTORY" />
+          <ScalarProperty Name="PWEIGHT" ColumnName="PWEIGHT" />
+          <ScalarProperty Name="Investigation" ColumnName="Investigation" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+          <ScalarProperty Name="DISCHARGEADVICE" ColumnName="DISCHARGEADVICE" />
+          <ScalarProperty Name="CONDITIONOFBABY" ColumnName="CONDITIONOFBABY" />
+          <ScalarProperty Name="TREATMENT" ColumnName="TREATMENT" />
+          <ScalarProperty Name="POSTOP_POSTNATALPERIOD" ColumnName="POSTOP_POSTNATALPERIOD" />
+          <ScalarProperty Name="PATIENTADMITTEDWITH" ColumnName="PATIENTADMITTEDWITH" />
+          <ScalarProperty Name="HBSAG" ColumnName="HBSAG" />
+          <ScalarProperty Name="HIV" ColumnName="HIV" />
+          <ScalarProperty Name="VDRL" ColumnName="VDRL" />
+          <ScalarProperty Name="SRCREATININE" ColumnName="SRCREATININE" />
+          <ScalarProperty Name="BLOOGSUGAR" ColumnName="BLOOGSUGAR" />
+          <ScalarProperty Name="BLOODUREA" ColumnName="BLOODUREA" />
+          <ScalarProperty Name="PLATELET" ColumnName="PLATELET" />
+          <ScalarProperty Name="CT" ColumnName="CT" />
+          <ScalarProperty Name="BT" ColumnName="BT" />
+          <ScalarProperty Name="GPRH" ColumnName="GPRH" />
+          <ScalarProperty Name="BLOODHBPERCENT" ColumnName="BLOODHBPERCENT" />
+          <ScalarProperty Name="URINED" ColumnName="URINED" />
+          <ScalarProperty Name="URINES" ColumnName="URINES" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="DTIME" ColumnName="DTIME" />
+          <ScalarProperty Name="DDATE" ColumnName="DDATE" />
+          <ScalarProperty Name="MODEOFDELIVERY" ColumnName="MODEOFDELIVERY" />
+          <ScalarProperty Name="OBSTEITICCODE" ColumnName="OBSTEITICCODE" />
+          <ScalarProperty Name="PHNO" ColumnName="PHNO" />
+          <ScalarProperty Name="DIAGONOSIS" ColumnName="DIAGONOSIS" />
+          <ScalarProperty Name="DOD" ColumnName="DOD" />
+          <ScalarProperty Name="DODEL" ColumnName="DODEL" />
+          <ScalarProperty Name="DOA" ColumnName="DOA" />
+          <ScalarProperty Name="IPNO" ColumnName="IPNO" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="SUMMARYID" ColumnName="SUMMARYID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsPatientTemplates">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsPatientTemplate">
+        <MappingFragment StoreEntitySet="lmsPatientTemplate">
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="TEMPLATEDETAILS" ColumnName="TEMPLATEDETAILS" />
+          <ScalarProperty Name="TEMPLATEID" ColumnName="TEMPLATEID" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="PTEMPLATEID" ColumnName="PTEMPLATEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsSignatureMasters">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsSignatureMaster">
+        <MappingFragment StoreEntitySet="lmsSignatureMaster">
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="SIGNATUREPATH" ColumnName="SIGNATUREPATH" />
+          <ScalarProperty Name="SIGNATUREFOR" ColumnName="SIGNATUREFOR" />
+          <ScalarProperty Name="SIGNATUREID" ColumnName="SIGNATUREID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsTemplateMasters">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsTemplateMaster">
+        <MappingFragment StoreEntitySet="lmsTemplateMaster">
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="TEMPLATEDETAILS" ColumnName="TEMPLATEDETAILS" />
+          <ScalarProperty Name="SIGNATUREID" ColumnName="SIGNATUREID" />
+          <ScalarProperty Name="TEMPLATENAME" ColumnName="TEMPLATENAME" />
+          <ScalarProperty Name="TEMPLATEID" ColumnName="TEMPLATEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsUltrSonogramReportOnes">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsUltrSonogramReportOne">
+        <MappingFragment StoreEntitySet="lmsUltrSonogramReportOne">
+          <ScalarProperty Name="POA" ColumnName="POA" />
+          <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="IMPRESSION" ColumnName="IMPRESSION" />
+          <ScalarProperty Name="GA" ColumnName="GA" />
+          <ScalarProperty Name="FTALHEART" ColumnName="FTALHEART" />
+          <ScalarProperty Name="YOLKSAC" ColumnName="YOLKSAC" />
+          <ScalarProperty Name="LO" ColumnName="LO" />
+          <ScalarProperty Name="RO" ColumnName="RO" />
+          <ScalarProperty Name="PLACENTA" ColumnName="PLACENTA" />
+          <ScalarProperty Name="CERVIX" ColumnName="CERVIX" />
+          <ScalarProperty Name="GS" ColumnName="GS" />
+          <ScalarProperty Name="UTERUS" ColumnName="UTERUS" />
+          <ScalarProperty Name="CRL" ColumnName="CRL" />
+          <ScalarProperty Name="EDD" ColumnName="EDD" />
+          <ScalarProperty Name="LMP" ColumnName="LMP" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="REPORTID" ColumnName="REPORTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsUltrSonogramReportTwoes">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsUltrSonogramReportTwo">
+        <MappingFragment StoreEntitySet="lmsUltrSonogramReportTwo">
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="COMMENTES" ColumnName="COMMENTES" />
+          <ScalarProperty Name="IMPRESSION" ColumnName="IMPRESSION" />
+          <ScalarProperty Name="PRESENTATION" ColumnName="PRESENTATION" />
+          <ScalarProperty Name="GA" ColumnName="GA" />
+          <ScalarProperty Name="PWEIGHT" ColumnName="PWEIGHT" />
+          <ScalarProperty Name="PLACENTA" ColumnName="PLACENTA" />
+          <ScalarProperty Name="AFI" ColumnName="AFI" />
+          <ScalarProperty Name="AC" ColumnName="AC" />
+          <ScalarProperty Name="FL" ColumnName="FL" />
+          <ScalarProperty Name="HC" ColumnName="HC" />
+          <ScalarProperty Name="BPD" ColumnName="BPD" />
+          <ScalarProperty Name="LMP" ColumnName="LMP" />
+          <ScalarProperty Name="EDD" ColumnName="EDD" />
+          <ScalarProperty Name="OBSTERICCODE" ColumnName="OBSTERICCODE" />
+          <ScalarProperty Name="IPNO" ColumnName="IPNO" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="REPORTID" ColumnName="REPORTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SplitToTable" FunctionName="LabManagementModel.Store.SplitToTable" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteDrugs" FunctionName="LabManagementModel.Store.usp_DeleteDrugs" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteLaboratoryBilling" FunctionName="LabManagementModel.Store.usp_DeleteLaboratoryBilling" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteMedicalBilling" FunctionName="LabManagementModel.Store.usp_DeleteMedicalBilling" />
+    <FunctionImportMapping FunctionImportName="usp_GetDrugDdl" FunctionName="LabManagementModel.Store.usp_GetDrugDdl">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabManagementModel.usp_GetDrugDdl_Result">
+          <ScalarProperty Name="DRUGID" ColumnName="DRUGID" />
+          <ScalarProperty Name="DRUGNAME" ColumnName="DRUGNAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetDrugStocks" FunctionName="LabManagementModel.Store.usp_GetDrugStocks">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabManagementModel.usp_GetDrugStocks_Result">
+          <ScalarProperty Name="DRUGID" ColumnName="DRUGID" />
+          <ScalarProperty Name="DRUGNAME" ColumnName="DRUGNAME" />
+          <ScalarProperty Name="AvailableStock" ColumnName="AvailableStock" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetExpiryDrugsByDays" FunctionName="LabManagementModel.Store.usp_GetExpiryDrugsByDays">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabManagementModel.usp_GetExpiryDrugsByDays_Result">
+          <ScalarProperty Name="DRUGID" ColumnName="DRUGID" />
+          <ScalarProperty Name="DRUGNAME" ColumnName="DRUGNAME" />
+          <ScalarProperty Name="RackNumber" ColumnName="RackNumber" />
+          <ScalarProperty Name="EXPIRYDATE" ColumnName="EXPIRYDATE" />
+          <ScalarProperty Name="ISEXPIRED" ColumnName="ISEXPIRED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetInPatientDetails" FunctionName="LabManagementModel.Store.usp_GetInPatientDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabManagementModel.usp_GetInPatientDetails_Result">
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="PATIENTNAME" ColumnName="PATIENTNAME" />
+          <ScalarProperty Name="PATIENTADDRESS" ColumnName="PATIENTADDRESS" />
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetMedicalBillsByDate" FunctionName="LabManagementModel.Store.usp_GetMedicalBillsByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabManagementModel.usp_GetMedicalBillsByDate_Result">
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+          <ScalarProperty Name="BILLNAME" ColumnName="BILLNAME" />
+          <ScalarProperty Name="BILLAMOUNT" ColumnName="BILLAMOUNT" />
+          <ScalarProperty Name="BILLDATE" ColumnName="BILLDATE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetMedicalProfitLoss" FunctionName="LabManagementModel.Store.usp_GetMedicalProfitLoss">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabManagementModel.usp_GetMedicalProfitLoss_Result">
+          <ScalarProperty Name="DRUGID" ColumnName="DRUGID" />
+          <ScalarProperty Name="DRUGNAME" ColumnName="DRUGNAME" />
+          <ScalarProperty Name="NETPROFITPERDRUG" ColumnName="NETPROFITPERDRUG" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetOutPatients" FunctionName="LabManagementModel.Store.usp_GetOutPatients">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabManagementModel.usp_GetOutPatients_Result">
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="PATIENTNAME" ColumnName="PATIENTNAME" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="WIEGHT" ColumnName="WIEGHT" />
+          <ScalarProperty Name="HEIGHT" ColumnName="HEIGHT" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetPatientDdlForBilling" FunctionName="LabManagementModel.Store.usp_GetPatientDdlForBilling">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabManagementModel.usp_GetPatientDdlForBilling_Result">
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="PATIENTNAME" ColumnName="PATIENTNAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ValidateUser" FunctionName="LabManagementModel.Store.usp_ValidateUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabManagementModel.usp_ValidateUser_Result">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="LOGINPASSWORD" ColumnName="LOGINPASSWORD" />
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="LOGINID" ColumnName="LOGINID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="lmsGeneralDischargeSummaries">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsGeneralDischargeSummary">
+        <MappingFragment StoreEntitySet="lmsGeneralDischargeSummary">
+          <ScalarProperty Name="TREATMENT" ColumnName="TREATMENT" />
+          <ScalarProperty Name="DIAGNOSIS" ColumnName="DIAGNOSIS" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="CONSULTINGDOCTOR" ColumnName="CONSULTINGDOCTOR" />
+          <ScalarProperty Name="ADVISE" ColumnName="ADVISE" />
+          <ScalarProperty Name="CONDITIONONDISCHARGE" ColumnName="CONDITIONONDISCHARGE" />
+          <ScalarProperty Name="PATIENTDISCHARGEDON" ColumnName="PATIENTDISCHARGEDON" />
+          <ScalarProperty Name="FAMILYHISTORY" ColumnName="FAMILYHISTORY" />
+          <ScalarProperty Name="PASTHISTORY" ColumnName="PASTHISTORY" />
+          <ScalarProperty Name="PATIENTADMITTEDWITH" ColumnName="PATIENTADMITTEDWITH" />
+          <ScalarProperty Name="INVESTIGATION" ColumnName="INVESTIGATION" />
+          <ScalarProperty Name="DOD" ColumnName="DOD" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="SUMMARYID" ColumnName="SUMMARYID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsGynacDischargeSummaries">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsGynacDischargeSummary">
+        <MappingFragment StoreEntitySet="lmsGynacDischargeSummary">
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="ADVISE" ColumnName="ADVISE" />
+          <ScalarProperty Name="CONCLUSIONONDISCHARGE" ColumnName="CONCLUSIONONDISCHARGE" />
+          <ScalarProperty Name="DISCHARGEDON" ColumnName="DISCHARGEDON" />
+          <ScalarProperty Name="DRESSINGCHANGEDON" ColumnName="DRESSINGCHANGEDON" />
+          <ScalarProperty Name="POSTOPPERIOD" ColumnName="POSTOPPERIOD" />
+          <ScalarProperty Name="TREATMENT" ColumnName="TREATMENT" />
+          <ScalarProperty Name="SURGECIALPROCEDURE" ColumnName="SURGECIALPROCEDURE" />
+          <ScalarProperty Name="BIOPSY" ColumnName="BIOPSY" />
+          <ScalarProperty Name="USG" ColumnName="USG" />
+          <ScalarProperty Name="MRISCAN" ColumnName="MRISCAN" />
+          <ScalarProperty Name="CTSCAN" ColumnName="CTSCAN" />
+          <ScalarProperty Name="HCV" ColumnName="HCV" />
+          <ScalarProperty Name="HBSAG" ColumnName="HBSAG" />
+          <ScalarProperty Name="HIV" ColumnName="HIV" />
+          <ScalarProperty Name="VDRL" ColumnName="VDRL" />
+          <ScalarProperty Name="SRT3T4TDH" ColumnName="SRT3T4TDH" />
+          <ScalarProperty Name="SRCHOLESTEROL" ColumnName="SRCHOLESTEROL" />
+          <ScalarProperty Name="SRCREATININE" ColumnName="SRCREATININE" />
+          <ScalarProperty Name="BLSUGAR" ColumnName="BLSUGAR" />
+          <ScalarProperty Name="BLUREA" ColumnName="BLUREA" />
+          <ScalarProperty Name="BLPLATELET" ColumnName="BLPLATELET" />
+          <ScalarProperty Name="CT" ColumnName="CT" />
+          <ScalarProperty Name="BT" ColumnName="BT" />
+          <ScalarProperty Name="ESR6OMT" ColumnName="ESR6OMT" />
+          <ScalarProperty Name="ESR30MT" ColumnName="ESR30MT" />
+          <ScalarProperty Name="DC" ColumnName="DC" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="BlHb" ColumnName="BlHb" />
+          <ScalarProperty Name="URINED" ColumnName="URINED" />
+          <ScalarProperty Name="URINES" ColumnName="URINES" />
+          <ScalarProperty Name="URINEA" ColumnName="URINEA" />
+          <ScalarProperty Name="OBSTRICHISTORY" ColumnName="OBSTRICHISTORY" />
+          <ScalarProperty Name="FAMILYHISTORY" ColumnName="FAMILYHISTORY" />
+          <ScalarProperty Name="PASTHISTORY" ColumnName="PASTHISTORY" />
+          <ScalarProperty Name="PATIENTADMITTEDWITHCO" ColumnName="PATIENTADMITTEDWITHCO" />
+          <ScalarProperty Name="DIAGNOSIS" ColumnName="DIAGNOSIS" />
+          <ScalarProperty Name="DOD" ColumnName="DOD" />
+          <ScalarProperty Name="DOS" ColumnName="DOS" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="SUMMARYID" ColumnName="SUMMARYID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USP_DATAARCHIVAL" FunctionName="LabManagementModel.Store.USP_DATAARCHIVAL" />
+  </EntityContainerMapping>
+</Mapping>

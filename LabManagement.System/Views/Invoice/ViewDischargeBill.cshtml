@@ -1,0 +1,336 @@
+﻿@using Lab.Management.Entities;
+@model lmsDischargeBill
+@{
+    ViewBag.Title = "ViewDischargeBill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+}
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+
+    @using (Html.BeginForm("EditDischargeBill", "Invoice", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                @Html.Partial("_HospitalDetail")
+                <p><h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Discharge Bill</h4></p>
+            </div>
+        </div>
+        <div class="row">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Name
+                    </span>
+                    @Html.DropDownListFor(x => x.SelectedPatient, Model.PatientDdl, new { @class = "form-control selectpicker", required = "required" })
+                    @Html.HiddenFor(x => x.DBILLID)
+                </div>
+
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Discharge Date
+                    </span>
+                    @Html.TextBoxFor(m => m.DATEOFDISCHARGE, new { @Id = "DATEOFDISCHARGE", @class = "form-control", required = "required" })
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        No of Days Stay
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.NOOFDAYSTAY, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Room Rent/Day
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.BEDORROOMCHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Consulting Doctor
+                    </span>
+                    @Html.TextBoxFor(x => x.OPERATINGDOCTOR, new { @class = "form-control", @placeholder = "Operating Doctor Name" })
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Doctor Fees
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.OPERATIONCHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Nursing Charge
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.NURSECHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        House Keeping Charge
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.OTHERSERVICECHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Visiting Consultant Charge
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.SPECILISTDOCTORCHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Operation Theater
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.OPERATIONTHEATERCHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Anaesthestic Charge
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.ANAESTHESIACHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Labour Room Charge
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.LABOURROOMCHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Paediatrician Resuscitation Fees
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.PAEDIATRICIANRESUSTFEE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Warmer+O2
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.WARMERPLUSO2CHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Paediatrician Visiting Fees
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.PAEDIATRICIANFEE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Oxygen Fees
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.OXYGENFEE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Phototherapy Fees
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.PHOTOTHERAPYFEE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Total Charge
+                    </span>
+
+
+                    @Html.TextBoxFor(x => x.TOTALCHARGE, new { @class = "form-control", @placeholder = "0.00" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">
+                        Comments
+                    </span>
+
+
+                    @Html.TextAreaFor(x => x.COMMENTS, new { @class = "form-control", @placeholder = "Comments" })
+                </div>
+            </div>
+
+
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <a href="@Url.Action("ViewAllDischargeBill", "Invoice")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.DBILLID > 0)
+                {
+                    <a href="@Url.Action("DeleteDischargeBill", "Invoice", new { ReportId = Model.DBILLID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                    <a href="@Url.Action("GenerateDischargeBill", "Invoice", new { ReportId = Model.DBILLID })" class="btn btn-info">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        Generate Bill
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="row">
+
+            <hr />
+        </div>
+    }
+
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#DATEOFDISCHARGE').datepicker({ format: 'dd/mm/yyyy'  });
+        });
+
+    </script>
+}

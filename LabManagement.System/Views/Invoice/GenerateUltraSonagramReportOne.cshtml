@@ -1,0 +1,252 @@
+﻿@using Lab.Management.Entities;
+@using LabManagement.System.Common;
+@model lmsUltrSonogramReportOne
+@{
+    ViewBag.Title = "View Sonography Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+}
+
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+    <div id="canvasElement">
+
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                @Html.Partial("_HospitalDetail")
+                <p><h4 class="text-info"><i class="glyphicon glyphicon-print"></i>Ultra Sonography Report One</h4></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-7" style="margin-left: 16%;" id="prntTableDiv">
+                <table class="table table-striped  dataTable no-footer">
+                    <tr>
+                        <td class=" text-left  text-strong">
+                            Name
+                        </td>
+                        <td class=" text-left">
+                            <p>@Model.NAME</p>
+
+                            @Html.HiddenFor(x => x.REPORTID)
+                        </td>
+                        @if (@Model.LMP.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                LMP
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.LMP</p>
+                            </td>
+                        }
+                    </tr>
+
+                    <tr>
+                        @if (@Model.AGE.intIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                Age
+                            </td>
+                            <td class=" text-left">
+
+                                <p>@Model.AGE.Value</p>
+
+
+                            </td>
+                        }
+                        @if (@Model.EDD.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                EDD
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.EDD</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        @if (@Model.CRL.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                CRL
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.CRL</p>
+
+                            </td>
+                        }
+                        @if (@Model.UTERUS.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                Uterus
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.UTERUS</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        @if (@Model.PLACENTA.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                Placenta
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.PLACENTA</p>
+
+                            </td>
+                        }@if (@Model.CERVIX.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                Cervix
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.CERVIX</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        @if (@Model.YOLKSAC.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                Yolk Sac
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.YOLKSAC</p>
+
+                            </td>
+                        }
+                        @if (@Model.RO.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                RO
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.RO</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        @if (@Model.FTALHEART.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                Fetal Heart
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.FTALHEART</p>
+
+                            </td>
+                        }
+                        @if (@Model.LO.stringIsNotNull())
+                        {
+                            <td class=" text-left  text-strong">
+                                LO
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.LO</p>
+                            </td>
+                        }
+                    </tr>
+
+                    <tr>
+                        @if (@Model.GA.stringIsNotNull())
+                        {
+                            <td class=" text-left text-strong">
+                                GA
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.GA</p>
+
+                            </td>
+                        }
+                        @if (@Model.POA.stringIsNotNull())
+                        {
+                            <td class=" text-left text-strong">
+                                POA
+                            </td>
+                            <td class=" text-left">
+                                <p>@Model.POA</p>
+
+                            </td>
+                        }
+
+                    </tr>
+
+
+                    <tr>
+                        @if (@Model.IMPRESSION.stringIsNotNull())
+                        {
+                            <td class=" text-left text-strong">
+                                Impression
+                            </td>
+                            <td class=" text-left">
+                                <p> @Model.IMPRESSION</p>
+
+                            </td>
+                        }
+                        @if (@Model.CREATEDDATE.HasValue)
+                        {
+                            <td class=" text-left text-strong">
+                                Report Date
+                            </td>
+                            <td class=" text-left">
+                                <p> @Model.CREATEDDATE.Value.IstDateConversion()</p>
+
+                            </td>
+                        }
+
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center" id="appendElements">
+                <a href="@Url.Action("ViewUltraSonagramReportOne", "Invoice", new { ReportId = Model.REPORTID })" id="btnBack" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="button" class="btn btn-primary" id="btnPrint">
+                    <i class="glyphicon glyphicon-print">
+                        Print
+                    </i>
+                </button>
+
+            </div>
+        </div>
+        <div class="row">
+
+            <hr />
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#btnPrint').on('click', function () {
+                var hideShowelements = [];
+                hideShowelements.push('btnBack');
+                hideShowelements.push('btnPrint');
+                PrintCanvasDiv(hideShowelements, 'canvasElement');
+            });
+
+        });
+
+    </script>
+}

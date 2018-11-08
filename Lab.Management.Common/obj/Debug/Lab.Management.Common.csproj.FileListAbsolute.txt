@@ -1,0 +1,5 @@
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Common\bin\Debug\Lab.Management.Common.dll
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Common\bin\Debug\Lab.Management.Common.pdb
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Common\obj\Debug\Lab.Management.Common.dll
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Common\obj\Debug\Lab.Management.Common.pdb
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Common\obj\Debug\Lab.Management.Common.csprojResolveAssemblyReference.cache

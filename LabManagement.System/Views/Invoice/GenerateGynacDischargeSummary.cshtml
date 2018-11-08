@@ -1,0 +1,569 @@
+﻿@using Lab.Management.Entities;
+@using LabManagement.System.Common;
+@model lmsGynacDischargeSummary
+@{
+    ViewBag.Title = "Generate Gynac Discharge Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+}
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDivReport">
+
+    <div id="canvasElement">
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                @Html.Partial("_HospitalDetail")
+                <p><h4 class="text-info"><i class="glyphicon glyphicon-print"></i>GYNAEC Discharge Summary</h4></p>
+            </div>
+        </div>
+
+
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            <table class="table table-striped  dataTable no-footer">
+                <tr>
+                    <td class=" text-left  text-strong">  Name</td>
+                    <td class=" text-left"><p> @Model.lmsPatientRegistration.PATIENTNAME</p></td>
+
+                    @if (@Model.lmsPatientRegistration.AGE.HasValue)
+                    {
+                        <td class=" text-left  text-strong">Age</td>
+                        <td class=" text-left"><p> @Model.lmsPatientRegistration.AGE.Value</p></td>
+                    }
+                    <td class=" text-left  text-strong">IPNO</td>
+                    <td class=" text-left"><p>@string.Format("IP{0}", Model.lmsPatientRegistration.PATIENTID)</p></td>
+                </tr>
+                <tr>
+                    <td class=" text-left  text-strong">  Address</td>
+                    <td class=" text-left"><p> @Model.lmsPatientRegistration.PATIENTADDRESS</p></td>
+                    <td class=" text-left"></td>
+                    <td class=" text-left"></td>
+                    <td class=" text-left"></td>
+                    <td class=" text-left  text-strong">
+                        @*<p>@string.Format("DOA : {0}", Model.lmsPatientRegistration.CREATEDDATE.ParseIstDate()) </p>
+                            <br />*@
+                        <p>@string.Format("DOA : {0}", Model.DOS.ParseIstDate()) </p>
+                        <br />
+                        <p>@string.Format("DOD : {0}", Model.DOD.ParseIstDate()) </p>
+
+                    </td>
+                </tr>
+
+                @if (@Model.DIAGNOSIS.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Diagnosis
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.DIAGNOSIS</p>
+                        </td>
+
+
+
+                    </tr>
+                }
+                @if (@Model.PATIENTADMITTEDWITHCO.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Patient is Admitted with c/o
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.PATIENTADMITTEDWITHCO</p>
+                        </td>
+
+
+
+                    </tr>
+                }
+                @if (@Model.PASTHISTORY.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Past History
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.PASTHISTORY</p>
+                        </td>
+
+
+
+                    </tr>
+                }
+                @if (@Model.FAMILYHISTORY.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Family History
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.FAMILYHISTORY</p>
+                        </td>
+
+
+
+                    </tr>
+                }
+                @if (@Model.OBSTRICHISTORY.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Obstetric History
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.OBSTRICHISTORY</p>
+                        </td>
+
+
+
+                    </tr>
+                }
+
+                <tr>
+
+                    <td class=" text-center  text-strong" colspan="6">
+                        <h3>Investigation </h3>
+
+                    </td>
+
+
+
+                </tr>
+                @if (@Model.URINEA.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Urine A
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.URINEA</p>
+                        </td>
+
+
+
+                    </tr>
+                }
+                @if (@Model.URINES.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Urine S
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.URINES</p>
+                        </td>
+
+
+
+                    </tr>
+                }
+                @if (@Model.URINED.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Urine D
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.URINED</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.BlHb.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Bl-Hb%
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.BlHb</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.TC.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            TC
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.TC</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.DC.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            DC
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.DC</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.ESR30MT.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            ESR 30 mt
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.ESR30MT</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.ESR6OMT.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            ESR 60 mt
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.ESR6OMT</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.BT.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            BT
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.BT</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.CT.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            CT
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.CT</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.BLPLATELET.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Bl.Platelet
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.BLPLATELET</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.BLUREA.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Bl.Urea
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.BLUREA</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.BLSUGAR.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Bl.Sugar
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.BLSUGAR</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.SRCREATININE.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Sr.Creatinine
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.SRCREATININE</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.SRCHOLESTEROL.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Sr.Cholesterol
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.SRCHOLESTEROL</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.SRT3T4TDH.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Sr. T3 T4 TSH
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.SRT3T4TDH</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.VDRL.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            VDRL
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.VDRL</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.HIV.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            HIV
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.HIV</p>
+                        </td>
+                    </tr>
+                }
+
+                @if (@Model.HBSAG.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            HBsAg
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.HBSAG</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.HCV.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            HCV
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.HCV</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.CTSCAN.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            CT SCAN
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.CTSCAN</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.MRISCAN.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            MRI SCAN
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.MRISCAN</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.HCV.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            USG
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.USG</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.BIOPSY.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Biopsy
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.BIOPSY</p>
+                        </td>
+                    </tr>
+                }
+
+
+                @if (@Model.SURGECIALPROCEDURE.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Surgical Procedure
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.SURGECIALPROCEDURE</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.TREATMENT.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Treatment
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.TREATMENT</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.POSTOPPERIOD.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Post op Period
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.POSTOPPERIOD</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.DRESSINGCHANGEDON.dateTimeIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Dressing Changed on
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.DISCHARGEDON.ParseIstDate()</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.DISCHARGEDON.dateTimeIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Discharge on
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.DISCHARGEDON.ParseIstDate()</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.CONCLUSIONONDISCHARGE.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Conclusion on Discharge
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.CONCLUSIONONDISCHARGE</p>
+                        </td>
+                    </tr>
+                }
+                @if (@Model.ADVISE.stringIsNotNull())
+                {
+                    <tr>
+
+                        <td class=" text-left  text-strong">
+                            Advise
+                        </td>
+                        <td class="text-left" colspan="5">
+                            <p> @Model.ADVISE</p>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center" id="appendElements">
+                <a href="@Url.Action("ViewGynacDischargeSummary", "Invoice", new { ReportId = Model.SUMMARYID})" id="btnBack" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="button" class="btn btn-primary" id="btnPrint">
+                    <i class="glyphicon glyphicon-print">
+                        Print
+                    </i>
+                </button>
+
+            </div>
+        </div>
+        <div class="row">
+
+            <hr />
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#btnPrint').on('click', function () {
+                var hideShowelements = [];
+                hideShowelements.push('btnBack');
+                hideShowelements.push('btnPrint');
+                PrintCanvasDiv(hideShowelements, 'canvasElement');
+            });
+
+        });
+
+    </script>
+}

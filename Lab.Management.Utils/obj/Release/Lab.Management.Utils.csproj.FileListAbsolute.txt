@@ -1,0 +1,9 @@
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\bin\Release\Lab.Management.Utils.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\bin\Release\Lab.Management.Utils.pdb
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\bin\Release\Excel.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\bin\Release\Lab.Management.Common.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\bin\Release\Lab.Management.Common.pdb
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\bin\Release\Excel.pdb
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csprojResolveAssemblyReference.cache
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\obj\Release\Lab.Management.Utils.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\obj\Release\Lab.Management.Utils.pdb

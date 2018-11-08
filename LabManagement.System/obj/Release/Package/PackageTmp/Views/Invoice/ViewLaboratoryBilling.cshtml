@@ -1,0 +1,261 @@
+﻿@using Lab.Management.Entities;
+
+@model lmsLaboratoryBilling
+@{
+    ViewBag.Title = "New Laboratory Bill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+    var Testddl = ViewBag.TestList as IEnumerable<SelectListItem>;
+}
+
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
+    <div class="row">
+        <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Bill Details</h4>
+        <hr />
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            Name
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            @Html.TextBoxFor(m => m.BILLNAME, new { @Id = "BILLNAME", @class = "form-control", required = "required" })
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            Contact
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            @Html.TextBoxFor(m => m.CONTACT, new { @Id = "CONTACT", @class = "form-control", required = "required" })
+
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <table id="tableTest" class="table table-striped table-bordered dataTable no-footer">
+                <thead>
+                    <tr>
+                        <th>
+                            Test Name
+                        </th>
+                        <th>
+                            Test Result
+                        </th>
+                        <th>
+                            Cost
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <table class="table table-striped table-bordered dataTable no-footer">
+                <tbody>
+
+                    <tr>
+                        <td class="text-right">
+                            Total:<span id="idTotal"> </span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <select class="selectpicker" data-live-search="true" id="IdTestddl">
+                @foreach (var dropdown in Testddl)
+                {
+                    <option data-tokens="@dropdown.Text" value="@dropdown.Value">@dropdown.Text</option>
+                }
+            </select>
+            @*@Html.DropDownList("Testddl", Testddl, new { @Id = "IdTestddl", @class = "selectpicker" })*@
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <input type="text" class="form-control" id="IdResult" />
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <button class="btn btn-success" id="btnAddTest">
+                <i class="glyphicon glyphicon-plus">
+                    Add
+                </i>
+            </button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <a href="@Url.Action("ViewLaboratoryBilling", "Invoice")" class="btn btn-warning">
+                <i class="glyphicon glyphicon-arrow-left">
+                    Back
+                </i>
+            </a>
+            <button type="button" class="btn btn-primary" id="btnSave">
+                <i class="glyphicon glyphicon-floppy-disk"></i>
+                Save
+            </button>
+            @if (Model.BILLID > 0)
+            {
+                <a href="@Url.Action("DeleteLaboratoryBilling", "Invoice", new { LaboratoryBillingId = @Model.BILLID })" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash">
+                        Delete
+                    </i>
+                </a>
+
+                <a href="@Url.Action("GenrateLaboratoryBill", "Invoice", new { LaboratoryBillingId = @Model.BILLID })" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-th-large">
+                        View Generated Bill
+                    </i>
+                </a>
+            }
+        </div>
+    </div>
+    <div class="row">
+
+        <hr />
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var TestDetails = [];
+            $('#btnAddTest').on('click', function () {
+                debugger;
+                var TestId = $('#IdTestddl').val();
+                var result = $('#IdResult').val();
+                var validationAlert = validatefields();
+                if (validationAlert !== "") {
+                    alert(validationAlert);
+                    return;
+                }
+                $('#btnAddTest').attr('disabled', 'disabled');
+                getTestInfo(TestId, result);
+            });
+
+            $(".btn-sm").live('click', function () {
+                debugger;
+                var btnId = this.id;
+                var TestId = btnId.split('_');
+
+                if (TestId.length > 0) {
+                    //$('#tr_' + TestId[1]).remove();
+                    $(this).parents("tr").remove();
+                    calculateTotal();
+                }
+
+            });
+            $('#btnSave').on('click', function () {
+                debugger;
+                saveTestBills();
+            });
+
+            function validatefields() {
+                var message = "";
+                if ($('#BILLNAME').val() === "") {
+                    message = "Please enter name";
+                }
+                else if ($('#CONTACT').val() === "") {
+                    message = "Please enter contact";
+                }
+                else if ($('#IdResult').val() === "") {
+                    message = "Please enter result";
+                }
+                return message;
+
+            }
+            function calculateTotal() {
+                //idTotal
+                var subTotal = 0.00;
+                $("#tableTest tr").each(function (e) {
+                    $this = $(this)
+                    var rowId = $this.context.id;
+                    if (rowId != undefined && rowId !== "") {
+                        var TestId = rowId.split('_');
+                        if (TestId.length > 0) {
+                            var cost = $("#txtPrice_" + TestId[1].replace(/"/g, '')).val();
+                            subTotal = subTotal + parseFloat(cost);
+
+                        }
+                    }
+                });
+                $('#idTotal').text(subTotal);
+            }
+            function saveTestBills() {
+                debugger;
+
+                TestDetails = [];
+                $("#tableTest tr").each(function (e) {
+                    $this = $(this)
+                    var rowId = $this.context.id;
+                    if (rowId != undefined && rowId !== "") {
+                        var TestId = rowId.split('_');
+                        if (TestId.length > 0) {
+                            var result = $("#txtresult_" + TestId[1].replace(/"/g, '')).val();
+                            var cost = $("#txtPrice_" + TestId[1].replace(/"/g, '')).val();
+                            TestDetails.push({ 'TESTID': TestId[1].replace(/"/g, ''), 'TESTRESULT': result, 'COST': cost });
+
+                        }
+                    }
+                });
+                var billInfo = { 'BILLNAME': $('#BILLNAME').val(), 'CONTACT': $('#CONTACT').val() };
+                var postData = { objTestBill: billInfo, objTestBillDetails: TestDetails };
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("SaveMedicalTestBillInfo")",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(postData),
+                    //data: postData,
+                    success: function (data) {
+                        window.location.href = "GenrateLaboratoryBill?LaboratoryBillingId=" + data;
+                    },
+                    failure: function (errMsg) {
+                        alert('failure' + errMsg);
+                    }
+                });
+            }
+            function getTestInfo(TestId, result) {
+                debugger;
+                $.ajax({
+                    url: '@Url.Action("GetTestDetailById", "Invoice")',
+                    type: "GET",
+                    data: { "testId": TestId, "result": result },
+                    success: function (resultData) {
+                        var newtableRow = '<tr id=tr_"' + TestId + '"><td>' + resultData.TESTNAME + '</td><td><input type="text" value="' + result + '" id="txtresult_' + TestId + '" style="color: black;" /></td><td><input type="text" value="' + resultData.SELLINGPRICE + '" id="txtPrice_' + TestId + '" style="color: black;;width:70%;" /><button id="btnRemove_' + TestId + '" name="btnRemove" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-minus"></i></button></td></tr>';
+                        $('#tableTest tbody').append(newtableRow);
+                        $('#btnAddTest').removeAttr('disabled');
+                        calculateTotal();
+
+                    },
+                    error: function (result) {
+                        $('#btnAddTest').removeAttr('disabled');
+                        alert("Failed");
+                    }
+                });
+            }
+
+        });
+
+
+    </script>
+}

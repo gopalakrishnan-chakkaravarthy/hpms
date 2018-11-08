@@ -1,0 +1,337 @@
+﻿@using Lab.Management.Entities;
+
+@model lmsInvestigationReport
+@{
+    ViewBag.Title = "View Investigation Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+
+
+}
+
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+
+    @using (Html.BeginForm("EditInvestigationReport", "Invoice", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                @Html.Partial("_HospitalDetail")
+                <p><h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Investigation Report</h4></p>
+            </div>
+        </div>
+        <div class="row">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Name
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.NAME, new { @class = "form-control", required = "required" })
+
+                @Html.HiddenFor(x => x.REPORTID)
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1">
+                Date
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                @Html.TextBoxFor(m => m.REPORTDATE, new { @Id = "REPORTDATE", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1">
+
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Albumin :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.ALBUMIN, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Urine  Sugar:
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.URINESUGAR, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Pus Cell :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.PUSCELL, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                RBC :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.RBC, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Epthelial Cells :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.EPTHELIALCELL, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Haemoglobin
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.BLOODHAEMOGLOBIN, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Grouping & Rh Typing :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.GROUPINGRHTYPING, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                BT :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.BT, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                CT :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.CT, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Platelet :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.PLATELET, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Blood Urea :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.BLOODUREA, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 text-nowrap">
+                Blood Sugar(GCT) :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.SUGAR, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Sr.Creatinine :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.SRCREATININE, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Sr. Free T3 :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.SRFREET3, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Sr. Free T4 :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.SRFREET4, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                TSH :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.TSH, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                VDRL :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.VDRL, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                HIV :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.HIV, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Hbs Ag:
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.HBSAG, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                HCV :
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.HCV, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Comments :
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                @Html.TextAreaFor(m => m.COMMENTS, new { @class = "form-control", required = "required" })
+            </div>
+
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <a href="@Url.Action("ViewAllInvestigationReport", "Invoice")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.REPORTID > 0)
+                {
+                    <a href="@Url.Action("DeleteInvestigationReport", "Invoice", new { ReportId = Model.REPORTID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                    <a href="@Url.Action("GenerateIvestigationReport", "Invoice", new { ReportId = Model.REPORTID })" class="btn btn-info">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        Generate Summary
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="row">
+
+            <hr />
+        </div>
+    }
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#REPORTDATE').datepicker({ format: 'dd/mm/yyyy'  });
+        });
+
+    </script>
+}

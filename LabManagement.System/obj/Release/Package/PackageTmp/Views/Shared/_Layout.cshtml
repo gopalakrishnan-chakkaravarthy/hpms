@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap core CSS -->
+    <link href="@Url.Content("~/Content/plugins/bootstrap/css/bootstrap.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/carousel.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/plugins/dataTables/dataTables.bootstrap.css")" rel="stylesheet">
+    @*<link href="@Url.Content("~/Content/css/dataTables.bootstrap.min.css")" rel="stylesheet">
+        <link href="@Url.Content("~/Content/css/dataTables.responsive.min.css")" rel="stylesheet">*@
+
+    @*<link href="@Url.Content("~/Content/css/responsive.bootstrap.min.css")" rel="stylesheet">*@
+    <link href="@Url.Content("~/Content/css/Site.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/bootstrap-datepicker.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/bootstrap-select.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/bootstrap-wysihtml5.css")" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+    <header>
+        @Html.Partial("_Menu")
+    </header>
+
+    <div id="body">
+        <div class="container">
+
+            @RenderSection("featured", required: false)
+
+            @RenderBody()
+
+            
+            <div id="" class="hidden"></div>
+        </div>
+      
+    </div>
+    <div id="dvPrintElemet" class="hidden"></div>
+    <footer class="text-center">
+
+
+        <p>HPMS &copy; @DateTime.Now.Year - Vinayaga Poly Clinic</p>
+
+
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    <script src="@Url.Content("~/Content/plugins/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/plugins/dataTables/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/Content/plugins/dataTables/dataTables.bootstrap.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-datepicker.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-select.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/js/html2canvas.js")"></script>
+    <script src="@Url.Content("~/Content/js/base64.js")"></script>
+    <script src="@Url.Content("~/Content/js/canvas2image.js")"></script>
+    <script src="@Url.Content("~/Scripts/AppScripts/Common.js")"></script>
+    <script src="@Url.Content("~/Content/js/ckeditor/ckeditor.js")"></script>
+
+    <script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+                $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    $(this).parent().siblings().removeClass('open');
+                    $(this).parent().toggleClass('open');
+                });
+
+
+            });
+        })(jQuery);
+        $('.selectpicker').attr('data-live-search', true);
+
+    </script>
+
+</body>
+
+</html>

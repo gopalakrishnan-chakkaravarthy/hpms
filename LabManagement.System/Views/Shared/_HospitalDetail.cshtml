@@ -1,0 +1,14 @@
+﻿@using Lab.Management.Common;
+
+<div id="hspHeader">
+    <p><h2> @ConfigurationWrapper.StringSettings(ConfigKey.HospitalName)</h2></p>
+    <p><h5>@ConfigurationWrapper.StringSettings(ConfigKey.HospitalAddress) </h5> </p>
+    <p>
+        <h5>
+            <i><b>Phone #:</b> @ConfigurationWrapper.StringSettings(ConfigKey.HospitalContact) <b>Fax #:</b> @ConfigurationWrapper.StringSettings(ConfigKey.HospitalFax) <b>Email :</b> @ConfigurationWrapper.StringSettings(ConfigKey.HospitalEmail)</i>
+        </h5>
+    </p>
+
+
+
+</div>

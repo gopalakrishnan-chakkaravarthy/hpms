@@ -1,0 +1,77 @@
+﻿@using Lab.Management.Entities;
+
+@model lmsVendor
+@{
+    ViewBag.Title = "View Vendor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+}
+
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
+
+    @using (Html.BeginForm("EditVendor", "HopitalMaster", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> View Vendor Details</h4>
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Vendor Name
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.VENDORNAME, new { @class = "form-control", required = "required" })
+                @Html.HiddenFor(x => x.VENDORID)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                IS Active
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.CheckBoxFor(m => m.ISACTIVE.Value, new { @class = "form-control", required = "required" })
+
+            </div>
+        </div>
+       
+        <hr />
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <a href="@Url.Action("ViewAllVendor", "HopitalMaster")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.VENDORID > 0)
+                {
+                    <a href="@Url.Action("DeleteVendor", "HopitalMaster", new { VendorId = Model.VENDORID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="row">
+
+            <hr />
+        </div>
+    }
+</div>

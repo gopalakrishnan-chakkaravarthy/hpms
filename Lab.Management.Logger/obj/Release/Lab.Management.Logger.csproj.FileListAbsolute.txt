@@ -1,0 +1,5 @@
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Logger\bin\Release\Lab.Management.Logger.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Logger\bin\Release\Lab.Management.Logger.pdb
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Logger\bin\Release\log4net.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb

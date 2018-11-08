@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "DataArchival";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        Data Archival Manager
+    </div>
+    <hr />
+</div>
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("SaveDataArchival", "Admin", new { @id = "IdEdit", @name = "EditForm" }))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Select Archive Table</strong>
+        </div>
+        <div class="col-md-6">
+            <select class="form-control" id="sltOption" name="sltOption">
+                <option> --Select --</option>
+                <option value="MB">Medical Bill</option>
+                <option value="LB">Lab Bill</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            From Date
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="fromDate" name="fromDate" />
+        </div>
+       
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            To Date
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="toDate" name="toDate" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-lg btn-danger"> <i class="glyphicon glyphicon-trash"></i></button>
+        </div>
+    </div>
+}
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#fromDate').datepicker({ format: 'dd/mm/yyyy' });
+            $('#toDate').datepicker({ format: 'dd/mm/yyyy' });
+
+        });
+
+    </script>
+}

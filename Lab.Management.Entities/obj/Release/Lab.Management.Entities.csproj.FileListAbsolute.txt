@@ -1,0 +1,10 @@
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll.config
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\bin\Release\Lab.Management.Entities.pdb
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\bin\Release\EntityFramework.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\bin\Release\EntityFramework.xml
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.xml
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojResolveAssemblyReference.cache
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb

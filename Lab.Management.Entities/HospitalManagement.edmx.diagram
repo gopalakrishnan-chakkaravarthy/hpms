@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e10ef37aaee04eb28df01ff45b50887b" Name="Diagram1">
+        <EntityTypeShape EntityType="LabManagementModel.lmsBed" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsCityMaster" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsDischargeSummary" Width="1.5" PointX="10.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsDiseaseMaster" Width="1.5" PointX="11.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsDrug" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsHospitalMaster" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsInPatientBilling" Width="1.5" PointX="15.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsInventory" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsLoginRegistration" Width="1.5" PointX="8.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsMedicalBilling" Width="1.5" PointX="8" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsMedicalTest" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsPatientRegistration" Width="1.5" PointX="13.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsRoleMaster" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsScanReportDetail" Width="1.5" PointX="21" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsScanReportMaster" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsScan" Width="1.5" PointX="16.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsStateMaster" Width="1.5" PointX="3" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsVendorBilling" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsVendor" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsWard" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsWards__BEDID__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsHospit__CITYI__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsLoginR__CITYI__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsStateM__CITYI__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsDischa__CONSU__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsDischa__PATIE__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsPatien__DISEA__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsMedica__DRUGI__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsHospit__STATE__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsInPati__PATIE__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsInvent__VENDO__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsVendor__INVEN__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsLoginR__ROLEI__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsLoginR__STATE__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsPatien__CONSU__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsScanRe__PATIE__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsScanRe__SCANR__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsScanRe__SCANI__628FA481" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsDischargeBill" Width="1.5" PointX="19.125" PointY="7.625" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsInvestigationReport" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsLaboratoryBilling" Width="1.5" PointX="10.375" PointY="1.25" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsLaboratoryBillingDetail" Width="1.5" PointX="12.625" PointY="1.375" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsMedicalBillingDetail" Width="1.5" PointX="10.625" PointY="6.625" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsOutPatientDetail" Width="1.5" PointX="16.125" PointY="7.125" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsOutPatientMaster" Width="1.5" PointX="13.875" PointY="6.5" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsPatientDischargeSummary" Width="1.5" PointX="16.125" PointY="22.625" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsPatientTemplate" Width="1.5" PointX="19.125" PointY="18.5" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsSignatureMaster" Width="1.5" PointX="10.875" PointY="21.375" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsTemplateMaster" Width="1.5" PointX="13.125" PointY="21.375" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsUltrSonogramReportOne" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsUltrSonogramReportTwo" Width="1.5" PointX="2.75" PointY="13.75" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsDischa__CREAT__4A8310C6" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsDischa__PATIE__3C34F16F" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsOutPat__DISEA__14270015" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsMedica__DRUGI__6E01572D" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsLabora__BILLI__71D1E811" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsLabora__TESTI__3C69FB99" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsLabora__TESTI__72C60C4A" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsSignat__SIGNA__02FC7413" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsMedica__BILLI__6D0D32F4" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsOutPat__OPMAS__123EB7A3" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsPatien__PATIE__693CA210" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsPatien__PATIE__0A9D95DB" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsPatien__TEMPL__0B91BA14" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsTempla__SIGNA__06CD04F7" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsGeneralDischargeSummary" Width="1.5" PointX="15.75" PointY="1.375" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsPatien__BEDID__756D6ECB" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsGenera__PATIE__41B8C09B" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsHospit__CREAT__2F9A1060" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsPatien__WARDI__76619304" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsGynacDischargeSummary" Width="1.5" PointX="15.75" PointY="31.75" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsGynacD__PATIE__4C364F0E" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,203 @@
+﻿@using Lab.Management.Entities;
+
+@model lmsUltrSonogramReportOne
+@{
+    ViewBag.Title = "View Sonography Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+
+}
+
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+
+    @using (Html.BeginForm("EditUltraSonagramReportOne", "Invoice", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                @Html.Partial("_HospitalDetail")
+                <p><h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Ultra Sonogram Report One</h4></p></div>
+            </div>
+        <div class="row">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Name
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.NAME, new { @class = "form-control", required = "required" })
+
+                @Html.HiddenFor(x => x.REPORTID)
+            </div>
+
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                LMP
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.LMP, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Age
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.AGE, new { @class = "form-control", required = "required" })
+
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                EDD
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.EDD, new { @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                CRL
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.CRL, new { @class = "form-control" })
+
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Uterus
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.UTERUS, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Placenta
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.PLACENTA, new { @class = "form-control" })
+
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Cervix
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.CERVIX, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Yolk Sac
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.YOLKSAC, new { @class = "form-control" })
+
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                RO
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.RO, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Fetal Heart
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.FTALHEART, new { @class = "form-control" })
+
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                LO
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.LO, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                GA
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.GA, new { @class = "form-control" })
+
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                POA
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.POA, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Impression
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                @Html.TextAreaFor(m => m.IMPRESSION, new { @class = "form-control" })
+
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <a href="@Url.Action("ViewAllUltraSonagramReportOne", "Invoice")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.REPORTID > 0)
+                {
+                    <a href="@Url.Action("DeleteUltraSonagramReportOne", "Invoice", new { ReportId = Model.REPORTID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                    <a href="@Url.Action("GenerateUltraSonagramReportOne", "Invoice", new { ReportId = Model.REPORTID })" class="btn btn-info">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        Generate Sonogram
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="row">
+
+            <hr />
+        </div>
+    }
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#EDD').datepicker({ format: 'dd/mm/yyyy'  });
+        });
+
+    </script>
+}

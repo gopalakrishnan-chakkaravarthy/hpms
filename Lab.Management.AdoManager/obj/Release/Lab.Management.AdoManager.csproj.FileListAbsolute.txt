@@ -1,0 +1,4 @@
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.AdoManager\bin\Release\Lab.Management.AdoManager.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.AdoManager\bin\Release\Lab.Management.AdoManager.pdb
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.dll
+D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.pdb

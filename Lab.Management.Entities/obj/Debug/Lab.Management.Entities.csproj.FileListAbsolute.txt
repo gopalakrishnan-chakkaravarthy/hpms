@@ -1,0 +1,10 @@
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\bin\Debug\Lab.Management.Entities.dll.config
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\bin\Debug\Lab.Management.Entities.dll
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\bin\Debug\Lab.Management.Entities.pdb
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\bin\Debug\EntityFramework.dll
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\bin\Debug\EntityFramework.SqlServer.dll
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\bin\Debug\EntityFramework.xml
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\bin\Debug\EntityFramework.SqlServer.xml
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csprojResolveAssemblyReference.cache
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.dll
+D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.pdb
