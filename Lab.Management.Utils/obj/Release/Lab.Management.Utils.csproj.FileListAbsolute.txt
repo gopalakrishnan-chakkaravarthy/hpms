@@ -7,3 +7,14 @@ D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\bin\Rele
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csprojResolveAssemblyReference.cache
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\obj\Release\Lab.Management.Utils.dll
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Utils\obj\Release\Lab.Management.Utils.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Utils.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Utils.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\bin\Release\Excel.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Common.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Common.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\bin\Release\Excel.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csprojAssemblyReference.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CoreCompileInputs.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CopyComplete
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.pdb

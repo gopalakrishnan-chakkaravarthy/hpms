@@ -1,0 +1,8 @@
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\bin\Debug\Lab.Management.Logger.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\bin\Debug\Lab.Management.Logger.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\bin\Debug\log4net.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csprojAssemblyReference.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CoreCompileInputs.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CopyComplete
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.pdb

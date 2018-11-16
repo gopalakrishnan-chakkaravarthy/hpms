@@ -1,99 +1,51 @@
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\LabManagement.System.dll.config
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\LabManagement.System.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\LabManagement.System.pdb
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Antlr3.Runtime.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.AspNet.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.Core.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.OAuth.Consumer.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.OAuth.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.OpenId.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\EntityFramework.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\EntityFramework.SqlServer.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Lab.Management.Common.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Lab.Management.Engine.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Lab.Management.Entities.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Microsoft.Data.Edm.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Microsoft.Data.OData.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Microsoft.Practices.ServiceLocation.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Microsoft.Web.Infrastructure.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Microsoft.Web.WebPages.OAuth.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Newtonsoft.Json.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\StructureMap.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Net.Http.Formatting.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Spatial.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Helpers.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Http.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Http.OData.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Http.WebHost.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Mvc.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Optimization.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Razor.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.WebPages.Deployment.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.WebPages.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.WebPages.Razor.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\WebActivatorEx.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\WebGrease.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\WebMatrix.Data.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\WebMatrix.WebData.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Lab.Management.Logger.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Lab.Management.Common.pdb
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Lab.Management.Engine.pdb
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Lab.Management.Entities.pdb
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\EntityFramework.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\EntityFramework.SqlServer.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Newtonsoft.Json.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Net.Http.Formatting.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Helpers.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Http.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Http.WebHost.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Mvc.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Razor.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.WebPages.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.WebPages.Deployment.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.WebPages.Razor.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\WebMatrix.Data.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Microsoft.Web.WebPages.OAuth.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\WebMatrix.WebData.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.AspNet.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.Core.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.OAuth.Consumer.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.OAuth.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.OpenId.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Web.Http.OData.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Microsoft.Data.Edm.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Microsoft.Data.OData.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\System.Spatial.xml
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\Lab.Management.Logger.pdb
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\de\Microsoft.Data.Edm.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\es\Microsoft.Data.Edm.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\fr\Microsoft.Data.Edm.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\it\Microsoft.Data.Edm.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\ja\Microsoft.Data.Edm.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\ko\Microsoft.Data.Edm.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\ru\Microsoft.Data.Edm.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\de\Microsoft.Data.OData.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\es\Microsoft.Data.OData.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\fr\Microsoft.Data.OData.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\it\Microsoft.Data.OData.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\ja\Microsoft.Data.OData.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\ko\Microsoft.Data.OData.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\ru\Microsoft.Data.OData.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\zh-Hans\Microsoft.Data.OData.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\zh-Hant\Microsoft.Data.OData.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\de\System.Spatial.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\es\System.Spatial.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\fr\System.Spatial.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\it\System.Spatial.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\ja\System.Spatial.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\ko\System.Spatial.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\ru\System.Spatial.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\zh-Hans\System.Spatial.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\bin\zh-Hant\System.Spatial.resources.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\obj\Release\LabManagement.System.csprojResolveAssemblyReference.cache
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\obj\Release\LabManagement.System.dll
-D:\Working Projects\HPMS\LRMS\LabManagement.System\LabManagement.System\obj\Release\LabManagement.System.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\LabManagement.System.dll.config
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\LabManagement.System.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\LabManagement.System.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\EntityFramework.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\EntityFramework.SqlServer.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Common.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Engine.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Entities.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Microsoft.Web.Infrastructure.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Newtonsoft.Json.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\StructureMap.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Net.Http.Formatting.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Helpers.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Http.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Http.WebHost.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Mvc.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Optimization.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Razor.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.WebPages.Deployment.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.WebPages.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.WebPages.Razor.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Logger.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\log4net.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Common.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Engine.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Engine.dll.config
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Entities.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Entities.dll.config
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\EntityFramework.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\EntityFramework.SqlServer.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Newtonsoft.Json.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Net.Http.Formatting.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Helpers.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Http.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Http.WebHost.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Mvc.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.Razor.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.WebPages.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.WebPages.Deployment.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\System.Web.WebPages.Razor.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Lab.Management.Logger.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\obj\Release\LabManagement.System.csprojAssemblyReference.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\obj\Release\LabManagement.System.csproj.CoreCompileInputs.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\obj\Release\LabManagement.System.csproj.CopyComplete
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\obj\Release\LabManagement.System.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\obj\Release\LabManagement.System.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\Antlr3.Runtime.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\WebActivatorEx.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\LabManagement.System\bin\WebGrease.dll

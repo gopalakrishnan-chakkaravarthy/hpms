@@ -8,3 +8,16 @@ D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\bin\R
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojResolveAssemblyReference.cache
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll.config
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\bin\Release\EntityFramework.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\bin\Release\System.Web.Mvc.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\bin\Release\EntityFramework.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\bin\Release\System.Web.Mvc.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CoreCompileInputs.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CopyComplete
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb

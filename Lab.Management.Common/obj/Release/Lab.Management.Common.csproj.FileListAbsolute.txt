@@ -4,3 +4,10 @@ D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Common\bin\Rel
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Common\obj\Release\Lab.Management.Common.csprojResolveAssemblyReference.cache
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Common\obj\Release\Lab.Management.Common.dll
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Common\obj\Release\Lab.Management.Common.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\bin\Release\Lab.Management.Common.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\bin\Release\Lab.Management.Common.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\bin\Release\AutoMapper.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.csproj.CoreCompileInputs.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.csproj.CopyComplete
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.pdb

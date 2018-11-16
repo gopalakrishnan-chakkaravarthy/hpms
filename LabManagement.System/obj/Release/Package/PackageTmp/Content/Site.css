@@ -40,12 +40,11 @@
     margin-top: 0px;
     font-family: 'Times New Roman';
     font-size: 2em;
-    margin-right: 10px;
-    width: 80% !important;
+    width: 70% !important;
     background-color: white;
-    border-width: 2px;
-    border-style: groove;
-    border-color: black;
+    border-top: 1px;
+    border-bottom: 1px;
+    border-color: #ecf0f1;
 }
 
 .divPrintElementhspHeader {

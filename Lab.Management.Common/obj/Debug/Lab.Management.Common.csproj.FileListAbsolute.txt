@@ -3,3 +3,11 @@ D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Common\bin\De
 D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Common\obj\Debug\Lab.Management.Common.dll
 D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Common\obj\Debug\Lab.Management.Common.pdb
 D:\Working Projects\HPMS\LRMS\Lab.Management.System\Lab.Management.Common\obj\Debug\Lab.Management.Common.csprojResolveAssemblyReference.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\bin\Debug\Lab.Management.Common.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\bin\Debug\Lab.Management.Common.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\bin\Debug\AutoMapper.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.csprojAssemblyReference.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.CoreCompileInputs.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.CopyComplete
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.pdb

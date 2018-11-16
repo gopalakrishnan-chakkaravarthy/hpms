@@ -17,3 +17,27 @@ D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Engine\bin\Rel
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csprojResolveAssemblyReference.cache
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.dll.config
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\AutoMapper.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\EntityFramework.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Common.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Entities.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Logger.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\StructureMap.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\System.Web.Mvc.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\log4net.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Common.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Entities.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Entities.dll.config
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Logger.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\EntityFramework.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\bin\Release\System.Web.Mvc.xml
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csprojAssemblyReference.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CoreCompileInputs.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CopyComplete
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb

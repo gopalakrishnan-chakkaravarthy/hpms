@@ -2,3 +2,8 @@ D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.AdoManager\bin
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.AdoManager\bin\Release\Lab.Management.AdoManager.pdb
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.dll
 D:\Working Projects\HPMS\LRMS\LabManagement.System\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.AdoManager\bin\Release\Lab.Management.AdoManager.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.AdoManager\bin\Release\Lab.Management.AdoManager.pdb
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.csproj.CoreCompileInputs.cache
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.dll
+C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.pdb

@@ -34,7 +34,7 @@ namespace LabManagement.System.Controllers
         {
 
             objDrugMaster.MANUFACTUREDATE = Request["MANUFACTUREDATE"] == null ? DateTime.Now : Request["MANUFACTUREDATE"].ToLmsSystemDate();
-            objDrugMaster.EXPIRYDATE = Request["EXPIRYDATE"] == null ? DateTime.Now : Request["MANUFACTUREDATE"].ToLmsSystemDate();
+            objDrugMaster.EXPIRYDATE = Request["EXPIRYDATE"] == null ? DateTime.Now : Request["EXPIRYDATE"].ToLmsSystemDate();
 
             /*  objDrugMaster.MANUFACTUREDATE = Convert.ToDateTime(Request["MANUFACTUREDATE"]);
               objDrugMaster.EXPIRYDATE = Convert.ToDateTime(Request["EXPIRYDATE"]);

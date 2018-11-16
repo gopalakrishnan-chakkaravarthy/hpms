@@ -1,8 +1,4 @@
-﻿/*
-
-*/
-
-function PrintCanvasDiv(hiddelElements, divCanvas) {
+﻿function PrintCanvasDiv(hiddelElements, divCanvas) {
     debugger;
     var divPrinting = $("#" + divCanvas).clone().attr('id', "divClonedCanvas");
     divPrinting = divPrinting.length > 0 ? divPrinting[0] : divPrinting;
@@ -12,21 +8,24 @@ function PrintCanvasDiv(hiddelElements, divCanvas) {
         $(divPrinting).find('#prntTableDiv').css('margin-left', '0%');
     }
     if ($(divPrinting).find('#hspHeader').length > 0) {
-        $(divPrinting).find('#hspHeader').css('margin-left', '25%');
-        $(divPrinting).find('.text-info').css('padding-left', '20%');
+        $(divPrinting).find('#hspHeader').css('margin-left', '8%');
+        $(divPrinting).find('.text-info').css('padding-left', '8%');
         $(divPrinting).find('#hspHeader').addClass('divPrintElementhspHeader');
     }
-    
+    debugger;
     var headerPrintText = ($('#canvasElement').find('.text-info')[0]).innerHTML;
-        //Ultra Sonography
+    //Ultra Sonography
     if (headerPrintText.indexOf('Lab Bill') > -1 || headerPrintText.indexOf('Ultra Sonography') > -1
-       || headerPrintText.indexOf('Medical Bill') > -1) {
-        $(divPrinting).find('table').closest('div').css('margin-left', '9%');
+        || headerPrintText.indexOf('Medical Bill') > -1) {
+        $(divPrinting).find('table').closest('div').css('margin-left', '5%');
+        $(divPrinting).find('table').css('width', '90%');
     }
-    if ($(divPrinting).find('table').closest('div').length > 0) {
-        $(divPrinting).find('table').closest('div').css('margin-right', '20%');
+    else if ($(divPrinting).find('table').closest('div').length > 0) {
+
+        $(divPrinting).find('table').closest('div').css('margin-right', '16%');
+        $(divPrinting).find('table').css('width', '90%');
     }
-   
+
     $(divPrinting).css('padding-left', '400px');
     $("#dvPrintElemet").append(divPrinting.innerHTML);
     $("#dvPrintElemet").toggleClass('hidden');
@@ -46,10 +45,10 @@ function PrintCanvasDiv(hiddelElements, divCanvas) {
 }
 function ImagetoPrint(source) {
     return "<html><head><script>function step1(){\n" +
-            "setTimeout('step2()', 10);}\n" +
-            "function step2(){window.print();window.close()}\n" +
-            "</scri" + "pt></head><body onload='step1()'>\n" +
-            "<img src='" + source + "' /></body></html>";
+        "setTimeout('step2()', 10);}\n" +
+        "function step2(){window.print();window.close()}\n" +
+        "</scri" + "pt></head><body onload='step1()'>\n" +
+        "<img src='" + source + "' /></body></html>";
 }
 function PrintImage(source) {
     var Pagelink = document.title;
