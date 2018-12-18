@@ -48,7 +48,7 @@ namespace Lab.Management.Engine
             {
                 var filterToDateVal = filterDate.ToLmsSystemDate();
                 var filterDateVal = filterToDateVal.AddDays(-1);
-                var resultDetails = _objLabManagementEntities.lmsMedicalBillings.Where(mdDt => mdDt.CREATEDDATE.HasValue && mdDt.CREATEDDATE.Value >= filterDateVal && mdDt.CREATEDDATE.Value <= filterToDateVal);
+                var resultDetails = _objLabManagementEntities.lmsMedicalBillings.Where(mdDt => mdDt.CREATEDDATE.HasValue && filterDateVal >= mdDt.CREATEDDATE.Value);
                 return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.BILLID).ToList() : new List<lmsMedicalBilling>();
             }
             catch (Exception ex)
@@ -139,8 +139,7 @@ namespace Lab.Management.Engine
             try
             {
                 var filterToDateVal = filterDate.ToLmsSystemDate();
-                var filterDateVal = filterToDateVal.AddDays(-1);
-                var resultDetails = _objLabManagementEntities.lmsLaboratoryBillings.Where(bt => bt.CREATEDDATE.HasValue && bt.CREATEDDATE.Value >= filterDateVal && bt.CREATEDDATE.Value <= filterToDateVal);
+                var resultDetails = _objLabManagementEntities.lmsLaboratoryBillings.Where(bt => bt.CREATEDDATE.HasValue && filterToDateVal >= bt.CREATEDDATE.Value);
                 return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.BILLID).ToList() : new List<lmsLaboratoryBilling>();
             }
             catch (Exception ex)

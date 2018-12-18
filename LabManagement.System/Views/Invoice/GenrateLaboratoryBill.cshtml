@@ -17,48 +17,26 @@
                 <p><h4 class="text-info"><i class="glyphicon glyphicon-print"></i>Lab Bill</h4></p>
             </div>
         </div>
-        <hr />
-        <div class="row marg-left-15">
-            <div class="col-sm-2 col-md-2 col-lg-2 text-left text-nowrap">
-                <strong>Name </strong>
-
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <table class="table no-footer">
+                    <tbody>
+                        <tr>
+                            <td class="text-strong">Name :</td>
+                            <td><span style="font-weight:normal">@Model.BILLNAME</span></td>
+                            <td class="text-strong">Contact :</td>
+                            <td>@Model.CONTACT</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Bill# :</td>
+                            <td><span style="font-weight:normal">@string.Format("LB{0} ", @Model.BILLID)</span></td>
+                            <td class="text-strong">Bill Date :</td>
+                            <td>@Model.BILLDATE.ParseIstDate()</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="col-sm-2 col-md-2 col-lg-2 text-left text-nowrap">
-                <span style="font-weight:normal">@Model.BILLNAME</span>
-
-            </div>
-
-            <div class="col-sm-2 col-md-2 col-lg-2 text-left text-nowrap">
-                <strong>Contact : </strong>
-
-            </div>
-            <div class="col-sm-2 col-md-2 col-lg-2 text-left text-nowrap">
-                <span style="font-weight:normal">@Model.CONTACT</span>
-
-            </div>
-
         </div>
-        <div class="row marg-left-15">
-            <div class="col-sm-2 col-md-2 col-lg-2 text-left text-nowrap">
-                <strong>Bill# : </strong>
-
-            </div>
-            <div class="col-sm-2 col-md-2 col-lg-2 text-left text-nowrap">
-                <span style="font-weight:normal">@string.Format("VPCMB{0} ", @Model.BILLID)</span>
-
-            </div>
-
-            <div class="col-sm-2 col-md-2 col-lg-2 text-left text-nowrap">
-                <strong>Bill Date : </strong>
-
-            </div>
-            <div class="col-sm-2 col-md-2 col-lg-2 text-left text-nowrap">
-                <span style="font-weight:normal">@Model.BILLDATE.ParseIstDate()</span>
-
-            </div>
-
-        </div>
-        <hr />
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <table class="table table-striped table-bordered dataTable no-footer">
@@ -110,7 +88,6 @@
                 </table>
             </div>
 
-            <hr />
             <div class="row">
 
                 <div class="col-sm-8 col-md-8 col-lg-8 text-center" id="appendElements">
@@ -126,10 +103,7 @@
 
                 </div>
             </div>
-            <div class="row">
-
-                <hr />
-            </div>
+         
 
         </div>
     </div>

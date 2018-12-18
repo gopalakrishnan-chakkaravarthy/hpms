@@ -1,5 +1,5 @@
 ﻿function PrintCanvasDiv(hiddelElements, divCanvas) {
-    debugger;
+    
     var divPrinting = $("#" + divCanvas).clone().attr('id', "divClonedCanvas");
     divPrinting = divPrinting.length > 0 ? divPrinting[0] : divPrinting;
     var elements = $("#divClonedCanvas").find('.btn');
@@ -12,7 +12,7 @@
         $(divPrinting).find('.text-info').css('padding-left', '8%');
         $(divPrinting).find('#hspHeader').addClass('divPrintElementhspHeader');
     }
-    debugger;
+    
     var headerPrintText = ($('#canvasElement').find('.text-info')[0]).innerHTML;
     //Ultra Sonography
     if (headerPrintText.indexOf('Lab Bill') > -1 || headerPrintText.indexOf('Ultra Sonography') > -1
@@ -26,10 +26,15 @@
         $(divPrinting).find('table').css('width', '90%');
     }
 
-    $(divPrinting).css('padding-left', '400px');
+    //$(divPrinting).css('padding-left', '70%');
     $("#dvPrintElemet").append(divPrinting.innerHTML);
     $("#dvPrintElemet").toggleClass('hidden');
     $("#dvPrintElemet").addClass('divPrintElement');
+    var changeFontonPrint = $('.divPrintElement .row');
+    $.each(changeFontonPrint, function (elemIndex, elem) {
+
+        $(elem).addClass('printing-margin');
+    });
     html2canvas($("#dvPrintElemet"), {
         onrendered: function (canvas) {
             theCanvas = canvas;

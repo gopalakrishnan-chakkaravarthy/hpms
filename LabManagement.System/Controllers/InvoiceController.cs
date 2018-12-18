@@ -73,7 +73,7 @@ namespace LabManagement.System.Controllers
         }
         public ActionResult ViewAllMedicalBill(string viewMessage = "", string filterDate = "")
         {
-            var billfilterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
+            var billfilterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).AddDays(-5).ToShortDateString();
             var getAll = _objIInvoice.GetAllMedicalBill(filterDate: filterDate);
             var userDetail = UserInfo;
             if (userDetail.ROLENAME.ToUpper() != "ADMIN")
@@ -145,7 +145,7 @@ namespace LabManagement.System.Controllers
         public ActionResult ViewAllLaboratoryBilling(string viewMessage = "", string filterDate = "")
         {
 
-            filterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
+            filterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).AddDays(-5).ToShortDateString();
             ViewBag.Message = viewMessage;
 
             var getAll = _objIInvoice.GetAllLaboratoryBilling(filterDate);

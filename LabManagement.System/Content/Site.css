@@ -39,12 +39,16 @@
 .divPrintElement {
     margin-top: 0px;
     font-family: 'Times New Roman';
-    font-size: 2em;
+    font-size: 3.9vh;
     width: 70% !important;
     background-color: white;
     border-top: 1px;
     border-bottom: 1px;
     border-color: #ecf0f1;
+}
+
+.printing-margin {
+    margin-left: 10% !important;
 }
 
 .divPrintElementhspHeader {
