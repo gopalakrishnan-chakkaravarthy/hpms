@@ -21,3 +21,13 @@ C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CopyComplete
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll.config
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.pdb
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\bin\Release\EntityFramework.dll
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.dll
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\bin\Release\EntityFramework.xml
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.xml
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojResolveAssemblyReference.cache
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb

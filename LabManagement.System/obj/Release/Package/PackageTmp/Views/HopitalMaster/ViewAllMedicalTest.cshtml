@@ -51,10 +51,8 @@
                                         <tr>
                                             <td>Test Name</td>
 
-                                            <td>Min Approx. Range Below Age 10</td>
-                                            <td>Max Approx. Range Below Age 10</td>
-                                            <td>Min Approx. Range for Adult</td>
-                                            <td>Max Approx. Range For Adult</td>
+                                            <td>Price</td>
+                                            
 
                                             <td>Edit</td>
                                             <td>Delete</td>
@@ -65,10 +63,8 @@
                                         {
                                             <tr>
                                                 <td>@obj.TESTNAME</td>
-                                                <td>@obj.MINAPPROXRANGEBELOW10AGE</td>
-                                                <td>@obj.MAXAPPROXRANGEBELOW10AGE</td>
-                                                <td>@obj.MINAPPROXRANGEBELOWADULT</td>
-                                                <td>@obj.MAXAPPROXRANGEBELOWADULT</td>
+                                                <td>@obj.SELLIGPRICE</td>
+                                               
 
                                                 <td>
                                                     <a href="@Url.Action("ViewMedicalTest", new { MedicalTestId = @obj.TESTID })" class="btn btn-success">

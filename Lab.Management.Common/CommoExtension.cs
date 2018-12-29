@@ -31,6 +31,14 @@ namespace Lab.Management.Common
             }
 
         }
+        public static DateTime AddBeginTime(this DateTime dtValue)
+        {
+            return new DateTime(dtValue.Year, dtValue.Month, dtValue.Day, 0, 0, 0);
+        }
+        public static DateTime AddEndTime(this DateTime dtValue)
+        {
+            return new DateTime(dtValue.Year, dtValue.Month, dtValue.Day, 23, 59, 59);
+        }
         public static string ToLmsSystemUsDate(this string inValue)
         {
             if (string.IsNullOrEmpty(inValue))

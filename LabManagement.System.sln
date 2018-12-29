@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C084F794-150F-4A6D-B3B7-3F4157A8F02E}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,8 +21,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Management.AdoManager", "Lab.Management.AdoManager\Lab.Management.AdoManager.csproj", "{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Management.Utils", "Lab.Management.Utils\Lab.Management.Utils.csproj", "{A93557C1-CD5A-4579-ACBA-8C8F079356EB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.Web.Apps", "PMS.Web.Apps\PMS.Web.Apps.csproj", "{5FD4271E-9EC1-4D51-828A-6E70A65444A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabManagement.System", "LabManagement.System\LabManagement.System.csproj", "{56D3A207-1737-4A0F-89AB-201BE7AD4176}"
 EndProject
@@ -56,10 +54,6 @@ Global
 		{A93557C1-CD5A-4579-ACBA-8C8F079356EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A93557C1-CD5A-4579-ACBA-8C8F079356EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A93557C1-CD5A-4579-ACBA-8C8F079356EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FD4271E-9EC1-4D51-828A-6E70A65444A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FD4271E-9EC1-4D51-828A-6E70A65444A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FD4271E-9EC1-4D51-828A-6E70A65444A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FD4271E-9EC1-4D51-828A-6E70A65444A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56D3A207-1737-4A0F-89AB-201BE7AD4176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56D3A207-1737-4A0F-89AB-201BE7AD4176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56D3A207-1737-4A0F-89AB-201BE7AD4176}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="LabManagementEntities-Web.config Connection String" description="LabManagementEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/HospitalManagement.csdl|res://*/HospitalManagement.ssdl|res://*/HospitalManagement.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SATHYA-KARTHIGA;initial catalog=labmanagement;persist security info=True;user id=sa;password=svk51287;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+  <parameter name="LabManagementEntities-Web.config Connection String" description="LabManagementEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/HospitalManagement.csdl|res://*/HospitalManagement.ssdl|res://*/HospitalManagement.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=localhost;initial catalog=labmanagement;persist security info=True;user id=vinayaga_labmanagement;password=labmanagement@123;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="D:\\Working\ Projects\\HPMS\\Git\\hpms\\LabManagement\.System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LabManagementEntities']/@connectionString" />
   </parameter>
 </parameters>

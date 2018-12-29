@@ -10,3 +10,9 @@ C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CopyComplete
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\bin\Release\Lab.Management.Logger.dll
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\bin\Release\Lab.Management.Logger.pdb
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\bin\Release\log4net.dll
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csprojResolveAssemblyReference.cache
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
+D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb

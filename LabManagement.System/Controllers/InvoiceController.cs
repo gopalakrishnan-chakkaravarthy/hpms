@@ -76,10 +76,10 @@ namespace LabManagement.System.Controllers
             var billfilterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).AddDays(-5).ToShortDateString();
             var getAll = _objIInvoice.GetAllMedicalBill(filterDate: filterDate);
             var userDetail = UserInfo;
-            if (userDetail.ROLENAME.ToUpper() != "ADMIN")
-            {
-                getAll = getAll.Where(usr => usr.BILLBY == userDetail.LOGINID.ToString()).ToList();
-            }
+            //if (userDetail.ROLENAME.ToUpper() != "ADMIN")
+            //{
+            //    getAll = getAll.Where(usr => usr.BILLBY == userDetail.LOGINID.ToString()).ToList();
+            //}
             ViewBag.Message = viewMessage;
             if (getAll != null && getAll.Count() > 0)
             {
@@ -150,11 +150,11 @@ namespace LabManagement.System.Controllers
 
             var getAll = _objIInvoice.GetAllLaboratoryBilling(filterDate);
             var userDetail = UserInfo;
-            if (userDetail.ROLENAME.ToUpper() != "ADMIN")
-            {
-                getAll = getAll.Where(usr => usr.BILLBY == userDetail.LOGINID.ToString()).ToList();
+            //if (userDetail.ROLENAME.ToUpper() != "ADMIN")
+            //{
+            //    getAll = getAll.Where(usr => usr.BILLBY == userDetail.LOGINID.ToString()).ToList();
 
-            }
+            //}
 
             if (getAll != null && getAll.Any())
             {
