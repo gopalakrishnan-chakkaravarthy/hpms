@@ -6,3 +6,11 @@ C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CopyComplete
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.dll
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.pdb
+E:\hpms-master\Lab.Management.Logger\bin\Debug\Lab.Management.Logger.dll
+E:\hpms-master\Lab.Management.Logger\bin\Debug\Lab.Management.Logger.pdb
+E:\hpms-master\Lab.Management.Logger\bin\Debug\log4net.dll
+E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csprojAssemblyReference.cache
+E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CoreCompileInputs.cache
+E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CopyComplete
+E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.dll
+E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.pdb

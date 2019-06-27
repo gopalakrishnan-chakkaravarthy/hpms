@@ -31,3 +31,31 @@ D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\bin\Release\EntityFram
 D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojResolveAssemblyReference.cache
 D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
 D:\Working Projects\HPMS\Git\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb
+E:\hpms-master\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll.config
+E:\hpms-master\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll
+E:\hpms-master\Lab.Management.Entities\bin\Release\Lab.Management.Entities.pdb
+E:\hpms-master\Lab.Management.Entities\bin\Release\EntityFramework.dll
+E:\hpms-master\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.dll
+E:\hpms-master\Lab.Management.Entities\bin\Release\System.Web.Mvc.dll
+E:\hpms-master\Lab.Management.Entities\bin\Release\EntityFramework.xml
+E:\hpms-master\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.xml
+E:\hpms-master\Lab.Management.Entities\bin\Release\System.Web.Mvc.xml
+E:\hpms-master\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojAssemblyReference.cache
+E:\hpms-master\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CoreCompileInputs.cache
+E:\hpms-master\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CopyComplete
+E:\hpms-master\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
+E:\hpms-master\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll.config
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\System.Web.Mvc.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\System.Web.Mvc.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CoreCompileInputs.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CopyComplete
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojAssemblyReference.cache

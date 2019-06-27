@@ -16,3 +16,19 @@ D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\bin\Release\log4net.dll
 D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csprojResolveAssemblyReference.cache
 D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
 D:\Working Projects\HPMS\Git\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb
+E:\hpms-master\Lab.Management.Logger\bin\Release\Lab.Management.Logger.dll
+E:\hpms-master\Lab.Management.Logger\bin\Release\Lab.Management.Logger.pdb
+E:\hpms-master\Lab.Management.Logger\bin\Release\log4net.dll
+E:\hpms-master\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csprojAssemblyReference.cache
+E:\hpms-master\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CoreCompileInputs.cache
+E:\hpms-master\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CopyComplete
+E:\hpms-master\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
+E:\hpms-master\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\bin\Release\Lab.Management.Logger.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\bin\Release\Lab.Management.Logger.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\bin\Release\log4net.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csprojAssemblyReference.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CoreCompileInputs.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CopyComplete
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb

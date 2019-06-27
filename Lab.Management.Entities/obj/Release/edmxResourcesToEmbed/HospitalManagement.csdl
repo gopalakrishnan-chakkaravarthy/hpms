@@ -178,6 +178,11 @@
     <Property Name="SELLIGPRICE" Type="Double" />
     <NavigationProperty Name="lmsLaboratoryBillings" Relationship="LabManagementModel.FK__lmsLabora__TESTI__3C69FB99" FromRole="lmsMedicalTest" ToRole="lmsLaboratoryBilling" />
     <NavigationProperty Name="lmsLaboratoryBillingDetails" Relationship="LabManagementModel.FK__lmsLabora__TESTI__72C60C4A" FromRole="lmsMedicalTest" ToRole="lmsLaboratoryBillingDetail" />
+    <Property Name="NORMALVALUE" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="GROUPID" Type="Int32" />
+    <Property Name="TESTFORID" Type="Int32" />
+    <NavigationProperty Name="lmsMedicalTestFor" Relationship="LabManagementModel.FK__lmsMedica__TESTF__56E8E7AB" FromRole="lmsMedicalTest" ToRole="lmsMedicalTestFor" />
+    <NavigationProperty Name="lmsMedicalTestGroup" Relationship="LabManagementModel.FK__lmsMedica__GROUP__55F4C372" FromRole="lmsMedicalTest" ToRole="lmsMedicalTestGroup" />
   </EntityType>
   <EntityType Name="lmsPatientRegistration">
     <Key>
@@ -743,6 +748,16 @@
       <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
       <Parameter Name="TODATE" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <EntitySet Name="lmsMedicalTestFors" EntityType="LabManagementModel.lmsMedicalTestFor" />
+    <EntitySet Name="lmsMedicalTestGroups" EntityType="LabManagementModel.lmsMedicalTestGroup" />
+    <AssociationSet Name="FK__lmsMedica__TESTF__56E8E7AB" Association="LabManagementModel.FK__lmsMedica__TESTF__56E8E7AB">
+      <End Role="lmsMedicalTestFor" EntitySet="lmsMedicalTestFors" />
+      <End Role="lmsMedicalTest" EntitySet="lmsMedicalTests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lmsMedica__GROUP__55F4C372" Association="LabManagementModel.FK__lmsMedica__GROUP__55F4C372">
+      <End Role="lmsMedicalTestGroup" EntitySet="lmsMedicalTestGroups" />
+      <End Role="lmsMedicalTest" EntitySet="lmsMedicalTests" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="lmsDischargeBill">
     <Key>
@@ -1364,6 +1379,46 @@
       </Principal>
       <Dependent Role="lmsGynacDischargeSummary">
         <PropertyRef Name="PATIENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="lmsMedicalTestFor">
+    <Key>
+      <PropertyRef Name="TESTFORID" />
+    </Key>
+    <Property Name="TESTFORID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TESTFOR" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="lmsMedicalTests" Relationship="LabManagementModel.FK__lmsMedica__TESTF__56E8E7AB" FromRole="lmsMedicalTestFor" ToRole="lmsMedicalTest" />
+  </EntityType>
+  <EntityType Name="lmsMedicalTestGroup">
+    <Key>
+      <PropertyRef Name="GROUPID" />
+    </Key>
+    <Property Name="GROUPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GROUPNAME" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="lmsMedicalTests" Relationship="LabManagementModel.FK__lmsMedica__GROUP__55F4C372" FromRole="lmsMedicalTestGroup" ToRole="lmsMedicalTest" />
+  </EntityType>
+  <Association Name="FK__lmsMedica__TESTF__56E8E7AB">
+    <End Type="LabManagementModel.lmsMedicalTestFor" Role="lmsMedicalTestFor" Multiplicity="0..1" />
+    <End Type="LabManagementModel.lmsMedicalTest" Role="lmsMedicalTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lmsMedicalTestFor">
+        <PropertyRef Name="TESTFORID" />
+      </Principal>
+      <Dependent Role="lmsMedicalTest">
+        <PropertyRef Name="TESTFORID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lmsMedica__GROUP__55F4C372">
+    <End Type="LabManagementModel.lmsMedicalTestGroup" Role="lmsMedicalTestGroup" Multiplicity="0..1" />
+    <End Type="LabManagementModel.lmsMedicalTest" Role="lmsMedicalTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lmsMedicalTestGroup">
+        <PropertyRef Name="GROUPID" />
+      </Principal>
+      <Dependent Role="lmsMedicalTest">
+        <PropertyRef Name="GROUPID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -168,6 +168,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\GlobalModels.cs" />
+    <Compile Include="Models\LaboratoryResultGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -582,10 +583,12 @@
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\hpms.pubxml" />
     <None Include="Properties\PublishProfiles\hpmsvpc - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\hpmsvpc - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\info.vinayagapolyclinic.com - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\vinayagapolyclinic.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\vpchpms - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\AppScripts\Common.js" />
@@ -717,6 +720,18 @@
     <Content Include="Views\Invoice\GenerateGynacDischargeSummary.cshtml" />
     <Content Include="Views\Invoice\ViewAllGynacDischargeSummary.cshtml" />
     <Content Include="Views\Admin\DataArchival.cshtml" />
+    <Content Include="Views\HopitalMaster\ViewMedicalTestFor.cshtml" />
+    <Content Include="Views\HopitalMaster\ViewAllMedicalTestFor.cshtml" />
+    <Content Include="Views\HopitalMaster\ViewAllMedicalTestGroup.cshtml" />
+    <Content Include="Views\HopitalMaster\ViewMedicalTestGroup.cshtml" />
+    <Content Include="Views\Invoice\GenerateLaboratoryReport.cshtml" />
+    <None Include="Web.ShyamClini.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.VinayagPolyClinic.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -741,6 +756,12 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ShyamClini|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VinayagPolyClinic|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

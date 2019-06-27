@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Lab.Management.Entities;
 using System.Web.Mvc;
-using Lab.Management.Entities;
+
 namespace LabManagement.System.Controllers
 {
     public class BaseController : Controller
@@ -24,6 +21,7 @@ namespace LabManagement.System.Controllers
                 return userInfo;
             }
         }
+
         public string UserRole
         {
             get
@@ -35,8 +33,8 @@ namespace LabManagement.System.Controllers
                 }
                 return string.Empty;
             }
-
         }
+
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (filterContext.HttpContext.Session["UserInfo"] == null)
@@ -51,6 +49,5 @@ namespace LabManagement.System.Controllers
         {
             base.OnException(filterContext);
         }
-
     }
 }

@@ -3,9 +3,11 @@ using Lab.Management.Common;
 using Lab.Management.Engine;
 using Lab.Management.Entities;
 using LabManagement.System.Models;
+
 //using Microsoft.Web.WebPages.OAuth;
 using System.Web.Mvc;
 using System.Web.Security;
+
 namespace LabManagement.System.Controllers
 {
     [Authorize]
@@ -18,6 +20,7 @@ namespace LabManagement.System.Controllers
         {
             _objIAdminOperations = objIAdminOperations;
         }
+
         // GET: /Account/Login
 
         [AllowAnonymous]
@@ -30,6 +33,7 @@ namespace LabManagement.System.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+
         public ActionResult LoadDefaultView()
         {
             var userRole = Session["UserInfo"] != null ? (Session["UserInfo"] as usp_ValidateUser_Result).ROLENAME : string.Empty;
@@ -41,6 +45,7 @@ namespace LabManagement.System.Controllers
             return userRole.ToUpper().Equals("ADMIN") ? RedirectToAction("Index", "AdminDashboard") :
                 RedirectToAction("ViewAllOutPatient", "Patient");
         }
+
         //
         // POST: /Account/Login
 
@@ -99,7 +104,7 @@ namespace LabManagement.System.Controllers
                 try
                 {
                     //WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                   // WebSecurity.Login(model.UserName, model.Password);
+                    // WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -115,8 +120,8 @@ namespace LabManagement.System.Controllers
         //
         // POST: /Account/Disassociate
 
-       
         #region Helpers
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -190,6 +195,7 @@ namespace LabManagement.System.Controllers
                     return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
             }
         }
-        #endregion
+
+        #endregion Helpers
     }
 }

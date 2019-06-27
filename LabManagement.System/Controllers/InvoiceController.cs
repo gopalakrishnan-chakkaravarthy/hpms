@@ -1,13 +1,13 @@
-﻿using Lab.Management.Engine;
+﻿using Lab.Management.Common;
+using Lab.Management.Engine;
+using Lab.Management.Entities;
+using LabManagement.System.Common;
+using LabManagement.System.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Lab.Management.Entities;
-using Lab.Management.Common;
-using LabManagement.System.Common;
-using LabManagement.System.Models;
+
 namespace LabManagement.System.Controllers
 {
     public class InvoiceController : BaseController
@@ -21,6 +21,7 @@ namespace LabManagement.System.Controllers
             _objIPatient = objIPatient;
             _objIHospitalMaster = objIHospitalMaster;
         }
+
         public ActionResult ViewMedicalBill(int MedicalBillId, string viewMessage = "")
         {
             var DrugList = _objIHospitalMaster.GetDrugsDdl();
@@ -31,6 +32,7 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getMedicalBill);
         }
+
         public ActionResult SaveBillInfo(DrugBill objDrugBill, List<DrugBillDetails> objDrugBillDetails)
         {
             var medicalBilling = _objIInvoice.GetMedicalBillDetailsById(0);
@@ -49,7 +51,9 @@ namespace LabManagement.System.Controllers
                     ITEMCOST = x.COST
                 });
             });
+
             #region <<Update Drug Quantity>>
+
             objDrugBillDetails.ForEach(x =>
             {
                 var drugInfo = _objIHospitalMaster.GetDrugDetailsById(x.DRUGID);
@@ -57,29 +61,29 @@ namespace LabManagement.System.Controllers
                 drugInfo.ORDERCOUNT = drugInfo.ORDERCOUNT - x.QUANTITY;
                 _objIHospitalMaster.SaveDrug(drugInfo);
             });
-            #endregion
+
+            #endregion <<Update Drug Quantity>>
+
             var saveMedicalBillDetails = _objIInvoice.SaveMedicalBill(medicalBilling);
             return Json(saveMedicalBillDetails, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult GetDrugDetailById(int drugId, int? quantity)
         {
             var drugInfo = _objIHospitalMaster.GetDrugDetailsById(drugId);
             var resultIfo = new DrugPrice()
-                            {
-                                DRUGNAME = drugInfo.DRUGNAME,
-                                SELLINGPRICE = Math.Round((drugInfo.SELLINGPRICE.Value * (quantity == null || quantity == 0 ? 1 : quantity.Value)), 2)
-                            };
+            {
+                DRUGNAME = drugInfo.DRUGNAME,
+                SELLINGPRICE = Math.Round((drugInfo.SELLINGPRICE.Value * (quantity == null || quantity == 0 ? 1 : quantity.Value)), 2)
+            };
             return Json(resultIfo, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult ViewAllMedicalBill(string viewMessage = "", string filterDate = "")
         {
             var billfilterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).AddDays(-5).ToShortDateString();
             var getAll = _objIInvoice.GetAllMedicalBill(filterDate: filterDate);
             var userDetail = UserInfo;
-            //if (userDetail.ROLENAME.ToUpper() != "ADMIN")
-            //{
-            //    getAll = getAll.Where(usr => usr.BILLBY == userDetail.LOGINID.ToString()).ToList();
-            //}
             ViewBag.Message = viewMessage;
             if (getAll != null && getAll.Count() > 0)
             {
@@ -90,17 +94,20 @@ namespace LabManagement.System.Controllers
 
             return View(new List<lmsMedicalBilling>());
         }
+
         public ActionResult GeenrateBill(int MedicalBillId)
         {
             var getMedicalBill = _objIInvoice.GetMedicalBillDetailsById(MedicalBillId);
             getMedicalBill.BILLAMOUNT = Math.Round(getMedicalBill.BILLAMOUNT.Value, 2);
             return View(getMedicalBill);
         }
+
         public ActionResult DeleteMedicalBill(int MedicalBillId)
         {
             var deletMedicalBill = _objIInvoice.DeleteMedicalBill(MedicalBillId);
             return RedirectToAction("ViewAllMedicalBill", new { viewMessage = "MedicalBill Detail Deleted Successfully" });
         }
+
         public ActionResult ViewLaboratoryBilling(int LaboratoryBillingId, string viewMessage = "")
         {
             var DrugList = _objIHospitalMaster.GetAllMedicalTest();
@@ -109,6 +116,7 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getLaboratoryBilling);
         }
+
         public ActionResult SaveMedicalTestBillInfo(TestBill objTestBill, List<TestBillDetails> objTestBillDetails)
         {
             var medicalBilling = _objIInvoice.GetLaboratoryBillingDetailsById(0);
@@ -131,6 +139,7 @@ namespace LabManagement.System.Controllers
             var saveLaboratoryBillingDetails = _objIInvoice.SaveLaboratoryBilling(medicalBilling);
             return Json(saveLaboratoryBillingDetails, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult GetTestDetailById(int testId, string result)
         {
             var testInfo = _objIHospitalMaster.GetMedicalTestDetailsById(testId);
@@ -142,12 +151,10 @@ namespace LabManagement.System.Controllers
             };
             return Json(resultIfo, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult ViewAllLaboratoryBilling(string viewMessage = "", string filterDate = "")
         {
-
-            filterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).AddDays(-5).ToShortDateString();
             ViewBag.Message = viewMessage;
-
             var getAll = _objIInvoice.GetAllLaboratoryBilling(filterDate);
             var userDetail = UserInfo;
             //if (userDetail.ROLENAME.ToUpper() != "ADMIN")
@@ -164,12 +171,27 @@ namespace LabManagement.System.Controllers
             ViewBag.GrandTotal = 0.00;
             return View(new List<lmsLaboratoryBilling>());
         }
+
         public ActionResult GenrateLaboratoryBill(int LaboratoryBillingId)
         {
             var getLaboratoryBilling = _objIInvoice.GetLaboratoryBillingDetailsById(LaboratoryBillingId);
+
             getLaboratoryBilling.BILLAMOUNT = Math.Round(getLaboratoryBilling.BILLAMOUNT.Value, 2);
+
             return View(getLaboratoryBilling);
         }
+
+        public ActionResult GenerateLaboratoryReport(int LaboratoryBillingId)
+        {
+            var getLaboratoryBilling = _objIInvoice.GetLaboratoryBillingDetailsById(LaboratoryBillingId);
+            List<LaboratoryResultGroup> groupbyData = getLaboratoryBilling.lmsLaboratoryBillingDetails
+                .GroupBy(x => x.lmsMedicalTest?.lmsMedicalTestGroup?.GROUPNAME)
+                .Select(lbdt =>
+           new LaboratoryResultGroup { GroupName = lbdt.Key, lmsLaboratoryBillingDetails = lbdt.Select(x => x) }).ToList();
+            ViewBag.groupedDetails = groupbyData;
+            return View(getLaboratoryBilling);
+        }
+
         public ActionResult DeleteLaboratoryBilling(int LaboratoryBillingId)
         {
             var deletLaboratoryBilling = _objIInvoice.DeleteLaboratoryBilling(LaboratoryBillingId);
@@ -188,18 +210,21 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getDischargeSummary);
         }
+
         public ActionResult GenerateDischargeSummary(int ReportId, string viewMessage = "")
         {
             var getDischargeSummary = _objIInvoice.GetDischargeSummaryDetailsById(ReportId);
             ViewBag.Message = viewMessage;
             return View(getDischargeSummary);
         }
+
         public ActionResult ViewAllDischargeSummary(string viewMessage = "")
         {
             var getAll = _objIInvoice.GetAllDischargeSummary();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditDischargeSummary(lmsPatientDischargeSummary objlmsPatientDischargeSummary)
         {
@@ -218,17 +243,18 @@ namespace LabManagement.System.Controllers
 
         public ActionResult ViewUltraSonagramReportOne(int ReportId, string viewMessage = "")
         {
-
             var getUltraSonagramReportOne = _objIInvoice.GetUltraSonagramReportOneDetailsById(ReportId);
             ViewBag.Message = viewMessage;
             return View(getUltraSonagramReportOne);
         }
+
         public ActionResult ViewAllUltraSonagramReportOne(string viewMessage = "")
         {
             var getAll = _objIInvoice.GetAllUltraSonagramReportOne();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditUltraSonagramReportOne(lmsUltrSonogramReportOne objlmsUltrSonogramReportOne)
         {
@@ -246,7 +272,6 @@ namespace LabManagement.System.Controllers
 
         public ActionResult GenerateUltraSonagramReportOne(int ReportId, string viewMessage = "")
         {
-
             var getSonography = _objIInvoice.GetUltraSonagramReportOneDetailsById(ReportId);
             ViewBag.Message = viewMessage;
             return View(getSonography);
@@ -258,23 +283,24 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getSonography);
         }
+
         public ActionResult ViewUltraSonagramReportTwo(int ReportId, string viewMessage = "")
         {
-
             var getUltraSonagramReportTwo = _objIInvoice.GetUltraSonagramReportTwoDetailsById(ReportId);
             ViewBag.Message = viewMessage;
             return View(getUltraSonagramReportTwo);
         }
+
         public ActionResult ViewAllUltraSonagramReportTwo(string viewMessage = "")
         {
             var getAll = _objIInvoice.GetAllUltraSonagramReportTwo();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditUltraSonagramReportTwo(lmsUltrSonogramReportTwo objlmsUltrSonogramReportTwo)
         {
-
             var saveUltraSonagramReportTwoDetails = _objIInvoice.SaveUltraSonagramReportTwo(objlmsUltrSonogramReportTwo);
             //ViewBag.Message = viewMessage;
             return RedirectToAction("ViewUltraSonagramReportTwo", new { ReportId = saveUltraSonagramReportTwoDetails, viewMessage = "UltraSonagramReportTwo Details Saved Successfully" });
@@ -285,6 +311,7 @@ namespace LabManagement.System.Controllers
             var deletUltraSonagramReportTwo = _objIInvoice.DeleteUltraSonagramReportTwo(ReportId);
             return RedirectToAction("ViewAllUltraSonagramReportTwo", new { viewMessage = "UltraSonagramReportTwo Detail Deleted Successfully" });
         }
+
         public ActionResult ViewInvestigationReport(int ReportId, string viewMessage = "")
         {
             var patientList = _objIPatient.GetAllPatient("IN");
@@ -293,16 +320,17 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getInvestigationReport);
         }
+
         public ActionResult ViewAllInvestigationReport(string viewMessage = "")
         {
             var getAll = _objIInvoice.GetAllInvestigationReport();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditInvestigationReport(lmsInvestigationReport objlmsInvestigationReport)
         {
-
             var saveInvestigationReportDetails = _objIInvoice.SaveInvestigationReport(objlmsInvestigationReport);
             //ViewBag.Message = viewMessage;
             return RedirectToAction("ViewInvestigationReport", new { ReportId = saveInvestigationReportDetails, viewMessage = "InvestigationReport Details Saved Successfully" });
@@ -313,12 +341,13 @@ namespace LabManagement.System.Controllers
             var deletInvestigationReport = _objIInvoice.DeleteInvestigationReport(ReportId);
             return RedirectToAction("ViewAllInvestigationReport", new { viewMessage = "InvestigationReport Detail Deleted Successfully" });
         }
+
         public ActionResult GenerateIvestigationReport(int ReportId)
         {
-
             var getReport = _objIInvoice.GetInvestigationReportDetailsById(ReportId);
             return View(getReport);
         }
+
         public ActionResult ViewDischargeBill(int ReportId, string viewMessage = "")
         {
             var PatientList = _objIPatient.GetPatientDdl();
@@ -331,12 +360,14 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getReport);
         }
+
         public ActionResult ViewAllDischargeBill(string viewMessage = "")
         {
             var getAll = _objIInvoice.GetAllDischargeBill();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditDischargeBill(lmsDischargeBill objlmsDischargeBill)
         {
@@ -350,20 +381,22 @@ namespace LabManagement.System.Controllers
             var deletInvestigationReport = _objIInvoice.DeleteDischargeBill(ReportId);
             return RedirectToAction("ViewAllDischargeBill", new { viewMessage = "Discharge Bill Details Deleted Successfully" });
         }
+
         public ActionResult GenerateDischargeBill(int ReportId)
         {
-
             var getReport = _objIInvoice.GetDischargeBillDetailsById(ReportId);
             return View(getReport);
         }
+
         #region <<< Multi Delete>>>
+
         public ActionResult MultiDeleteBill(string deleteSelectedRows)
         {
             var deleteStatus = _objIInvoice.MultiDeleteRows(deleteSelectedRows);
             return Json(deleteStatus, JsonRequestBehavior.AllowGet);
-
         }
-        #endregion
+
+        #endregion <<< Multi Delete>>>
 
         #region <<Discharge Summary New>>
 
@@ -379,22 +412,24 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getDischargeSummary);
         }
+
         public ActionResult GenerateGenDischargeSummary(int ReportId, string viewMessage = "")
         {
             var getDischargeSummary = _objIInvoice.GetGenDischargeSummaryDetailsById(ReportId);
             ViewBag.Message = viewMessage;
             return View(getDischargeSummary);
         }
+
         public ActionResult ViewAllGenDischargeSummary(string viewMessage = "")
         {
             var getAll = _objIInvoice.GetAllGenDischargeSummary();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditGenDischargeSummary(lmsGeneralDischargeSummary objlmsPatientDischargeSummary)
         {
-
             objlmsPatientDischargeSummary.PATIENTID = objlmsPatientDischargeSummary.SelectedPatient;
             objlmsPatientDischargeSummary.CREATEDATE = DateTime.Now;
             var saveDischargeSummaryDetails = _objIInvoice.SaveGenDischargeSummary(objlmsPatientDischargeSummary);
@@ -406,6 +441,7 @@ namespace LabManagement.System.Controllers
             var deletDischargeSummary = _objIInvoice.DeleteDischargeSummary(ReportId);
             return RedirectToAction("ViewAllGenDischargeSummary", new { viewMessage = "Discharge Summary Detail Deleted Successfully" });
         }
+
         public ActionResult ViewGynacDischargeSummary(int ReportId, string viewMessage = "")
         {
             var PatientList = _objIPatient.GetPatientDdl();
@@ -418,18 +454,21 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getDischargeSummary);
         }
+
         public ActionResult GenerateGynacDischargeSummary(int ReportId, string viewMessage = "")
         {
             var getDischargeSummary = _objIInvoice.GetGynacDischargeSummaryDetailsById(ReportId);
             ViewBag.Message = viewMessage;
             return View(getDischargeSummary);
         }
+
         public ActionResult ViewAllGynacDischargeSummary(string viewMessage = "")
         {
             var getAll = _objIInvoice.GetAllGynacDischargeSummary();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditGynacDischargeSummary(lmsGynacDischargeSummary objlmsPatientDischargeSummary)
         {
@@ -449,7 +488,6 @@ namespace LabManagement.System.Controllers
             return RedirectToAction("ViewAllGynacDischargeSummary", new { viewMessage = "Discharge Summary Detail Deleted Successfully" });
         }
 
-        #endregion
-
+        #endregion <<Discharge Summary New>>
     }
 }

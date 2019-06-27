@@ -1,5 +1,4 @@
-﻿
-namespace Lab.Management.Common
+﻿namespace Lab.Management.Common
 {
     public enum ConfigKey
     {
@@ -70,7 +69,8 @@ namespace Lab.Management.Common
         MedicalRegNo
             ,
         PatientUploadPath
-        , TemplateUploadPath
-        
+        , TemplateUploadPath,
+        ManagementNameOne,
+        ManagementNameOneTwo
     }
 }

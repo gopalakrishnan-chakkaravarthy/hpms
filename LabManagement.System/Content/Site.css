@@ -1,11 +1,12 @@
-﻿
-
-.centerContent {
+﻿.centerContent {
     height: 300px;
     margin-top: 143px;
     margin-left: 198px;
 }
-
+/*Sets font family for all controls*/
+body, div, input[type], textarea, button, a, p, ul, li, span, label, h1, h2, h3, h4, h5, h6 {
+    font-family: "Times New Roman" !important;
+}
 /*body {
     background-color: #ffffff !important;
 }*/
@@ -51,11 +52,6 @@
     margin-left: 10% !important;
 }
 
-.divPrintElementhspHeader {
-    /*font-family: 'Times New Roman';
-    font-size: 5em;*/
-}
-
 .divPrintElement table {
     margin-left: 10%;
 }
@@ -97,18 +93,13 @@
     border-color: black;*/
 }
 
-
-
-
 /*table.dataTable tbody tr td {
-    
     color: black !important;
 }*/
 
 table.dataTable thead tr {
     font-weight: bold !important;
 }
-
 
 .circle {
     width: 86px;
@@ -260,7 +251,6 @@ select {
 }
 
 /* Checkbox */
-
 
 input[type="checkbox"] + label {
     cursor: pointer;

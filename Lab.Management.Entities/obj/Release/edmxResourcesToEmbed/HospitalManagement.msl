@@ -152,6 +152,9 @@
     <EntitySetMapping Name="lmsMedicalTests">
       <EntityTypeMapping TypeName="LabManagementModel.lmsMedicalTest">
         <MappingFragment StoreEntitySet="lmsMedicalTests">
+          <ScalarProperty Name="TESTFORID" ColumnName="TESTFORID" />
+          <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+          <ScalarProperty Name="NORMALVALUE" ColumnName="NORMALVALUE" />
           <ScalarProperty Name="SELLIGPRICE" ColumnName="SELLIGPRICE" />
           <ScalarProperty Name="TESTID" ColumnName="TESTID" />
           <ScalarProperty Name="TESTNAME" ColumnName="TESTNAME" />
@@ -702,5 +705,21 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="USP_DATAARCHIVAL" FunctionName="LabManagementModel.Store.USP_DATAARCHIVAL" />
+    <EntitySetMapping Name="lmsMedicalTestFors">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsMedicalTestFor">
+        <MappingFragment StoreEntitySet="lmsMedicalTestFor">
+          <ScalarProperty Name="TESTFOR" ColumnName="TESTFOR" />
+          <ScalarProperty Name="TESTFORID" ColumnName="TESTFORID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lmsMedicalTestGroups">
+      <EntityTypeMapping TypeName="LabManagementModel.lmsMedicalTestGroup">
+        <MappingFragment StoreEntitySet="lmsMedicalTestGroup">
+          <ScalarProperty Name="GROUPNAME" ColumnName="GROUPNAME" />
+          <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

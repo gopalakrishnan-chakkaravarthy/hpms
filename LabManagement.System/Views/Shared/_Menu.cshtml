@@ -18,14 +18,12 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">City </a>
                                     <ul class="dropdown-menu">
-
                                         <li>
                                             <a href="@Url.Action("ViewAllCity","Admin")"> Dashboard</a>
                                         </li>
@@ -33,14 +31,12 @@
                                         <li>
                                             <a href="@Url.Action("ViewCity", "Admin", new { cityId =0})"> New</a>
                                         </li>
-
                                     </ul>
                                 </li>
                                 <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">State </a>
                                     <ul class="dropdown-menu">
-
                                         <li>
                                             <a href="@Url.Action("ViewAllState", "Admin")"> Dashboard</a>
                                         </li>
@@ -48,14 +44,12 @@
                                         <li>
                                             <a href="@Url.Action("ViewState", "Admin", new { StateId = 0 })"> New</a>
                                         </li>
-
                                     </ul>
                                 </li>
                                 <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Role </a>
                                     <ul class="dropdown-menu">
-
                                         <li>
                                             <a href="@Url.Action("ViewAllRole", "Admin")"> Dashboard</a>
                                         </li>
@@ -63,14 +57,12 @@
                                         <li>
                                             <a href="@Url.Action("ViewRole", "Admin", new { RoleId = 0 })"> New</a>
                                         </li>
-
                                     </ul>
                                 </li>
                                 <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">User </a>
                                     <ul class="dropdown-menu">
-
                                         <li>
                                             <a href="@Url.Action("ViewAllUser", "Admin")"> Dashboard</a>
                                         </li>
@@ -78,14 +70,12 @@
                                         <li>
                                             <a href="@Url.Action("ViewUser", "Admin", new { UserId = 0 })"> New</a>
                                         </li>
-
                                     </ul>
                                 </li>
                                 <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Diagnosis Types </a>
                                     <ul class="dropdown-menu">
-
                                         <li>
                                             <a href="@Url.Action("ViewAllDisease", "Admin")"> Dashboard</a>
                                         </li>
@@ -93,14 +83,12 @@
                                         <li>
                                             <a href="@Url.Action("ViewDisease", "Admin", new { DiseaseId = 0 })"> New</a>
                                         </li>
-
                                     </ul>
                                 </li>
                                 <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Define Template</a>
                                     <ul class="dropdown-menu">
-
                                         <li>
                                             <a href="@Url.Action("ViewAllTemplate", "Admin")"> Dashboard</a>
                                         </li>
@@ -119,7 +107,6 @@
                                 </li>
                             </ul>
                         </li>
-
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Master<b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -129,8 +116,6 @@
                                         <li><a href="@Url.Action("ViewAllPatient", "Patient")">Dashboard</a></li>
                                         <li class="divider"></li>
                                         <li><a href="@Url.Action("ViewPatient", "Patient", new { PatientId =0})">New</a></li>
-
-
                                     </ul>
                                 </li>
                                 <li class="divider"></li>
@@ -144,7 +129,6 @@
                                 </li>
                             </ul>
                         </li>
-
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Invoice<b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -176,14 +160,6 @@
                                         <li><a href="@Url.Action("ViewLaboratoryBilling", "Invoice", new { LaboratoryBillingId = 0 })">New </a></li>
                                     </ul>
                                 </li>
-                                @*<li class="divider"></li>
-                                    <li><a href="#">Laboratory Billing</a></li>*@
-                                @*<li class="divider"></li>
-                                    <li><a href="#">Vendor Billing</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Scan Report Billing</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Out Patient Billing</a></li>*@
                                 <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Discharge Summary</a>
@@ -245,68 +221,55 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hospital Master <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
 
-
                                     <li class="dropdown dropdown-submenu">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drugs</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="@Url.Action("ViewAllDrug", "HopitalMaster")">Dashboard</a></li>
                                             <li class="divider"></li>
                                             <li><a href="@Url.Action("ViewDrug", "HopitalMaster", new { DrugId = 0 })">New </a></li>
-
-
                                         </ul>
                                     </li>
                                     <li class="divider"></li>
-
                                     <li class="dropdown dropdown-submenu">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Medical Tests</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="@Url.Action("ViewAllMedicalTest", "HopitalMaster")">Dashboard</a></li>
                                             <li class="divider"></li>
                                             <li><a href="@Url.Action("ViewMedicalTest", "HopitalMaster", new { MedicalTestId =0})">New </a></li>
-
-
+                                            <li class="divider"></li>
+                                            <li><a href="@Url.Action("ViewAllMedicalTestFor", "HopitalMaster")">Manage Test Gender Type</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="@Url.Action("ViewAllMedicalTestGroup", "HopitalMaster")">Manage Test Group </a></li>
                                         </ul>
                                     </li>
                                     <li class="divider"></li>
-
                                     <li class="dropdown dropdown-submenu">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scans</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="@Url.Action("ViewAllScan", "HopitalMaster")">Dashboard</a></li>
                                             <li class="divider"></li>
                                             <li><a href="@Url.Action("ViewScan", "HopitalMaster", new { ScanId =0})">New </a></li>
-
-
-
                                         </ul>
                                     </li>
                                     <li class="divider"></li>
-
                                     <li class="dropdown dropdown-submenu">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vendors</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="@Url.Action("ViewAllVendor", "HopitalMaster")">Dashboard</a></li>
                                             <li class="divider"></li>
                                             <li><a href="@Url.Action("ViewVendor", "HopitalMaster", new { VendorId =0})">New </a></li>
-
-
                                         </ul>
                                     </li>
                                     <li class="divider"></li>
-
                                     <li class="dropdown dropdown-submenu">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="@Url.Action("ViewAllInventory", "HopitalMaster")">Dashboard</a></li>
                                             <li class="divider"></li>
                                             <li><a href="@Url.Action("ViewInventory", "HopitalMaster", new { InventoryId =0})">New </a></li>
-
-
                                         </ul>
                                     </li>
                                     <li class="divider"></li>
-
                                     <li class="dropdown dropdown-submenu">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Beds</a>
                                         <ul class="dropdown-menu">
@@ -332,7 +295,7 @@
                     <ul class="nav navbar-nav pull-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img style="height:23px;border-radius:20px;" src="../Content/Images/avatar5.png" alt="profile photo" />
+                                <img style="height:23px;border-radius:20px;" src="../Content/Images/avatar5.png" alt="profile photo"/>
                                 <span class="user-info">
                                     <small>Welcome,</small>
                                     @if (userInfo != null)
@@ -344,14 +307,12 @@
                             <ul class="dropdown-menu">
                                 @*<li class="dropdown ">
                                         <a href="#">Settings</a>
-
                                     </li>*@
                                 @if (userRole.ToUpper() == "ADMIN")
                                 {
 
                                     <li class="dropdown ">
                                         <a href="@Url.Action("Index", "AdminDashboard")" class="dropdown-toggle"><i class="glyphicon glyphicon-dashboard">My Dashboard</i></a>
-
                                     </li>
 
                                     <li class="divider"></li>
@@ -362,11 +323,8 @@
                             </ul>
                         </li>
                     </ul>
-
-
                 </div>
             </div>
         </div>
-
     </div>
 </div>

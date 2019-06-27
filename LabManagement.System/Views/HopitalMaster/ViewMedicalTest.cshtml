@@ -1,12 +1,11 @@
 ﻿@using Lab.Management.Entities;
-
 @model lmsMedicalTest
 @{
     ViewBag.Title = "View MedicalTest";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
-}
 
+}
 
 @if (!string.IsNullOrEmpty(message))
 {
@@ -19,14 +18,12 @@
     </div>
 }
 
-
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
-
     @using (Html.BeginForm("EditMedicalTest", "HopitalMaster", new { @id = "IdEdit", @name = "EditForm" }))
     {
         <div class="row">
             <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> View Medical Test Details</h4>
-            <hr />
+            <hr/>
         </div>
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
@@ -45,45 +42,37 @@
                 @Html.TextBoxFor(m => m.SELLIGPRICE, new { @class = "form-control", required = "required" })
             </div>
         </div>
-        @*<div class="row">
+        <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
-                Min Approx. Range Below Age 10
+                Normal Value
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.MINAPPROXRANGEBELOW10AGE, new { @class = "form-control" })
-
+                @Html.TextBoxFor(m => m.NORMALVALUE, new { @class = "form-control", required = "required" })
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                Max Approx. Range Below Age 10
+            <div class="col-md-3">
+                Test For
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.MAXAPPROXRANGEBELOW10AGE, new { @class = "form-control" })
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                Min Approx. Range for Adult
-            </div>
-            <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.MINAPPROXRANGEBELOWADULT, new { @id = "MANUFACTUREDATE", @class = "form-control" })
-
+            <div class="col-md-5">
+                @if (Model.TestForForDdl != null)
+                {
+                    @Html.DropDownListFor(x => x.SelectedTestFor, Model.TestForForDdl, new { @class = "form-control selectpicker", @required = "required" })
+                }
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                Max Approx. Range for Adult
+            <div class="col-md-3">
+                Group By
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.MAXAPPROXRANGEBELOWADULT, new { @id = "EXPIRYDATE", @class = "form-control" })
-
+            <div class="col-md-5">
+                @if (Model.GroupForDdl != null)
+                {
+                    @Html.DropDownListFor(x => x.SelectedGroup, Model.GroupForDdl, new { @class = "form-control selectpicker", @required = "required" })
+                }
             </div>
-        </div>*@
-
-
-        <hr />
+        </div>
+        <hr/>
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <a href="@Url.Action("ViewAllMedicalTest", "HopitalMaster")" class="btn btn-warning">
@@ -106,8 +95,7 @@
             </div>
         </div>
         <div class="row">
-
-            <hr />
+            <hr/>
         </div>
     }
 </div>

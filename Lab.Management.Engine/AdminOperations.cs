@@ -1,14 +1,12 @@
-﻿using Lab.Management.Entities;
+﻿using Lab.Management.Common;
+using Lab.Management.Engine.Models;
+using Lab.Management.Entities;
+using Lab.Management.Logger;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Lab.Management.Logger;
-using Lab.Management.Engine.Utils;
 using System.Data.Entity;
-using Lab.Management.Common;
-using Lab.Management.Engine.Models;
+using System.Linq;
+
 namespace Lab.Management.Engine
 {
     public class AdminOperations : IAdminOperations
@@ -20,22 +18,28 @@ namespace Lab.Management.Engine
             _objLabManagementEntities = objLabManagementEntities;
             _objIAppLogger = objIAppLogger;
         }
+
         public usp_ValidateUser_Result ValidateUser(string userName, string password)
         {
             var isValidaUser = new usp_ValidateUser_Result();
             try
             {
-                var resultDetails = _objLabManagementEntities.usp_ValidateUser(userName);
-                isValidaUser = resultDetails.FirstOrDefault(x => x.LOGINPASSWORD == password);
-                return isValidaUser;
+                var resultDetails = _objLabManagementEntities.usp_ValidateUser(userName).ToList();
+                if (!resultDetails.Any())
+                {
+                    return null;
+                }
+                var userData = resultDetails.FirstOrDefault();
+                var plainPassword = CryptoManager.passwordDecrypt(userData.LOGINPASSWORD);
+                return plainPassword == password ? userData : null;
             }
             catch (Exception ex)
             {
                 _objIAppLogger.LogError(ex);
                 return isValidaUser;
             }
-
         }
+
         public lmsCityMaster GetCityDetailsById(int cityId)
         {
             try
@@ -54,15 +58,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsCityMaster> GetAllCity()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsCityMasters.Select(x => x);
                 return resultDetails.ToList();
             }
@@ -73,9 +75,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveCity(lmsCityMaster objCityMaster)
         {
             var resultId = 0;
@@ -100,6 +102,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteCity(int cityId)
         {
             var resultFlag = 0;
@@ -116,10 +119,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
+
         public lmsStateMaster GetStateDetailsById(int StateId)
         {
             try
@@ -138,15 +141,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsStateMaster> GetAllState()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsStateMasters.Select(x => x);
                 return resultDetails.ToList();
             }
@@ -157,9 +158,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveState(lmsStateMaster objStateMaster)
         {
             var resultId = 0;
@@ -183,10 +184,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteState(int StateId)
         {
             var resultFlag = 0;
@@ -203,10 +204,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
+
         public lmsRoleMaster GetRoleDetailsById(int RoleId)
         {
             try
@@ -225,15 +226,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsRoleMaster> GetAllRole()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsRoleMasters.Select(x => x);
                 return resultDetails.ToList();
             }
@@ -244,9 +243,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveRole(lmsRoleMaster objRoleMaster)
         {
             var resultId = 0;
@@ -270,10 +269,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteRole(int RoleId)
         {
             var resultFlag = 0;
@@ -290,10 +289,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
+
         public lmsHospitalMaster GetHospitalDetailsById(int HospitalId)
         {
             try
@@ -315,15 +314,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsHospitalMaster> GetAllHospital()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsHospitalMasters.Select(x => x);
                 return resultDetails.ToList();
             }
@@ -334,9 +331,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveHospital(lmsHospitalMaster objHospitalMaster)
         {
             var resultId = 0;
@@ -360,10 +357,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteHospital(int HospitalId)
         {
             var resultFlag = 0;
@@ -380,10 +377,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
+
         public lmsLoginRegistration GetUserDetailsById(int UserId)
         {
             try
@@ -405,15 +402,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsLoginRegistration> GetAllUsers()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsLoginRegistrations.Select(x => x);
                 return resultDetails.ToList();
             }
@@ -424,14 +419,19 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveUser(lmsLoginRegistration objlmsLoginRegistration)
         {
             var resultId = 0;
             try
             {
+                if (!string.IsNullOrEmpty(objlmsLoginRegistration.LOGINPASSWORD))
+                {
+                    objlmsLoginRegistration.LOGINPASSWORD = CryptoManager.passwordEncrypt(objlmsLoginRegistration.LOGINPASSWORD);
+                }
+
                 if (objlmsLoginRegistration.LOGINID > 0)
                 {
                     _objLabManagementEntities.lmsLoginRegistrations.Attach(objlmsLoginRegistration);
@@ -450,10 +450,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteUser(int UserId)
         {
             var resultFlag = 0;
@@ -470,7 +470,6 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
@@ -493,15 +492,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsDiseaseMaster> GetAllDiseases()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsDiseaseMasters.Select(x => x);
                 return resultDetails.ToList();
             }
@@ -512,9 +509,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveDisease(lmsDiseaseMaster objlmsDiseaseMaster)
         {
             var resultId = 0;
@@ -538,10 +535,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteDisease(int DiseaseId)
         {
             var resultFlag = 0;
@@ -558,10 +555,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
+
         public lmsTemplateMaster GetTemplateDetailsById(int templateId)
         {
             try
@@ -580,15 +577,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsTemplateMaster> GetAllTemplate()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsTemplateMasters.Select(x => x);
                 return resultDetails.ToList();
             }
@@ -599,9 +594,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveTemplate(lmsTemplateMaster objTemplateMaster)
         {
             var resultId = 0;
@@ -625,10 +620,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteTemplate(int templateId)
         {
             var resultFlag = 0;
@@ -645,10 +640,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
+
         public string GetUserRole(string userName)
         {
             var userRole = "";
@@ -658,16 +653,19 @@ namespace Lab.Management.Engine
             }
             catch (Exception ex)
             {
-
                 _objIAppLogger.LogError(ex);
             }
             return userRole;
         }
+
         public AdminDashboard GetAdminDashboardInfo(string filterDate = "")
         {
             var objAdminResult = new AdminDashboard();
             if (string.IsNullOrEmpty(filterDate))
+            {
                 filterDate = DateTime.Now.ToString("MM-dd-yyyy");
+            }
+
             try
             {
                 objAdminResult.ExpiryDrugs = _objLabManagementEntities.usp_GetExpiryDrugsByDays(10).ToList();
@@ -684,11 +682,11 @@ namespace Lab.Management.Engine
             }
             catch (Exception ex)
             {
-
                 _objIAppLogger.LogError(ex);
             }
             return objAdminResult;
         }
+
         public void DataArchival(string archType, DateTime fromDate, DateTime toDate)
         {
             try
@@ -697,7 +695,6 @@ namespace Lab.Management.Engine
             }
             catch
             {
-
             }
         }
     }

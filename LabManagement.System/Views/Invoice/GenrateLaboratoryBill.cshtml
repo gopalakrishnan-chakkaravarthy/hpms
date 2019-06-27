@@ -7,9 +7,7 @@
 
 }
 
-
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
-
     <div id="canvasElement">
         <div class="row">
             <div class="col-sm-10 col-md-10 col-lg-10 text-center">
@@ -43,13 +41,8 @@
                     <thead>
                         <tr>
                             <td class="text-left text-strong">Particulars</td>
-                            <td class="text-left text-strong">Result</td>
-
-                            @*<td>Approxx.Range Below 10 Years</td>
-                                <td>Approxx.Range For Adults</td>*@
                             <td class="text-right text-strong">Price</td>
                         </tr>
-
                     </thead>
                     <tbody>
                         @foreach (var bill in Model.lmsLaboratoryBillingDetails)
@@ -58,16 +51,7 @@
                                 <td class="text-left ">
                                     @bill.lmsMedicalTest.TESTNAME
                                 </td>
-                                <td class="text-left ">
-                                    @bill.TESTRESULT
-                                </td>
-
-                                @*<td>
-                                        <i> <b> @string.Format("Min : {0} - Max :{1}", @bill.lmsMedicalTest.MINAPPROXRANGEBELOW10AGE, @bill.lmsMedicalTest.MAXAPPROXRANGEBELOW10AGE)</b></i>
-                                    </td>
-                                    <td>
-                                        <i> <b> @string.Format("Min : {0} - Max :{1}", @bill.lmsMedicalTest.MINAPPROXRANGEBELOWADULT, @bill.lmsMedicalTest.MAXAPPROXRANGEBELOWADULT)</b></i>
-                                    </td>*@
+                             
                                 <td class="text-right">
                                     @bill.ITEMCOST
                                 </td>
@@ -77,39 +61,36 @@
                 </table>
                 <table class="table table-striped table-bordered dataTable no-footer">
                     <tbody>
-
                         <tr>
                             <td class="text-right ">
                                 <strong>Total: </strong> @Model.BILLAMOUNT
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
-
             <div class="row">
-
                 <div class="col-sm-8 col-md-8 col-lg-8 text-center" id="appendElements">
                     <a href="@Url.Action("ViewAllLaboratoryBilling", "Invoice")" class="btn btn-warning" id="btnBack">
                         <i class="glyphicon glyphicon-arrow-left">
                             Back
                         </i>
                     </a>
+                    <a href="@Url.Action("GenerateLaboratoryReport", "Invoice", new { LaboratoryBillingId = Model.BILLID })" class="btn btn-info" id="btnBack">
+                        <i class="glyphicon glyphicon-record">
+                            View Report
+                        </i>
+                    </a>
                     <button type="button" class="btn btn-primary" id="btnPrint">
                         <i class="glyphicon glyphicon-print"></i>
                         Print
                     </button>
-
                 </div>
             </div>
-         
-
         </div>
     </div>
 </div>
 @section Scripts {
-
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -121,6 +102,5 @@
             });
 
         });
-
     </script>
 }

@@ -22,3 +22,27 @@ C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.csproj.CopyComplete
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.dll
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Engine.dll.config
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Engine.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Engine.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Debug\AutoMapper.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\EntityFramework.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\EntityFramework.SqlServer.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Common.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Entities.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Logger.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\StructureMap.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\System.Web.Mvc.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\log4net.dll
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Common.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Entities.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Entities.dll.config
+E:\hpms-master\Lab.Management.Engine\bin\Debug\Lab.Management.Logger.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Debug\EntityFramework.xml
+E:\hpms-master\Lab.Management.Engine\bin\Debug\EntityFramework.SqlServer.xml
+E:\hpms-master\Lab.Management.Engine\bin\Debug\System.Web.Mvc.xml
+E:\hpms-master\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.csprojAssemblyReference.cache
+E:\hpms-master\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.csproj.CoreCompileInputs.cache
+E:\hpms-master\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.csproj.CopyComplete
+E:\hpms-master\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.dll
+E:\hpms-master\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.pdb

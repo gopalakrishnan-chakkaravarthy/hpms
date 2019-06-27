@@ -28,7 +28,8 @@
                 <b class="value">
                     @if (@Model.NetPharmachyProfitLLoss > 0)
                     {
-                        @Model.NetPharmachyProfitLLoss
+                        <lable class="text-muted" style="font-size:1rem"> Rupees</lable>
+                        @Model.NetPharmachyProfitLLoss;
                     }
                     else
                     {
@@ -40,7 +41,7 @@
                 <b class="value">
                     @if (@Model.TotalTodayIpRegistration > 0)
                     {
-                        @Model.TotalTodayIpRegistration
+                        @Model.TotalTodayIpRegistration;
                     }
                     else
                     {

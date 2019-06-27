@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Lab.Management.Common;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -13,60 +14,43 @@
     <link href="@Url.Content("~/Content/plugins/dataTables/dataTables.bootstrap.css")" rel="stylesheet">
     @*<link href="@Url.Content("~/Content/css/dataTables.bootstrap.min.css")" rel="stylesheet">
         <link href="@Url.Content("~/Content/css/dataTables.responsive.min.css")" rel="stylesheet">*@
-
     @*<link href="@Url.Content("~/Content/css/responsive.bootstrap.min.css")" rel="stylesheet">*@
     <link href="@Url.Content("~/Content/css/Site.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/bootstrap-datepicker.min.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/bootstrap-select.min.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/bootstrap-wysihtml5.css")" rel="stylesheet">
-
-
-
 </head>
-
 <body>
     <header>
         @Html.Partial("_Menu")
     </header>
-
     <div id="body">
         <div class="container">
-
             @RenderSection("featured", required: false)
-
             @RenderBody()
 
-            
             <div id="" class="hidden"></div>
         </div>
-      
     </div>
     <div id="dvPrintElemet" class="hidden"></div>
     <footer class="text-center">
 
-
-        <p>HPMS &copy; @DateTime.Now.Year - Vinayaga Poly Clinic</p>
-
-
+        <p>HPMS &copy; @DateTime.Now.Year - @ConfigurationWrapper.StringSettings(ConfigKey.HospitalName)</p>
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
-
     <script src="~/Scripts/jquery-1.8.2.js"></script>
-
     <script src="@Url.Content("~/Content/plugins/bootstrap/js/bootstrap.min.js")"></script>
     <script src="@Url.Content("~/Content/plugins/dataTables/jquery.dataTables.js")"></script>
     <script src="@Url.Content("~/Content/plugins/dataTables/dataTables.bootstrap.js")"></script>
     <script src="@Url.Content("~/Content/js/bootstrap-datepicker.min.js")"></script>
     <script src="@Url.Content("~/Content/js/bootstrap-select.min.js")"></script>
-
     <script src="@Url.Content("~/Content/js/html2canvas.js")"></script>
     <script src="@Url.Content("~/Content/js/base64.js")"></script>
     <script src="@Url.Content("~/Content/js/canvas2image.js")"></script>
     <script src="@Url.Content("~/Scripts/AppScripts/Common.js")"></script>
     <script src="@Url.Content("~/Content/js/ckeditor/ckeditor.js")"></script>
-
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {
@@ -77,13 +61,8 @@
                     $(this).parent().toggleClass('open');
                 });
 
-
             });
         })(jQuery);
-        $('.selectpicker').attr('data-live-search', true);
-
-    </script>
-
+        $('.selectpicker').attr('data-live-search', true);</script>
 </body>
-
 </html>

@@ -1,13 +1,11 @@
-﻿using Lab.Management.Entities;
+﻿using Lab.Management.Common;
+using Lab.Management.Entities;
+using Lab.Management.Logger;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Lab.Management.Logger;
-using Lab.Management.Engine.Utils;
 using System.Data.Entity;
-using Lab.Management.Common;
+using System.Linq;
+
 namespace Lab.Management.Engine
 {
     public class Invoice : IInvoice
@@ -19,11 +17,11 @@ namespace Lab.Management.Engine
             _objLabManagementEntities = objLabManagementEntities;
             _objIAppLogger = objIAppLogger;
         }
+
         public lmsMedicalBilling GetMedicalBillDetailsById(int BillId)
         {
             try
             {
-
                 if (BillId == 0)
                 {
                     return new lmsMedicalBilling();
@@ -38,10 +36,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsMedicalBilling> GetAllMedicalBill(int patientId = 0, string filterDate = "")
         {
             try
@@ -59,9 +56,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveMedicalBill(lmsMedicalBilling objlmsMedicalBillings)
         {
             var resultId = 0;
@@ -86,10 +83,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteMedicalBill(int BillId)
         {
             var resultFlag = 0;
@@ -108,7 +105,6 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
@@ -121,7 +117,10 @@ namespace Lab.Management.Engine
                 {
                     return new lmsLaboratoryBilling();
                 }
-                var resultDetails = _objLabManagementEntities.lmsLaboratoryBillings.FirstOrDefault(dt => dt.BILLID == BillId);
+                var resultDetails = _objLabManagementEntities.lmsLaboratoryBillings.
+                    Include("lmsMedicalTest.lmsMedicalTestFor").
+                    Include("lmsMedicalTest.lmsMedicalTestGroup")
+                    .FirstOrDefault(dt => dt.BILLID == BillId);
                 return resultDetails;
             }
             catch (Exception ex)
@@ -131,17 +130,17 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsLaboratoryBilling> GetAllLaboratoryBilling(string filterDate = "")
         {
             try
             {
                 var filterFromDateVal = filterDate.ToLmsSystemDate().AddBeginTime();
                 var filterToDateVal = filterDate.ToLmsSystemDate().AddEndTime();
-                var resultDetails = _objLabManagementEntities.lmsLaboratoryBillings.Where(bt => bt.CREATEDDATE.HasValue && (bt.CREATEDDATE.Value >= filterFromDateVal && bt.CREATEDDATE.Value <= filterToDateVal));
+
+                var resultDetails = _objLabManagementEntities.lmsLaboratoryBillings.Where(bt => bt.BILLDATE.HasValue && (bt.BILLDATE.Value >= filterFromDateVal));
                 return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.BILLID).ToList() : new List<lmsLaboratoryBilling>();
             }
             catch (Exception ex)
@@ -151,14 +150,19 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveLaboratoryBilling(lmsLaboratoryBilling objlmsLaboratoryBillings)
         {
             var resultId = 0;
             try
             {
+                objlmsLaboratoryBillings.CREATEDDATE = DateTime.Now;
+                foreach (var labdetail in objlmsLaboratoryBillings.lmsLaboratoryBillingDetails)
+                {
+                    labdetail.CREATEDATE = DateTime.Now;
+                }
                 if (objlmsLaboratoryBillings.BILLID > 0)
                 {
                     _objLabManagementEntities.lmsLaboratoryBillings.Attach(objlmsLaboratoryBillings);
@@ -177,15 +181,17 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteLaboratoryBilling(int BillId)
         {
             var resultFlag = 0;
             try
             {
+                var billDetails = _objLabManagementEntities.lmsLaboratoryBillingDetails.Where(x => x.BILLID == BillId);
+                _objLabManagementEntities.lmsLaboratoryBillingDetails.RemoveRange(billDetails);
                 var billObject = _objLabManagementEntities.lmsLaboratoryBillings.FirstOrDefault(x => x.BILLID == BillId);
                 _objLabManagementEntities.lmsLaboratoryBillings.Remove(billObject);
                 _objLabManagementEntities.SaveChanges();
@@ -197,10 +203,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
+
         public lmsPatientDischargeSummary GetDischargeSummaryDetailsById(int ReportId)
         {
             try
@@ -219,15 +225,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsPatientDischargeSummary> GetAllDischargeSummary()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsPatientDischargeSummaries.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.SUMMARYID).ToList();
             }
@@ -238,9 +242,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveDischargeSummary(lmsPatientDischargeSummary objlmsPatientDischargeSummary)
         {
             var resultId = 0;
@@ -250,12 +254,10 @@ namespace Lab.Management.Engine
                 {
                     _objLabManagementEntities.lmsPatientDischargeSummaries.Attach(objlmsPatientDischargeSummary);
                     _objLabManagementEntities.Entry(objlmsPatientDischargeSummary).State = EntityState.Modified;
-
                 }
                 else
                 {
                     _objLabManagementEntities.lmsPatientDischargeSummaries.Add(objlmsPatientDischargeSummary);
-
                 }
 
                 _objLabManagementEntities.SaveChanges();
@@ -267,16 +269,15 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteDischargeSummary(int ReportId)
         {
             var resultFlag = 0;
             try
             {
-
                 var billObject = _objLabManagementEntities.lmsPatientDischargeSummaries.FirstOrDefault(x => x.SUMMARYID == ReportId);
                 _objLabManagementEntities.lmsPatientDischargeSummaries.Remove(billObject);
                 _objLabManagementEntities.SaveChanges();
@@ -288,10 +289,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
+
         public lmsUltrSonogramReportOne GetUltraSonagramReportOneDetailsById(int ReportId)
         {
             try
@@ -310,15 +311,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsUltrSonogramReportOne> GetAllUltraSonagramReportOne()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsUltrSonogramReportOnes.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.REPORTID).ToList();
             }
@@ -329,9 +328,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveUltraSonagramReportOne(lmsUltrSonogramReportOne objlmsUltrSonogramReportOne)
         {
             var resultId = 0;
@@ -355,10 +354,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteUltraSonagramReportOne(int ReportId)
         {
             var resultFlag = 0;
@@ -375,10 +374,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
+
         public lmsUltrSonogramReportTwo GetUltraSonagramReportTwoDetailsById(int ReportId)
         {
             try
@@ -397,15 +396,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsUltrSonogramReportTwo> GetAllUltraSonagramReportTwo()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsUltrSonogramReportTwoes.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.REPORTID).ToList();
             }
@@ -416,9 +413,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveUltraSonagramReportTwo(lmsUltrSonogramReportTwo objlmsUltrSonogramReportTwo)
         {
             var resultId = 0;
@@ -442,10 +439,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteUltraSonagramReportTwo(int ReportId)
         {
             var resultFlag = 0;
@@ -462,7 +459,6 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
@@ -485,15 +481,13 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
-
         }
+
         public IList<lmsInvestigationReport> GetAllInvestigationReport()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsInvestigationReports.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.REPORTID).ToList();
             }
@@ -504,9 +498,9 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
         }
+
         public int SaveInvestigationReport(lmsInvestigationReport objlmsInvestigationReport)
         {
             var resultId = 0;
@@ -530,10 +524,10 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultId;
         }
+
         public int DeleteInvestigationReport(int ReportId)
         {
             var resultFlag = 0;
@@ -550,7 +544,6 @@ namespace Lab.Management.Engine
             }
             finally
             {
-
             }
             return resultFlag;
         }
@@ -571,14 +564,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsDischargeBill> GetAllDischargeBill()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsDischargeBills.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.DBILLID).ToList();
             }
@@ -587,8 +578,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveDischargeBill(lmsDischargeBill objlmsDischargeBill)
         {
             var resultId = 0;
@@ -613,6 +604,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteDischargeBill(int BillId)
         {
             var resultFlag = 0;
@@ -637,7 +629,6 @@ namespace Lab.Management.Engine
             try
             {
                 resultFlag = _objLabManagementEntities.usp_DeleteMedicalBilling(deleteSelectedRows);
-
             }
             catch (Exception ex)
             {
@@ -647,6 +638,7 @@ namespace Lab.Management.Engine
 
             return resultFlag;
         }
+
         public lmsGeneralDischargeSummary GetGenDischargeSummaryDetailsById(int ReportId)
         {
             try
@@ -663,14 +655,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsGeneralDischargeSummary> GetAllGenDischargeSummary()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsGeneralDischargeSummaries.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.SUMMARYID).ToList();
             }
@@ -679,8 +669,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveGenDischargeSummary(lmsGeneralDischargeSummary objlmsPatientDischargeSummary)
         {
             var resultId = 0;
@@ -690,7 +680,6 @@ namespace Lab.Management.Engine
                 {
                     _objLabManagementEntities.lmsGeneralDischargeSummaries.Attach(objlmsPatientDischargeSummary);
                     _objLabManagementEntities.Entry(objlmsPatientDischargeSummary).State = EntityState.Modified;
-
                 }
                 else
                 {
@@ -707,12 +696,12 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteGenDischargeSummary(int ReportId)
         {
             var resultFlag = 0;
             try
             {
-
                 var billObject = _objLabManagementEntities.lmsGeneralDischargeSummaries.FirstOrDefault(x => x.SUMMARYID == ReportId);
                 _objLabManagementEntities.lmsGeneralDischargeSummaries.Remove(billObject);
                 _objLabManagementEntities.SaveChanges();
@@ -742,14 +731,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsGynacDischargeSummary> GetAllGynacDischargeSummary()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsGynacDischargeSummaries.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.SUMMARYID).ToList();
             }
@@ -758,8 +745,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveGynacDischargeSummary(lmsGynacDischargeSummary objlmsPatientDischargeSummary)
         {
             var resultId = 0;
@@ -769,7 +756,6 @@ namespace Lab.Management.Engine
                 {
                     _objLabManagementEntities.lmsGynacDischargeSummaries.Attach(objlmsPatientDischargeSummary);
                     _objLabManagementEntities.Entry(objlmsPatientDischargeSummary).State = EntityState.Modified;
-
                 }
                 else
                 {
@@ -786,12 +772,12 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteGynacDischargeSummary(int ReportId)
         {
             var resultFlag = 0;
             try
             {
-
                 var billObject = _objLabManagementEntities.lmsGynacDischargeSummaries.FirstOrDefault(x => x.SUMMARYID == ReportId);
                 _objLabManagementEntities.lmsGynacDischargeSummaries.Remove(billObject);
                 _objLabManagementEntities.SaveChanges();

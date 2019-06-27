@@ -22,3 +22,17 @@ C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csproj.CopyComplete
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.dll
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.pdb
+E:\hpms-master\Lab.Management.Entities\bin\Debug\Lab.Management.Entities.dll.config
+E:\hpms-master\Lab.Management.Entities\bin\Debug\Lab.Management.Entities.dll
+E:\hpms-master\Lab.Management.Entities\bin\Debug\Lab.Management.Entities.pdb
+E:\hpms-master\Lab.Management.Entities\bin\Debug\EntityFramework.dll
+E:\hpms-master\Lab.Management.Entities\bin\Debug\EntityFramework.SqlServer.dll
+E:\hpms-master\Lab.Management.Entities\bin\Debug\System.Web.Mvc.dll
+E:\hpms-master\Lab.Management.Entities\bin\Debug\EntityFramework.xml
+E:\hpms-master\Lab.Management.Entities\bin\Debug\EntityFramework.SqlServer.xml
+E:\hpms-master\Lab.Management.Entities\bin\Debug\System.Web.Mvc.xml
+E:\hpms-master\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csprojAssemblyReference.cache
+E:\hpms-master\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csproj.CoreCompileInputs.cache
+E:\hpms-master\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csproj.CopyComplete
+E:\hpms-master\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.dll
+E:\hpms-master\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.pdb

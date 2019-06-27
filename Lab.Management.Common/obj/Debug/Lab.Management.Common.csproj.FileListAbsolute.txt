@@ -11,3 +11,11 @@ C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.CopyComplete
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.dll
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.pdb
+E:\hpms-master\Lab.Management.Common\bin\Debug\Lab.Management.Common.dll
+E:\hpms-master\Lab.Management.Common\bin\Debug\Lab.Management.Common.pdb
+E:\hpms-master\Lab.Management.Common\bin\Debug\AutoMapper.dll
+E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.csprojAssemblyReference.cache
+E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.CoreCompileInputs.cache
+E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.CopyComplete
+E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.dll
+E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.pdb

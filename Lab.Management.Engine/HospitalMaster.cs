@@ -1,14 +1,13 @@
-﻿using Lab.Management.Entities;
+﻿using Lab.Management.Common;
+using Lab.Management.Engine.Utils;
+using Lab.Management.Entities;
+using Lab.Management.Logger;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Lab.Management.Logger;
-using Lab.Management.Engine.Utils;
 using System.Data.Entity;
 using System.IO;
-using Lab.Management.Common;
+using System.Linq;
+
 namespace Lab.Management.Engine
 {
     public class HospitalMaster : IHospitalMaster
@@ -20,6 +19,7 @@ namespace Lab.Management.Engine
             _objLabManagementEntities = objLabManagementEntities;
             _objIAppLogger = objIAppLogger;
         }
+
         public lmsDrug GetDrugDetailsById(int DrugId)
         {
             try
@@ -39,14 +39,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsDrug> GetAllDrug()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsDrugs.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.DRUGID).ToList();
             }
@@ -55,8 +53,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveDrug(lmsDrug objDrugMaster)
         {
             var resultId = 0;
@@ -81,6 +79,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteDrug(int DrugId)
         {
             var resultFlag = 0;
@@ -98,6 +97,7 @@ namespace Lab.Management.Engine
 
             return resultFlag;
         }
+
         public lmsMedicalTest GetMedicalTestDetailsById(int MTestId)
         {
             try
@@ -114,15 +114,15 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsMedicalTest> GetAllMedicalTest()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsMedicalTests.Select(x => x);
+                resultDetails.Include("lmsMedicalTestFor").
+                    Include("lmsMedicalTestGroup");
                 return resultDetails.OrderByDescending(x => x.TESTID).ToList();
             }
             catch (Exception ex)
@@ -130,8 +130,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveMedicalTest(lmsMedicalTest objMedicalTestMaster)
         {
             var resultId = 0;
@@ -156,6 +156,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteMedicalTest(int MTestId)
         {
             var resultFlag = 0;
@@ -190,14 +191,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsScan> GetAllScan()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsScans.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.SCANID).ToList();
             }
@@ -206,8 +205,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveScan(lmsScan objScanMaster)
         {
             var resultId = 0;
@@ -232,6 +231,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteScan(int ScanId)
         {
             var resultFlag = 0;
@@ -269,14 +269,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsVendor> GetAllVendor()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsVendors.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.VENDORID).ToList();
             }
@@ -285,8 +283,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveVendor(lmsVendor objVendorMaster)
         {
             var resultId = 0;
@@ -311,6 +309,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteVendor(int VendorId)
         {
             var resultFlag = 0;
@@ -328,6 +327,7 @@ namespace Lab.Management.Engine
 
             return resultFlag;
         }
+
         public lmsInventory GetInventoryDetailsById(int InventoryId)
         {
             try
@@ -337,7 +337,6 @@ namespace Lab.Management.Engine
                     var newInventory = new lmsInventory();
                     newInventory.ISWORKING = true;
                     return newInventory;
-
                 }
                 var resultDetails = _objLabManagementEntities.lmsInventories.FirstOrDefault(x => x.INVENTORYID == InventoryId);
                 resultDetails.ISWORKING = resultDetails.ISWORKING == null ? true : resultDetails.ISWORKING.Value;
@@ -348,14 +347,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsInventory> GetAllInventory()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsInventories.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.INVENTORYID).ToList();
             }
@@ -364,8 +361,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveInventory(lmsInventory objInventoryMaster)
         {
             var resultId = 0;
@@ -390,6 +387,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteInventory(int InventoryId)
         {
             var resultFlag = 0;
@@ -407,6 +405,7 @@ namespace Lab.Management.Engine
 
             return resultFlag;
         }
+
         public lmsBed GetBedDetailsById(int BedId)
         {
             try
@@ -426,14 +425,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsBed> GetAllBed()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsBeds.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.BEDID).ToList();
             }
@@ -442,8 +439,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveBed(lmsBed objBedMaster)
         {
             var resultId = 0;
@@ -468,6 +465,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteBed(int BedId)
         {
             var resultFlag = 0;
@@ -485,6 +483,7 @@ namespace Lab.Management.Engine
 
             return resultFlag;
         }
+
         public lmsWard GetWardDetailsById(int WardId)
         {
             try
@@ -504,14 +503,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsWard> GetAllWard()
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsWards.Select(x => x);
                 return resultDetails.OrderByDescending(x => x.WARDID).ToList();
             }
@@ -520,8 +517,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveWard(lmsWard objWardMaster)
         {
             var resultId = 0;
@@ -546,6 +543,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteWard(int WardId)
         {
             var resultFlag = 0;
@@ -563,6 +561,7 @@ namespace Lab.Management.Engine
 
             return resultFlag;
         }
+
         public List<DownLoadFileInformation> GetFiles(string dowloadType)
         {
             var filePath = dowloadType == "TEMPLATE" ? ConfigurationWrapper.StringSettings(ConfigKey.TemplateUploadPath) : ConfigurationWrapper.StringSettings(ConfigKey.PatientUploadPath);
@@ -574,7 +573,6 @@ namespace Lab.Management.Engine
             {
                 lstFiles.Add(new DownLoadFileInformation()
                 {
-
                     FileId = i + 1,
                     FileName = item.Name,
                     FilePath = dirInfo.FullName + @"\" + item.Name
@@ -583,11 +581,180 @@ namespace Lab.Management.Engine
             }
             return lstFiles;
         }
+
         public IList<usp_GetDrugDdl_Result> GetDrugsDdl()
         {
             return _objLabManagementEntities.usp_GetDrugDdl().ToList();
         }
-     
 
+        public lmsMedicalTestFor GetMedicalTestForById(int Id)
+        {
+            try
+            {
+                if (Id == 0)
+                {
+                    var newItem = new lmsMedicalTestFor();
+
+                    return newItem;
+                }
+                var resultDetails = _objLabManagementEntities.lmsMedicalTestFors.FirstOrDefault(x => x.TESTFORID == Id);
+                return resultDetails;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public IList<lmsMedicalTestFor> GetAllMedicalTestFor()
+        {
+            try
+            {
+                var resultDetails = _objLabManagementEntities.lmsMedicalTestFors.Select(x => x);
+                return resultDetails.OrderBy(x => x.TESTFORID).ToList();
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public IList<string> GetAllMedicalTestForNames(List<int> ids)
+        {
+            try
+            {
+                var resultDetails = _objLabManagementEntities.lmsMedicalTestFors.Where(x => ids.Contains(x.TESTFORID));
+                return resultDetails.Any() ? resultDetails.Select(x => x.TESTFOR).ToList() : null;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public int SaveMedicalTestFor(lmsMedicalTestFor objSaveData)
+        {
+            var resultId = 0;
+            try
+            {
+                if (objSaveData.TESTFORID > 0)
+                {
+                    _objLabManagementEntities.lmsMedicalTestFors.Attach(objSaveData);
+                    _objLabManagementEntities.Entry(objSaveData).State = EntityState.Modified;
+                }
+                else
+                {
+                    _objLabManagementEntities.lmsMedicalTestFors.Add(objSaveData);
+                }
+                _objLabManagementEntities.SaveChanges();
+                var result = _objLabManagementEntities.lmsMedicalTestFors.Where(x => x.TESTFOR == objSaveData.TESTFOR);
+                resultId = result.Any() ? result.Single().TESTFORID : 0;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+            }
+
+            return resultId;
+        }
+
+        public int DeleteMedicalTestFor(int Id)
+        {
+            var resultFlag = 0;
+            try
+            {
+                var deleteObject = _objLabManagementEntities.lmsMedicalTestFors.FirstOrDefault(x => x.TESTFORID == Id);
+                _objLabManagementEntities.lmsMedicalTestFors.Remove(deleteObject);
+                _objLabManagementEntities.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                resultFlag = -1;
+                _objIAppLogger.LogError(ex);
+            }
+
+            return resultFlag;
+        }
+
+        public lmsMedicalTestGroup GetMedicalGroupById(int Id)
+        {
+            try
+            {
+                if (Id == 0)
+                {
+                    var newItem = new lmsMedicalTestGroup();
+
+                    return newItem;
+                }
+                var resultDetails = _objLabManagementEntities.lmsMedicalTestGroups.FirstOrDefault(x => x.GROUPID == Id);
+                return resultDetails;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public IList<lmsMedicalTestGroup> GetAllMedicalTestGroup()
+        {
+            try
+            {
+                var resultDetails = _objLabManagementEntities.lmsMedicalTestGroups.Select(x => x);
+                return resultDetails.OrderBy(x => x.GROUPID).ToList();
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public int SaveMedicalTestGroup(lmsMedicalTestGroup objSaveData)
+        {
+            var resultId = 0;
+            try
+            {
+                if (objSaveData.GROUPID > 0)
+                {
+                    _objLabManagementEntities.lmsMedicalTestGroups.Attach(objSaveData);
+                    _objLabManagementEntities.Entry(objSaveData).State = EntityState.Modified;
+                }
+                else
+                {
+                    _objLabManagementEntities.lmsMedicalTestGroups.Add(objSaveData);
+                }
+                _objLabManagementEntities.SaveChanges();
+                var result = _objLabManagementEntities.lmsMedicalTestGroups.Where(x => x.GROUPNAME == objSaveData.GROUPNAME);
+                resultId = result.Any() ? result.Single().GROUPID : 0;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+            }
+
+            return resultId;
+        }
+
+        public int DeleteMedicalTestGroup(int Id)
+        {
+            var resultFlag = 0;
+            try
+            {
+                var deleteObject = _objLabManagementEntities.lmsMedicalTestGroups.FirstOrDefault(x => x.GROUPID == Id);
+                _objLabManagementEntities.lmsMedicalTestGroups.Remove(deleteObject);
+                _objLabManagementEntities.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                resultFlag = -1;
+                _objIAppLogger.LogError(ex);
+            }
+
+            return resultFlag;
+        }
     }
 }

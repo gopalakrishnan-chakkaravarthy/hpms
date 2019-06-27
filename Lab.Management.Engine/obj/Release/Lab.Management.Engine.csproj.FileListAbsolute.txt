@@ -60,3 +60,51 @@ D:\Working Projects\HPMS\Git\hpms\Lab.Management.Engine\bin\Release\EntityFramew
 D:\Working Projects\HPMS\Git\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csprojResolveAssemblyReference.cache
 D:\Working Projects\HPMS\Git\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
 D:\Working Projects\HPMS\Git\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Engine.dll.config
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Engine.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Engine.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Release\AutoMapper.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\EntityFramework.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Common.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Entities.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Logger.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\StructureMap.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\System.Web.Mvc.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\log4net.dll
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Common.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Entities.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Entities.dll.config
+E:\hpms-master\Lab.Management.Engine\bin\Release\Lab.Management.Logger.pdb
+E:\hpms-master\Lab.Management.Engine\bin\Release\EntityFramework.xml
+E:\hpms-master\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.xml
+E:\hpms-master\Lab.Management.Engine\bin\Release\System.Web.Mvc.xml
+E:\hpms-master\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csprojAssemblyReference.cache
+E:\hpms-master\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CoreCompileInputs.cache
+E:\hpms-master\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CopyComplete
+E:\hpms-master\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
+E:\hpms-master\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csprojAssemblyReference.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CoreCompileInputs.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.dll.config
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\AutoMapper.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\EntityFramework.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Common.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Entities.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Logger.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\StructureMap.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\System.Web.Mvc.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\log4net.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Common.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Entities.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Entities.dll.config
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Logger.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\EntityFramework.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\System.Web.Mvc.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CopyComplete
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb

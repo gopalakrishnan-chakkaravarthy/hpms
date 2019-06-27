@@ -77,6 +77,10 @@
         <AssociationConnector Association="LabManagementModel.FK__lmsPatien__WARDI__76619304" />
         <EntityTypeShape EntityType="LabManagementModel.lmsGynacDischargeSummary" Width="1.5" PointX="15.75" PointY="31.75" />
         <AssociationConnector Association="LabManagementModel.FK__lmsGynacD__PATIE__4C364F0E" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsMedicalTestFor" Width="1.5" PointX="5.5" PointY="22.125" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsMedicalTestGroup" Width="1.5" PointX="5.5" PointY="19.875" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsMedica__TESTF__56E8E7AB" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsMedica__GROUP__55F4C372" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

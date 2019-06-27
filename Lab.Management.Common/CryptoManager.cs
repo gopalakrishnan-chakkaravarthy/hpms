@@ -2,13 +2,11 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using Lab.Management.Common;
-using AutoMapper;
+
 namespace Lab.Management.Common
 {
     public static class CryptoManager
     {
-        
         public static string passwordEncrypt(this string inText)
         {
             byte[] bytesBuff = Encoding.Unicode.GetBytes(inText);
@@ -29,6 +27,7 @@ namespace Lab.Management.Common
             }
             return inText;
         }
+
         //Decrypting a string
         public static string passwordDecrypt(this string cryptTxt)
         {

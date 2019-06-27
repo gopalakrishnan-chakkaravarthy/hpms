@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="LabManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="LabManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="lmsBeds">
     <Key>
       <PropertyRef Name="BEDID" />
@@ -306,6 +306,20 @@
     <Property Name="ITEMCOST" Type="float" />
     <Property Name="CREATEDATE" Type="datetime" />
   </EntityType>
+  <EntityType Name="lmsMedicalTestFor">
+    <Key>
+      <PropertyRef Name="TESTFORID" />
+    </Key>
+    <Property Name="TESTFORID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TESTFOR" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="lmsMedicalTestGroup">
+    <Key>
+      <PropertyRef Name="GROUPID" />
+    </Key>
+    <Property Name="GROUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GROUPNAME" Type="nvarchar" MaxLength="600" />
+  </EntityType>
   <EntityType Name="lmsMedicalTests">
     <Key>
       <PropertyRef Name="TESTID" />
@@ -317,6 +331,9 @@
     <Property Name="MINAPPROXRANGEBELOWADULT" Type="float" />
     <Property Name="MAXAPPROXRANGEBELOWADULT" Type="float" />
     <Property Name="SELLIGPRICE" Type="float" />
+    <Property Name="NORMALVALUE" Type="nvarchar" MaxLength="4000" />
+    <Property Name="GROUPID" Type="int" />
+    <Property Name="TESTFORID" Type="int" />
   </EntityType>
   <EntityType Name="lmsOutPatientDetails">
     <Key>
@@ -571,7 +588,7 @@
     <Property Name="ISACTIVE" Type="bit" />
     <Property Name="ChargePerDay" Type="float" Nullable="false" />
   </EntityType>
-  <Association Name="FK__lmsDischa__CONSU__48CFD27E">
+  <Association Name="FK__lmsDischa__CONSU__0B91BA14">
     <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1" />
     <End Role="lmsDischargeSummary" Type="Self.lmsDischargeSummary" Multiplicity="*" />
     <ReferentialConstraint>
@@ -583,7 +600,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsDischa__CREAT__4A8310C6">
+  <Association Name="FK__lmsDischa__CREAT__09A971A2">
     <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1" />
     <End Role="lmsDischargeBill" Type="Self.lmsDischargeBill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -595,7 +612,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsDischa__PATIE__3C34F16F">
+  <Association Name="FK__lmsDischa__PATIE__0A9D95DB">
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
     <End Role="lmsDischargeBill" Type="Self.lmsDischargeBill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -607,7 +624,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsDischa__PATIE__47DBAE45">
+  <Association Name="FK__lmsDischa__PATIE__0C85DE4D">
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
     <End Role="lmsDischargeSummary" Type="Self.lmsDischargeSummary" Multiplicity="*" />
     <ReferentialConstraint>
@@ -619,7 +636,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsGenera__PATIE__4589517F">
+  <Association Name="FK__lmsGenera__PATIE__10566F31">
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
     <End Role="lmsGeneralDischargeSummary" Type="Self.lmsGeneralDischargeSummary" Multiplicity="*" />
     <ReferentialConstraint>
@@ -631,7 +648,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsGynacD__PATIE__4C364F0E">
+  <Association Name="FK__lmsGynacD__PATIE__114A936A">
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
     <End Role="lmsGynacDischargeSummary" Type="Self.lmsGynacDischargeSummary" Multiplicity="*" />
     <ReferentialConstraint>
@@ -643,7 +660,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsHospit__CITYI__182C9B23">
+  <Association Name="FK__lmsHospit__CITYI__123EB7A3">
     <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1" />
     <End Role="lmsHospitalMaster" Type="Self.lmsHospitalMaster" Multiplicity="*" />
     <ReferentialConstraint>
@@ -655,7 +672,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsHospit__CREAT__2F9A1060">
+  <Association Name="FK__lmsHospit__CREAT__1332DBDC">
     <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1" />
     <End Role="lmsHospitalMaster" Type="Self.lmsHospitalMaster" Multiplicity="*" />
     <ReferentialConstraint>
@@ -667,7 +684,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsHospit__STATE__173876EA">
+  <Association Name="FK__lmsHospit__STATE__14270015">
     <End Role="lmsStateMaster" Type="Self.lmsStateMaster" Multiplicity="0..1" />
     <End Role="lmsHospitalMaster" Type="Self.lmsHospitalMaster" Multiplicity="*" />
     <ReferentialConstraint>
@@ -679,7 +696,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsInPati__PATIE__440B1D61">
+  <Association Name="FK__lmsInPati__PATIE__151B244E">
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
     <End Role="lmsInPatientBilling" Type="Self.lmsInPatientBilling" Multiplicity="*" />
     <ReferentialConstraint>
@@ -691,7 +708,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsInvent__VENDO__2A4B4B5E">
+  <Association Name="FK__lmsInvent__VENDO__160F4887">
     <End Role="lmsVendors" Type="Self.lmsVendors" Multiplicity="0..1" />
     <End Role="lmsInventory" Type="Self.lmsInventory" Multiplicity="*" />
     <ReferentialConstraint>
@@ -703,7 +720,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsLabora__BILLI__71D1E811">
+  <Association Name="FK__lmsLabora__BILLI__17F790F9">
     <End Role="lmsLaboratoryBilling" Type="Self.lmsLaboratoryBilling" Multiplicity="0..1" />
     <End Role="lmsLaboratoryBillingDetails" Type="Self.lmsLaboratoryBillingDetails" Multiplicity="*" />
     <ReferentialConstraint>
@@ -715,7 +732,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsLabora__TESTI__3C69FB99">
+  <Association Name="FK__lmsLabora__TESTI__17036CC0">
     <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="0..1" />
     <End Role="lmsLaboratoryBilling" Type="Self.lmsLaboratoryBilling" Multiplicity="*" />
     <ReferentialConstraint>
@@ -727,7 +744,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsLabora__TESTI__72C60C4A">
+  <Association Name="FK__lmsLabora__TESTI__18EBB532">
     <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="0..1" />
     <End Role="lmsLaboratoryBillingDetails" Type="Self.lmsLaboratoryBillingDetails" Multiplicity="*" />
     <ReferentialConstraint>
@@ -739,7 +756,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsLoginR__CITYI__1DE57479">
+  <Association Name="FK__lmsLoginR__CITYI__1EA48E88">
     <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1" />
     <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*" />
     <ReferentialConstraint>
@@ -751,7 +768,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsLoginR__ROLEI__1ED998B2">
+  <Association Name="FK__lmsLoginR__ROLEI__1F98B2C1">
     <End Role="lmsRoleMaster" Type="Self.lmsRoleMaster" Multiplicity="0..1" />
     <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*" />
     <ReferentialConstraint>
@@ -763,7 +780,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsLoginR__STATE__1CF15040">
+  <Association Name="FK__lmsLoginR__STATE__208CD6FA">
     <End Role="lmsStateMaster" Type="Self.lmsStateMaster" Multiplicity="0..1" />
     <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*" />
     <ReferentialConstraint>
@@ -775,7 +792,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsMedica__BILLI__6D0D32F4">
+  <Association Name="FK__lmsMedica__BILLI__22751F6C">
     <End Role="lmsMedicalBilling" Type="Self.lmsMedicalBilling" Multiplicity="0..1" />
     <End Role="lmsMedicalBillingDetails" Type="Self.lmsMedicalBillingDetails" Multiplicity="*" />
     <ReferentialConstraint>
@@ -787,7 +804,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsMedica__DRUGI__38996AB5">
+  <Association Name="FK__lmsMedica__DRUGI__2180FB33">
     <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1" />
     <End Role="lmsMedicalBilling" Type="Self.lmsMedicalBilling" Multiplicity="*" />
     <ReferentialConstraint>
@@ -799,7 +816,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsMedica__DRUGI__6E01572D">
+  <Association Name="FK__lmsMedica__DRUGI__236943A5">
     <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1" />
     <End Role="lmsMedicalBillingDetails" Type="Self.lmsMedicalBillingDetails" Multiplicity="*" />
     <ReferentialConstraint>
@@ -811,7 +828,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsOutPat__DISEA__14270015">
+  <Association Name="FK__lmsMedica__GROUP__55F4C372">
+    <End Role="lmsMedicalTestGroup" Type="Self.lmsMedicalTestGroup" Multiplicity="0..1" />
+    <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lmsMedicalTestGroup">
+        <PropertyRef Name="GROUPID" />
+      </Principal>
+      <Dependent Role="lmsMedicalTests">
+        <PropertyRef Name="GROUPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lmsMedica__TESTF__56E8E7AB">
+    <End Role="lmsMedicalTestFor" Type="Self.lmsMedicalTestFor" Multiplicity="0..1" />
+    <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lmsMedicalTestFor">
+        <PropertyRef Name="TESTFORID" />
+      </Principal>
+      <Dependent Role="lmsMedicalTests">
+        <PropertyRef Name="TESTFORID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lmsOutPat__DISEA__25518C17">
     <End Role="lmsDiseaseMaster" Type="Self.lmsDiseaseMaster" Multiplicity="0..1" />
     <End Role="lmsOutPatientMaster" Type="Self.lmsOutPatientMaster" Multiplicity="*" />
     <ReferentialConstraint>
@@ -823,7 +864,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsOutPat__OPMAS__123EB7A3">
+  <Association Name="FK__lmsOutPat__OPMAS__245D67DE">
     <End Role="lmsOutPatientMaster" Type="Self.lmsOutPatientMaster" Multiplicity="0..1" />
     <End Role="lmsOutPatientDetails" Type="Self.lmsOutPatientDetails" Multiplicity="*" />
     <ReferentialConstraint>
@@ -835,7 +876,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsPatien__BEDID__756D6ECB">
+  <Association Name="FK__lmsPatien__BEDID__2739D489">
     <End Role="lmsBeds" Type="Self.lmsBeds" Multiplicity="0..1" />
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="*" />
     <ReferentialConstraint>
@@ -859,7 +900,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsPatien__DISEA__24927208">
+  <Association Name="FK__lmsPatien__DISEA__29221CFB">
     <End Role="lmsDiseaseMaster" Type="Self.lmsDiseaseMaster" Multiplicity="0..1" />
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="*" />
     <ReferentialConstraint>
@@ -871,19 +912,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsPatien__PATIE__0A9D95DB">
-    <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
-    <End Role="lmsPatientTemplate" Type="Self.lmsPatientTemplate" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="lmsPatientRegistration">
-        <PropertyRef Name="PATIENTID" />
-      </Principal>
-      <Dependent Role="lmsPatientTemplate">
-        <PropertyRef Name="PATIENTID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__lmsPatien__PATIE__693CA210">
+  <Association Name="FK__lmsPatien__PATIE__2645B050">
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
     <End Role="lmsPatientDischargeSummary" Type="Self.lmsPatientDischargeSummary" Multiplicity="*" />
     <ReferentialConstraint>
@@ -895,7 +924,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsPatien__TEMPL__0B91BA14">
+  <Association Name="FK__lmsPatien__PATIE__2B0A656D">
+    <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+    <End Role="lmsPatientTemplate" Type="Self.lmsPatientTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lmsPatientRegistration">
+        <PropertyRef Name="PATIENTID" />
+      </Principal>
+      <Dependent Role="lmsPatientTemplate">
+        <PropertyRef Name="PATIENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lmsPatien__TEMPL__2BFE89A6">
     <End Role="lmsTemplateMaster" Type="Self.lmsTemplateMaster" Multiplicity="0..1" />
     <End Role="lmsPatientTemplate" Type="Self.lmsPatientTemplate" Multiplicity="*" />
     <ReferentialConstraint>
@@ -907,7 +948,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsPatien__WARDI__76619304">
+  <Association Name="FK__lmsPatien__WARDI__2A164134">
     <End Role="lmsWards" Type="Self.lmsWards" Multiplicity="0..1" />
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="*" />
     <ReferentialConstraint>
@@ -919,7 +960,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsScanRe__PATIE__4CA06362">
+  <Association Name="FK__lmsScanRe__PATIE__2DE6D218">
     <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
     <End Role="lmsScanReportMaster" Type="Self.lmsScanReportMaster" Multiplicity="*" />
     <ReferentialConstraint>
@@ -931,7 +972,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsScanRe__SCANI__4BAC3F29">
+  <Association Name="FK__lmsScanRe__SCANI__2EDAF651">
     <End Role="lmsScans" Type="Self.lmsScans" Multiplicity="0..1" />
     <End Role="lmsScanReportMaster" Type="Self.lmsScanReportMaster" Multiplicity="*" />
     <ReferentialConstraint>
@@ -943,7 +984,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsScanRe__SCANR__4F7CD00D">
+  <Association Name="FK__lmsScanRe__SCANR__2CF2ADDF">
     <End Role="lmsScanReportMaster" Type="Self.lmsScanReportMaster" Multiplicity="0..1" />
     <End Role="lmsScanReportDetails" Type="Self.lmsScanReportDetails" Multiplicity="*" />
     <ReferentialConstraint>
@@ -955,7 +996,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsSignat__SIGNA__02FC7413">
+  <Association Name="FK__lmsSignat__SIGNA__2FCF1A8A">
     <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1" />
     <End Role="lmsSignatureMaster" Type="Self.lmsSignatureMaster" Multiplicity="*" />
     <ReferentialConstraint>
@@ -967,7 +1008,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsStateM__CITYI__1273C1CD">
+  <Association Name="FK__lmsStateM__CITYI__30C33EC3">
     <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1" />
     <End Role="lmsStateMaster" Type="Self.lmsStateMaster" Multiplicity="*" />
     <ReferentialConstraint>
@@ -979,7 +1020,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsTempla__SIGNA__06CD04F7">
+  <Association Name="FK__lmsTempla__SIGNA__31B762FC">
     <End Role="lmsSignatureMaster" Type="Self.lmsSignatureMaster" Multiplicity="0..1" />
     <End Role="lmsTemplateMaster" Type="Self.lmsTemplateMaster" Multiplicity="*" />
     <ReferentialConstraint>
@@ -991,7 +1032,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsVendor__INVEN__403A8C7D">
+  <Association Name="FK__lmsVendor__INVEN__32AB8735">
     <End Role="lmsInventory" Type="Self.lmsInventory" Multiplicity="0..1" />
     <End Role="lmsVendorBilling" Type="Self.lmsVendorBilling" Multiplicity="*" />
     <ReferentialConstraint>
@@ -1003,7 +1044,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lmsWards__BEDID__33D4B598">
+  <Association Name="FK__lmsWards__BEDID__339FAB6E">
     <End Role="lmsBeds" Type="Self.lmsBeds" Multiplicity="0..1" />
     <End Role="lmsWards" Type="Self.lmsWards" Multiplicity="*" />
     <ReferentialConstraint>
@@ -1079,6 +1120,8 @@
     <EntitySet Name="lmsLoginRegistration" EntityType="Self.lmsLoginRegistration" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lmsMedicalBilling" EntityType="Self.lmsMedicalBilling" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lmsMedicalBillingDetails" EntityType="Self.lmsMedicalBillingDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lmsMedicalTestFor" EntityType="Self.lmsMedicalTestFor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lmsMedicalTestGroup" EntityType="Self.lmsMedicalTestGroup" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lmsMedicalTests" EntityType="Self.lmsMedicalTests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lmsOutPatientDetails" EntityType="Self.lmsOutPatientDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lmsOutPatientMaster" EntityType="Self.lmsOutPatientMaster" Schema="dbo" store:Type="Tables" />
@@ -1097,95 +1140,103 @@
     <EntitySet Name="lmsVendorBilling" EntityType="Self.lmsVendorBilling" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lmsVendors" EntityType="Self.lmsVendors" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lmsWards" EntityType="Self.lmsWards" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__lmsDischa__CONSU__48CFD27E" Association="Self.FK__lmsDischa__CONSU__48CFD27E">
+    <AssociationSet Name="FK__lmsDischa__CONSU__0B91BA14" Association="Self.FK__lmsDischa__CONSU__0B91BA14">
       <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
       <End Role="lmsDischargeSummary" EntitySet="lmsDischargeSummary" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsDischa__CREAT__4A8310C6" Association="Self.FK__lmsDischa__CREAT__4A8310C6">
+    <AssociationSet Name="FK__lmsDischa__CREAT__09A971A2" Association="Self.FK__lmsDischa__CREAT__09A971A2">
       <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
       <End Role="lmsDischargeBill" EntitySet="lmsDischargeBill" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsDischa__PATIE__3C34F16F" Association="Self.FK__lmsDischa__PATIE__3C34F16F">
+    <AssociationSet Name="FK__lmsDischa__PATIE__0A9D95DB" Association="Self.FK__lmsDischa__PATIE__0A9D95DB">
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
       <End Role="lmsDischargeBill" EntitySet="lmsDischargeBill" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsDischa__PATIE__47DBAE45" Association="Self.FK__lmsDischa__PATIE__47DBAE45">
+    <AssociationSet Name="FK__lmsDischa__PATIE__0C85DE4D" Association="Self.FK__lmsDischa__PATIE__0C85DE4D">
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
       <End Role="lmsDischargeSummary" EntitySet="lmsDischargeSummary" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsGenera__PATIE__4589517F" Association="Self.FK__lmsGenera__PATIE__4589517F">
+    <AssociationSet Name="FK__lmsGenera__PATIE__10566F31" Association="Self.FK__lmsGenera__PATIE__10566F31">
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
       <End Role="lmsGeneralDischargeSummary" EntitySet="lmsGeneralDischargeSummary" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsGynacD__PATIE__4C364F0E" Association="Self.FK__lmsGynacD__PATIE__4C364F0E">
+    <AssociationSet Name="FK__lmsGynacD__PATIE__114A936A" Association="Self.FK__lmsGynacD__PATIE__114A936A">
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
       <End Role="lmsGynacDischargeSummary" EntitySet="lmsGynacDischargeSummary" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsHospit__CITYI__182C9B23" Association="Self.FK__lmsHospit__CITYI__182C9B23">
+    <AssociationSet Name="FK__lmsHospit__CITYI__123EB7A3" Association="Self.FK__lmsHospit__CITYI__123EB7A3">
       <End Role="lmsCityMaster" EntitySet="lmsCityMaster" />
       <End Role="lmsHospitalMaster" EntitySet="lmsHospitalMaster" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsHospit__CREAT__2F9A1060" Association="Self.FK__lmsHospit__CREAT__2F9A1060">
+    <AssociationSet Name="FK__lmsHospit__CREAT__1332DBDC" Association="Self.FK__lmsHospit__CREAT__1332DBDC">
       <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
       <End Role="lmsHospitalMaster" EntitySet="lmsHospitalMaster" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsHospit__STATE__173876EA" Association="Self.FK__lmsHospit__STATE__173876EA">
+    <AssociationSet Name="FK__lmsHospit__STATE__14270015" Association="Self.FK__lmsHospit__STATE__14270015">
       <End Role="lmsStateMaster" EntitySet="lmsStateMaster" />
       <End Role="lmsHospitalMaster" EntitySet="lmsHospitalMaster" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsInPati__PATIE__440B1D61" Association="Self.FK__lmsInPati__PATIE__440B1D61">
+    <AssociationSet Name="FK__lmsInPati__PATIE__151B244E" Association="Self.FK__lmsInPati__PATIE__151B244E">
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
       <End Role="lmsInPatientBilling" EntitySet="lmsInPatientBilling" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsInvent__VENDO__2A4B4B5E" Association="Self.FK__lmsInvent__VENDO__2A4B4B5E">
+    <AssociationSet Name="FK__lmsInvent__VENDO__160F4887" Association="Self.FK__lmsInvent__VENDO__160F4887">
       <End Role="lmsVendors" EntitySet="lmsVendors" />
       <End Role="lmsInventory" EntitySet="lmsInventory" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsLabora__BILLI__71D1E811" Association="Self.FK__lmsLabora__BILLI__71D1E811">
+    <AssociationSet Name="FK__lmsLabora__BILLI__17F790F9" Association="Self.FK__lmsLabora__BILLI__17F790F9">
       <End Role="lmsLaboratoryBilling" EntitySet="lmsLaboratoryBilling" />
       <End Role="lmsLaboratoryBillingDetails" EntitySet="lmsLaboratoryBillingDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsLabora__TESTI__3C69FB99" Association="Self.FK__lmsLabora__TESTI__3C69FB99">
+    <AssociationSet Name="FK__lmsLabora__TESTI__17036CC0" Association="Self.FK__lmsLabora__TESTI__17036CC0">
       <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
       <End Role="lmsLaboratoryBilling" EntitySet="lmsLaboratoryBilling" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsLabora__TESTI__72C60C4A" Association="Self.FK__lmsLabora__TESTI__72C60C4A">
+    <AssociationSet Name="FK__lmsLabora__TESTI__18EBB532" Association="Self.FK__lmsLabora__TESTI__18EBB532">
       <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
       <End Role="lmsLaboratoryBillingDetails" EntitySet="lmsLaboratoryBillingDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsLoginR__CITYI__1DE57479" Association="Self.FK__lmsLoginR__CITYI__1DE57479">
+    <AssociationSet Name="FK__lmsLoginR__CITYI__1EA48E88" Association="Self.FK__lmsLoginR__CITYI__1EA48E88">
       <End Role="lmsCityMaster" EntitySet="lmsCityMaster" />
       <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsLoginR__ROLEI__1ED998B2" Association="Self.FK__lmsLoginR__ROLEI__1ED998B2">
+    <AssociationSet Name="FK__lmsLoginR__ROLEI__1F98B2C1" Association="Self.FK__lmsLoginR__ROLEI__1F98B2C1">
       <End Role="lmsRoleMaster" EntitySet="lmsRoleMaster" />
       <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsLoginR__STATE__1CF15040" Association="Self.FK__lmsLoginR__STATE__1CF15040">
+    <AssociationSet Name="FK__lmsLoginR__STATE__208CD6FA" Association="Self.FK__lmsLoginR__STATE__208CD6FA">
       <End Role="lmsStateMaster" EntitySet="lmsStateMaster" />
       <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsMedica__BILLI__6D0D32F4" Association="Self.FK__lmsMedica__BILLI__6D0D32F4">
+    <AssociationSet Name="FK__lmsMedica__BILLI__22751F6C" Association="Self.FK__lmsMedica__BILLI__22751F6C">
       <End Role="lmsMedicalBilling" EntitySet="lmsMedicalBilling" />
       <End Role="lmsMedicalBillingDetails" EntitySet="lmsMedicalBillingDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsMedica__DRUGI__38996AB5" Association="Self.FK__lmsMedica__DRUGI__38996AB5">
+    <AssociationSet Name="FK__lmsMedica__DRUGI__2180FB33" Association="Self.FK__lmsMedica__DRUGI__2180FB33">
       <End Role="lmsDrugs" EntitySet="lmsDrugs" />
       <End Role="lmsMedicalBilling" EntitySet="lmsMedicalBilling" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsMedica__DRUGI__6E01572D" Association="Self.FK__lmsMedica__DRUGI__6E01572D">
+    <AssociationSet Name="FK__lmsMedica__DRUGI__236943A5" Association="Self.FK__lmsMedica__DRUGI__236943A5">
       <End Role="lmsDrugs" EntitySet="lmsDrugs" />
       <End Role="lmsMedicalBillingDetails" EntitySet="lmsMedicalBillingDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsOutPat__DISEA__14270015" Association="Self.FK__lmsOutPat__DISEA__14270015">
+    <AssociationSet Name="FK__lmsMedica__GROUP__55F4C372" Association="Self.FK__lmsMedica__GROUP__55F4C372">
+      <End Role="lmsMedicalTestGroup" EntitySet="lmsMedicalTestGroup" />
+      <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lmsMedica__TESTF__56E8E7AB" Association="Self.FK__lmsMedica__TESTF__56E8E7AB">
+      <End Role="lmsMedicalTestFor" EntitySet="lmsMedicalTestFor" />
+      <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lmsOutPat__DISEA__25518C17" Association="Self.FK__lmsOutPat__DISEA__25518C17">
       <End Role="lmsDiseaseMaster" EntitySet="lmsDiseaseMaster" />
       <End Role="lmsOutPatientMaster" EntitySet="lmsOutPatientMaster" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsOutPat__OPMAS__123EB7A3" Association="Self.FK__lmsOutPat__OPMAS__123EB7A3">
+    <AssociationSet Name="FK__lmsOutPat__OPMAS__245D67DE" Association="Self.FK__lmsOutPat__OPMAS__245D67DE">
       <End Role="lmsOutPatientMaster" EntitySet="lmsOutPatientMaster" />
       <End Role="lmsOutPatientDetails" EntitySet="lmsOutPatientDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsPatien__BEDID__756D6ECB" Association="Self.FK__lmsPatien__BEDID__756D6ECB">
+    <AssociationSet Name="FK__lmsPatien__BEDID__2739D489" Association="Self.FK__lmsPatien__BEDID__2739D489">
       <End Role="lmsBeds" EntitySet="lmsBeds" />
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
     </AssociationSet>
@@ -1193,55 +1244,55 @@
       <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsPatien__DISEA__24927208" Association="Self.FK__lmsPatien__DISEA__24927208">
+    <AssociationSet Name="FK__lmsPatien__DISEA__29221CFB" Association="Self.FK__lmsPatien__DISEA__29221CFB">
       <End Role="lmsDiseaseMaster" EntitySet="lmsDiseaseMaster" />
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsPatien__PATIE__0A9D95DB" Association="Self.FK__lmsPatien__PATIE__0A9D95DB">
-      <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
-      <End Role="lmsPatientTemplate" EntitySet="lmsPatientTemplate" />
-    </AssociationSet>
-    <AssociationSet Name="FK__lmsPatien__PATIE__693CA210" Association="Self.FK__lmsPatien__PATIE__693CA210">
+    <AssociationSet Name="FK__lmsPatien__PATIE__2645B050" Association="Self.FK__lmsPatien__PATIE__2645B050">
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
       <End Role="lmsPatientDischargeSummary" EntitySet="lmsPatientDischargeSummary" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsPatien__TEMPL__0B91BA14" Association="Self.FK__lmsPatien__TEMPL__0B91BA14">
+    <AssociationSet Name="FK__lmsPatien__PATIE__2B0A656D" Association="Self.FK__lmsPatien__PATIE__2B0A656D">
+      <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+      <End Role="lmsPatientTemplate" EntitySet="lmsPatientTemplate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lmsPatien__TEMPL__2BFE89A6" Association="Self.FK__lmsPatien__TEMPL__2BFE89A6">
       <End Role="lmsTemplateMaster" EntitySet="lmsTemplateMaster" />
       <End Role="lmsPatientTemplate" EntitySet="lmsPatientTemplate" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsPatien__WARDI__76619304" Association="Self.FK__lmsPatien__WARDI__76619304">
+    <AssociationSet Name="FK__lmsPatien__WARDI__2A164134" Association="Self.FK__lmsPatien__WARDI__2A164134">
       <End Role="lmsWards" EntitySet="lmsWards" />
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsScanRe__PATIE__4CA06362" Association="Self.FK__lmsScanRe__PATIE__4CA06362">
+    <AssociationSet Name="FK__lmsScanRe__PATIE__2DE6D218" Association="Self.FK__lmsScanRe__PATIE__2DE6D218">
       <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
       <End Role="lmsScanReportMaster" EntitySet="lmsScanReportMaster" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsScanRe__SCANI__4BAC3F29" Association="Self.FK__lmsScanRe__SCANI__4BAC3F29">
+    <AssociationSet Name="FK__lmsScanRe__SCANI__2EDAF651" Association="Self.FK__lmsScanRe__SCANI__2EDAF651">
       <End Role="lmsScans" EntitySet="lmsScans" />
       <End Role="lmsScanReportMaster" EntitySet="lmsScanReportMaster" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsScanRe__SCANR__4F7CD00D" Association="Self.FK__lmsScanRe__SCANR__4F7CD00D">
+    <AssociationSet Name="FK__lmsScanRe__SCANR__2CF2ADDF" Association="Self.FK__lmsScanRe__SCANR__2CF2ADDF">
       <End Role="lmsScanReportMaster" EntitySet="lmsScanReportMaster" />
       <End Role="lmsScanReportDetails" EntitySet="lmsScanReportDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsSignat__SIGNA__02FC7413" Association="Self.FK__lmsSignat__SIGNA__02FC7413">
+    <AssociationSet Name="FK__lmsSignat__SIGNA__2FCF1A8A" Association="Self.FK__lmsSignat__SIGNA__2FCF1A8A">
       <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
       <End Role="lmsSignatureMaster" EntitySet="lmsSignatureMaster" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsStateM__CITYI__1273C1CD" Association="Self.FK__lmsStateM__CITYI__1273C1CD">
+    <AssociationSet Name="FK__lmsStateM__CITYI__30C33EC3" Association="Self.FK__lmsStateM__CITYI__30C33EC3">
       <End Role="lmsCityMaster" EntitySet="lmsCityMaster" />
       <End Role="lmsStateMaster" EntitySet="lmsStateMaster" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsTempla__SIGNA__06CD04F7" Association="Self.FK__lmsTempla__SIGNA__06CD04F7">
+    <AssociationSet Name="FK__lmsTempla__SIGNA__31B762FC" Association="Self.FK__lmsTempla__SIGNA__31B762FC">
       <End Role="lmsSignatureMaster" EntitySet="lmsSignatureMaster" />
       <End Role="lmsTemplateMaster" EntitySet="lmsTemplateMaster" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsVendor__INVEN__403A8C7D" Association="Self.FK__lmsVendor__INVEN__403A8C7D">
+    <AssociationSet Name="FK__lmsVendor__INVEN__32AB8735" Association="Self.FK__lmsVendor__INVEN__32AB8735">
       <End Role="lmsInventory" EntitySet="lmsInventory" />
       <End Role="lmsVendorBilling" EntitySet="lmsVendorBilling" />
     </AssociationSet>
-    <AssociationSet Name="FK__lmsWards__BEDID__33D4B598" Association="Self.FK__lmsWards__BEDID__33D4B598">
+    <AssociationSet Name="FK__lmsWards__BEDID__339FAB6E" Association="Self.FK__lmsWards__BEDID__339FAB6E">
       <End Role="lmsBeds" EntitySet="lmsBeds" />
       <End Role="lmsWards" EntitySet="lmsWards" />
     </AssociationSet>

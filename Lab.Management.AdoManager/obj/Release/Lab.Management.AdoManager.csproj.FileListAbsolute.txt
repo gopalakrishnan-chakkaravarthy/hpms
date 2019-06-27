@@ -7,3 +7,14 @@ C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.csproj.CoreCompileInputs.cache
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.dll
 C:\Working Directory\Reference\Asp.Net Core\Apps\Lmm\Sample\hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.pdb
+E:\hpms-master\Lab.Management.AdoManager\bin\Release\Lab.Management.AdoManager.dll
+E:\hpms-master\Lab.Management.AdoManager\bin\Release\Lab.Management.AdoManager.pdb
+E:\hpms-master\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.csproj.CoreCompileInputs.cache
+E:\hpms-master\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.dll
+E:\hpms-master\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\bin\Release\Lab.Management.AdoManager.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\bin\Release\Lab.Management.AdoManager.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.csproj.CoreCompileInputs.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.csprojAssemblyReference.cache
