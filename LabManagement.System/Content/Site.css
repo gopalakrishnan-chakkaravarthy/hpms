@@ -6,23 +6,11 @@
 /*Sets font family for all controls*/
 body, div, input[type], textarea, button, a, p, ul, li, span, label, h1, h2, h3, h4, h5, h6 {
     font-family: "Times New Roman" !important;
+    border-radius:0 !important;
 }
-/*body {
-    background-color: #ffffff !important;
-}*/
-
-/*table tr td {
-    color: #ffffff;
-}*/
-
-/*form {
-    background-color: #7fbd80;
-    border-radius: 10px;
-}*/
-/*.navbar-wrapper
-{
-    padding-bottom:76px !important;
-}*/
+.form-control {
+    border-radius: 0 !important;
+}
 .roundCornerDiv {
     /*border-radius: 10px;
     padding-left: 15px;*/
@@ -86,13 +74,6 @@ body, div, input[type], textarea, button, a, p, ul, li, span, label, h1, h2, h3,
     font-weight: bold;
 }
 
-.form-control {
-    /*border-radius: 10px;
-    padding-bottom: 5px;
-    border-style: solid;
-    border-color: black;*/
-}
-
 /*table.dataTable tbody tr td {
     color: black !important;
 }*/
@@ -112,12 +93,10 @@ table.dataTable thead tr {
     line-height: 66px;
 }
 
-    .circle .glyphicon {
+.circle .glyphicon {
         color: white;
         margin-left: 4px;
-    }
 
-#Stats {
 }
 
 #Stats {
@@ -128,18 +107,18 @@ table.dataTable thead tr {
     margin-bottom: -14px;
 }
 
-    #Stats .value {
+ #Stats .value {
         font-size: 48px;
         font-weight: bold;
     }
 
-    #Stats .info {
+#Stats .info {
         line-height: 1.2em;
         font-weight: bold;
         font-style: normal;
     }
 
-    #Stats h1 {
+#Stats h1 {
         font-weight: bold;
         text-transform: uppercase;
         position: relative;
@@ -268,10 +247,6 @@ input[type="checkbox"] + label {
         /*background: url(../images/checkbox.png) left top no-repeat;*/
     }
 
-input[type="checkbox"]:checked + label i {
-    /*background: url(../images/checkbox.png) -19px top no-repeat;*/
-}
-
 .col {
     margin-left: 0;
     background: url(../Content/Images/stats_div.png) no-repeat right 15px;
@@ -288,4 +263,89 @@ input[type="checkbox"]:checked + label i {
 
 .marg-left-15 {
     margin-left: 15%;
+}
+
+.marginBottom-0 {
+    margin-bottom: 0;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+        margin-left: -1px;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px 6px;
+        border-radius: 0 6px 6px 6px;
+    }
+
+    .dropdown-submenu > a:after {
+        display: block;
+        content: " ";
+        float: right;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-left-color: #cccccc;
+        margin-top: 5px;
+        margin-right: -10px;
+    }
+
+    .dropdown-submenu:hover > a:after {
+        border-left-color: #555;
+    }
+
+    .dropdown-submenu.pull-left {
+        float: none;
+    }
+
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+
+.userProfileImage {
+    height: 26px;
+    border-radius: 20px;
+}
+
+.centerCorosolContents {
+    align-content: center;
+    top: 10vh;
+}
+
+.centerLoginContents {
+    align-content: center;
+    margin-top: 20%;
+}
+
+.footerMargin {
+    margin-bottom: 10%;
+}
+
+.carousel {
+    min-height: 50vh;
+    height: 50vh !important;
+}
+
+    .carousel .item {
+        min-height: 50vh;
+        height: 50vh !important;
+    }
+
+.carousel-caption img {
+    height: 380px;
+    width: 600px;
+}
+.glyphicon {
+    font-family: 'Glyphicons Halflings' !important;
 }
