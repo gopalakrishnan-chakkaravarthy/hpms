@@ -1,12 +1,10 @@
 ﻿using Lab.Management.Entities;
+using Lab.Management.Logger;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Lab.Management.Logger;
-using Lab.Management.Engine.Utils;
 using System.Data.Entity;
+using System.Linq;
+
 namespace Lab.Management.Engine
 {
     public class Patient : IPatient
@@ -18,6 +16,7 @@ namespace Lab.Management.Engine
             _objLabManagementEntities = objLabManagementEntities;
             _objIAppLogger = objIAppLogger;
         }
+
         public lmsPatientRegistration GetPatientDetailsById(int PatientId)
         {
             try
@@ -37,17 +36,12 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-
-            }
-
         }
+
         public IList<lmsPatientRegistration> GetAllPatient(string patientType, bool includeAll = false)
         {
             try
             {
-
                 var resultDetails = _objLabManagementEntities.lmsPatientRegistrations.Select(x => x);
                 return includeAll ? resultDetails.OrderByDescending(x => x.PATIENTID).ToList() : resultDetails.Where(x => x.PATIENTTYPE == patientType).OrderByDescending(x => x.PATIENTID).ToList();
             }
@@ -56,11 +50,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-
-            }
         }
+
         public int SavePatient(lmsPatientRegistration objlmsPatientRegistrations)
         {
             var resultId = 0;
@@ -76,7 +67,6 @@ namespace Lab.Management.Engine
                     _objLabManagementEntities.lmsPatientRegistrations.Add(objlmsPatientRegistrations);
                 }
 
-
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsPatientRegistrations.AsEnumerable().LastOrDefault().PATIENTID;
             }
@@ -84,12 +74,10 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
 
-            }
             return resultId;
         }
+
         public int DeletePatient(int PatientId)
         {
             var resultFlag = 0;
@@ -104,12 +92,9 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-
-            }
             return resultFlag;
         }
+
         public lmsOutPatientMaster GetOutPatientMasterById(int PatientId)
         {
             try
@@ -128,12 +113,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-
-            }
-
         }
+
         public IList<lmsOutPatientMaster> GetAllOutPatient()
         {
             try
@@ -146,11 +127,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return new List<lmsOutPatientMaster>();
             }
-            finally
-            {
-
-            }
         }
+
         public int SaveOutPatient(lmsOutPatientMaster objlmsPatientRegistrations)
         {
             var resultId = 0;
@@ -173,12 +151,9 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-
-            }
             return resultId;
         }
+
         public int DeleteOutPatient(int PatientId)
         {
             var resultFlag = 0;
@@ -198,10 +173,6 @@ namespace Lab.Management.Engine
             {
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
-            }
-            finally
-            {
-
             }
             return resultFlag;
         }
@@ -224,9 +195,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
-
         }
+
         public IList<lmsOutPatientDetail> GetAllOutPatientDetails(int patientDetailsId)
         {
             try
@@ -239,8 +209,8 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-
         }
+
         public int SaveOutPatientDetail(lmsOutPatientDetail objlmsPatientRegistrations)
         {
             var resultId = 0;
@@ -256,7 +226,6 @@ namespace Lab.Management.Engine
                     _objLabManagementEntities.lmsOutPatientDetails.Add(objlmsPatientRegistrations);
                 }
 
-
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsOutPatientDetails.AsEnumerable().LastOrDefault().OPDID;
             }
@@ -267,6 +236,7 @@ namespace Lab.Management.Engine
 
             return resultId;
         }
+
         public int DeleteOutPatientDetail(int PatientId)
         {
             var resultFlag = 0;

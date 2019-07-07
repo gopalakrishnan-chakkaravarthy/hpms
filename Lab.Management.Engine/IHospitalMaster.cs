@@ -16,7 +16,7 @@ namespace Lab.Management.Engine
 
         lmsMedicalTest GetMedicalTestDetailsById(int MTestId);
 
-        IList<lmsMedicalTest> GetAllMedicalTest();
+        IEnumerable<lmsMedicalTest> GetAllMedicalTest();
 
         int SaveMedicalTest(lmsMedicalTest objMedicalTestMaster);
 

@@ -155,7 +155,7 @@
     <Compile Include="Controllers\AppErrorController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HopitalMasterController.cs" />
+    <Compile Include="Controllers\HospitalMasterController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="DIResolver\StructureMapControllerFactory .cs" />
@@ -186,8 +186,8 @@
     <Content Include="Content\Images\LoginBg.png" />
     <Content Include="Content\Images\stats_div.png" />
     <Content Include="Content\js\base64.js" />
-    <Content Include="Content\js\bootstrap-datepicker.min.js" />
-    <Content Include="Content\js\bootstrap-select.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker.js" />
+    <Content Include="Content\js\bootstrap-select.js" />
     <Content Include="Content\js\bootstrap-wysihtml5.js" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
@@ -472,10 +472,12 @@
     <Content Include="Content\js\ckeditor\skins\moono\images\lock.png" />
     <Content Include="Content\js\ckeditor\skins\moono\images\refresh.png" />
     <Content Include="Content\js\ckeditor\styles.js" />
+    <Content Include="Content\js\dataTables.bootstrap.js" />
     <Content Include="Content\js\dataTables.bootstrap.min.js" />
     <Content Include="Content\js\datatables.min.js" />
     <Content Include="Content\js\dataTables.responsive.min.js" />
     <Content Include="Content\js\html2canvas.js" />
+    <Content Include="Content\js\jquery.dataTables.js" />
     <Content Include="Content\js\jquery.dataTables.min.js" />
     <Content Include="Content\js\responsive.bootstrap.min.js" />
     <Content Include="Content\plugins\dataTables\dataTables.bootstrap.css" />
@@ -569,28 +571,15 @@
     <Content Include="Content\js\ckeditor\README.md" />
     <Content Include="Content\js\ckeditor\skins\moono\readme.md" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\hpms.pubxml" />
     <None Include="Properties\PublishProfiles\hpmsvpc - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\hpmsvpc - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\info.vinayagapolyclinic.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\vinayagapolyclinic.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\vpchpms - Web Deploy.pubxml" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\AppScripts\Common.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\knockout-2.2.0.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -601,7 +590,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -648,20 +636,20 @@
     <Content Include="Views\Admin\ViewAllUser.cshtml" />
     <Content Include="Views\Admin\ViewDisease.cshtml" />
     <Content Include="Views\Admin\ViewAllDisease.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewDrug.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewAllDrug.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewMedicalTest.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewAllMedicalTest.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewAllScan.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewScan.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewVendor.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewAllVendor.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewInventory.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewAllInventory.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewBed.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewAllBed.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewAllWard.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewWard.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewDrug.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewAllDrug.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewMedicalTest.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewAllMedicalTest.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewAllScan.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewScan.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewVendor.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewAllVendor.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewInventory.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewAllInventory.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewBed.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewAllBed.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewAllWard.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewWard.cshtml" />
     <Content Include="Views\Patient\ViewPatient.cshtml" />
     <Content Include="Views\Patient\ViewAllPatient.cshtml" />
     <Content Include="Views\Invoice\ViewMedicalBill.cshtml" />
@@ -677,8 +665,8 @@
     <Content Include="Views\Invoice\GenerateDischargeSummary.cshtml" />
     <Content Include="Views\Invoice\GenerateUltraSonagramReportOne.cshtml" />
     <Content Include="Views\Invoice\GenerateUltraSonagramReportTwo.cshtml" />
-    <Content Include="Views\HopitalMaster\UploadFile.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewFileDownload.cshtml" />
+    <Content Include="Views\HospitalMaster\UploadFile.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewFileDownload.cshtml" />
     <Content Include="Views\Invoice\GeenrateBill.cshtml" />
     <Content Include="Views\Home\LandingPage.cshtml" />
     <Content Include="Views\Shared\_HospitalDetail.cshtml" />
@@ -705,10 +693,10 @@
     <Content Include="Views\Invoice\GenerateGynacDischargeSummary.cshtml" />
     <Content Include="Views\Invoice\ViewAllGynacDischargeSummary.cshtml" />
     <Content Include="Views\Admin\DataArchival.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewMedicalTestFor.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewAllMedicalTestFor.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewAllMedicalTestGroup.cshtml" />
-    <Content Include="Views\HopitalMaster\ViewMedicalTestGroup.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewMedicalTestFor.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewAllMedicalTestFor.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewAllMedicalTestGroup.cshtml" />
+    <Content Include="Views\HospitalMaster\ViewMedicalTestGroup.cshtml" />
     <Content Include="Views\Invoice\GenerateLaboratoryReport.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -718,9 +706,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

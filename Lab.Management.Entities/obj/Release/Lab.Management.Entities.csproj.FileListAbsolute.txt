@@ -54,8 +54,8 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Relea
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.xml
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.xml
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\System.Web.Mvc.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojAssemblyReference.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CoreCompileInputs.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojAssemblyReference.cache

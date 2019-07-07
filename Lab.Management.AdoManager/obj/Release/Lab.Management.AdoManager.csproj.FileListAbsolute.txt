@@ -17,4 +17,3 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\bin\Rel
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.csproj.CoreCompileInputs.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.AdoManager\obj\Release\Lab.Management.AdoManager.csprojAssemblyReference.cache

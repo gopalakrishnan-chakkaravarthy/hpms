@@ -34,9 +34,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsMedicalBilling> GetAllMedicalBill(int patientId = 0, string filterDate = "")
@@ -53,9 +50,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -81,9 +75,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -103,9 +95,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -128,9 +118,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsLaboratoryBilling> GetAllLaboratoryBilling(string filterDate = "")
@@ -147,9 +134,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -179,9 +163,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -201,9 +183,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -223,9 +203,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsPatientDischargeSummary> GetAllDischargeSummary()
@@ -239,9 +216,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -267,9 +241,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -287,9 +259,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -309,9 +279,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsUltrSonogramReportOne> GetAllUltraSonagramReportOne()
@@ -325,9 +292,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -352,9 +316,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -372,9 +334,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -394,9 +354,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsUltrSonogramReportTwo> GetAllUltraSonagramReportTwo()
@@ -410,9 +367,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -437,9 +391,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -457,9 +409,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -479,9 +429,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsInvestigationReport> GetAllInvestigationReport()
@@ -495,9 +442,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -522,9 +466,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -542,9 +484,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 

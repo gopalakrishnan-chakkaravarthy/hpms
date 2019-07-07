@@ -110,8 +110,12 @@ namespace LabManagement.System.Controllers
 
         public ActionResult ViewLaboratoryBilling(int LaboratoryBillingId, string viewMessage = "")
         {
-            var DrugList = _objIHospitalMaster.GetAllMedicalTest();
-            ViewBag.TestList = new SelectList(DrugList, "TESTID", "TESTNAME");
+            var testList = _objIHospitalMaster.GetAllMedicalTest();
+            foreach (var test in testList)
+            {
+                test.TESTNAME = $"{test.TESTNAME} {test.lmsMedicalTestFor?.TESTFOR}";
+            }
+            ViewBag.TestList = new SelectList(testList, "TESTID", "TESTNAME");
             var getLaboratoryBilling = _objIInvoice.GetLaboratoryBillingDetailsById(LaboratoryBillingId);
             ViewBag.Message = viewMessage;
             return View(getLaboratoryBilling);

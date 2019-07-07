@@ -56,9 +56,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsCityMaster> GetAllCity()
@@ -72,9 +69,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -117,9 +111,6 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
             return resultFlag;
         }
 
@@ -139,9 +130,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsStateMaster> GetAllState()
@@ -155,9 +143,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -182,9 +167,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
             return resultId;
         }
 
@@ -201,9 +183,6 @@ namespace Lab.Management.Engine
             {
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
-            }
-            finally
-            {
             }
             return resultFlag;
         }
@@ -224,9 +203,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsRoleMaster> GetAllRole()
@@ -240,9 +216,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -267,9 +240,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -287,9 +258,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -312,9 +281,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsHospitalMaster> GetAllHospital()
@@ -328,9 +294,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -355,9 +318,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -375,9 +336,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -400,9 +359,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsLoginRegistration> GetAllUsers()
@@ -416,9 +372,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -448,9 +401,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -468,9 +419,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -490,9 +439,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsDiseaseMaster> GetAllDiseases()
@@ -506,9 +452,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -533,9 +476,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -553,9 +494,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -575,9 +514,6 @@ namespace Lab.Management.Engine
                 _objIAppLogger.LogError(ex);
                 return null;
             }
-            finally
-            {
-            }
         }
 
         public IList<lmsTemplateMaster> GetAllTemplate()
@@ -591,9 +527,6 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
                 return null;
-            }
-            finally
-            {
             }
         }
 
@@ -618,9 +551,7 @@ namespace Lab.Management.Engine
             {
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultId;
         }
 
@@ -638,9 +569,7 @@ namespace Lab.Management.Engine
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-            finally
-            {
-            }
+
             return resultFlag;
         }
 
@@ -693,8 +622,9 @@ namespace Lab.Management.Engine
             {
                 _objLabManagementEntities.USP_DATAARCHIVAL(archType, fromDate, toDate);
             }
-            catch
+            catch (Exception ex)
             {
+                _objIAppLogger.LogError(ex);
             }
         }
     }

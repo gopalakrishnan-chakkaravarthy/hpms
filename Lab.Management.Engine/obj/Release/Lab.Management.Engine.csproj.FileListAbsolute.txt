@@ -84,8 +84,6 @@ E:\hpms-master\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.Co
 E:\hpms-master\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
 E:\hpms-master\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csprojAssemblyReference.cache
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CoreCompileInputs.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.dll.config
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.pdb
@@ -105,6 +103,8 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\EntityFramework.xml
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.xml
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\System.Web.Mvc.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csprojAssemblyReference.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CoreCompileInputs.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb

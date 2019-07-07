@@ -116,12 +116,11 @@ namespace Lab.Management.Engine
             }
         }
 
-        public IList<lmsMedicalTest> GetAllMedicalTest()
+        public IEnumerable<lmsMedicalTest> GetAllMedicalTest()
         {
             try
             {
-                var resultDetails = _objLabManagementEntities.lmsMedicalTests.Select(x => x);
-                resultDetails.Include("lmsMedicalTestFor").
+                var resultDetails = _objLabManagementEntities.lmsMedicalTests.Include(x => x.lmsMedicalTestFor).
                     Include("lmsMedicalTestGroup");
                 return resultDetails.OrderByDescending(x => x.TESTID).ToList();
             }
