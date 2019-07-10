@@ -1,4 +1,5 @@
 ﻿using Lab.Management.Common;
+using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
 using Lab.Management.Logger;
 using System;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Lab.Management.Engine
+namespace Lab.Management.Engine.Infrastructure
 {
     public class Invoice : IInvoice
     {

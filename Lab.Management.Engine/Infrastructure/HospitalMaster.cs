@@ -1,4 +1,5 @@
 ﻿using Lab.Management.Common;
+using Lab.Management.Engine.Service;
 using Lab.Management.Engine.Utils;
 using Lab.Management.Entities;
 using Lab.Management.Logger;
@@ -8,7 +9,7 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 
-namespace Lab.Management.Engine
+namespace Lab.Management.Engine.Infrastructure
 {
     public class HospitalMaster : IHospitalMaster
     {

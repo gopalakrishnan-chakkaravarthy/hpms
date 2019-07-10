@@ -1,11 +1,10 @@
-﻿using Lab.Management.Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using Lab.Management.Common;
+using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
-using Lab.Management.Common;
+using System;
+using System.Linq;
+using System.Web.Mvc;
+
 namespace LabManagement.System.Controllers
 {
     public class PatientController : BaseController
@@ -17,16 +16,15 @@ namespace LabManagement.System.Controllers
             _objIPatient = objIPatient;
             _objIAdminOperations = objIAdminOperations;
         }
+
         public ActionResult ViewPatient(int PatientId, string viewMessage = "")
         {
-
             var DiseaseList = _objIAdminOperations.GetAllDiseases();
             var getPatient = _objIPatient.GetPatientDetailsById(PatientId);
             getPatient.DiseaseDdl = new SelectList(DiseaseList, "DISEASEID", "DISEASENAME");
             if (PatientId > 0 && getPatient.DISEASEID.HasValue)
             {
                 getPatient.SelectedDisease = getPatient.DISEASEID.Value;
-
             }
 
             if (PatientId > 0)
@@ -37,12 +35,14 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getPatient);
         }
+
         public ActionResult ViewAllPatient(string viewMessage = "")
         {
             var getAll = _objIPatient.GetAllPatient("IN");
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditPatient(lmsPatientRegistration objPatientMaster)
         {
@@ -66,9 +66,9 @@ namespace LabManagement.System.Controllers
             var deletPatient = _objIPatient.DeletePatient(PatientId);
             return RedirectToAction("ViewAllPatient", new { viewMessage = "Patient Detail Deleted Successfully" });
         }
+
         public ActionResult ViewOutPatient(int PatientId, string viewMessage = "")
         {
-
             var DiseaseList = _objIAdminOperations.GetAllDiseases();
             var getPatient = _objIPatient.GetOutPatientMasterById(PatientId);
             getPatient.DiseaseDdl = new SelectList(DiseaseList, "DISEASEID", "DISEASENAME");
@@ -78,12 +78,19 @@ namespace LabManagement.System.Controllers
             }
 
             if (PatientId > 0 && getPatient.GENDER == 1)
+            {
                 getPatient.Sex = 1;
+            }
+
             if (PatientId > 0 && getPatient.GENDER == 2)
+            {
                 getPatient.Sex = 2;
+            }
+
             ViewBag.Message = viewMessage;
             return View(getPatient);
         }
+
         public ActionResult ViewAllOutPatient(string viewMessage = "", string filterDate = "")
         {
             var formatDate = "MM/dd/yyyy";
@@ -96,12 +103,16 @@ namespace LabManagement.System.Controllers
             var result = getAll.OrderByDescending(x => x.CREATEDATE.Value).ToList();
             return View(result);
         }
+
         [HttpPost]
         public ActionResult EditOutPatient(lmsOutPatientMaster objPatient)
         {
             objPatient.DISEASEID = objPatient.SelectedDisease;
             if (objPatient.Sex == 1 || objPatient.Sex == 2)
+            {
                 objPatient.GENDER = objPatient.Sex;
+            }
+
             objPatient.CREATEDATE = DateTime.Now;
             objPatient.DOB = Request["DOB"] == null ? DateTime.Now : Request["DOB"].ToLmsSystemDate();
             objPatient.CONSULTINFEE = Convert.ToDouble(Request["CONSULTINFEE"]);
@@ -110,11 +121,13 @@ namespace LabManagement.System.Controllers
             var savePatientDetails = _objIPatient.SaveOutPatient(objPatient);
             return RedirectToAction("ViewOutPatient", new { PatientId = savePatientDetails, viewMessage = "Patient Details Saved Successfully" });
         }
+
         public ActionResult DeleteOutPatient(int PatientId)
         {
             var deletPatient = _objIPatient.DeleteOutPatient(PatientId);
             return RedirectToAction("ViewAllOutPatient", new { viewMessage = "Patient Detail Deleted Successfully" });
         }
+
         public ActionResult ViewOutPatientDetail(string PatientId, string opMasterId = "0", string viewMessage = "")
         {
             ViewBag.OpMasterId = opMasterId;
@@ -122,6 +135,7 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getPatient);
         }
+
         public ActionResult ViewAllOutPatientDetail(int outPatientId, string viewMessage = "")
         {
             var getAll = _objIPatient.GetAllOutPatientDetails(outPatientId);
@@ -130,6 +144,7 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditOutPatientDetail(lmsOutPatientDetail objPatient)
         {
@@ -139,12 +154,11 @@ namespace LabManagement.System.Controllers
             var savePatientDetails = _objIPatient.SaveOutPatientDetail(objPatient);
             return RedirectToAction("ViewAllOutPatientDetail", new { outPatientId = hiddenMasterId, viewMessage = "Patient Details Saved Successfully" });
         }
+
         public ActionResult DeleteOutPatientDetail(int PatientId)
         {
             var deletPatient = _objIPatient.DeleteOutPatientDetail(PatientId);
             return RedirectToAction("ViewAllOutPatientDetail", new { viewMessage = "Patient Detail Deleted Successfully" });
         }
-
-
     }
 }

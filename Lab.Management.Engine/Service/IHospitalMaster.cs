@@ -2,7 +2,7 @@
 using Lab.Management.Entities;
 using System.Collections.Generic;
 
-namespace Lab.Management.Engine
+namespace Lab.Management.Engine.Service
 {
     public interface IHospitalMaster
     {

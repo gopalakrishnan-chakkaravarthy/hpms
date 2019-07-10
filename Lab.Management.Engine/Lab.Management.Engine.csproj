@@ -59,19 +59,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminOperations.cs" />
-    <Compile Include="HospitalMaster.cs" />
-    <Compile Include="IHospitalMaster.cs" />
-    <Compile Include="IInvoice.cs" />
-    <Compile Include="Invoice.cs" />
-    <Compile Include="IPatient.cs" />
+    <Compile Include="Infrastructure\AdminOperations.cs" />
+    <Compile Include="Infrastructure\HospitalMaster.cs" />
+    <Compile Include="Service\IHospitalMaster.cs" />
+    <Compile Include="Service\IInvoice.cs" />
+    <Compile Include="Infrastructure\Invoice.cs" />
+    <Compile Include="Service\IPatient.cs" />
     <Compile Include="Models\AdminDashboard.cs" />
-    <Compile Include="Patient.cs" />
+    <Compile Include="Infrastructure\Patient.cs" />
     <Compile Include="StructureMapContainer\DependencyResolver.cs" />
-    <Compile Include="IAdminOperations.cs" />
+    <Compile Include="Service\IAdminOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StructureMapContainer\Ioc.cs" />
-    <Compile Include="Utils\AuditExtensions.cs" />
     <Compile Include="Utils\DownLoadFileInformation .cs" />
     <Compile Include="Utils\ExpressionExtensions.cs" />
     <Compile Include="Utils\ObjectContextExtensions.cs" />
@@ -90,9 +89,6 @@
       <Project>{2dcf0b77-f02b-4e8a-91aa-6b20bc65e002}</Project>
       <Name>Lab.Management.Logger</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

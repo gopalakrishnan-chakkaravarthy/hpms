@@ -18,8 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Management.Entities", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Management.Common", "Lab.Management.Common\Lab.Management.Common.csproj", "{85048312-1E21-4D37-8CD0-0D4AEF03E4A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Management.AdoManager", "Lab.Management.AdoManager\Lab.Management.AdoManager.csproj", "{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Management.Utils", "Lab.Management.Utils\Lab.Management.Utils.csproj", "{A93557C1-CD5A-4579-ACBA-8C8F079356EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabManagement.System", "LabManagement.System\LabManagement.System.csproj", "{56D3A207-1737-4A0F-89AB-201BE7AD4176}"
@@ -64,14 +62,6 @@ Global
 		{85048312-1E21-4D37-8CD0-0D4AEF03E4A3}.ShyamClini|Any CPU.Build.0 = ShyamClini|Any CPU
 		{85048312-1E21-4D37-8CD0-0D4AEF03E4A3}.VinayagPolyClinic|Any CPU.ActiveCfg = VinayagPolyClinic|Any CPU
 		{85048312-1E21-4D37-8CD0-0D4AEF03E4A3}.VinayagPolyClinic|Any CPU.Build.0 = VinayagPolyClinic|Any CPU
-		{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}.ShyamClini|Any CPU.ActiveCfg = ShyamClini|Any CPU
-		{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}.ShyamClini|Any CPU.Build.0 = ShyamClini|Any CPU
-		{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}.VinayagPolyClinic|Any CPU.ActiveCfg = VinayagPolyClinic|Any CPU
-		{46AD7E27-6CEB-4090-BFAE-2028FF37E9F6}.VinayagPolyClinic|Any CPU.Build.0 = VinayagPolyClinic|Any CPU
 		{A93557C1-CD5A-4579-ACBA-8C8F079356EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A93557C1-CD5A-4579-ACBA-8C8F079356EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A93557C1-CD5A-4579-ACBA-8C8F079356EB}.Release|Any CPU.ActiveCfg = Release|Any CPU

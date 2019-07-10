@@ -1,8 +1,4 @@
-﻿using Lab.Management.Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Lab.Management.Engine.Service;
 using System.Web.Mvc;
 
 namespace LabManagement.System.Controllers
@@ -12,16 +8,16 @@ namespace LabManagement.System.Controllers
         //
         // GET: /AdminDashboard/
         private readonly IAdminOperations _objIAdminOperations;
+
         public AdminDashboardController(IAdminOperations objIAdminOperations)
         {
             _objIAdminOperations = objIAdminOperations;
         }
+
         public ActionResult Index(string filterDate = "")
         {
-            
             var resultModel = _objIAdminOperations.GetAdminDashboardInfo();
             return View(resultModel);
         }
-
     }
 }

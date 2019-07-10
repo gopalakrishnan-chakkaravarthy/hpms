@@ -1,12 +1,9 @@
-﻿using Lab.Management.Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using Lab.Management.Common;
+using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
-using Lab.Management.Common;
-using LabManagement.System.Common;
+using System;
+using System.Web.Mvc;
+
 namespace LabManagement.System.Controllers
 {
     public class AdminController : BaseController
@@ -16,18 +13,21 @@ namespace LabManagement.System.Controllers
         {
             _objIAdminOperations = objIAdminOperations;
         }
+
         public ActionResult ViewCity(int cityId, string viewMessage = "")
         {
             var getCity = _objIAdminOperations.GetCityDetailsById(cityId);
             ViewBag.Message = viewMessage;
             return View(getCity);
         }
+
         public ActionResult ViewAllCity(string viewMessage = "")
         {
             var getAll = _objIAdminOperations.GetAllCity();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditCity(lmsCityMaster objcityMaster)
         {
@@ -48,12 +48,14 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getState);
         }
+
         public ActionResult ViewAllState(string viewMessage = "")
         {
             var getAll = _objIAdminOperations.GetAllState();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditState(lmsStateMaster objStateMaster)
         {
@@ -67,18 +69,21 @@ namespace LabManagement.System.Controllers
             var deletState = _objIAdminOperations.DeleteState(StateId);
             return RedirectToAction("ViewAllState", new { viewMessage = "State Detail Deleted Successfully" });
         }
+
         public ActionResult ViewRole(int RoleId, string viewMessage = "")
         {
             var getRole = _objIAdminOperations.GetRoleDetailsById(RoleId);
             ViewBag.Message = viewMessage;
             return View(getRole);
         }
+
         public ActionResult ViewAllRole(string viewMessage = "")
         {
             var getAll = _objIAdminOperations.GetAllRole();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditRole(lmsRoleMaster objRoleMaster)
         {
@@ -92,6 +97,7 @@ namespace LabManagement.System.Controllers
             var deletRole = _objIAdminOperations.DeleteRole(RoleId);
             return RedirectToAction("ViewAllRole", new { viewMessage = "Role Detail Deleted Successfully" });
         }
+
         public ActionResult ViewHospital(int HospitalId, string viewMessage = "")
         {
             var getHospital = _objIAdminOperations.GetHospitalDetailsById(HospitalId);
@@ -102,12 +108,14 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getHospital);
         }
+
         public ActionResult ViewAllHospital(string viewMessage = "")
         {
             var getAll = _objIAdminOperations.GetAllHospital();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditHospital(lmsHospitalMaster objHospitalMaster)
         {
@@ -125,6 +133,7 @@ namespace LabManagement.System.Controllers
             var deletHospital = _objIAdminOperations.DeleteHospital(HospitalId);
             return RedirectToAction("ViewAllHospital", new { viewMessage = "Hospital Detail Deleted Successfully" });
         }
+
         public ActionResult ViewUser(int UserId, string viewMessage = "")
         {
             var cityList = _objIAdminOperations.GetAllCity();
@@ -144,16 +153,17 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getUser);
         }
+
         public ActionResult ViewAllUser(string viewMessage = "")
         {
             var getAll = _objIAdminOperations.GetAllUsers();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditUser(lmsLoginRegistration objUserMaster)
         {
-
             objUserMaster.CITYID = objUserMaster.SelectedCity;
             objUserMaster.STATEID = objUserMaster.SelectedState;
             objUserMaster.ROLEID = objUserMaster.SelectedRole;
@@ -173,12 +183,14 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getDisease);
         }
+
         public ActionResult ViewAllDisease(string viewMessage = "")
         {
             var getAll = _objIAdminOperations.GetAllDiseases();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         public ActionResult EditDisease(lmsDiseaseMaster objDiseaseMaster)
         {
@@ -192,6 +204,7 @@ namespace LabManagement.System.Controllers
             var deletDisease = _objIAdminOperations.DeleteDisease(DiseaseId);
             return RedirectToAction("ViewAllDisease", new { viewMessage = "Disease Detail Deleted Successfully" });
         }
+
         public ActionResult ViewTemplate(int templateId, string viewMessage = "")
         {
             var getTemplate = _objIAdminOperations.GetTemplateDetailsById(templateId);
@@ -199,12 +212,14 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getTemplate);
         }
+
         public ActionResult ViewAllTemplate(string viewMessage = "")
         {
             var getAll = _objIAdminOperations.GetAllTemplate();
             ViewBag.Message = viewMessage;
             return View(getAll);
         }
+
         [HttpPost]
         [AllowAnonymous]
         //[AllowHtmlAttribute]
@@ -212,7 +227,6 @@ namespace LabManagement.System.Controllers
         {
             var saveCityDetails = _objIAdminOperations.SaveTemplate(objTemplateModel);
             return Json(saveCityDetails, JsonRequestBehavior.AllowGet);
-
         }
 
         public ActionResult DeleteTemplate(int templateId)
@@ -220,6 +234,7 @@ namespace LabManagement.System.Controllers
             var deletCity = _objIAdminOperations.DeleteTemplate(templateId);
             return RedirectToAction("ViewAllTemplate", new { viewMessage = "Template Detail Deleted Successfully" });
         }
+
         public ActionResult SaveDataArchival()
         {
             var selectedOption = Request["sltOption"];
@@ -229,10 +244,10 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = "Data Archived successfully";
             return View("DataArchival");
         }
+
         public ActionResult DataArchival()
         {
             return View();
         }
-
     }
 }

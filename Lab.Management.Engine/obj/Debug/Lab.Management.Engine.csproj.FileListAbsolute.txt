@@ -46,7 +46,6 @@ E:\hpms-master\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.csproj.Core
 E:\hpms-master\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.dll
 E:\hpms-master\Lab.Management.Engine\obj\Debug\Lab.Management.Engine.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Debug\Lab.Management.Engine.dll.config
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Debug\Lab.Management.Engine.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Debug\Lab.Management.Engine.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Debug\AutoMapper.dll

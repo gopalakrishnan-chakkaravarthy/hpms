@@ -130,7 +130,6 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\Lab.Mana
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\log4net.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\Lab.Management.Common.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\Lab.Management.Engine.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\Lab.Management.Engine.dll.config
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\Lab.Management.Entities.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\Lab.Management.Entities.dll.config
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\EntityFramework.xml
