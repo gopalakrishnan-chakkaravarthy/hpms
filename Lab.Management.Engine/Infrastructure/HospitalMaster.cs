@@ -27,8 +27,10 @@ namespace Lab.Management.Engine.Infrastructure
             {
                 if (DrugId == 0)
                 {
-                    var newDrug = new lmsDrug();
-                    newDrug.ISEXPIRED = false;
+                    var newDrug = new lmsDrug
+                    {
+                        ISEXPIRED = false
+                    };
                     return newDrug;
                 }
                 var resultDetails = _objLabManagementEntities.lmsDrugs.FirstOrDefault(x => x.DRUGID == DrugId);
@@ -65,13 +67,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsDrugs.Attach(objDrugMaster);
                     _objLabManagementEntities.Entry(objDrugMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objDrugMaster.DRUGID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsDrugs.Add(objDrugMaster);
-                }
+                _objLabManagementEntities.lmsDrugs.Add(objDrugMaster);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsDrugs.AsEnumerable().LastOrDefault().DRUGID;
+                resultId = _objLabManagementEntities.lmsDrugs.LastOrDefault().DRUGID;
             }
             catch (Exception ex)
             {
@@ -141,13 +142,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsMedicalTests.Attach(objMedicalTestMaster);
                     _objLabManagementEntities.Entry(objMedicalTestMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objMedicalTestMaster.TESTID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsMedicalTests.Add(objMedicalTestMaster);
-                }
+                _objLabManagementEntities.lmsMedicalTests.Add(objMedicalTestMaster);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsMedicalTests.AsEnumerable().LastOrDefault().TESTID;
+                resultId = _objLabManagementEntities.lmsMedicalTests.LastOrDefault().TESTID;
             }
             catch (Exception ex)
             {
@@ -216,13 +216,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsScans.Attach(objScanMaster);
                     _objLabManagementEntities.Entry(objScanMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objScanMaster.SCANID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsScans.Add(objScanMaster);
-                }
+                _objLabManagementEntities.lmsScans.Add(objScanMaster);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsScans.AsEnumerable().LastOrDefault().SCANID;
+                resultId = _objLabManagementEntities.lmsScans.LastOrDefault().SCANID;
             }
             catch (Exception ex)
             {
@@ -294,11 +293,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsVendors.Attach(objVendorMaster);
                     _objLabManagementEntities.Entry(objVendorMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objVendorMaster.VENDORID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsVendors.Add(objVendorMaster);
-                }
+                _objLabManagementEntities.lmsVendors.Add(objVendorMaster);
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsVendors.AsEnumerable().LastOrDefault().VENDORID;
             }
@@ -372,13 +370,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsInventories.Attach(objInventoryMaster);
                     _objLabManagementEntities.Entry(objInventoryMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objInventoryMaster.INVENTORYID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsInventories.Add(objInventoryMaster);
-                }
+                _objLabManagementEntities.lmsInventories.Add(objInventoryMaster);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsInventories.AsEnumerable().LastOrDefault().INVENTORYID;
+                resultId = _objLabManagementEntities.lmsInventories.LastOrDefault().INVENTORYID;
             }
             catch (Exception ex)
             {
@@ -450,11 +447,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsBeds.Attach(objBedMaster);
                     _objLabManagementEntities.Entry(objBedMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objBedMaster.BEDID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsBeds.Add(objBedMaster);
-                }
+                _objLabManagementEntities.lmsBeds.Add(objBedMaster);
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsBeds.AsEnumerable().LastOrDefault().BEDID;
             }
@@ -528,11 +524,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsWards.Attach(objWardMaster);
                     _objLabManagementEntities.Entry(objWardMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objWardMaster.WARDID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsWards.Add(objWardMaster);
-                }
+                _objLabManagementEntities.lmsWards.Add(objWardMaster);
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsWards.AsEnumerable().LastOrDefault().WARDID;
             }
@@ -644,11 +639,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsMedicalTestFors.Attach(objSaveData);
                     _objLabManagementEntities.Entry(objSaveData).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objSaveData.TESTFORID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsMedicalTestFors.Add(objSaveData);
-                }
+                _objLabManagementEntities.lmsMedicalTestFors.Add(objSaveData);
                 _objLabManagementEntities.SaveChanges();
                 var result = _objLabManagementEntities.lmsMedicalTestFors.Where(x => x.TESTFOR == objSaveData.TESTFOR);
                 resultId = result.Any() ? result.Single().TESTFORID : 0;
@@ -722,11 +716,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsMedicalTestGroups.Attach(objSaveData);
                     _objLabManagementEntities.Entry(objSaveData).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objSaveData.GROUPID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsMedicalTestGroups.Add(objSaveData);
-                }
+                _objLabManagementEntities.lmsMedicalTestGroups.Add(objSaveData);
                 _objLabManagementEntities.SaveChanges();
                 var result = _objLabManagementEntities.lmsMedicalTestGroups.Where(x => x.GROUPNAME == objSaveData.GROUPNAME);
                 resultId = result.Any() ? result.Single().GROUPID : 0;

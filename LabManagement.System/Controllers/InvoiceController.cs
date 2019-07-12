@@ -160,13 +160,6 @@ namespace LabManagement.System.Controllers
         {
             ViewBag.Message = viewMessage;
             var getAll = _objIInvoice.GetAllLaboratoryBilling(filterDate);
-            var userDetail = UserInfo;
-            //if (userDetail.ROLENAME.ToUpper() != "ADMIN")
-            //{
-            //    getAll = getAll.Where(usr => usr.BILLBY == userDetail.LOGINID.ToString()).ToList();
-
-            //}
-
             if (getAll != null && getAll.Any())
             {
                 ViewBag.GrandTotal = getAll.Sum(x => Math.Round(x.BILLAMOUNT.Value, 2));

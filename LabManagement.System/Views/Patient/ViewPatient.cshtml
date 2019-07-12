@@ -7,7 +7,6 @@
 
 }
 
-
 @if (!string.IsNullOrEmpty(message))
 {
     <div class="row">
@@ -18,13 +17,20 @@
         </div>
     </div>
 }
-
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
     @using (Html.BeginForm("EditPatient", "Patient", new { @id = "IdEdit", @name = "EditForm" }))
     {
+        if (!string.IsNullOrEmpty(Model.QrCodeBase64))
+        {
+            <div class="row">
+                <div class="col-sm-8 col-md-8 col-lg-8 pull-right">
+                    <img alt="qrCode" id="imgQrCode" src="@Model.QrCodeBase64"/>
+                </div>
+            </div>
+        }
         <div class="row">
             <h4 class="text-success"><i class="glyphicon glyphicon-hand-right">  Patient Details</i></h4>
-            <hr />
+            <hr/>
         </div>
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
@@ -41,7 +47,6 @@
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 <div class="form-group">
-
                     <div class="radio">
                         <label>@Html.RadioButtonFor(x => x.Sex, 1, new { required = "required" })Male</label>
                     </div>
@@ -49,8 +54,6 @@
                         <label>@Html.RadioButtonFor(x => x.Sex, 2, new { required = "required" })FeMale</label>
                     </div>
                 </div>
-
-
             </div>
         </div>
         <div class="row">
@@ -78,7 +81,6 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Contact No
@@ -100,10 +102,10 @@
                 Consulting Doctor
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.DOCTORTOCONSULT, new {@Id="DOCTORTOCONSULT", @class = "form-control", @required = "required" })
+                @Html.TextBoxFor(m => m.DOCTORTOCONSULT, new { @Id = "DOCTORTOCONSULT", @class = "form-control", @required = "required" })
             </div>
         </div>
-          <div class="row">
+        <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Consulting Fee
             </div>
@@ -117,7 +119,6 @@
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.DropDownListFor(x => x.SelectedDisease, Model.DiseaseDdl, new { @class = "form-control selectpicker", @required = "required" })
-
             </div>
         </div>
         <div class="row">
@@ -128,10 +129,16 @@
                 @Html.TextBoxFor(m => m.REGISTEREDATE, new { @Id = "REGISTEREDATE", @class = "form-control", @required = "required" })
             </div>
         </div>
-      
-        <hr />
+        @*<div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    Qr Code Text
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    @Html.TextBoxFor(m => m.QrCodeContent, new { @Id = "QrCodeContent", @class = "form-control", @required = "required" })
+                </div>
+            </div>*@
+        <hr/>
         <div class="row">
-
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <a href="@Url.Action("ViewAllPatient", "Patient")" class="btn btn-warning">
                     <i class="glyphicon glyphicon-arrow-left">
@@ -154,21 +161,34 @@
             </div>
         </div>
         <div class="row">
-
-            <hr />
+            <hr/>
         </div>
     }
 </div>
 @section Scripts {
-
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#DOB').datepicker({ format: 'dd/mm/yyyy'  });
-            $('#REGISTEREDATE').datepicker({ format: 'dd/mm/yyyy'  });
-            $('#DISCHARGEDATE').datepicker({ format: 'dd/mm/yyyy'  });
+            $('#DOB').datepicker({ format: 'dd/mm/yyyy' });
+            $('#REGISTEREDATE').datepicker({ format: 'dd/mm/yyyy' });
+            $('#DISCHARGEDATE').datepicker({ format: 'dd/mm/yyyy' });
 
+            $('#btnGenerate').click(function () {
+                var qrCodetxt = $('#QRCodeText').val();
+               $.ajax({
+                    url: '@Url.Action("GenerateQrCode", "Admin")',
+                    type: "POST",
+                   data: { "qRCodeText": qrCodetxt, "qRCodeImagePath": "" },
+                   success: function (ImageURL) {
+
+                       $('#imgQrCode').attr('src', ImageURL);
+
+                    },
+                    error: function (result) {
+                        alert("unable to generate Qr Code" + result);
+                    }
+                });
+            });
         });
-
     </script>
 }

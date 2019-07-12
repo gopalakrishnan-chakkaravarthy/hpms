@@ -78,6 +78,10 @@ public partial class lmsPatientRegistration
 
     public Nullable<int> WARDID { get; set; }
 
+    public string QrCodeContent { get; set; }
+
+    public string QrCodeBase64 { get; set; }
+
 
 
     public virtual ICollection<lmsDischargeSummary> lmsDischargeSummaries { get; set; }

@@ -63,13 +63,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsMedicalBillings.Attach(objlmsMedicalBillings);
                     _objLabManagementEntities.Entry(objlmsMedicalBillings).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsMedicalBillings.BILLID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsMedicalBillings.Add(objlmsMedicalBillings);
-                }
+                _objLabManagementEntities.lmsMedicalBillings.Add(objlmsMedicalBillings);
                 _objLabManagementEntities.SaveChanges();
-                var result = _objLabManagementEntities.lmsMedicalBillings.AsEnumerable().LastOrDefault();
+                var result = _objLabManagementEntities.lmsMedicalBillings.LastOrDefault();
                 resultId = result.BILLID;
             }
             catch (Exception ex)
@@ -152,11 +151,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsLaboratoryBillings.Attach(objlmsLaboratoryBillings);
                     _objLabManagementEntities.Entry(objlmsLaboratoryBillings).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsLaboratoryBillings.BILLID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsLaboratoryBillings.Add(objlmsLaboratoryBillings);
-                }
+                _objLabManagementEntities.lmsLaboratoryBillings.Add(objlmsLaboratoryBillings);
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsLaboratoryBillings.AsEnumerable().LastOrDefault().BILLID;
             }
@@ -229,12 +227,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsPatientDischargeSummaries.Attach(objlmsPatientDischargeSummary);
                     _objLabManagementEntities.Entry(objlmsPatientDischargeSummary).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsPatientDischargeSummary.SUMMARYID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsPatientDischargeSummaries.Add(objlmsPatientDischargeSummary);
-                }
-
+                _objLabManagementEntities.lmsPatientDischargeSummaries.Add(objlmsPatientDischargeSummary);
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsPatientDischargeSummaries.AsEnumerable().LastOrDefault().SUMMARYID;
             }
@@ -305,13 +301,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsUltrSonogramReportOnes.Attach(objlmsUltrSonogramReportOne);
                     _objLabManagementEntities.Entry(objlmsUltrSonogramReportOne).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsUltrSonogramReportOne.REPORTID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsUltrSonogramReportOnes.Add(objlmsUltrSonogramReportOne);
-                }
+                _objLabManagementEntities.lmsUltrSonogramReportOnes.Add(objlmsUltrSonogramReportOne);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsUltrSonogramReportOnes.AsEnumerable().LastOrDefault().REPORTID;
+                resultId = _objLabManagementEntities.lmsUltrSonogramReportOnes.LastOrDefault().REPORTID;
             }
             catch (Exception ex)
             {
@@ -380,11 +375,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsUltrSonogramReportTwoes.Attach(objlmsUltrSonogramReportTwo);
                     _objLabManagementEntities.Entry(objlmsUltrSonogramReportTwo).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsUltrSonogramReportTwo.REPORTID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsUltrSonogramReportTwoes.Add(objlmsUltrSonogramReportTwo);
-                }
+                _objLabManagementEntities.lmsUltrSonogramReportTwoes.Add(objlmsUltrSonogramReportTwo);
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsUltrSonogramReportTwoes.AsEnumerable().LastOrDefault().REPORTID;
             }
@@ -455,11 +449,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsInvestigationReports.Attach(objlmsInvestigationReport);
                     _objLabManagementEntities.Entry(objlmsInvestigationReport).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsInvestigationReport.REPORTID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsInvestigationReports.Add(objlmsInvestigationReport);
-                }
+                _objLabManagementEntities.lmsInvestigationReports.Add(objlmsInvestigationReport);
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsInvestigationReports.AsEnumerable().LastOrDefault().REPORTID;
             }
@@ -530,13 +523,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsDischargeBills.Attach(objlmsDischargeBill);
                     _objLabManagementEntities.Entry(objlmsDischargeBill).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsDischargeBill.DBILLID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsDischargeBills.Add(objlmsDischargeBill);
-                }
+                _objLabManagementEntities.lmsDischargeBills.Add(objlmsDischargeBill);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsDischargeBills.AsEnumerable().LastOrDefault().DBILLID;
+                resultId = _objLabManagementEntities.lmsDischargeBills.LastOrDefault().DBILLID;
             }
             catch (Exception ex)
             {
@@ -621,14 +613,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsGeneralDischargeSummaries.Attach(objlmsPatientDischargeSummary);
                     _objLabManagementEntities.Entry(objlmsPatientDischargeSummary).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsPatientDischargeSummary.SUMMARYID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsGeneralDischargeSummaries.Add(objlmsPatientDischargeSummary);
-                }
-
+                _objLabManagementEntities.lmsGeneralDischargeSummaries.Add(objlmsPatientDischargeSummary);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsGeneralDischargeSummaries.AsEnumerable().LastOrDefault().SUMMARYID;
+                resultId = _objLabManagementEntities.lmsGeneralDischargeSummaries.LastOrDefault().SUMMARYID;
             }
             catch (Exception ex)
             {
@@ -697,14 +687,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsGynacDischargeSummaries.Attach(objlmsPatientDischargeSummary);
                     _objLabManagementEntities.Entry(objlmsPatientDischargeSummary).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsPatientDischargeSummary.SUMMARYID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsGynacDischargeSummaries.Add(objlmsPatientDischargeSummary);
-                }
-
+                _objLabManagementEntities.lmsGynacDischargeSummaries.Add(objlmsPatientDischargeSummary);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsGynacDischargeSummaries.AsEnumerable().LastOrDefault().SUMMARYID;
+                resultId = _objLabManagementEntities.lmsGynacDischargeSummaries.LastOrDefault().SUMMARYID;
             }
             catch (Exception ex)
             {

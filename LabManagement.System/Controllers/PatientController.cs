@@ -1,6 +1,7 @@
 ﻿using Lab.Management.Common;
 using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
+using Lab.Management.Utils.QrCode;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -47,6 +48,7 @@ namespace LabManagement.System.Controllers
         public ActionResult EditPatient(lmsPatientRegistration objPatientMaster)
         {
             var addmissionDate = Request["REGISTEREDATE"] == null ? DateTime.Now : Request["REGISTEREDATE"].ToLmsSystemDate();
+            var qrCodeText = $"{ objPatientMaster.PATIENTNAME}-{ objPatientMaster.CONTACT}";
             objPatientMaster.DISEASEID = objPatientMaster.SelectedDisease;
             objPatientMaster.PATIENTTYPE = "IN";
             objPatientMaster.GENDER = objPatientMaster.Sex == 1 ? "Male" : objPatientMaster.Sex == 2 ? "Female" : null;
@@ -55,7 +57,8 @@ namespace LabManagement.System.Controllers
             objPatientMaster.DOCTORTOCONSULT = Convert.ToString(Request["DOCTORTOCONSULT"]);
             objPatientMaster.CONSULTINGFEE = string.IsNullOrEmpty(Convert.ToString(Request["CONSULTINGFEE"])) ? 0 : Convert.ToDouble(Convert.ToString(Request["CONSULTINGFEE"]));
             objPatientMaster.CREATEDDATE = addmissionDate;
-
+            objPatientMaster.QrCodeContent = qrCodeText;
+            objPatientMaster.QrCodeBase64 = qrCodeText.GenerateQrCode();
             var savePatientDetails = _objIPatient.SavePatient(objPatientMaster);
 
             return RedirectToAction("ViewPatient", new { PatientId = savePatientDetails, viewMessage = "Patient Details Saved Successfully" });
@@ -112,12 +115,14 @@ namespace LabManagement.System.Controllers
             {
                 objPatient.GENDER = objPatient.Sex;
             }
-
+            var qrCodeText = $"{ objPatient.PATIENTNAME}-{ objPatient.CONTACT}";
             objPatient.CREATEDATE = DateTime.Now;
             objPatient.DOB = Request["DOB"] == null ? DateTime.Now : Request["DOB"].ToLmsSystemDate();
             objPatient.CONSULTINFEE = Convert.ToDouble(Request["CONSULTINFEE"]);
             objPatient.CONSULTINGDOCTOR = Convert.ToString(Request["CONSULTINGDOCTOR"]);
             objPatient.DISEASEID = objPatient.SelectedDisease;
+            objPatient.QrCodeContent = qrCodeText;
+            objPatient.QrCodeBase64 = qrCodeText.GenerateQrCode();
             var savePatientDetails = _objIPatient.SaveOutPatient(objPatient);
             return RedirectToAction("ViewOutPatient", new { PatientId = savePatientDetails, viewMessage = "Patient Details Saved Successfully" });
         }

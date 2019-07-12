@@ -62,14 +62,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsPatientRegistrations.Attach(objlmsPatientRegistrations);
                     _objLabManagementEntities.Entry(objlmsPatientRegistrations).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsPatientRegistrations.PATIENTID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsPatientRegistrations.Add(objlmsPatientRegistrations);
-                }
-
+                _objLabManagementEntities.lmsPatientRegistrations.Add(objlmsPatientRegistrations);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsPatientRegistrations.AsEnumerable().LastOrDefault().PATIENTID;
+                resultId = _objLabManagementEntities.lmsPatientRegistrations.LastOrDefault().PATIENTID;
             }
             catch (Exception ex)
             {
@@ -139,14 +137,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsOutPatientMasters.Attach(objlmsPatientRegistrations);
                     _objLabManagementEntities.Entry(objlmsPatientRegistrations).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsPatientRegistrations.OPMASTERID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsOutPatientMasters.Add(objlmsPatientRegistrations);
-                }
-
+                _objLabManagementEntities.lmsOutPatientMasters.Add(objlmsPatientRegistrations);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsOutPatientMasters.AsEnumerable().LastOrDefault().OPMASTERID;
+                resultId = _objLabManagementEntities.lmsOutPatientMasters.LastOrDefault().OPMASTERID;
             }
             catch (Exception ex)
             {
@@ -221,14 +217,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsOutPatientDetails.Attach(objlmsPatientRegistrations);
                     _objLabManagementEntities.Entry(objlmsPatientRegistrations).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsPatientRegistrations.OPDID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsOutPatientDetails.Add(objlmsPatientRegistrations);
-                }
-
+                _objLabManagementEntities.lmsOutPatientDetails.Add(objlmsPatientRegistrations);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsOutPatientDetails.AsEnumerable().LastOrDefault().OPDID;
+                resultId = _objLabManagementEntities.lmsOutPatientDetails.LastOrDefault().OPDID;
             }
             catch (Exception ex)
             {

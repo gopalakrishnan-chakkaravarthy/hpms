@@ -82,13 +82,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsCityMasters.Attach(objCityMaster);
                     _objLabManagementEntities.Entry(objCityMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objCityMaster.CITYID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsCityMasters.Add(objCityMaster);
-                }
+                _objLabManagementEntities.lmsCityMasters.Add(objCityMaster);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsCityMasters.AsEnumerable().LastOrDefault().CITYID;
+                resultId = _objLabManagementEntities.lmsCityMasters.LastOrDefault().CITYID;
             }
             catch (Exception ex)
             {
@@ -156,13 +155,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsStateMasters.Attach(objStateMaster);
                     _objLabManagementEntities.Entry(objStateMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objStateMaster.STATEID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsStateMasters.Add(objStateMaster);
-                }
+                _objLabManagementEntities.lmsStateMasters.Add(objStateMaster);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsStateMasters.AsEnumerable().LastOrDefault().STATEID;
+                resultId = _objLabManagementEntities.lmsStateMasters.LastOrDefault().STATEID;
             }
             catch (Exception ex)
             {
@@ -229,13 +227,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsRoleMasters.Attach(objRoleMaster);
                     _objLabManagementEntities.Entry(objRoleMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objRoleMaster.ROLEID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsRoleMasters.Add(objRoleMaster);
-                }
+                _objLabManagementEntities.lmsRoleMasters.Add(objRoleMaster);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsRoleMasters.AsEnumerable().LastOrDefault().ROLEID;
+                resultId = _objLabManagementEntities.lmsRoleMasters.LastOrDefault().ROLEID;
             }
             catch (Exception ex)
             {
@@ -307,13 +304,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsHospitalMasters.Attach(objHospitalMaster);
                     _objLabManagementEntities.Entry(objHospitalMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objHospitalMaster.HOSPITALID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsHospitalMasters.Add(objHospitalMaster);
-                }
+                _objLabManagementEntities.lmsHospitalMasters.Add(objHospitalMaster);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsHospitalMasters.AsEnumerable().LastOrDefault().HOSPITALID;
+                resultId = _objLabManagementEntities.lmsHospitalMasters.LastOrDefault().HOSPITALID;
             }
             catch (Exception ex)
             {
@@ -390,13 +386,12 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsLoginRegistrations.Attach(objlmsLoginRegistration);
                     _objLabManagementEntities.Entry(objlmsLoginRegistration).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsLoginRegistration.LOGINID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsLoginRegistrations.Add(objlmsLoginRegistration);
-                }
+                _objLabManagementEntities.lmsLoginRegistrations.Add(objlmsLoginRegistration);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsLoginRegistrations.AsEnumerable().LastOrDefault().LOGINID;
+                resultId = _objLabManagementEntities.lmsLoginRegistrations.LastOrDefault().LOGINID;
             }
             catch (Exception ex)
             {
@@ -465,11 +460,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsDiseaseMasters.Attach(objlmsDiseaseMaster);
                     _objLabManagementEntities.Entry(objlmsDiseaseMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objlmsDiseaseMaster.DISEASEID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsDiseaseMasters.Add(objlmsDiseaseMaster);
-                }
+                _objLabManagementEntities.lmsDiseaseMasters.Add(objlmsDiseaseMaster);
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsDiseaseMasters.AsEnumerable().LastOrDefault().DISEASEID;
             }
@@ -540,11 +534,10 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     _objLabManagementEntities.lmsTemplateMasters.Attach(objTemplateMaster);
                     _objLabManagementEntities.Entry(objTemplateMaster).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objTemplateMaster.TEMPLATEID;
                 }
-                else
-                {
-                    _objLabManagementEntities.lmsTemplateMasters.Add(objTemplateMaster);
-                }
+                _objLabManagementEntities.lmsTemplateMasters.Add(objTemplateMaster);
                 _objLabManagementEntities.SaveChanges();
                 resultId = _objLabManagementEntities.lmsTemplateMasters.AsEnumerable().LastOrDefault().TEMPLATEID;
             }

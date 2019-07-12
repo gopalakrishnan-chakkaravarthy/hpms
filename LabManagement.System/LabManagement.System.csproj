@@ -50,6 +50,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocation.1.0.0\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -568,6 +572,7 @@
     <Content Include="Content\js\ckeditor\plugins\wsc\README.md" />
     <Content Include="Content\js\ckeditor\README.md" />
     <Content Include="Content\js\ckeditor\skins\moono\readme.md" />
+    <Content Include="log4net.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\hpms.pubxml" />
@@ -696,6 +701,7 @@
     <Content Include="Views\HospitalMaster\ViewAllMedicalTestGroup.cshtml" />
     <Content Include="Views\HospitalMaster\ViewMedicalTestGroup.cshtml" />
     <Content Include="Views\Invoice\GenerateLaboratoryReport.cshtml" />
+    <Content Include="Views\Shared\_QrCodeGenerator.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -704,7 +710,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="QrCodePath\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -720,6 +728,10 @@
     <ProjectReference Include="..\Lab.Management.Entities\Lab.Management.Entities.csproj">
       <Project>{82876623-8a73-42fb-918d-9dd69779047c}</Project>
       <Name>Lab.Management.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab.Management.Utils\Lab.Management.Utils.csproj">
+      <Project>{A93557C1-CD5A-4579-ACBA-8C8F079356EB}</Project>
+      <Name>Lab.Management.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

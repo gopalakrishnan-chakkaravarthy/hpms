@@ -1,5 +1,7 @@
-﻿using System;
-using log4net;
+﻿using log4net;
+using System;
+//[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace Lab.Management.Logger
 {
     public class AppLogger : IAppLogger
@@ -9,10 +11,10 @@ namespace Lab.Management.Logger
         {
             log.InfoFormat("Log Date : {0},Log Message {1}{2}", DateTime.Now, logMessage, Environment.NewLine);
         }
+
         public void LogError(Exception exMessage)
         {
             log.ErrorFormat("Exception Date {0},Exception Message{1}{2}", DateTime.Now, exMessage, Environment.NewLine);
         }
-
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Lab.Management.Common;
 using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
+using Lab.Management.Entities.Model;
+using Lab.Management.Utils.QrCode;
 using System;
 using System.Web.Mvc;
 
@@ -243,6 +245,13 @@ namespace LabManagement.System.Controllers
             _objIAdminOperations.DataArchival(selectedOption, fromDate, toDate);
             ViewBag.Message = "Data Archived successfully";
             return View("DataArchival");
+        }
+
+        [HttpPost]
+        public ActionResult GenerateQrCode(QRCodeModel qRCodeModel)
+        {
+            qRCodeModel.QRCodeImagePath = qRCodeModel.QRCodeText.GenerateQrCode();
+            return Json(qRCodeModel.QRCodeImagePath, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DataArchival()

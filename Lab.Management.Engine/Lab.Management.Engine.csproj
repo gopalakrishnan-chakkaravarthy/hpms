@@ -73,8 +73,6 @@
     <Compile Include="StructureMapContainer\Ioc.cs" />
     <Compile Include="Utils\DownLoadFileInformation .cs" />
     <Compile Include="Utils\ExpressionExtensions.cs" />
-    <Compile Include="Utils\ObjectContextExtensions.cs" />
-    <Compile Include="Utils\ObjectQueryExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lab.Management.Common\Lab.Management.Common.csproj">

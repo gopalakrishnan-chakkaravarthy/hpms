@@ -1,6 +1,7 @@
 ﻿using Lab.Management.Common;
 using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
+using Lab.Management.Utils.QrCode;
 using System;
 using System.IO;
 using System.Linq;
@@ -36,6 +37,9 @@ namespace LabManagement.System.Controllers
         {
             objDrugMaster.MANUFACTUREDATE = Request["MANUFACTUREDATE"] == null ? DateTime.Now : Request["MANUFACTUREDATE"].ToLmsSystemDate();
             objDrugMaster.EXPIRYDATE = Request["EXPIRYDATE"] == null ? DateTime.Now : Request["EXPIRYDATE"].ToLmsSystemDate();
+            var qrCodeData = $"{objDrugMaster.DRUGNAME}-{objDrugMaster.EXPIRYDATE}";
+            objDrugMaster.QrCodeContent = qrCodeData;
+            objDrugMaster.QrCodeBase64 = qrCodeData.GenerateQrCode();
             var saveDrugDetails = _objIHospitalMaster.SaveDrug(objDrugMaster);
             return RedirectToAction("ViewDrug", new { DrugId = saveDrugDetails, viewMessage = "Drug Details Saved Successfully" });
         }

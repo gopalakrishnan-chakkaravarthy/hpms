@@ -50,6 +50,12 @@ public partial class lmsOutPatientMaster
 
     public Nullable<double> CONSULTINFEE { get; set; }
 
+    public string QrCodeContent { get; set; }
+
+    public string QrCodeBase64 { get; set; }
+
+    public string CONTACT { get; set; }
+
 
 
     public virtual lmsDiseaseMaster lmsDiseaseMaster { get; set; }

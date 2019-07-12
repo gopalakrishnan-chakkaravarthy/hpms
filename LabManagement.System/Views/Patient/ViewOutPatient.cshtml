@@ -7,7 +7,6 @@
 
 }
 
-
 @if (!string.IsNullOrEmpty(message))
 {
     <div class="row">
@@ -18,15 +17,21 @@
         </div>
     </div>
 }
-
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
     @using (Html.BeginForm("EditOutPatient", "Patient", new { @id = "IdEdit", @name = "EditForm" }))
     {
         <div class="row">
-
             <h4 class="text-success"><i class="glyphicon glyphicon-hand-right">  Out Patient </i></h4>
-            <hr />
+            <hr/>
         </div>
+        if (!string.IsNullOrEmpty(Model.QrCodeBase64))
+        {
+            <div class="row">
+                <div class="col-sm-8 col-md-8 col-lg-8 pull-right">
+                    <img alt="qrCode" id="imgQrCode" src="@Model.QrCodeBase64"/>
+                </div>
+            </div>
+        }
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Name
@@ -34,6 +39,14 @@
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.TextBoxFor(m => m.PATIENTNAME, new { @class = "form-control", required = "required" })
                 @Html.HiddenFor(x => x.OPMASTERID)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Contact No
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.CONTACT, new { @class = "form-control", required = "required" })
             </div>
         </div>
         <div class="row">
@@ -48,9 +61,7 @@
                     <div class="radio">
                         <label>@Html.RadioButtonFor(x => x.Sex, 2, new { required = "required" })FeMale</label>
                     </div>
-
                 </div>
-
             </div>
         </div>
         <div class="row">
@@ -78,13 +89,12 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Height
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.HEIGHT, new { @class = "form-control"})
+                @Html.TextBoxFor(m => m.HEIGHT, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
@@ -95,7 +105,7 @@
                 @Html.TextBoxFor(m => m.DIAGNOSISFOR, new { @class = "form-control" })
             </div>
         </div>
-    
+
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Disease
@@ -120,9 +130,16 @@
                 @Html.TextBoxFor(x => x.CONSULTINFEE, new { @Id = "CONSULTINFEE", @class = "form-control", required = "required" })
             </div>
         </div>
-        <hr />
+        @*<div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    Qr Code Text
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    @Html.TextBoxFor(m => m.QrCodeContent, new { @Id = "QrCodeContent", @class = "form-control", @required = "required" })
+                </div>
+            </div>*@
+        <hr/>
         <div class="row">
-
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <a href="@Url.Action("ViewAllOutPatient", "Patient")" class="btn btn-warning">
                     <i class="glyphicon glyphicon-arrow-left">
@@ -145,18 +162,15 @@
             </div>
         </div>
         <div class="row">
-
-            <hr />
+            <hr/>
         </div>
     }
 </div>
 @section Scripts {
-
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#DOB').datepicker({ format: 'dd/mm/yyyy'  });
+            $('#DOB').datepicker({ format: 'dd/mm/yyyy' });
         });
-
     </script>
 }

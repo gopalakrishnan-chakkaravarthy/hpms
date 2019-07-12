@@ -41,24 +41,52 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="zxing, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.4\lib\net45\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.4\lib\net45\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmailContracts.cs" />
-    <Compile Include="ILMSExcelDataReader.cs" />
-    <Compile Include="LMSExcelDataReader.cs" />
-    <Compile Include="MailSender.cs" />
+    <Compile Include="Mail\EmailContracts.cs" />
+    <Compile Include="Excel\ILMSExcelDataReader.cs" />
+    <Compile Include="Excel\LMSExcelDataReader.cs" />
+    <Compile Include="Mail\MailSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QrCode\QRCodeReader.cs" />
+    <Compile Include="QrCode\QRCodeScanner.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lab.Management.Common\Lab.Management.Common.csproj">
       <Project>{85048312-1e21-4d37-8cd0-0d4aef03e4a3}</Project>
       <Name>Lab.Management.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lab.Management.Engine\Lab.Management.Engine.csproj">
+      <Project>{ec983676-d714-4237-89f8-dafdd712faf4}</Project>
+      <Name>Lab.Management.Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab.Management.Entities\Lab.Management.Entities.csproj">
+      <Project>{82876623-8A73-42FB-918D-9DD69779047C}</Project>
+      <Name>Lab.Management.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

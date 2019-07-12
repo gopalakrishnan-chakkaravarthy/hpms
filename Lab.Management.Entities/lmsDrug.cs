@@ -52,6 +52,10 @@ public partial class lmsDrug
 
     public string RackNumber { get; set; }
 
+    public string QrCodeContent { get; set; }
+
+    public string QrCodeBase64 { get; set; }
+
 
 
     public virtual ICollection<lmsMedicalBilling> lmsMedicalBillings { get; set; }

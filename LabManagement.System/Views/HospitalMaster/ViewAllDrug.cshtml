@@ -90,13 +90,15 @@
                                                 @if (obj.EXPIRYDATE != null)
                                                 {
                                                     var isExpired = obj.EXPIRYDATE.IsMedicineExpired();
-                                                    if (isExpired == "Valid")
+                                                    var expirydays = obj.EXPIRYDATE.MedicineExpiryDays();
+                                                    if (isExpired == "Expired" || expirydays <= -1)
                                                     {
-                                                        <label style="color:red">@string.Format("Medicine will Expire in {0} Days", @obj.EXPIRYDATE.MedicineExpiryDays())</label>
+                                                        <label class="text-danger">@string.Format("Medicine Expired {0} Days ago on {1}", Math.Abs(expirydays), obj.EXPIRYDATE)</label>
+
                                                     }
                                                     else
                                                     {
-                                                        @isExpired
+                                                        <label class="text-success">@string.Format("Medicine will Expire in {0} Days on {1}", expirydays, obj.EXPIRYDATE)</label>
                                                     }
 
                                                 }

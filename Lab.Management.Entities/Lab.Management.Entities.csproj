@@ -62,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions.cs" />
     <Compile Include="HospitalManagement.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -189,6 +188,7 @@
     <Compile Include="lmsWard.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\QRCodeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="usp_GetDrugDdl_Result.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
@@ -217,8 +217,22 @@
     <Compile Include="usp_ValidateUser_Result.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Utils\AppDropDownList.cs" />
-    <Compile Include="Utils\Partials.cs" />
+    <Compile Include="Partials\AppDropDownList.cs" />
+    <Compile Include="Partials\lmsDischargeBill.cs" />
+    <Compile Include="Partials\lmsDischargeSummary.cs" />
+    <Compile Include="Partials\lmsGeneralDischargeSummary.cs" />
+    <Compile Include="Partials\lmsGynacDischargeSummary.cs" />
+    <Compile Include="Partials\lmsInPatientBilling.cs" />
+    <Compile Include="Partials\lmsInventory.cs" />
+    <Compile Include="Partials\lmsLaboratoryBilling.cs" />
+    <Compile Include="Partials\lmsLoginRegistration.cs" />
+    <Compile Include="Partials\lmsMedicalBilling.cs" />
+    <Compile Include="Partials\lmsMedicalTest.cs" />
+    <Compile Include="Partials\lmsOutPatientMaster.cs" />
+    <Compile Include="Partials\lmsPatientDischargeSummary.cs" />
+    <Compile Include="Partials\lmsPatientRegistration.cs" />
+    <Compile Include="Partials\lmsPatientTemplate.cs" />
+    <Compile Include="Partials\lmsWard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

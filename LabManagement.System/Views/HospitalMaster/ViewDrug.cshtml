@@ -1,12 +1,10 @@
 ﻿@using Lab.Management.Entities;
-
 @model lmsDrug
 @{
     ViewBag.Title = "View Drug";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
 }
-
 
 @if (!string.IsNullOrEmpty(message))
 {
@@ -19,15 +17,21 @@
     </div>
 }
 
-
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
-
     @using (Html.BeginForm("EditDrug", "HospitalMaster", new { @id = "IdEdit", @name = "EditForm" }))
     {
         <div class="row">
             <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Drug Details</h4>
-            <hr />
+            <hr/>
         </div>
+        if (!string.IsNullOrEmpty(Model.QrCodeBase64))
+        {
+            <div class="row">
+                <div class="col-sm-8 col-md-8 col-lg-8 pull-right">
+                    <img alt="qrCode" id="imgQrCode" src="@Model.QrCodeBase64"/>
+                </div>
+            </div>
+        }
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Item Name
@@ -51,7 +55,6 @@
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.TextBoxFor(m => m.BUYINGPRICE, new { @class = "form-control", required = "required" })
-
             </div>
         </div>
         <div class="row">
@@ -60,7 +63,6 @@
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.TextBoxFor(m => m.SELLINGPRICE, new { @class = "form-control", required = "required" })
-
             </div>
         </div>
 
@@ -70,7 +72,6 @@
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.TextBoxFor(m => m.ORDERCOUNT, new { @class = "form-control", required = "required" })
-
             </div>
         </div>
 
@@ -80,7 +81,6 @@
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.TextBoxFor(m => m.MANUFACTUREDATE, new { @id = "MANUFACTUREDATE", @class = "form-control", required = "required" })
-
             </div>
         </div>
         <div class="row">
@@ -89,11 +89,18 @@
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.TextBoxFor(m => m.EXPIRYDATE, new { @id = "EXPIRYDATE", @class = "form-control", required = "required" })
-
             </div>
         </div>
+        @*<div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    Qr Code Text
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    @Html.TextBoxFor(m => m.QrCodeContent, new { @Id = "QrCodeContent", @class = "form-control", @required = "required" })
+                </div>
+            </div>*@
 
-        <hr />
+        <hr/>
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <a href="@Url.Action("ViewAllDrug", "HospitalMaster")" class="btn btn-warning">
@@ -116,19 +123,16 @@
             </div>
         </div>
         <div class="row">
-
-            <hr />
+            <hr/>
         </div>
     }
 </div>
 @section Scripts {
-
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#MANUFACTUREDATE').datepicker({ format: 'dd/mm/yyyy'  });
-            $('#EXPIRYDATE').datepicker({ format: 'dd/mm/yyyy'  });
+            $('#MANUFACTUREDATE').datepicker({ format: 'dd/mm/yyyy' });
+            $('#EXPIRYDATE').datepicker({ format: 'dd/mm/yyyy' });
         });
-
     </script>
 }

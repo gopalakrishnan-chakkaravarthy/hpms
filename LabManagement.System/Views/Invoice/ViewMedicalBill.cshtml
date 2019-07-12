@@ -1,5 +1,4 @@
 ﻿@using Lab.Management.Entities;
-
 @model lmsMedicalBilling
 @{
     ViewBag.Title = "New Medical Bill";
@@ -8,7 +7,6 @@
     var drugddl = ViewBag.DrugList as IEnumerable<SelectListItem>;
     var patientddl = ViewBag.PatientList as IEnumerable<SelectListItem>;
 }
-
 
 @if (!string.IsNullOrEmpty(message))
 {
@@ -20,12 +18,10 @@
         </div>
     </div>
 }
-
 <div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
-
     <div class="row">
         <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Bill Details</h4>
-        <hr />
+        <hr/>
     </div>
     <div class="col-sm-10 col-md-10 col-lg-10">
         <div class="row">
@@ -40,16 +36,14 @@
                     }
                 </select>
             </div>
-            
         </div>
-        <hr />
+        <hr/>
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Bill Name
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4">
                 @Html.TextBoxFor(m => m.BILLNAME, new { @Id = "BILLNAME", @class = "form-control", required = "required" })
-
             </div>
         </div>
         <div class="row">
@@ -58,7 +52,6 @@
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4">
                 @Html.TextBoxFor(m => m.CONTACT, new { @Id = "CONTACT", @class = "form-control", required = "required" })
-
             </div>
         </div>
         <hr>
@@ -82,13 +75,11 @@
                 </table>
                 <table class="table table-striped table-bordered dataTable no-footer">
                     <tbody>
-
                         <tr>
                             <td class="text-right">
                                 Total:<span id="idTotal"> </span>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -104,12 +95,10 @@
                 @*@Html.DropDownList("drugddl", drugddl, new { @Id = "Iddrugddl", @class = "selectpicker" })*@
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
-
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
 
-
-                <input type="text" class="form-control" id="Idquantity" />
+                <input type="text" class="form-control" id="Idquantity"/>
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
                 <button class="btn btn-success" id="btnAddDrug">
@@ -119,9 +108,8 @@
                 </button>
             </div>
         </div>
-        <hr />
+        <hr/>
         <div class="row">
-
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <a href="@Url.Action("ViewAllMedicalBill", "Invoice")" class="btn btn-warning">
                     <i class="glyphicon glyphicon-arrow-left">
@@ -149,14 +137,11 @@
             </div>
         </div>
         <div class="row">
-
-            <hr />
+            <hr/>
         </div>
-
     </div>
 </div>
 @section Scripts {
-
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -171,7 +156,6 @@
             });
 
             var drugDetails = [];
-
 
             $('#btnAddDrug').on('click', function () {
                 debugger;
@@ -268,7 +252,6 @@
                 });
             }
             function getDrugInfo(drugId, quantity) {
-                debugger;
                 $.ajax({
                     url: '@Url.Action("GetDrugDetailById", "Invoice")',
                     type: "GET",
@@ -288,7 +271,5 @@
             }
 
         });
-
-
     </script>
 }
