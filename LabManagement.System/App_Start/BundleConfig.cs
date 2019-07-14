@@ -20,6 +20,9 @@ namespace LabManagement.System
                                  "~/Content/js/base64.js",
                                  "~/Content/js/canvas2image.js",
                                   "~/Content/js/ckeditor.js",
+                                   "~/Content/js/jquery.webcam.js",
+                                    "~/Content/js/jscam.swf",
+                                     "~/Content/js/jscam_canvas_only.swf",
                                  "~/Scripts/AppScripts/Common.js"
                                 ));
 

@@ -1,5 +1,4 @@
 ﻿function PrintCanvasDiv(hiddelElements, divCanvas) {
-    
     var divPrinting = $("#" + divCanvas).clone().attr('id', "divClonedCanvas");
     divPrinting = divPrinting.length > 0 ? divPrinting[0] : divPrinting;
     var elements = $("#divClonedCanvas").find('.btn');
@@ -12,7 +11,7 @@
         $(divPrinting).find('.text-info').css('padding-left', '8%');
         $(divPrinting).find('#hspHeader').addClass('divPrintElementhspHeader');
     }
-    
+
     var headerPrintText = ($('#canvasElement').find('.text-info')[0]).innerHTML;
     //Ultra Sonography
     if (headerPrintText.indexOf('Lab Bill') > -1 || headerPrintText.indexOf('Ultra Sonography') > -1
@@ -21,7 +20,6 @@
         $(divPrinting).find('table').css('width', '90%');
     }
     else if ($(divPrinting).find('table').closest('div').length > 0) {
-
         $(divPrinting).find('table').closest('div').css('margin-right', '16%');
         $(divPrinting).find('table').css('width', '90%');
     }
@@ -32,7 +30,6 @@
     $("#dvPrintElemet").addClass('divPrintElement');
     var changeFontonPrint = $('.divPrintElement .row');
     $.each(changeFontonPrint, function (elemIndex, elem) {
-
         $(elem).addClass('printing-margin');
     });
     html2canvas($("#dvPrintElemet"), {
@@ -43,7 +40,7 @@
             PrintImage(myImage.src);
             $('#dvPrintElemet').html('');
             $("#dvPrintElemet").toggleClass('hidden');
-            // Clean up 
+            // Clean up
             document.body.removeChild(canvas);
         }
     });
@@ -68,3 +65,50 @@ function convertCanvasToImage(canvas) {
     image.src = canvas.toDataURL("image/png");
     return image;
 }
+
+//function UploadQrCOde(swfFile, savePath, uploadUrl) {
+//    $("#Camera").webcam({
+//        width: 100,
+//        height: 100,
+//        mode: "save",
+//        swffile: swfFile,
+//        onTick: function () { },
+//        onSave: function () {
+//            UploadPic(uploadUrl);
+//        },
+//        onCapture: function () {
+//            webcam.save(savePath);
+//        },
+//        debug: function () { },
+//        onLoad: function () { }
+//    });
+//}
+//function UploadPic(uploadUrl) {
+//    $.ajax({
+//        type: 'POST',
+//        url: (uploadUrl),
+//        dataType: 'json',
+//        success: function (data) {
+//            $("#show").attr("src", data);
+//            document.getElementById('Submit1').disabled = false;
+//            alert("Photo Capture successfully!");
+//        }
+//    });
+//}
+//function Uploadsubmit(postUrl, changePhotoUrl) {
+//    debugger;
+//    var src = $('img').attr('src');
+//    src_array = src.split('/');
+//    src = src_array[4];
+//    if (src != "") {
+//        $.ajax({
+//            type: 'POST',
+//            url: (postUrl),
+//            dataType: 'json',
+//            data: { Imagename: src },
+//            success: function () { }
+//        });
+//        window.opener.location.href = changePhotoUrl;
+//        self.close();
+//    }
+//}

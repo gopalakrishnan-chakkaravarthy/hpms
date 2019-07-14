@@ -1,0 +1,19 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "ChangePhoto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Changephoto";
+}
+
+<h2>ChangePhoto</h2>
+<img id="Userpic" src="@ViewBag.pic"/>
+<br/>
+<input type="button" id="btnSave" value="Take Photo" onclick="ShowPopUp();"/>
+@section Scripts {
+    <script type="text/javascript">
+        function ShowPopUp() {
+            window.open('/WebCam/Index/', "wndPopUp", 'width=720,height=400,left=100,top=100,resizable=no');
+        }
+    </script>
+}

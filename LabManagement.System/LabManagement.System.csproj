@@ -161,6 +161,7 @@
     <Compile Include="Controllers\HospitalMasterController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\WebCamController.cs" />
     <Compile Include="DIResolver\StructureMapControllerFactory .cs" />
     <Compile Include="DIResolver\StructureMapDependencyResolver .cs" />
     <Compile Include="DIResolver\StructureMapDependencyScope .cs" />
@@ -481,6 +482,9 @@
     <Content Include="Content\js\html2canvas.js" />
     <Content Include="Content\js\jquery.dataTables.js" />
     <Content Include="Content\js\jquery.dataTables.min.js" />
+    <Content Include="Content\js\jquery.webcam.js" />
+    <Content Include="Content\js\jscam.swf" />
+    <Content Include="Content\js\jscam_canvas_only.swf" />
     <Content Include="Content\js\responsive.bootstrap.min.js" />
     <Content Include="Content\plugins\dataTables\dataTables.bootstrap.css" />
     <Content Include="Content\plugins\dataTables\dataTables.bootstrap.js" />
@@ -581,6 +585,7 @@
     <None Include="Properties\PublishProfiles\info.vinayagapolyclinic.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\vinayagapolyclinic.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\vpchpms - Web Deploy.pubxml" />
+    <Content Include="QrCodePath\person.jpg" />
     <Content Include="Scripts\AppScripts\Common.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Web.config">
@@ -702,6 +707,8 @@
     <Content Include="Views\HospitalMaster\ViewMedicalTestGroup.cshtml" />
     <Content Include="Views\Invoice\GenerateLaboratoryReport.cshtml" />
     <Content Include="Views\Shared\_QrCodeGenerator.cshtml" />
+    <Content Include="Views\WebCam\ChangePhoto.cshtml" />
+    <Content Include="Views\WebCam\Index.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -711,7 +718,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="QrCodePath\" />
+    <Folder Include="QrCodePath\Capture\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
