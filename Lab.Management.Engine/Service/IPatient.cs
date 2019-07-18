@@ -7,6 +7,8 @@ namespace Lab.Management.Engine.Service
     {
         lmsPatientRegistration GetPatientDetailsById(int PatientId);
 
+        int GetPatientIdByQrCode(string qrCode);
+
         IList<lmsPatientRegistration> GetAllPatient(string patientType, bool includeAll = false);
 
         int SavePatient(lmsPatientRegistration objPatientMaster);

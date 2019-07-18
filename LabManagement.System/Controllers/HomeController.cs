@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace LabManagement.System.Controllers
 {
@@ -14,11 +10,11 @@ namespace LabManagement.System.Controllers
 
             return View();
         }
+
         public ActionResult LandingPage()
         {
             return View();
         }
-
 
         public ActionResult About()
         {

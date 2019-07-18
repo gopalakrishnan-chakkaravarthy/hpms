@@ -66,49 +66,6 @@ function convertCanvasToImage(canvas) {
     return image;
 }
 
-//function UploadQrCOde(swfFile, savePath, uploadUrl) {
-//    $("#Camera").webcam({
-//        width: 100,
-//        height: 100,
-//        mode: "save",
-//        swffile: swfFile,
-//        onTick: function () { },
-//        onSave: function () {
-//            UploadPic(uploadUrl);
-//        },
-//        onCapture: function () {
-//            webcam.save(savePath);
-//        },
-//        debug: function () { },
-//        onLoad: function () { }
-//    });
-//}
-//function UploadPic(uploadUrl) {
-//    $.ajax({
-//        type: 'POST',
-//        url: (uploadUrl),
-//        dataType: 'json',
-//        success: function (data) {
-//            $("#show").attr("src", data);
-//            document.getElementById('Submit1').disabled = false;
-//            alert("Photo Capture successfully!");
-//        }
-//    });
-//}
-//function Uploadsubmit(postUrl, changePhotoUrl) {
-//    debugger;
-//    var src = $('img').attr('src');
-//    src_array = src.split('/');
-//    src = src_array[4];
-//    if (src != "") {
-//        $.ajax({
-//            type: 'POST',
-//            url: (postUrl),
-//            dataType: 'json',
-//            data: { Imagename: src },
-//            success: function () { }
-//        });
-//        window.opener.location.href = changePhotoUrl;
-//        self.close();
-//    }
-//}
+function ShowQrScanner(qrType) {
+    window.open('/WebCam/Index?scannerType=' + qrType, "wndPopUp", 'width=400,height=400,left=100,top=100,resizable=no');
+}

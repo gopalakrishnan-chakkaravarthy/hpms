@@ -70,6 +70,16 @@ namespace LabManagement.System.Controllers
             return RedirectToAction("ViewAllPatient", new { viewMessage = "Patient Detail Deleted Successfully" });
         }
 
+        public ActionResult PatientScanner(string imagePath = "")
+        {
+            var qrCodePath = $"{Server.MapPath("~/QrCodePath")}\\{imagePath}";
+            var qrCodeReader = new QRCodeReader(qrCodePath);
+            var decodeData = qrCodeReader.ReadQRCode();
+            var patientId = _objIPatient.GetPatientIdByQrCode(decodeData.QRCodeText);
+
+            return RedirectToAction("ViewPatient", new { PatientId = patientId, viewMessage = "" });
+        }
+
         public ActionResult ViewOutPatient(int PatientId, string viewMessage = "")
         {
             var DiseaseList = _objIAdminOperations.GetAllDiseases();

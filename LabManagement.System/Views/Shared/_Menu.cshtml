@@ -278,24 +278,26 @@
                                             <li><a href="@Url.Action("ViewBed", "HospitalMaster", new { BedId = 0 })">New </a></li>
                                         </ul>
                                     </li>
-                                    @*<li class="divider"></li>
-
-                                        <li class="dropdown dropdown-submenu">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wards</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="@Url.Action("ViewAllWard", "HospitalMaster")">Dashboard</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="@Url.Action("ViewWard", "HospitalMaster", new { WardId = 0 })">New </a></li>
-                                            </ul>
-                                        </li>*@
                                 </ul>
                             </li>
                         }
                     </ul>
                     <ul class="nav navbar-nav pull-right">
                         <li class="dropdown">
+                            <a id="btnScan" title="Patient Booking" onclick="ShowQrScanner('patient');">
+                                <i class="glyphicon glyphicon-qrcode">
+                                </i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a id="btnScan" title="Medical Billing" onclick="ShowQrScanner('medical');">
+                                <i class="glyphicon glyphicon-qrcode">
+                                </i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img style="height:23px;border-radius:20px;" src="../Content/Images/avatar5.png" alt="profile photo"/>
+                                <img style="height:23px;border-radius:20px;" src="../Content/Images/avatar5.png" alt="profile photo" />
                                 <span class="user-info">
                                     <small>Welcome,</small>
                                     @if (userInfo != null)
@@ -306,8 +308,8 @@
                             </a>
                             <ul class="dropdown-menu">
                                 @*<li class="dropdown ">
-                                        <a href="#">Settings</a>
-                                    </li>*@
+                    <a href="#">Settings</a>
+                </li>*@
                                 @if (userRole.ToUpper() == "ADMIN")
                                 {
 

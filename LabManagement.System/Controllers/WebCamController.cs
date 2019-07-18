@@ -21,25 +21,26 @@ namespace LabManagement.System.Controllers
         private string _urlPath;
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string scannerType = "")
         {
-            Session["val"] = "";
+            Session["QrCodeFile"] = "";
+            ViewBag.ScannerType = scannerType;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(string Imagename)
+        public ActionResult IndexPost(string Imagename)
         {
-            ViewBag.pic = $"{urlPath}{Convert.ToString(Session["val"])}";
+            ViewBag.pic = $"{urlPath}{Convert.ToString(Session["QrCodeFile"])}";
             return View();
         }
 
         [HttpGet]
         public ActionResult ChangePhoto()
         {
-            if (Convert.ToString(Session["val"]) != string.Empty)
+            if (Convert.ToString(Session["QrCodeFile"]) != string.Empty)
             {
-                ViewBag.pic = $"{urlPath}{Convert.ToString(Session["val"])}";
+                ViewBag.pic = $"{urlPath}{Convert.ToString(Session["QrCodeFile"])}";
             }
             else
             {
@@ -50,7 +51,7 @@ namespace LabManagement.System.Controllers
 
         public JsonResult Rebind()
         {
-            string path = $"{urlPath}{Convert.ToString(Session["val"])}";
+            string path = Convert.ToString(Session["QrCodeFile"]);
             return Json(path, JsonRequestBehavior.AllowGet);
         }
 
@@ -58,12 +59,11 @@ namespace LabManagement.System.Controllers
         {
             var stream = Request.InputStream;
             var folderPath = Server.MapPath("~/QrCodePath");
-            string date = DateTime.Now.ToString("yyyymmddMMss");
-            folderPath = $"{folderPath}/{date}test.jpg";
+            string fileName = $"{DateTime.Now.ToString("yyyymmddMMss")}-hpmsQrCode.jpg";
+            folderPath = $"{folderPath}/{fileName}";
             var qrCam = new QrScannerWebCam();
             qrCam.ReadFromStream(stream, folderPath);
-            ViewData["path"] = date + "test.jpg";
-            Session["val"] = date + "test.jpg";
+            Session["QrCodeFile"] = fileName;
             return View("Index");
         }
     }

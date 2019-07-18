@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace LabManagement.System.Controllers
 {
-    public class HospitalMasterController : Controller
+    public class HospitalMasterController : BaseController
     {
         private readonly IHospitalMaster _objIHospitalMaster;
         public HospitalMasterController(IHospitalMaster objIHospitalMaster)

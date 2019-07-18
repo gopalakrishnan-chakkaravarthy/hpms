@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using LabManagement.System.Models;
+using System.Web.Mvc;
 
 namespace LabManagement.System.Controllers
 {
@@ -7,9 +8,9 @@ namespace LabManagement.System.Controllers
         //
         // GET: /AppError/
 
-        public ActionResult Index()
+        public ActionResult Index(ErrorModel errorModel)
         {
-            return View();
+            return View(errorModel);
         }
     }
 }

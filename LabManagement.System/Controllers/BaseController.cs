@@ -1,4 +1,6 @@
 ﻿using Lab.Management.Entities;
+using LabManagement.System.Models;
+using System;
 using System.Web.Mvc;
 
 namespace LabManagement.System.Controllers
@@ -47,7 +49,12 @@ namespace LabManagement.System.Controllers
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            base.OnException(filterContext);
+            Exception exception = filterContext.Exception;
+            filterContext.ExceptionHandled = true;
+            var controller = filterContext.RouteData.Values["controller"].ToString();
+            var action = filterContext.RouteData.Values["action"].ToString();
+            var errorData = new ErrorModel { Controller = controller, Action = action, Exception = exception };
+            filterContext.Result = RedirectToAction("Index", "AppError", errorData);
         }
     }
 }

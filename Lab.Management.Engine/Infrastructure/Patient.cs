@@ -39,6 +39,20 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
+        public int GetPatientIdByQrCode(string qrCode)
+        {
+            try
+            {
+                var resultDetails = _objLabManagementEntities.lmsPatientRegistrations.Where(dt => dt.QrCodeContent == qrCode);
+                return resultDetails.Any() ? resultDetails.FirstOrDefault().PATIENTID : 0;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return -1;
+            }
+        }
+
         public IList<lmsPatientRegistration> GetAllPatient(string patientType, bool includeAll = false)
         {
             try
