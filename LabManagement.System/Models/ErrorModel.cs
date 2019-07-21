@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace LabManagement.System.Models
+﻿namespace LabManagement.System.Models
 {
     public class ErrorModel
     {
-        public string Controller { get; set; }
-        public string Action { get; set; }
-        public Exception Exception { get; set; }
+        public string ErrorController { get; set; }
+        public string ErrorAction { get; set; }
+        public string Message { get; set; }
     }
 }

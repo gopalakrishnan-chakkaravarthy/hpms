@@ -2,6 +2,7 @@
 using LabManagement.System.Models;
 using System;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace LabManagement.System.Controllers
 {
@@ -39,10 +40,19 @@ namespace LabManagement.System.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            var controller = filterContext.RouteData.Values["controller"].ToString();
+            var action = filterContext.RouteData.Values["action"].ToString();
+            if (controller.ToLower() == "account" && action.ToLower() == "login")
+            {
+                base.OnActionExecuting(filterContext);
+                return;
+            }
             if (filterContext.HttpContext.Session["UserInfo"] == null)
             {
-                filterContext.Result = new RedirectResult("~/Account/Login");
-                return;
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary {
+                { "Controller", "Account" },
+                { "Action", "Login" }
+              });
             }
             base.OnActionExecuting(filterContext);
         }
@@ -53,7 +63,12 @@ namespace LabManagement.System.Controllers
             filterContext.ExceptionHandled = true;
             var controller = filterContext.RouteData.Values["controller"].ToString();
             var action = filterContext.RouteData.Values["action"].ToString();
-            var errorData = new ErrorModel { Controller = controller, Action = action, Exception = exception };
+            var errorData = new ErrorModel
+            {
+                ErrorController = controller,
+                ErrorAction = action,
+                Message = exception.Message
+            };
             filterContext.Result = RedirectToAction("Index", "AppError", errorData);
         }
     }

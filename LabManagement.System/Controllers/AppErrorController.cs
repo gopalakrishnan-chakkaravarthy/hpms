@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace LabManagement.System.Controllers
 {
-    public class AppErrorController : Controller
+    public class AppErrorController : BaseController
     {
         //
         // GET: /AppError/

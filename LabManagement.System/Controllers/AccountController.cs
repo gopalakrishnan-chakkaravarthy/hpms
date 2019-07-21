@@ -9,7 +9,7 @@ namespace LabManagement.System.Controllers
 {
     [Authorize]
     //[InitializeSimpleMembership]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IAdminOperations _objIAdminOperations;
         //private string userRole;
