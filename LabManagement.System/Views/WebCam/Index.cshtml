@@ -12,18 +12,20 @@
             url: ("@Url.Content("~/WebCam/Rebind")/"),
             dataType: 'json',
             success: function (data) {
-                debugger;
-                if (qrCodeType === 'patient')
-                {
-                    window.location.href = '/Patient/PatientScanner?imagePath=' + data;
-                }
-
-                //$("#show").attr("src", data);
-                //alert("Photo Capture successfully!");
+               var qrCodeUrl = '/Patient/PatientScanner?imagePath=' + data;
+                qrCodeUrl = window.opener.location.origin + qrCodeUrl;
+                SetQrCodeUrl(qrCodeUrl);
+                self.close();
             }
         });
     }
+    function RefreshParent() {
+        if (window.opener != null && !window.opener.closed) {
+            window.opener.location.reload(true);
 
+        }
+    }
+    window.onbeforeunload = RefreshParent;
     function Uploadsubmit() {
         var src = $('img').attr('src');
         src_array = src.split('/');
@@ -36,8 +38,8 @@
                data: { Imagename: src },
                success: function () { }
            });
-            window.opener.location.href ="@Url.Content("~/WebCam/Changephoto")/" ;
-            self.close();}}
+        }
+    }
 </script>
 @using (Html.BeginForm())
 {
@@ -68,7 +70,7 @@
             <div id="Camera">
             </div>
             <br>
-            <input type="button" value="Scan QR" onclick="webcam.capture();" id="scanQr" />
+            <input type="button" value="Scan QR" onclick="webcam.capture();" id="scanQr"/>
         </div>
     </div>
 

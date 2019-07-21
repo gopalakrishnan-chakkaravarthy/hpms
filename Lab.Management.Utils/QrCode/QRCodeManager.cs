@@ -27,5 +27,15 @@
             }
             return imgeUrl;
         }
+
+        public static void DeletingQrCodeFiles(this string folderPath)
+        {
+            //delete files:
+            var directory = new DirectoryInfo(folderPath);
+            foreach (var file in directory.GetFiles())
+            {
+                file.Delete();
+            }
+        }
     }
 }

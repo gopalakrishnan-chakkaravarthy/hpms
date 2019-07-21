@@ -1,4 +1,5 @@
-﻿function PrintCanvasDiv(hiddelElements, divCanvas) {
+﻿
+function PrintCanvasDiv(hiddelElements, divCanvas) {
     var divPrinting = $("#" + divCanvas).clone().attr('id', "divClonedCanvas");
     divPrinting = divPrinting.length > 0 ? divPrinting[0] : divPrinting;
     var elements = $("#divClonedCanvas").find('.btn');
@@ -68,4 +69,22 @@ function convertCanvasToImage(canvas) {
 
 function ShowQrScanner(qrType) {
     window.open('/WebCam/Index?scannerType=' + qrType, "wndPopUp", 'width=400,height=400,left=100,top=100,resizable=no');
+}
+window.onload = ReloadQrCodeUrl;
+function ReloadQrCodeUrl() {
+    var qrCodeUrl = GetQrCodeUrl()
+    if (qrCodeUrl !== undefined && qrCodeUrl !== null && qrCodeUrl !== '') {
+        window.location.href = qrCodeUrl;
+        RemoveQrCodeUrl();
+    }
+  
+}
+function SetQrCodeUrl(urlData) {
+    window.localStorage.setItem('qrCodeUrl', urlData);
+}
+function GetQrCodeUrl() {
+  return  window.localStorage.getItem('qrCodeUrl');
+}
+function RemoveQrCodeUrl() {
+    window.localStorage.removeItem('qrCodeUrl');
 }

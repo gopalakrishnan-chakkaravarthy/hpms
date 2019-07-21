@@ -14,10 +14,3 @@ E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.Core
 E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.dll
 E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\bin\Debug\Lab.Management.Logger.dll
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\bin\Debug\Lab.Management.Logger.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\bin\Debug\log4net.dll
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CoreCompileInputs.cache
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CopyComplete
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.dll
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.pdb

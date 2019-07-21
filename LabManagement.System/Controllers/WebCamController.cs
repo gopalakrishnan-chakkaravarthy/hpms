@@ -59,6 +59,7 @@ namespace LabManagement.System.Controllers
         {
             var stream = Request.InputStream;
             var folderPath = Server.MapPath("~/QrCodePath");
+            folderPath.DeletingQrCodeFiles();
             string fileName = $"{DateTime.Now.ToString("yyyymmddMMss")}-hpmsQrCode.jpg";
             folderPath = $"{folderPath}/{fileName}";
             var qrCam = new QrScannerWebCam();
