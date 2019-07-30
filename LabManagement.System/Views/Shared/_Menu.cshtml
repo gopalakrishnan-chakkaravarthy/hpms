@@ -105,13 +105,39 @@
                                         }
                                     </ul>
                                 </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drug Dosage </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("ViewAllDrugDosage", "Admin")"> Dashboard</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="@Url.Action("ViewDrugDosage", "Admin", new { id = 0 })"> New</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drug Frequency</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("ViewAllDrugFrequency", "Admin")"> Dashboard</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="@Url.Action("ViewDrugFrequency", "Admin", new { id = 0 })"> New</a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Master<b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Management<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">In Patient</a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Registration</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="@Url.Action("ViewAllPatient", "Patient")">Dashboard</a></li>
                                         <li class="divider"></li>
@@ -120,11 +146,11 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Out Patient</a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Booking</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="@Url.Action("ViewAllOutPatient", "Patient")">Dashboard</a></li>
+                                        <li><a href="@Url.Action("ViewAllBooking", "Patient")">Booking Dashboard</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="@Url.Action("ViewOutPatient", "Patient", new { PatientId =0})">New</a></li>
+                                        <li><a href="@Url.Action("ViewBooking", "Patient", new { id =0})">New Booking</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -220,7 +246,6 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hospital Master <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-
                                     <li class="dropdown dropdown-submenu">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drugs</a>
                                         <ul class="dropdown-menu">
@@ -289,7 +314,6 @@
                                 </i>
                             </a>
                         </li>
-
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img style="height:23px;border-radius:20px;" src="../Content/Images/avatar5.png" alt="profile photo"/>

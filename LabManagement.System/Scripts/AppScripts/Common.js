@@ -1,8 +1,6 @@
-﻿
-function PrintCanvasDiv(hiddelElements, divCanvas) {
+﻿function PrintCanvasDiv(hiddelElements, divCanvas) {
     var divPrinting = $("#" + divCanvas).clone().attr('id', "divClonedCanvas");
     divPrinting = divPrinting.length > 0 ? divPrinting[0] : divPrinting;
-    var elements = $("#divClonedCanvas").find('.btn');
     $(divPrinting).find('.btn').remove();
     if ($(divPrinting).find('#prntTableDiv').length > 0) {
         $(divPrinting).find('#prntTableDiv').css('margin-left', '0%');
@@ -12,25 +10,32 @@ function PrintCanvasDiv(hiddelElements, divCanvas) {
         $(divPrinting).find('.text-info').css('padding-left', '8%');
         $(divPrinting).find('#hspHeader').addClass('divPrintElementhspHeader');
     }
-
-    var headerPrintText = ($('#canvasElement').find('.text-info')[0]).innerHTML;
-    //Ultra Sonography
-    if (headerPrintText.indexOf('Lab Bill') > -1 || headerPrintText.indexOf('Ultra Sonography') > -1
-        || headerPrintText.indexOf('Medical Bill') > -1) {
-        $(divPrinting).find('table').closest('div').css('margin-left', '5%');
-        $(divPrinting).find('table').css('width', '90%');
+    var txthdr = $('#canvasElement').find('.text-info');
+    if (txthdr !== undefined && txthdr.length>0) {
+        var headerPrintText = (txthdr[0]).innerHTML;
+        //Ultra Sonography
+        if (headerPrintText.indexOf('Lab Bill') > -1 || headerPrintText.indexOf('Ultra Sonography') > -1
+            || headerPrintText.indexOf('Medical Bill') > -1) {
+            $(divPrinting).find('table').closest('div').css('margin-left', '8%');
+            $(divPrinting).find('table').css('width', '90%');
+        }
+        else if (headerPrintText.indexOf('Prescription Letter') > -1) {
+            $(divPrinting).find('table').closest('div').css('margin-left', '-10%');
+            $(divPrinting).find('table').css('width', '90%');
+        }
+        else if ($(divPrinting).find('table').closest('div').length > 0) {
+            $(divPrinting).find('table').closest('div').css('margin-right', '16%');
+            $(divPrinting).find('table').css('width', '90%');
+        }
     }
-    else if ($(divPrinting).find('table').closest('div').length > 0) {
-        $(divPrinting).find('table').closest('div').css('margin-right', '16%');
-        $(divPrinting).find('table').css('width', '90%');
-    }
+    
 
     //$(divPrinting).css('padding-left', '70%');
     $("#dvPrintElemet").append(divPrinting.innerHTML);
     $("#dvPrintElemet").toggleClass('hidden');
     $("#dvPrintElemet").addClass('divPrintElement');
     var changeFontonPrint = $('.divPrintElement .row');
-    $.each(changeFontonPrint, function (elemIndex, elem) {
+    $.each(changeFontonPrint, function ( elem) {
         $(elem).addClass('printing-margin');
     });
     html2canvas($("#dvPrintElemet"), {
@@ -77,13 +82,12 @@ function ReloadQrCodeUrl() {
         window.location.href = qrCodeUrl;
         RemoveQrCodeUrl();
     }
-  
 }
 function SetQrCodeUrl(urlData) {
     window.localStorage.setItem('qrCodeUrl', urlData);
 }
 function GetQrCodeUrl() {
-  return  window.localStorage.getItem('qrCodeUrl');
+    return window.localStorage.getItem('qrCodeUrl');
 }
 function RemoveQrCodeUrl() {
     window.localStorage.removeItem('qrCodeUrl');

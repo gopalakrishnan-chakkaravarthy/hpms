@@ -1,0 +1,374 @@
+﻿@using Lab.Management.Entities;
+@using Lab.Management.Common;
+@model IList<lmsPatientBooking>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+}
+<div class="roundCornerDiv">
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <div class="alert alert-info">
+                    @message
+                </div>
+            </div>
+        </div>
+    }
+    @if (Model != null && Model.Count() <= 0)
+    {
+        <div class="row">
+            <div class="col-sm-11 col-md-11 col-lg-11">
+                <div class="alert alert-danger">
+                    No Data Found
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-11 col-md-11 col-lg-11">
+            <a href="@Url.Action("ViewBooking", new { id = 0 })" class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>New
+            </a>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-1">
+            Date:
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <input type="text" id="DDATE" style="width:70%" />
+            <button type="button" id="filterDate" class="btn btn-success">
+                <i class="glyphicon glyphicon-filter"></i>
+            </button>
+        </div>
+    </div>
+    @if (Model.Count() > 0)
+    {
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12">
+                <div class="hpms-booking-panel">
+                    @{
+                        <table id="allDetails" class=" dataTable table table-striped table-bordered dataTable no-footer">
+                            <thead>
+                                <tr>
+                                    <td>Patient Name</td>
+                                    <td>Gender</td>
+                                    <td>Appointment Date</td>
+                                    <td> Disease</td>
+                                    <td>Status</td>
+                                    <td>Consulting Doctor</td>
+                                    <td>Edit</td>
+                                    <td>History</td>
+                                    <td>Prescription</td>
+                                    <td>Delete Booking</td>
+                                    <td>Delete Prescription</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var obj in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @obj.lmsPatientRegistration.PATIENTNAME
+                                        </td>
+                                        <td>@obj.lmsPatientRegistration.GENDER</td>
+                                        <td>@obj.APPOINTMENTDATE.ToUstDate()</td>
+                                        <td>@obj.lmsDiseaseMaster.DISEASENAME</td>
+                                        <td>@obj.BOOKINGSTATUS</td>
+                                        <td>@obj.DOCTORTOCONSULT</td>
+
+                                        <td>
+                                            <a href="@Url.Action("ViewBooking", new { id = obj.BOOKINGID })" class="btn btn-success">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                                Edit
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success" id="loadHistory" data-prop="@obj.PATIENTID">
+                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                                History
+                                            </button>
+                                        </td>
+                                        <td>
+                                            @{
+                                                var patientBookingId = Convert.ToString(obj.BOOKINGID) + '_' + Convert.ToString(obj.PATIENTID);
+
+                                                <button class="btn btn-info" id="generatePrescription" data-prop="@patientBookingId">
+                                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                                    Generate Prescription
+                                                </button>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("DeleteBooking", new { id = obj.BOOKINGID })" class="btn btn-danger">
+                                                <i class="glyphicon glyphicon-trash"></i>
+                                                Delete Booking
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("DeletePrescription", new { id = obj.BOOKINGID })" class="btn btn-danger">
+                                                <i class="glyphicon glyphicon-trash"></i>
+                                                Delete Prescription
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+<div class="modal fade" id="patientHistoryModal" role="dialog">
+    <div class="modal-dialog modal-lg hpms-presc-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Patient History</h4>
+            </div>
+            <div class="modal-body">
+                <div id='historyModalContent'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="PrescriptionModal" role="dialog">
+    <div class="modal-dialog modal-lg hpms-presc-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Patient Prescription</h4>
+            </div>
+            <div class="modal-body">
+                <div id='PrescModalContent'></div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#DDATE').datepicker({ format: 'dd/mm/yyyy' });
+            $('#allDetails').DataTable();
+            var options = { "backdrop": "static", keyboard: true };
+            var historyUrl = '/Patient/ViewPatientHistory';
+            var bookingId, patientId;
+          
+            $("#loadHistory").on('click', (function () {
+                var prop = $(this).attr('data-prop');
+                var ids = prop.split('_');
+                bookingId = ids[0];//Booking Id
+                patientId = ids[1]; //Patient Id
+                $.ajax({
+                    type: "GET",
+                    url: historyUrl,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "id": prop },
+                    datatype: "json",
+                    success: function (data) {
+                        $('#historyModalContent').html(data);
+                        $('#patientHistoryModal').modal(options);
+                        $('#patientHistoryModal').modal('show');
+                        initViewPrescription();
+                        $('#allHistoryDetails').DataTable();
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+
+            }));
+            var printPrescriptionUrl = '/Patient/PrintPatientPrescription';
+            function initViewPrescription() {
+                $(".patient-presc").on('click', (function () {
+                    var bookingId = $(this).attr('data-prop');
+                    $.ajax({
+                        type: "GET",
+                        url: printPrescriptionUrl,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "id": bookingId },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#PrescModalContent').html(data);
+                            $('#PrescriptionModal').modal(options);
+                            $('#PrescriptionModal').modal('show');
+                            $('#btnPrint').on('click', function () {
+                                var hideShowelements = [];
+
+                                hideShowelements.push('btnPrint');
+                                PrintCanvasDiv(hideShowelements, 'canvasElement');
+                            });
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+
+                }));
+            }
+            var prescriptionUrl = '/Patient/ViewPrescription';
+            $("#generatePrescription").on('click', (function () {
+                var prop = $(this).attr('data-prop');
+                var ids = prop.split('_');
+                bookingId = ids[0];//Booking Id
+                patientId = ids[1]; //Patient Id
+                $.ajax({
+                    type: "GET",
+                    url: prescriptionUrl,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "id": bookingId },
+                    datatype: "json",
+                    success: function (data) {
+                        $('#PrescModalContent').html(data);
+                        $('#PrescriptionModal').modal(options);
+                        $('#PrescriptionModal').modal('show');
+                        loadPrescScript();
+                        cloneDropDown();
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+
+            }));
+            $('#filterDate').on('click', function () {
+                var dateValue = $('#DDATE').val();
+                if (dateValue !== '') {
+                    window.location.href = "ViewAllBooking?filterDate=" + dateValue;
+                    return;
+                }
+                alert("Please choose date filter");
+            });
+            //Prescription Add starts
+            var bookingId = $('#BOOKINGID').val();
+            var patientId = $('#PATIENTID').val();
+            var prescriptionDetails = [], clonedDosage, clonedFrequency, alreadyAddedDrugs = [];
+            function cloneDropDown() {
+                 clonedDosage = $("#Iddosageddl").clone();
+                 clonedFrequency = $("#Idfrequencydl").clone();
+            }
+            function loadPrescScript() {
+                      //For Prescript add and remove code starts
+           $('#Idpatientddl').on('change', function () {
+                var patientddl = $('#Idpatientddl option:selected').text();
+                var indexStart = patientddl.indexOf('-') + 1;
+                var indexEnd = patientddl.lastIndexOf('(');
+                patientddl = patientddl.substring(indexStart, indexEnd);
+                $('#BILLNAME').val(patientddl);
+
+            });
+
+            $('#btnAddDrug').on('click', function () {
+                var drugId = $('#Iddrugddl').val();
+                if (alreadyAddedDrugs.indexOf(drugId) > -1) {
+                    alert("Medicine Already available in prescription list.Please change medicine to continue.")
+                    return;
+                }
+
+                $('#btnAddDrug').attr('disabled', 'disabled');
+                getDrugInfo(drugId, 1);
+            });
+
+            $('#btnSave').on('click', function () {
+                saveDrugBills();
+            });
+
+            }
+            function listenDelete() {
+              $(".btn-sm").on('click', function () {
+                    var btnId = this.id;
+                    var drugId = btnId.split('_');
+
+                    if (drugId.length > 0) {
+                        $(this).parents("tr").remove();
+                        var indexofDrugId = alreadyAddedDrugs.indexOf(drugId);
+                        alreadyAddedDrugs.splice(indexofDrugId,1);
+                    }
+
+                });
+            }
+            function saveDrugBills() {
+                prescriptionDetails = [];
+                var drugControlId ='';
+                $("#tableDrug tr").each(function (e) {
+                    var tblRow = $(this)
+                    var rowId = tblRow.length > 0 ? tblRow[0].id : '';
+                    if (rowId != undefined && rowId !== "") {
+                        var drugId = rowId.split('_');
+                        if (drugId.length > 0) {
+                            drugControlId = drugId[1].replace(/"/g, '');
+                            var medicineCount = $("#txtMedicineCount_" + drugControlId).val();
+                            var strength = $("#txtStrength_" + drugControlId).val();
+                            var dosagePower = $('#ddlDrugDosage_' + drugControlId).val();
+                            var frequency = $('#ddlFrequency_' + drugControlId).val();
+                            var instructions = $("#txtInstructions_" + drugControlId).val();
+                            prescriptionDetails.push({
+                                'BOOKINGID': bookingId,
+                                'PATIENTID': patientId,
+                                'DRUGID': drugControlId,
+                                'MEDICINECOUNT': medicineCount,
+                                'STRENGTH': strength,
+                                'DOSAGEID': dosagePower,
+                                'FREQUENCYID': frequency,
+                                'INSTRUCTIONS': instructions
+                            });
+
+                        }
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("SavePrescription")",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(prescriptionDetails),
+                    success: function (data) {
+                        window.location.href = "ViewBooking?id=" + bookingId +"&viewMessage=Prescription saved successfully";
+                    },
+                    failure: function (errMsg) {
+                        alert('failure' + errMsg);
+                    }
+                });
+            }
+            function getDrugInfo(drugId, medicineCount) {
+                $.ajax({
+                    url: '@Url.Action("GetDrugDetailById", "Invoice")',
+                    type: "GET",
+                    data: { "drugId": drugId, "quantity": medicineCount },
+                    success: function (result) {
+                        clonedDosage[0].id = 'ddlDrugDosage_' + drugId;
+                        clonedFrequency[0].id = 'ddlFrequency_' + drugId;
+                        var ddlDosage = clonedDosage[0].outerHTML;
+                        var ddlFrequency = clonedFrequency[0].outerHTML;
+                        var newtableRow = '<tr id=tr_"' + drugId + '"><td>' + result.DRUGNAME + '</td>'+
+                            '<td> <input type="text" value="" id="txtMedicineCount_' + drugId + '" style="color: black;" /></td>'+
+                            '<td> <input type="text" value="" id="txtStrength_' + drugId + '" style="color: black;width:70%;" /></td>'+
+                            '<td>' + ddlDosage + '</td>'+
+                            '<td>' + ddlFrequency + '</td>' +
+                            '<td> <textarea id="txtInstructions_' + drugId + '" style="color: black;" /> </td>'+
+                           ' <td> <button id = "btnRemove_' + drugId + '" name = "btnRemove" type = "button" class="btn btn-sm btn-danger" > <i class="glyphicon glyphicon-minus"></i></button ></td> ' +
+                        '</tr> ';
+                        $('#tableDrug tbody').append(newtableRow);
+                        alreadyAddedDrugs.push(drugId);
+                        $('#btnAddDrug').removeAttr('disabled');
+                        listenDelete();
+
+                    },
+                    error: function (result) {
+                        $('#btnAddDrug').removeAttr('disabled');
+                        alert("Failed");
+                    }
+                });
+            }
+            //Prescription ends
+        });
+    </script>
+}

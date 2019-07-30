@@ -11,6 +11,7 @@ namespace LabManagement.System.Controllers
     public class AdminController : BaseController
     {
         private readonly IAdminOperations _objIAdminOperations;
+
         public AdminController(IAdminOperations objIAdminOperations)
         {
             _objIAdminOperations = objIAdminOperations;
@@ -257,6 +258,62 @@ namespace LabManagement.System.Controllers
         public ActionResult DataArchival()
         {
             return View();
+        }
+
+        public ActionResult ViewDrugDosage(int id, string viewMessage = "")
+        {
+            var getDrugDosage = _objIAdminOperations.GetDrugDosageById(id);
+            ViewBag.Message = viewMessage;
+            return View(getDrugDosage);
+        }
+
+        public ActionResult ViewAllDrugDosage(string viewMessage = "")
+        {
+            var getAll = _objIAdminOperations.GetAllDrugDosage();
+            ViewBag.Message = viewMessage;
+            return View(getAll);
+        }
+
+        [HttpPost]
+        public ActionResult EditDrugDosage(lmsDrugDosage objDrugDosage)
+        {
+            var saveDrugDosageDetails = _objIAdminOperations.SaveDrugDosage(objDrugDosage);
+            //ViewBag.Message = viewMessage;
+            return RedirectToAction("ViewDrugDosage", new { id = saveDrugDosageDetails, viewMessage = "Drug Dosage Details Saved Successfully" });
+        }
+
+        public ActionResult DeleteDrugDosage(int id)
+        {
+            var deletDrugDosage = _objIAdminOperations.DeleteDrugDosage(id);
+            return RedirectToAction("ViewAllDrugDosage", new { viewMessage = "Drug Dosage Detail Deleted Successfully" });
+        }
+
+        public ActionResult ViewDrugFrequency(int id, string viewMessage = "")
+        {
+            var getDrugFrequency = _objIAdminOperations.GetDrugFrequencyById(id);
+            ViewBag.Message = viewMessage;
+            return View(getDrugFrequency);
+        }
+
+        public ActionResult ViewAllDrugFrequency(string viewMessage = "")
+        {
+            var getAll = _objIAdminOperations.GetAllDrugFrequency();
+            ViewBag.Message = viewMessage;
+            return View(getAll);
+        }
+
+        [HttpPost]
+        public ActionResult EditDrugFrequency(lmsDrugFrequency objDrugFrequency)
+        {
+            var saveDrugFrequencyDetails = _objIAdminOperations.SaveDrugFrequency(objDrugFrequency);
+            //ViewBag.Message = viewMessage;
+            return RedirectToAction("ViewDrugFrequency", new { id = saveDrugFrequencyDetails, viewMessage = "Drug Frequency Details Saved Successfully" });
+        }
+
+        public ActionResult DeleteDrugFrequency(int id)
+        {
+            var deletDrugFrequency = _objIAdminOperations.DeleteDrugFrequency(id);
+            return RedirectToAction("ViewAllDrugFrequency", new { viewMessage = "Drug Frequency Detail Deleted Successfully" });
         }
     }
 }

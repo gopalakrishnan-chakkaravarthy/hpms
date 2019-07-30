@@ -1,10 +1,10 @@
-﻿using Lab.Management.Common;
-using Lab.Management.Engine.Service;
+﻿using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
 using Lab.Management.Logger;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 
 namespace Lab.Management.Engine.Infrastructure
@@ -41,11 +41,11 @@ namespace Lab.Management.Engine.Infrastructure
         {
             try
             {
-                var filterFromDateVal = filterDate.ToLmsSystemDate().AddBeginTime();
-                var filterToDateVal = filterDate.ToLmsSystemDate().AddEndTime();
-
-                var resultDetails = _objLabManagementEntities.lmsMedicalBillings.Where(bt => bt.CREATEDDATE.HasValue && (bt.CREATEDDATE.Value >= filterFromDateVal && bt.CREATEDDATE.Value <= filterToDateVal));
-                return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.BILLID).ToList() : new List<lmsMedicalBilling>();
+                var queryDate = Convert.ToDateTime(filterDate).Date;
+                var resultDetails = _objLabManagementEntities.lmsMedicalBillings.Where(bt => bt.CREATEDDATE.HasValue
+                && EntityFunctions.TruncateTime(bt.CREATEDDATE.Value) == queryDate);
+                return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.BILLID).ToList()
+                    : new List<lmsMedicalBilling>();
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsMedicalBillings.Add(objlmsMedicalBillings);
                 _objLabManagementEntities.SaveChanges();
-                var result = _objLabManagementEntities.lmsMedicalBillings.LastOrDefault();
+                var result = _objLabManagementEntities.lmsMedicalBillings.ToList().LastOrDefault();
                 resultId = result.BILLID;
             }
             catch (Exception ex)
@@ -124,11 +124,11 @@ namespace Lab.Management.Engine.Infrastructure
         {
             try
             {
-                var filterFromDateVal = filterDate.ToLmsSystemDate().AddBeginTime();
-                var filterToDateVal = filterDate.ToLmsSystemDate().AddEndTime();
-
-                var resultDetails = _objLabManagementEntities.lmsLaboratoryBillings.Where(bt => bt.BILLDATE.HasValue && (bt.BILLDATE.Value >= filterFromDateVal));
-                return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.BILLID).ToList() : new List<lmsLaboratoryBilling>();
+                var queryDate = Convert.ToDateTime(filterDate).Date;
+                var resultDetails = _objLabManagementEntities.lmsLaboratoryBillings.Where(bt => bt.BILLDATE.HasValue
+                && EntityFunctions.TruncateTime(bt.BILLDATE.Value) == queryDate);
+                return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.BILLID).ToList()
+                    : new List<lmsLaboratoryBilling>();
             }
             catch (Exception ex)
             {
@@ -156,7 +156,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsLaboratoryBillings.Add(objlmsLaboratoryBillings);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsLaboratoryBillings.AsEnumerable().LastOrDefault().BILLID;
+                resultId = _objLabManagementEntities.lmsLaboratoryBillings.ToList().LastOrDefault().BILLID;
             }
             catch (Exception ex)
             {
@@ -342,7 +342,8 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     return new lmsUltrSonogramReportTwo();
                 }
-                var resultDetails = _objLabManagementEntities.lmsUltrSonogramReportTwoes.FirstOrDefault(dt => dt.REPORTID == ReportId);
+                var resultDetails = _objLabManagementEntities.lmsUltrSonogramReportTwoes.
+                    FirstOrDefault(dt => dt.REPORTID == ReportId);
                 return resultDetails;
             }
             catch (Exception ex)
@@ -395,7 +396,8 @@ namespace Lab.Management.Engine.Infrastructure
             var resultFlag = 0;
             try
             {
-                var billObject = _objLabManagementEntities.lmsUltrSonogramReportTwoes.FirstOrDefault(x => x.REPORTID == ReportId);
+                var billObject = _objLabManagementEntities.lmsUltrSonogramReportTwoes
+                    .FirstOrDefault(x => x.REPORTID == ReportId);
                 _objLabManagementEntities.lmsUltrSonogramReportTwoes.Remove(billObject);
                 _objLabManagementEntities.SaveChanges();
             }
@@ -416,7 +418,8 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     return new lmsInvestigationReport();
                 }
-                var resultDetails = _objLabManagementEntities.lmsInvestigationReports.FirstOrDefault(dt => dt.REPORTID == ReportId);
+                var resultDetails = _objLabManagementEntities.lmsInvestigationReports
+                    .FirstOrDefault(dt => dt.REPORTID == ReportId);
                 return resultDetails;
             }
             catch (Exception ex)
@@ -469,7 +472,8 @@ namespace Lab.Management.Engine.Infrastructure
             var resultFlag = 0;
             try
             {
-                var billObject = _objLabManagementEntities.lmsInvestigationReports.FirstOrDefault(x => x.REPORTID == ReportId);
+                var billObject = _objLabManagementEntities.lmsInvestigationReports
+                    .FirstOrDefault(x => x.REPORTID == ReportId);
                 _objLabManagementEntities.lmsInvestigationReports.Remove(billObject);
                 _objLabManagementEntities.SaveChanges();
             }
@@ -490,7 +494,8 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     return new lmsDischargeBill();
                 }
-                var resultDetails = _objLabManagementEntities.lmsDischargeBills.FirstOrDefault(dt => dt.DBILLID == BillId);
+                var resultDetails = _objLabManagementEntities.lmsDischargeBills
+                    .FirstOrDefault(dt => dt.DBILLID == BillId);
                 return resultDetails;
             }
             catch (Exception ex)
@@ -543,7 +548,8 @@ namespace Lab.Management.Engine.Infrastructure
             var resultFlag = 0;
             try
             {
-                var billObject = _objLabManagementEntities.lmsDischargeBills.FirstOrDefault(x => x.DBILLID == BillId);
+                var billObject = _objLabManagementEntities.lmsDischargeBills
+                    .FirstOrDefault(x => x.DBILLID == BillId);
                 _objLabManagementEntities.lmsDischargeBills.Remove(billObject);
                 _objLabManagementEntities.SaveChanges();
             }
@@ -580,7 +586,8 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     return new lmsGeneralDischargeSummary();
                 }
-                var resultDetails = _objLabManagementEntities.lmsGeneralDischargeSummaries.FirstOrDefault(dt => dt.SUMMARYID == ReportId);
+                var resultDetails = _objLabManagementEntities.lmsGeneralDischargeSummaries
+                    .FirstOrDefault(dt => dt.SUMMARYID == ReportId);
                 return resultDetails;
             }
             catch (Exception ex)
@@ -633,7 +640,8 @@ namespace Lab.Management.Engine.Infrastructure
             var resultFlag = 0;
             try
             {
-                var billObject = _objLabManagementEntities.lmsGeneralDischargeSummaries.FirstOrDefault(x => x.SUMMARYID == ReportId);
+                var billObject = _objLabManagementEntities.lmsGeneralDischargeSummaries
+                    .FirstOrDefault(x => x.SUMMARYID == ReportId);
                 _objLabManagementEntities.lmsGeneralDischargeSummaries.Remove(billObject);
                 _objLabManagementEntities.SaveChanges();
             }
@@ -654,7 +662,8 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     return new lmsGynacDischargeSummary();
                 }
-                var resultDetails = _objLabManagementEntities.lmsGynacDischargeSummaries.FirstOrDefault(dt => dt.SUMMARYID == ReportId);
+                var resultDetails = _objLabManagementEntities.lmsGynacDischargeSummaries
+                    .FirstOrDefault(dt => dt.SUMMARYID == ReportId);
                 return resultDetails;
             }
             catch (Exception ex)
@@ -707,7 +716,8 @@ namespace Lab.Management.Engine.Infrastructure
             var resultFlag = 0;
             try
             {
-                var billObject = _objLabManagementEntities.lmsGynacDischargeSummaries.FirstOrDefault(x => x.SUMMARYID == ReportId);
+                var billObject = _objLabManagementEntities.lmsGynacDischargeSummaries
+                    .FirstOrDefault(x => x.SUMMARYID == ReportId);
                 _objLabManagementEntities.lmsGynacDischargeSummaries.Remove(billObject);
                 _objLabManagementEntities.SaveChanges();
             }

@@ -1,0 +1,114 @@
+﻿@using Lab.Management.Entities;
+@model lmsPatientPrescription
+@{
+    var message = ViewBag.Message as string;
+    var drugddl = ViewBag.DrugList as IEnumerable<SelectListItem>;
+    var dosageList = ViewBag.DosageList as IEnumerable<SelectListItem>;
+    var frequencyList = ViewBag.FrequencyList as IEnumerable<SelectListItem>;
+    var name = ViewBag.Name as string;
+}
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+<div class="col-sm-12 col-md-12 col-lg-12 roundCornerDiv">
+
+    @if (!string.IsNullOrEmpty(name))
+    {
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Patient Name
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                @name
+            </div>
+        </div>
+    }
+    <hr>
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            <table id="tableDrug" class="table table-striped table-bordered dataTable no-footer">
+                <thead>
+                    <tr>
+                        <th>
+                            Drug Name
+                        </th>
+                        <th>
+                            Medicine Count
+                        </th>
+                        <th>
+                            Strength
+                        </th>
+                        <th>
+                            Dosage Power
+                        </th>
+                        <th>
+                            Frequency
+                        </th>
+                        <th>
+                            Instructions
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <table class="table table-striped table-bordered dataTable no-footer">
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <select class="selectpicker " data-live-search="true" id="Iddrugddl" style="display:block !important;">
+                @foreach (var dropdown in drugddl)
+                {
+                    <option data-tokens="@dropdown.Text" value="@dropdown.Value">@dropdown.Text</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <button class="btn btn-success" id="btnAddDrug">
+                <i class="glyphicon glyphicon-plus">
+                    Add
+                </i>
+            </button>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+
+            <button type="button" class="btn btn-primary" id="btnSave">
+                <i class="glyphicon glyphicon-floppy-disk"></i>
+                Save
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <hr/>
+    </div>
+</div>
+<div class="hidden" id="hiddenddl">
+    <select class="selectpicker " data-live-search="true" id="Iddosageddl" style="display:block !important;">
+        @foreach (var dropdown in dosageList)
+        {
+            <option data-tokens="@dropdown.Text" value="@dropdown.Value">@dropdown.Text</option>
+        }
+    </select>
+    <select class="selectpicker " data-live-search="true" id="Idfrequencydl" style="display:block !important;">
+        @foreach (var dropdown in frequencyList)
+        {
+            <option data-tokens="@dropdown.Text" value="@dropdown.Value">@dropdown.Text</option>
+        }
+    </select>
+</div>

@@ -18,14 +18,6 @@ using System;
 public partial class lmsWard
 {
 
-    public lmsWard()
-    {
-
-        this.lmsPatientRegistrations = new HashSet<lmsPatientRegistration>();
-
-    }
-
-
     public int WARDID { get; set; }
 
     public string WARDNAME { get; set; }
@@ -39,8 +31,6 @@ public partial class lmsWard
 
 
     public virtual lmsBed lmsBed { get; set; }
-
-    public virtual ICollection<lmsPatientRegistration> lmsPatientRegistrations { get; set; }
 
 }
 

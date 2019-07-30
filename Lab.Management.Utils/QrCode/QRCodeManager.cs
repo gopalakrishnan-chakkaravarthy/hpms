@@ -8,7 +8,7 @@
 
     public static class QRCodeManager
     {
-        public static string GenerateQrCode(this string content, int height = 100, int width = 100, int margin = 0)
+        public static string GenerateQrCode(this string content, int height = 180, int width = 180, int margin = 0)
         {
             string imgeUrl = "";
             var qrWriter = new BarcodeWriter

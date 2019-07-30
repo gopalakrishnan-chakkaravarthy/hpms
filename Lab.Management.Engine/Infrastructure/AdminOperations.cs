@@ -13,7 +13,9 @@ namespace Lab.Management.Engine.Infrastructure
     public class AdminOperations : IAdminOperations
     {
         private LabManagementEntities _objLabManagementEntities;
+
         private readonly IAppLogger _objIAppLogger;
+
         public AdminOperations(LabManagementEntities objLabManagementEntities, IAppLogger objIAppLogger)
         {
             _objLabManagementEntities = objLabManagementEntities;
@@ -266,8 +268,10 @@ namespace Lab.Management.Engine.Infrastructure
             {
                 if (HospitalId == 0)
                 {
-                    var newHospital = new lmsHospitalMaster();
-                    newHospital.ISOCERTIFIED = true;
+                    var newHospital = new lmsHospitalMaster
+                    {
+                        ISOCERTIFIED = true
+                    };
                     return newHospital;
                 }
                 var resultDetails = _objLabManagementEntities.lmsHospitalMasters.FirstOrDefault(x => x.HOSPITALID == HospitalId);
@@ -343,8 +347,10 @@ namespace Lab.Management.Engine.Infrastructure
             {
                 if (UserId == 0)
                 {
-                    var newUser = new lmsLoginRegistration();
-                    newUser.ISACTIVE = false;
+                    var newUser = new lmsLoginRegistration
+                    {
+                        ISACTIVE = false
+                    };
                     return newUser;
                 }
                 var resultDetails = _objLabManagementEntities.lmsLoginRegistrations.FirstOrDefault(x => x.LOGINID == UserId);
@@ -620,6 +626,152 @@ namespace Lab.Management.Engine.Infrastructure
             {
                 _objIAppLogger.LogError(ex);
             }
+        }
+
+        public lmsDrugDosage GetDrugDosageById(int id)
+        {
+            try
+            {
+                if (id == 0)
+                {
+                    return new lmsDrugDosage();
+                }
+                var resultDetails = _objLabManagementEntities.lmsDrugDosages.FirstOrDefault(x => x.DOSAGEID == id);
+                return resultDetails;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public IList<lmsDrugDosage> GetAllDrugDosage()
+        {
+            try
+            {
+                var resultDetails = _objLabManagementEntities.lmsDrugDosages.Select(x => x);
+                return resultDetails.Any() ? resultDetails.ToList() : new List<lmsDrugDosage>();
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public int SaveDrugDosage(lmsDrugDosage objSaveData)
+        {
+            var resultId = 0;
+            try
+            {
+                if (objSaveData.DOSAGEID > 0)
+                {
+                    _objLabManagementEntities.lmsDrugDosages.Attach(objSaveData);
+                    _objLabManagementEntities.Entry(objSaveData).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objSaveData.DOSAGEID;
+                }
+                _objLabManagementEntities.lmsDrugDosages.Add(objSaveData);
+                _objLabManagementEntities.SaveChanges();
+                resultId = _objLabManagementEntities.lmsDrugDosages.ToList().LastOrDefault().DOSAGEID;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+            }
+
+            return resultId;
+        }
+
+        public int DeleteDrugDosage(int id)
+        {
+            var resultFlag = 0;
+            try
+            {
+                var objResult = _objLabManagementEntities.lmsDrugDosages.FirstOrDefault(x => x.DOSAGEID == id);
+                _objLabManagementEntities.lmsDrugDosages.Remove(objResult);
+                _objLabManagementEntities.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                resultFlag = -1;
+                _objIAppLogger.LogError(ex);
+            }
+            return resultFlag;
+        }
+
+        public lmsDrugFrequency GetDrugFrequencyById(int id)
+        {
+            try
+            {
+                if (id == 0)
+                {
+                    return new lmsDrugFrequency();
+                }
+                var resultDetails = _objLabManagementEntities.lmsDrugFrequencies.FirstOrDefault(x => x.FREQUENCYID == id);
+                return resultDetails;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public IList<lmsDrugFrequency> GetAllDrugFrequency()
+        {
+            try
+            {
+                var resultDetails = _objLabManagementEntities.lmsDrugFrequencies.Select(x => x);
+                return resultDetails.Any() ? resultDetails.ToList() : new List<lmsDrugFrequency>();
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public int SaveDrugFrequency(lmsDrugFrequency objSaveData)
+        {
+            var resultId = 0;
+            try
+            {
+                if (objSaveData.FREQUENCYID > 0)
+                {
+                    _objLabManagementEntities.lmsDrugFrequencies.Attach(objSaveData);
+                    _objLabManagementEntities.Entry(objSaveData).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return objSaveData.FREQUENCYID;
+                }
+                _objLabManagementEntities.lmsDrugFrequencies.Add(objSaveData);
+                _objLabManagementEntities.SaveChanges();
+                resultId = _objLabManagementEntities.lmsDrugFrequencies.ToList().LastOrDefault().FREQUENCYID;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+            }
+
+            return resultId;
+        }
+
+        public int DeleteDrugFrequency(int id)
+        {
+            var resultFlag = 0;
+            try
+            {
+                var objResult = _objLabManagementEntities.lmsDrugFrequencies.FirstOrDefault(x => x.FREQUENCYID == id);
+                _objLabManagementEntities.lmsDrugFrequencies.Remove(objResult);
+                _objLabManagementEntities.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                resultFlag = -1;
+                _objIAppLogger.LogError(ex);
+            }
+            return resultFlag;
         }
     }
 }

@@ -1,14 +1,11 @@
 ﻿@using Lab.Management.Entities;
-
 @model lmsPatientDischargeSummary
 @{
     ViewBag.Title = "View Discharge Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
 
-
 }
-
 
 @if (!string.IsNullOrEmpty(message))
 {
@@ -21,9 +18,7 @@
     </div>
 }
 
-
 <div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
-
     @using (Html.BeginForm("EditDischargeSummary", "Invoice", new { @id = "IdEdit", @name = "EditForm" }))
     {
         <div class="row">
@@ -41,32 +36,19 @@
             <hr />
         </div>
         <div class="row">
-
             <div class="col-sm-7 col-md-7 col-lg-7">
                 <div class="input-group">
                     <span class="input-group-addon">Patient Name</span>
                     @Html.DropDownListFor(x => x.SelectedPatient, Model.PatientDdl, new { @class = "form-control selectpicker", required = "required" })
-
                     @Html.HiddenFor(x => x.SUMMARYID)
                 </div>
-
             </div>
-            @* <div class="col-sm-1 col-md-1 col-lg-1">
-                Age
-                        </div>
-                        <div class="col-sm-2 col-md-2 col-lg-2">
-                            @Html.LabelFor(m => m.lmsPatientRegistration.AGE, new { @class = "form-control" })
-                        </div>*@
+
             <div class="col-sm-3 col-md-3 col-lg-3">
                 <div class="input-group">
                     <span class="input-group-addon">IPNO</span>
                     @Html.TextBoxFor(m => m.IPNO, new { @class = "form-control" })
-
-
                 </div>
-
-
-
             </div>
         </div>
 
@@ -76,29 +58,22 @@
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @*@Html.TextAreaFor(m => m.lmsPatientRegistration.PATIENTADDRESS, new { @class = "form-control" })*@
-
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
-
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 <div class="input-group">
                     <span class="input-group-addon">DODEL</span>
                     @Html.TextBoxFor(m => m.DODEL, new { @Id = "DODEL", @class = "form-control", required = "required" })
-
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">DOD</span>
                     @Html.TextBoxFor(m => m.DOD, new { @Id = "DOD", @class = "form-control", required = "required" })
-
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">DIAGNOSIS</span>
                     @Html.TextAreaFor(m => m.DIAGONOSIS, new { @class = "form-control", required = "required" })
-
-
                 </div>
-
             </div>
         </div>
         <div class="row">
@@ -111,15 +86,12 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.PHNO, new { @class = "form-control" })
             </div>
-
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Investigation
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.Investigation, new { @class = "form-control" })
             </div>
-
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -128,15 +100,12 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.OBSTEITICCODE, new { @class = "form-control" })
             </div>
-
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Urine S
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.URINES, new { @class = "form-control" })
             </div>
-
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -145,14 +114,12 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.MODEOFDELIVERY, new { @class = "form-control" })
             </div>
-
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Urine D
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.URINED, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -167,7 +134,6 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.BLOODHBPERCENT, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -176,14 +142,12 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.DTIME, new { @class = "form-control" })
             </div>
-
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Gp&Rh
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.GPRH, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -192,14 +156,12 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.SEX, new { @class = "form-control" })
             </div>
-
             <div class="col-sm-2 col-md-2 col-lg-2">
                 BT
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.BT, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -214,7 +176,6 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.CT, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-10 col-md-10 col-lg-10">
@@ -233,7 +194,6 @@
                         <div class="col-sm-3 col-md-3 col-lg-3">
                             @Html.TextBoxFor(m => m.DTIME2, new { @class = "form-control" })
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col-sm-2 col-md-2 col-lg-2">
@@ -248,12 +208,9 @@
                         <div class="col-sm-3 col-md-3 col-lg-3">
                             @Html.TextBoxFor(m => m.PWEIGHT2, new { @class = "form-control" })
                         </div>
-
                     </div>
                 </div>
             </div>
-
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -262,14 +219,12 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.HBSAG, new { @class = "form-control" })
             </div>
-
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Platelet
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.PLATELET, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -279,14 +234,12 @@
                 @Html.TextBoxFor(m => m.PATIENTADMITTEDWITH, new { @class = "form-control" })
             </div>
 
-
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Present History
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.PRESENTHISTORY, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -295,14 +248,12 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.OBSTETRICHISTORY, new { @class = "form-control" })
             </div>
-
             <div class="col-sm-2 col-md-2 col-lg-2">
                 High Risk
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.HIGHRISK, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -317,8 +268,6 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.MODEOFDELIVERY, new { @class = "form-control" })
             </div>
-
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -333,9 +282,6 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.POSTOP_POSTNATALPERIOD, new { @class = "form-control" })
             </div>
-
-
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -345,14 +291,11 @@
                 @Html.TextBoxFor(m => m.SRCREATININE, new { @class = "form-control" })
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
-
             </div>
-
         </div>
 
         <div class="row">
             <div class="col-sm-5 col-md-5 col-lg-5">
-
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
                 VDRL
@@ -360,11 +303,9 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.VDRL, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-5 col-md-5 col-lg-5">
-
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
                 HIV
@@ -372,7 +313,6 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 @Html.TextBoxFor(m => m.HIV, new { @class = "form-control" })
             </div>
-
         </div>
 
         <div class="row">
@@ -382,7 +322,6 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
                 @Html.TextAreaFor(m => m.TREATMENT, new { @class = "form-control", required = "required" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -391,7 +330,6 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
                 @Html.TextAreaFor(m => m.CONDITIONOFBABY, new { @class = "form-control" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -400,7 +338,6 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
                 @Html.TextAreaFor(m => m.DISCHARGEADVICE, new { @class = "form-control", required = "required" })
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -409,7 +346,6 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
                 @Html.TextAreaFor(m => m.COMMENTS, new { @class = "form-control", required = "required" })
             </div>
-
         </div>
         <hr />
         <div class="row">
@@ -438,13 +374,11 @@
             </div>
         </div>
         <div class="row">
-
             <hr />
         </div>
     }
 </div>
 @section Scripts {
-
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -454,8 +388,6 @@
             $('#DDATE').datepicker({ format: 'dd/mm/yyyy' });
             $('#DDATE2').datepicker({ format: 'dd/mm/yyyy' });
 
-
         });
-
     </script>
 }

@@ -4,6 +4,7 @@ using Lab.Management.Logger;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 
 namespace Lab.Management.Engine.Infrastructure
@@ -11,32 +12,13 @@ namespace Lab.Management.Engine.Infrastructure
     public class Patient : IPatient
     {
         private LabManagementEntities _objLabManagementEntities;
+
         private readonly IAppLogger _objIAppLogger;
+
         public Patient(LabManagementEntities objLabManagementEntities, IAppLogger objIAppLogger)
         {
             _objLabManagementEntities = objLabManagementEntities;
             _objIAppLogger = objIAppLogger;
-        }
-
-        public lmsPatientRegistration GetPatientDetailsById(int PatientId)
-        {
-            try
-            {
-                if (PatientId == 0)
-                {
-                    var newPatient = new lmsPatientRegistration();
-                    newPatient.ISDISCHARGED = false;
-                    return newPatient;
-                }
-                var resultDetails = _objLabManagementEntities.lmsPatientRegistrations.FirstOrDefault(dt => dt.PATIENTID == PatientId);
-                resultDetails.ISDISCHARGED = resultDetails.ISDISCHARGED == null ? false : resultDetails.ISDISCHARGED.Value;
-                return resultDetails;
-            }
-            catch (Exception ex)
-            {
-                _objIAppLogger.LogError(ex);
-                return null;
-            }
         }
 
         public int GetPatientIdByQrCode(string qrCode)
@@ -50,6 +32,30 @@ namespace Lab.Management.Engine.Infrastructure
             {
                 _objIAppLogger.LogError(ex);
                 return -1;
+            }
+        }
+
+        public IList<usp_GetPatientDdlForBilling_Result> GetPatientDdl()
+        {
+            return _objLabManagementEntities.usp_GetPatientDdlForBilling().ToList();
+        }
+
+        public lmsPatientRegistration GetPatientDetailsById(int PatientId)
+        {
+            try
+            {
+                if (PatientId == 0)
+                {
+                    return new lmsPatientRegistration();
+                }
+                var resultDetails = _objLabManagementEntities.lmsPatientRegistrations.FirstOrDefault(dt => dt.PATIENTID == PatientId);
+
+                return resultDetails;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
             }
         }
 
@@ -108,18 +114,16 @@ namespace Lab.Management.Engine.Infrastructure
             return resultFlag;
         }
 
-        public lmsOutPatientMaster GetOutPatientMasterById(int PatientId)
+        public lmsPatientBooking GetPatientBookingById(int id)
         {
             try
             {
-                if (PatientId == 0)
+                if (id == 0)
                 {
-                    var newPatient = new lmsOutPatientMaster();
-
-                    return newPatient;
+                    return new lmsPatientBooking();
                 }
-                var resultDetails = _objLabManagementEntities.lmsOutPatientMasters.FirstOrDefault(dt => dt.OPMASTERID == PatientId);
-                return resultDetails;
+                var resultDetails = _objLabManagementEntities.lmsPatientBookings.Where(dt => dt.BOOKINGID == id);
+                return resultDetails.Any() ? resultDetails.FirstOrDefault() : null;
             }
             catch (Exception ex)
             {
@@ -128,56 +132,61 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
-        public IList<lmsOutPatientMaster> GetAllOutPatient()
+        public IList<lmsPatientBooking> GetAllPatientBooking(string date = "",
+            int patientId = 0, string status = "CONFIRMED", bool isHistory = false)
         {
             try
             {
-                var resultDetails = _objLabManagementEntities.lmsOutPatientMasters.Select(x => x);
-                return resultDetails.ToList();
+                if (isHistory && patientId > 0)
+                {
+                    var history = _objLabManagementEntities.lmsPatientBookings.Where(x =>
+             x.PATIENTID == patientId);
+                    return history.Any() ? history.ToList() : new List<lmsPatientBooking>();
+                }
+                var filterDate = Convert.ToDateTime(date).Date;
+                var result = _objLabManagementEntities.lmsPatientBookings.Where(x =>
+                EntityFunctions.TruncateTime(x.APPOINTMENTDATE.Value) == filterDate
+                && x.BOOKINGSTATUS == status);
+                return result.Any() ? result.ToList() : new List<lmsPatientBooking>();
             }
             catch (Exception ex)
             {
                 _objIAppLogger.LogError(ex);
-                return new List<lmsOutPatientMaster>();
+                return null;
             }
         }
 
-        public int SaveOutPatient(lmsOutPatientMaster objlmsPatientRegistrations)
+        public int SavePatientBooking(lmsPatientBooking objSaveData)
         {
             var resultId = 0;
             try
             {
-                if (objlmsPatientRegistrations.OPMASTERID > 0)
+                if (objSaveData.BOOKINGID > 0)
                 {
-                    _objLabManagementEntities.lmsOutPatientMasters.Attach(objlmsPatientRegistrations);
-                    _objLabManagementEntities.Entry(objlmsPatientRegistrations).State = EntityState.Modified;
+                    _objLabManagementEntities.lmsPatientBookings.Attach(objSaveData);
+                    _objLabManagementEntities.Entry(objSaveData).State = EntityState.Modified;
                     _objLabManagementEntities.SaveChanges();
-                    return objlmsPatientRegistrations.OPMASTERID;
+                    return objSaveData.BOOKINGID;
                 }
-                _objLabManagementEntities.lmsOutPatientMasters.Add(objlmsPatientRegistrations);
+                _objLabManagementEntities.lmsPatientBookings.Add(objSaveData);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsOutPatientMasters.LastOrDefault().OPMASTERID;
+                resultId = _objLabManagementEntities.lmsPatientBookings.Where(x => x.PATIENTID == objSaveData.PATIENTID).ToList().LastOrDefault().BOOKINGID;
             }
             catch (Exception ex)
             {
                 _objIAppLogger.LogError(ex);
             }
+
             return resultId;
         }
 
-        public int DeleteOutPatient(int PatientId)
+        public int DeletePatientBooking(int id)
         {
             var resultFlag = 0;
             try
             {
-                var PatientObject = _objLabManagementEntities.lmsOutPatientMasters.FirstOrDefault(x => x.OPMASTERID == PatientId);
-                var patientDetails = _objLabManagementEntities.lmsOutPatientDetails.Where(x => x.OPMASTERID == PatientObject.OPMASTERID);
-                if (patientDetails.Any())
-                {
-                    _objLabManagementEntities.lmsOutPatientDetails.RemoveRange(patientDetails);
-                }
-
-                _objLabManagementEntities.lmsOutPatientMasters.Remove(PatientObject);
+                var bookingInfo = _objLabManagementEntities.lmsPatientBookings.FirstOrDefault(x => x.BOOKINGID == id);
+                _objLabManagementEntities.lmsPatientBookings.Remove(bookingInfo);
                 _objLabManagementEntities.SaveChanges();
             }
             catch (Exception ex)
@@ -188,18 +197,16 @@ namespace Lab.Management.Engine.Infrastructure
             return resultFlag;
         }
 
-        public lmsOutPatientDetail GetOutPatientDetailsById(int PatientId)
+        public lmsPatientPrescription GetPatientPrescriptionById(int bookingId)
         {
             try
             {
-                if (PatientId == 0)
+                if (bookingId == 0)
                 {
-                    var newPatient = new lmsOutPatientDetail();
-
-                    return newPatient;
+                    return new lmsPatientPrescription();
                 }
-                var resultDetails = _objLabManagementEntities.lmsOutPatientDetails.FirstOrDefault(dt => dt.OPDID == PatientId);
-                return resultDetails;
+                var resultDetails = _objLabManagementEntities.lmsPatientPrescriptions.Where(dt => dt.BOOKINGID == bookingId);
+                return resultDetails.Any() ? resultDetails.FirstOrDefault() : null;
             }
             catch (Exception ex)
             {
@@ -208,12 +215,16 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
-        public IList<lmsOutPatientDetail> GetAllOutPatientDetails(int patientDetailsId)
+        public IList<lmsPatientPrescription> GetAllPatientPrescription(int bookingId)
         {
             try
             {
-                var resultDetails = _objLabManagementEntities.lmsOutPatientDetails.Where(x => x.OPMASTERID == patientDetailsId);
-                return resultDetails.OrderByDescending(x => x.OPDID).ToList();
+                if (bookingId < 0)
+                {
+                    return new List<lmsPatientPrescription>();
+                }
+                var result = _objLabManagementEntities.lmsPatientPrescriptions.Where(x => x.BOOKINGID == bookingId);
+                return result.Any() ? result.ToList() : new List<lmsPatientPrescription>();
             }
             catch (Exception ex)
             {
@@ -222,21 +233,18 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
-        public int SaveOutPatientDetail(lmsOutPatientDetail objlmsPatientRegistrations)
+        public int SavePatientPrescription(List<lmsPatientPrescription> objSaveData)
         {
             var resultId = 0;
             try
             {
-                if (objlmsPatientRegistrations.OPDID > 0)
+                if (objSaveData.Count() > 0)
                 {
-                    _objLabManagementEntities.lmsOutPatientDetails.Attach(objlmsPatientRegistrations);
-                    _objLabManagementEntities.Entry(objlmsPatientRegistrations).State = EntityState.Modified;
+                    objSaveData.ForEach(presc => _objLabManagementEntities.lmsPatientPrescriptions.Add(presc));
                     _objLabManagementEntities.SaveChanges();
-                    return objlmsPatientRegistrations.OPDID;
+                    return 1;
                 }
-                _objLabManagementEntities.lmsOutPatientDetails.Add(objlmsPatientRegistrations);
-                _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsOutPatientDetails.LastOrDefault().OPDID;
+                resultId = 0;
             }
             catch (Exception ex)
             {
@@ -246,13 +254,13 @@ namespace Lab.Management.Engine.Infrastructure
             return resultId;
         }
 
-        public int DeleteOutPatientDetail(int PatientId)
+        public int DeletePatientPrescription(int bookingId)
         {
             var resultFlag = 0;
             try
             {
-                var patientDetails = _objLabManagementEntities.lmsOutPatientDetails.FirstOrDefault(x => x.OPDID == PatientId);
-                _objLabManagementEntities.lmsOutPatientDetails.Remove(patientDetails);
+                var deleteResult = _objLabManagementEntities.lmsPatientPrescriptions.Where(x => x.BOOKINGID == bookingId);
+                _objLabManagementEntities.lmsPatientPrescriptions.RemoveRange(deleteResult);
                 _objLabManagementEntities.SaveChanges();
             }
             catch (Exception ex)
@@ -260,13 +268,7 @@ namespace Lab.Management.Engine.Infrastructure
                 resultFlag = -1;
                 _objIAppLogger.LogError(ex);
             }
-
             return resultFlag;
-        }
-
-        public IList<usp_GetPatientDdlForBilling_Result> GetPatientDdl()
-        {
-            return _objLabManagementEntities.usp_GetPatientDdlForBilling().ToList();
         }
     }
 }

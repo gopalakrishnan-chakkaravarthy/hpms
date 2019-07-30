@@ -5,9 +5,11 @@ namespace Lab.Management.Engine.Service
 {
     public interface IPatient
     {
-        lmsPatientRegistration GetPatientDetailsById(int PatientId);
+        IList<usp_GetPatientDdlForBilling_Result> GetPatientDdl();
 
         int GetPatientIdByQrCode(string qrCode);
+
+        lmsPatientRegistration GetPatientDetailsById(int PatientId);
 
         IList<lmsPatientRegistration> GetAllPatient(string patientType, bool includeAll = false);
 
@@ -15,22 +17,21 @@ namespace Lab.Management.Engine.Service
 
         int DeletePatient(int PatientId);
 
-        lmsOutPatientMaster GetOutPatientMasterById(int PatientId);
+        lmsPatientBooking GetPatientBookingById(int id);
 
-        IList<lmsOutPatientMaster> GetAllOutPatient();
+        IList<lmsPatientBooking> GetAllPatientBooking(string date = "",
+            int patientId = 0, string status = "CONFIRMED", bool isHistory = false);
 
-        int SaveOutPatient(lmsOutPatientMaster objPatientMaster);
+        int SavePatientBooking(lmsPatientBooking objPatientMaster);
 
-        int DeleteOutPatient(int PatientId);
+        int DeletePatientBooking(int id);
 
-        lmsOutPatientDetail GetOutPatientDetailsById(int PatientId);
+        lmsPatientPrescription GetPatientPrescriptionById(int bookingId);
 
-        IList<lmsOutPatientDetail> GetAllOutPatientDetails(int patientDetailsId);
+        IList<lmsPatientPrescription> GetAllPatientPrescription(int bookingId);
 
-        int SaveOutPatientDetail(lmsOutPatientDetail objPatientMaster);
+        int SavePatientPrescription(List<lmsPatientPrescription> objPatientMaster);
 
-        int DeleteOutPatientDetail(int PatientId);
-
-        IList<usp_GetPatientDdlForBilling_Result> GetPatientDdl();
+        int DeletePatientPrescription(int bookingId);
     }
 }

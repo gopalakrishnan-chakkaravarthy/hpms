@@ -1,0 +1,63 @@
+﻿@using Lab.Management.Entities;
+@model lmsDrugFrequency
+    @{
+        ViewBag.Title = "View Drug Frequency";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        var message = ViewBag.Message as string;
+    }
+
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <div class="alert alert-info">
+                    @message
+                </div>
+            </div>
+        </div>
+    }
+    <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
+        @using (Html.BeginForm("EditDrugFrequency", "Admin", new { @id = "IdEdit", @name = "EditForm" }))
+        {
+            <div class="row">
+                <h4 class="text-success">
+                    <i class="glyphicon glyphicon-hand-right"></i>View Drug Dosage Details
+                </h4>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    Drug Frequency
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    @Html.TextBoxFor(m => m.FREQUENCY, new { @class = "form-control", required = "required" })
+                    @Html.HiddenFor(x => x.FREQUENCYID)
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <a href="@Url.Action("ViewAllDrugFrequency", "Admin")" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-arrow-left">
+                            Back
+                        </i>
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-floppy-disk"></i>
+                        Save
+                    </button>
+                    @if (Model.FREQUENCYID > 0)
+                    {
+                        <a href="@Url.Action("DeleteDrugFrequency", "Admin", new { id = @Model.FREQUENCYID })" class="btn btn-danger">
+                            <i class="glyphicon glyphicon-trash">
+                                Delete
+                            </i>
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <hr />
+            </div>
+        }
+    </div>

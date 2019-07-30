@@ -37,6 +37,12 @@ public partial class lmsPatientRegistration
 
         this.lmsGynacDischargeSummaries = new HashSet<lmsGynacDischargeSummary>();
 
+        this.lmsPatientBookings = new HashSet<lmsPatientBooking>();
+
+        this.lmsPatientBookings1 = new HashSet<lmsPatientBooking>();
+
+        this.lmsPatientPrescriptions = new HashSet<lmsPatientPrescription>();
+
     }
 
 
@@ -54,29 +60,11 @@ public partial class lmsPatientRegistration
 
     public string PATIENTEMAILID { get; set; }
 
-    public Nullable<int> CONSULTINGDOCTOR { get; set; }
-
-    public Nullable<double> CONSULTINGFEE { get; set; }
-
     public string PATIENTTYPE { get; set; }
-
-    public Nullable<int> DISEASEID { get; set; }
-
-    public Nullable<System.DateTime> REGISTEREDATE { get; set; }
-
-    public Nullable<System.DateTime> DISCHARGEDATE { get; set; }
-
-    public Nullable<bool> ISDISCHARGED { get; set; }
 
     public Nullable<System.DateTime> CREATEDDATE { get; set; }
 
     public string GENDER { get; set; }
-
-    public string DOCTORTOCONSULT { get; set; }
-
-    public Nullable<int> BEDID { get; set; }
-
-    public Nullable<int> WARDID { get; set; }
 
     public string QrCodeContent { get; set; }
 
@@ -86,11 +74,7 @@ public partial class lmsPatientRegistration
 
     public virtual ICollection<lmsDischargeSummary> lmsDischargeSummaries { get; set; }
 
-    public virtual lmsDiseaseMaster lmsDiseaseMaster { get; set; }
-
     public virtual ICollection<lmsInPatientBilling> lmsInPatientBillings { get; set; }
-
-    public virtual lmsLoginRegistration lmsLoginRegistration { get; set; }
 
     public virtual ICollection<lmsScanReportMaster> lmsScanReportMasters { get; set; }
 
@@ -100,13 +84,15 @@ public partial class lmsPatientRegistration
 
     public virtual ICollection<lmsPatientTemplate> lmsPatientTemplates { get; set; }
 
-    public virtual lmsBed lmsBed { get; set; }
-
     public virtual ICollection<lmsGeneralDischargeSummary> lmsGeneralDischargeSummaries { get; set; }
 
-    public virtual lmsWard lmsWard { get; set; }
-
     public virtual ICollection<lmsGynacDischargeSummary> lmsGynacDischargeSummaries { get; set; }
+
+    public virtual ICollection<lmsPatientBooking> lmsPatientBookings { get; set; }
+
+    public virtual ICollection<lmsPatientBooking> lmsPatientBookings1 { get; set; }
+
+    public virtual ICollection<lmsPatientPrescription> lmsPatientPrescriptions { get; set; }
 
 }
 

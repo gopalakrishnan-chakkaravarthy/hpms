@@ -23,8 +23,6 @@ public partial class lmsLoginRegistration
 
         this.lmsDischargeSummaries = new HashSet<lmsDischargeSummary>();
 
-        this.lmsPatientRegistrations = new HashSet<lmsPatientRegistration>();
-
         this.lmsDischargeBills = new HashSet<lmsDischargeBill>();
 
         this.lmsSignatureMasters = new HashSet<lmsSignatureMaster>();
@@ -73,8 +71,6 @@ public partial class lmsLoginRegistration
     public virtual lmsRoleMaster lmsRoleMaster { get; set; }
 
     public virtual lmsStateMaster lmsStateMaster { get; set; }
-
-    public virtual ICollection<lmsPatientRegistration> lmsPatientRegistrations { get; set; }
 
     public virtual ICollection<lmsDischargeBill> lmsDischargeBills { get; set; }
 

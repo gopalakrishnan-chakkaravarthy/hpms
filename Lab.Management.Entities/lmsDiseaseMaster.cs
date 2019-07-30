@@ -21,9 +21,9 @@ public partial class lmsDiseaseMaster
     public lmsDiseaseMaster()
     {
 
-        this.lmsPatientRegistrations = new HashSet<lmsPatientRegistration>();
+        this.lmsPatientBookings = new HashSet<lmsPatientBooking>();
 
-        this.lmsOutPatientMasters = new HashSet<lmsOutPatientMaster>();
+        this.lmsPatientBookings1 = new HashSet<lmsPatientBooking>();
 
     }
 
@@ -34,9 +34,9 @@ public partial class lmsDiseaseMaster
 
 
 
-    public virtual ICollection<lmsPatientRegistration> lmsPatientRegistrations { get; set; }
+    public virtual ICollection<lmsPatientBooking> lmsPatientBookings { get; set; }
 
-    public virtual ICollection<lmsOutPatientMaster> lmsOutPatientMasters { get; set; }
+    public virtual ICollection<lmsPatientBooking> lmsPatientBookings1 { get; set; }
 
 }
 

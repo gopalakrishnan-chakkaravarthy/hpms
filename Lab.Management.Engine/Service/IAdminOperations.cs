@@ -70,5 +70,21 @@ namespace Lab.Management.Engine.Service
         AdminDashboard GetAdminDashboardInfo(string filterDate = "");
 
         void DataArchival(string archType, DateTime fromDate, DateTime toDate);
+
+        lmsDrugDosage GetDrugDosageById(int id);
+
+        IList<lmsDrugDosage> GetAllDrugDosage();
+
+        int SaveDrugDosage(lmsDrugDosage objSaveData);
+
+        int DeleteDrugDosage(int id);
+
+        lmsDrugFrequency GetDrugFrequencyById(int id);
+
+        IList<lmsDrugFrequency> GetAllDrugFrequency();
+
+        int SaveDrugFrequency(lmsDrugFrequency objSaveData);
+
+        int DeleteDrugFrequency(int id);
     }
 }

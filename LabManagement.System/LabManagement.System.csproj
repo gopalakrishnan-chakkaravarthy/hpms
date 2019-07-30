@@ -683,10 +683,6 @@
     <Content Include="Views\Invoice\ViewAllLaboratoryBilling.cshtml" />
     <Content Include="Views\Admin\ViewTemplate.cshtml" />
     <Content Include="Views\Admin\ViewAllTemplate.cshtml" />
-    <Content Include="Views\Patient\ViewAllOutPatient.cshtml" />
-    <Content Include="Views\Patient\ViewOutPatient.cshtml" />
-    <Content Include="Views\Patient\ViewOutPatientDetail.cshtml" />
-    <Content Include="Views\Patient\ViewAllOutPatientDetail.cshtml" />
     <Content Include="Views\Invoice\ViewAllDischargeBill.cshtml" />
     <Content Include="Views\Invoice\ViewDischargeBill.cshtml" />
     <Content Include="Views\Invoice\GenerateDischargeBill.cshtml" />
@@ -708,6 +704,11 @@
     <Content Include="Views\Shared\_QrCodeGenerator.cshtml" />
     <Content Include="Views\WebCam\ChangePhoto.cshtml" />
     <Content Include="Views\WebCam\Index.cshtml" />
+    <Content Include="Views\Patient\ViewAllBooking.cshtml" />
+    <Content Include="Views\Patient\ViewBooking.cshtml" />
+    <Content Include="Views\Patient\_ViewPrescription.cshtml" />
+    <Content Include="Views\Patient\_PrintPatientPrescription.cshtml" />
+    <None Include="Views\Patient\_ViewPatientHistory.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

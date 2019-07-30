@@ -1,0 +1,296 @@
+﻿@using Lab.Management.Entities;
+@model lmsPatientBooking
+@{
+    ViewBag.Title = "View Patient Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+
+}
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+<div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
+    @using (Html.BeginForm("EditBooking", "Patient", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <h4 class="text-success"><i class="glyphicon glyphicon-hand-right">  Patient Booking</i></h4>
+            </div>
+        </div>
+
+        <hr/>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Patient Name
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.DropDownListFor(x => x.PATIENTID, Model.PatientDdl, new { @class = "form-control selectpicker", required = "required" })
+
+                @Html.HiddenFor(x => x.BOOKINGID)
+                @Html.HiddenFor(x => x.PATIENTID)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Disease
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.DropDownListFor(x => x.DISEASEID, Model.DiseaseDdl, new { @class = "form-control selectpicker", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Appointment Date
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.APPOINTMENTDATE, new { @Id = "APPOINTMENTDATE", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Booking Status
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+
+                @Html.DropDownListFor(x => x.BOOKINGSTATUS, Model.BookingStatusDdl, new { @class = "form-control selectpicker", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Consulting Doctor
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.DOCTORTOCONSULT, new { @class = "form-control", required = "required" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Consulting Fee
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.CONSULTINGFEE, new { @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Discharge Date
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.DISCHARGEDATE, new { @Id = "DISCHARGEDATE", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                General Instructions Post Consulting
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextAreaFor(m => m.GENERALINSTRUCTION, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <a href="@Url.Action("ViewAllBooking", "Patient")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                @if (Model.BOOKINGID > 0)
+                {
+                    <button type="button" class="btn btn-info" id="loadprescription">
+                        <i class="glyphicon glyphicon-record"></i>
+                        Prescription
+                    </button>
+                }
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-floppy-disk"></i>
+                    Save
+                </button>
+                @if (Model.PATIENTID > 0)
+                {
+                    <a href="@Url.Action("DeleteBooking", "Patient", new { id = @Model.BOOKINGID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash">
+                            Delete
+                        </i>
+                    </a>
+
+                }
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    }
+</div>
+<div class="modal fade" id="precModal" role="dialog">
+    <div class="modal-dialog modal-lg hpms-presc-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Patient Prescription</h4>
+            </div>
+            <div class="modal-body">
+                <div id='myModalContent'></div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#APPOINTMENTDATE').datepicker({ format: 'dd/mm/yyyy' });
+            $('#DISCHARGEDATE').datepicker({ format: 'dd/mm/yyyy' });
+            var bookingId=$('#BOOKINGID').val();
+            var patientId=$('#PATIENTID').val();
+            var prescriptionDetails = [], clonedDosage, clonedFrequency,alreadyAddedDrugs=[];
+            var prescriptionPostBackURL = '/Patient/ViewPrescription';
+            $("#loadprescription").on('click', (function () {
+                var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: prescriptionPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "id": 0 },
+                    datatype: "json",
+                    success: function (data) {
+                        $('#myModalContent').html(data);
+                        $('#precModal').modal(options);
+                        $('#precModal').modal('show');
+                        loadPrescScript();
+                        cloneDropDown();
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+
+            }));
+            function cloneDropDown() {
+                 clonedDosage = $("#Iddosageddl").clone();
+                 clonedFrequency = $("#Idfrequencydl").clone();
+            }
+            function loadPrescScript() {
+                      //For Prescript add and remove code starts
+           $('#Idpatientddl').on('change', function () {
+                var patientddl = $('#Idpatientddl option:selected').text();
+                var indexStart = patientddl.indexOf('-') + 1;
+                var indexEnd = patientddl.lastIndexOf('(');
+                patientddl = patientddl.substring(indexStart, indexEnd);
+                $('#BILLNAME').val(patientddl);
+
+            });
+
+            $('#btnAddDrug').on('click', function () {
+                var drugId = $('#Iddrugddl').val();
+                if (alreadyAddedDrugs.indexOf(drugId) > -1) {
+                    alert("Medicine Already available in prescription list.Please change medicine to continue.")
+                    return;
+                }
+
+                $('#btnAddDrug').attr('disabled', 'disabled');
+                getDrugInfo(drugId, 1);
+            });
+
+            $('#btnSave').on('click', function () {
+                saveDrugBills();
+            });
+
+            }
+            function listenDelete() {
+              $(".btn-sm").on('click', function () {
+                    var btnId = this.id;
+                    var drugId = btnId.split('_');
+
+                    if (drugId.length > 0) {
+                        $(this).parents("tr").remove();
+                        var indexofDrugId = alreadyAddedDrugs.indexOf(drugId);
+                        alreadyAddedDrugs.splice(indexofDrugId,1);
+                    }
+
+                });
+            }
+            function saveDrugBills() {
+                prescriptionDetails = [];
+                var drugControlId ='';
+                $("#tableDrug tr").each(function (e) {
+                    var tblRow = $(this)
+                    var rowId = tblRow.length > 0 ? tblRow[0].id : '';
+                    if (rowId != undefined && rowId !== "") {
+                        var drugId = rowId.split('_');
+                        if (drugId.length > 0) {
+                            drugControlId = drugId[1].replace(/"/g, '');
+                            var medicineCount = $("#txtMedicineCount_" + drugControlId).val();
+                            var strength = $("#txtStrength_" + drugControlId).val();
+                            var dosagePower = $('#ddlDrugDosage_' + drugControlId).val();
+                            var frequency = $('#ddlFrequency_' + drugControlId).val();
+                            var instructions = $("#txtInstructions_" + drugControlId).val();
+                            prescriptionDetails.push({
+                                'BOOKINGID': bookingId,
+                                'PATIENTID': patientId,
+                                'DRUGID': drugControlId,
+                                'MEDICINECOUNT': medicineCount,
+                                'STRENGTH': strength,
+                                'DOSAGEID': dosagePower,
+                                'FREQUENCYID': frequency,
+                                'INSTRUCTIONS': instructions
+                            });
+
+                        }
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("SavePrescription")",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(prescriptionDetails),
+                    success: function (data) {
+                        window.location.href = "ViewBooking?id=" + bookingId +"&viewMessage=Prescription saved successfully";
+                    },
+                    failure: function (errMsg) {
+                        alert('failure' + errMsg);
+                    }
+                });
+            }
+            function getDrugInfo(drugId, medicineCount) {
+                $.ajax({
+                    url: '@Url.Action("GetDrugDetailById", "Invoice")',
+                    type: "GET",
+                    data: { "drugId": drugId, "quantity": medicineCount },
+                    success: function (result) {
+                        clonedDosage[0].id = 'ddlDrugDosage_' + drugId;
+                        clonedFrequency[0].id = 'ddlFrequency_' + drugId;
+                        var ddlDosage = clonedDosage[0].outerHTML;
+                        var ddlFrequency = clonedFrequency[0].outerHTML;
+                        var newtableRow = '<tr id=tr_"' + drugId + '"><td>' + result.DRUGNAME + '</td>'+
+                            '<td> <input type="text" value="" id="txtMedicineCount_' + drugId + '" style="color: black;" /></td>'+
+                            '<td> <input type="text" value="" id="txtStrength_' + drugId + '" style="color: black;width:70%;" /></td>'+
+                            '<td>' + ddlDosage + '</td>'+
+                            '<td>' + ddlFrequency + '</td>' +
+                            '<td> <textarea id="txtInstructions_' + drugId + '" style="color: black;" /> </td>'+
+                           ' <td> <button id = "btnRemove_' + drugId + '" name = "btnRemove" type = "button" class="btn btn-sm btn-danger" > <i class="glyphicon glyphicon-minus"></i></button ></td> ' +
+                        '</tr> ';
+                        $('#tableDrug tbody').append(newtableRow);
+                        alreadyAddedDrugs.push(drugId);
+                        $('#btnAddDrug').removeAttr('disabled');
+                        listenDelete();
+
+                    },
+                    error: function (result) {
+                        $('#btnAddDrug').removeAttr('disabled');
+                        alert("Failed");
+                    }
+                });
+            }
+        //Prescription add and remove code ends
+        });
+    </script>
+}

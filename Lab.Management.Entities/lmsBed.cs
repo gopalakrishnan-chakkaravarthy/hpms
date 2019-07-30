@@ -23,8 +23,6 @@ public partial class lmsBed
 
         this.lmsWards = new HashSet<lmsWard>();
 
-        this.lmsPatientRegistrations = new HashSet<lmsPatientRegistration>();
-
     }
 
 
@@ -39,8 +37,6 @@ public partial class lmsBed
 
 
     public virtual ICollection<lmsWard> lmsWards { get; set; }
-
-    public virtual ICollection<lmsPatientRegistration> lmsPatientRegistrations { get; set; }
 
 }
 

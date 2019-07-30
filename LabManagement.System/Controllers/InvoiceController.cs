@@ -81,8 +81,8 @@ namespace LabManagement.System.Controllers
 
         public ActionResult ViewAllMedicalBill(string viewMessage = "", string filterDate = "")
         {
-            var billfilterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).AddDays(-5).ToShortDateString();
-            var getAll = _objIInvoice.GetAllMedicalBill(filterDate: filterDate);
+            var billFilterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
+            var getAll = _objIInvoice.GetAllMedicalBill(filterDate: billFilterDate);
             var userDetail = UserInfo;
             ViewBag.Message = viewMessage;
             if (getAll != null && getAll.Count() > 0)
@@ -159,7 +159,8 @@ namespace LabManagement.System.Controllers
         public ActionResult ViewAllLaboratoryBilling(string viewMessage = "", string filterDate = "")
         {
             ViewBag.Message = viewMessage;
-            var getAll = _objIInvoice.GetAllLaboratoryBilling(filterDate);
+            var billFilterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
+            var getAll = _objIInvoice.GetAllLaboratoryBilling(billFilterDate);
             if (getAll != null && getAll.Any())
             {
                 ViewBag.GrandTotal = getAll.Sum(x => Math.Round(x.BILLAMOUNT.Value, 2));

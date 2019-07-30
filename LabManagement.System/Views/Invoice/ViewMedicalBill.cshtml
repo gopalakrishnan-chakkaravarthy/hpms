@@ -7,7 +7,6 @@
     var drugddl = ViewBag.DrugList as IEnumerable<SelectListItem>;
     var patientddl = ViewBag.PatientList as IEnumerable<SelectListItem>;
 }
-
 @if (!string.IsNullOrEmpty(message))
 {
     <div class="row">
@@ -97,7 +96,6 @@
             <div class="col-sm-2 col-md-2 col-lg-2">
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
-
                 <input type="text" class="form-control" id="Idquantity"/>
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -145,7 +143,7 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-
+            var alreadyAddedDrugs = [];
             $('#Idpatientddl').on('change', function () {
                 var patientddl = $('#Idpatientddl option:selected').text();
                 var indexStart = patientddl.indexOf('-') + 1;
@@ -158,7 +156,11 @@
             var drugDetails = [];
 
             $('#btnAddDrug').on('click', function () {
-                debugger;
+                var drugId = $('#Iddrugddl').val();
+                if (alreadyAddedDrugs.indexOf(drugId) > -1) {
+                    alert("Medicine Already available in bill list.Please change medicine to continue.")
+                    return;
+                }
                 var drugId = $('#Iddrugddl').val();
                 var quantity = $('#Idquantity').val();
                 var validationAlert = validatefields();
@@ -166,25 +168,26 @@
 
                     $('#btnAddDrug').attr('disabled', 'disabled');
                     getDrugInfo(drugId, quantity);
+
                     return;
                 }
                 alert(validationAlert);
             });
 
-            $(".btn-sm").live('click', function () {
-                debugger;
-                var btnId = this.id;
-                var drugId = btnId.split('_');
+            function listenRemove() {
+                $(".btn-sm").on('click', function () {
+                    var btnId = this.id;
+                    var drugId = btnId.split('_');
+                    if (drugId.length > 0) {
+                        var indexofDrugId = alreadyAddedDrugs.indexOf(drugId);
+                        alreadyAddedDrugs.splice(indexofDrugId, 1);
+                        $(this).parents("tr").remove();
+                        calculateTotal();
+                    }
 
-                if (drugId.length > 0) {
-                    //$('#tr_' + drugId[1]).remove();
-                    $(this).parents("tr").remove();
-                    calculateTotal();
-                }
-
-            });
+                });
+            }
             $('#btnSave').on('click', function () {
-                debugger;
                 saveDrugBills();
             });
 
@@ -206,8 +209,8 @@
                 //idTotal
                 var subTotal = 0.00;
                 $("#tableDrug tr").each(function (e) {
-                    $this = $(this)
-                    var rowId = $this.context.id;
+                    var tblRow = $(this)
+                    var rowId = tblRow.length > 0 ? tblRow[0].id : '';
                     if (rowId != undefined && rowId !== "") {
                         var TestId = rowId.split('_');
                         if (TestId.length > 0) {
@@ -220,11 +223,10 @@
                 $('#idTotal').text(subTotal);
             }
             function saveDrugBills() {
-                debugger;
                 drugDetails = [];
                 $("#tableDrug tr").each(function (e) {
-                    $this = $(this)
-                    var rowId = $this.context.id;
+                    var tblRow = $(this)
+                    var rowId = tblRow.length > 0 ? tblRow[0].id : '';
                     if (rowId != undefined && rowId !== "") {
                         var drugId = rowId.split('_');
                         if (drugId.length > 0) {
@@ -242,7 +244,6 @@
                     url: "@Url.Action("SaveBillInfo")",
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(postData),
-                    //data: postData,
                     success: function (data) {
                         window.location.href = "GeenrateBill?MedicalBillId=" + data;
                     },
@@ -260,6 +261,8 @@
                         var newtableRow = '<tr id=tr_"' + drugId + '"><td>' + result.DRUGNAME + '</td><td><input type="text" value="' + quantity + '" id="txtQuantity_' + drugId + '" style="color: black;" /></td><td><input type="text" value="' + result.SELLINGPRICE + '" id="txtPrice_' + drugId + '" style="color: black;width:70%;" /><button id="btnRemove_' + drugId + '" name="btnRemove" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-minus"></i></button></td></tr>';
                         $('#tableDrug tbody').append(newtableRow);
                         $('#btnAddDrug').removeAttr('disabled');
+                        alreadyAddedDrugs.push(drugId);
+                        listenRemove();
                         calculateTotal();
 
                     },

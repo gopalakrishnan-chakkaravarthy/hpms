@@ -85,10 +85,6 @@ public partial class LabManagementEntities : DbContext
 
     public virtual DbSet<lmsMedicalBillingDetail> lmsMedicalBillingDetails { get; set; }
 
-    public virtual DbSet<lmsOutPatientDetail> lmsOutPatientDetails { get; set; }
-
-    public virtual DbSet<lmsOutPatientMaster> lmsOutPatientMasters { get; set; }
-
     public virtual DbSet<lmsPatientDischargeSummary> lmsPatientDischargeSummaries { get; set; }
 
     public virtual DbSet<lmsPatientTemplate> lmsPatientTemplates { get; set; }
@@ -108,6 +104,14 @@ public partial class LabManagementEntities : DbContext
     public virtual DbSet<lmsMedicalTestFor> lmsMedicalTestFors { get; set; }
 
     public virtual DbSet<lmsMedicalTestGroup> lmsMedicalTestGroups { get; set; }
+
+    public virtual DbSet<lmsDrugDosage> lmsDrugDosages { get; set; }
+
+    public virtual DbSet<lmsDrugFrequency> lmsDrugFrequencies { get; set; }
+
+    public virtual DbSet<lmsPatientBooking> lmsPatientBookings { get; set; }
+
+    public virtual DbSet<lmsPatientPrescription> lmsPatientPrescriptions { get; set; }
 
 
     [DbFunction("LabManagementEntities", "SplitToTable")]

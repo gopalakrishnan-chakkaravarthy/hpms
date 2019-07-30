@@ -6,11 +6,13 @@
 /*Sets font family for all controls*/
 body, div, input[type], textarea, button, a, p, ul, li, span, label, h1, h2, h3, h4, h5, h6 {
     font-family: "Times New Roman" !important;
-    border-radius:0 !important;
+    border-radius: 0 !important;
 }
+
 .form-control {
     border-radius: 0 !important;
 }
+
 .roundCornerDiv {
     /*border-radius: 10px;
     padding-left: 15px;*/
@@ -93,11 +95,10 @@ table.dataTable thead tr {
     line-height: 66px;
 }
 
-.circle .glyphicon {
+    .circle .glyphicon {
         color: white;
         margin-left: 4px;
-
-}
+    }
 
 #Stats {
     padding: 0 1.50306% 13px 1.50306%;
@@ -107,18 +108,18 @@ table.dataTable thead tr {
     margin-bottom: -14px;
 }
 
- #Stats .value {
+    #Stats .value {
         font-size: 48px;
         font-weight: bold;
     }
 
-#Stats .info {
+    #Stats .info {
         line-height: 1.2em;
         font-weight: bold;
         font-style: normal;
     }
 
-#Stats h1 {
+    #Stats h1 {
         font-weight: bold;
         text-transform: uppercase;
         position: relative;
@@ -346,6 +347,23 @@ input[type="checkbox"] + label {
     height: 380px;
     width: 600px;
 }
+
 .glyphicon {
     font-family: 'Glyphicons Halflings' !important;
+}
+
+.hpms-display {
+    display: block !important;
+}
+
+.hpms-presc-width {
+    width: 95% !important;
+}
+
+.hpms-booking-panel {
+    width: 98% !important;
+    overflow-y: auto;
+}
+.patient-presc{
+    width:auto;
 }
