@@ -367,3 +367,14 @@ input[type="checkbox"] + label {
 .patient-presc{
     width:auto;
 }
+.hidden-by-role{
+    display:none;
+}
+.display-by-role {
+    width: auto;
+}
+.presc-instruction{
+    width:40rem;
+    max-width:40rem;
+    text-align:justify;
+}

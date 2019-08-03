@@ -70,7 +70,7 @@ namespace LabManagement.System.Controllers
             var qrCodeReader = new QRCodeReader(qrCodePath);
             var decodeData = qrCodeReader.ReadQRCode();
             var patientId = _objIPatient.GetPatientIdByQrCode(decodeData.QRCodeText);
-            return RedirectToAction("ViewPatient", new { PatientId = patientId, viewMessage = "" });
+            return RedirectToAction("ViewBooking", new { id = 0, viewMessage = "", patientId = patientId });
         }
 
         public ActionResult ViewBooking(int id, string viewMessage = "", int patientId = 0)
@@ -78,7 +78,7 @@ namespace LabManagement.System.Controllers
             var diseaseDdl = _objIAdminOperations.GetAllDiseases();
             var bookingDetail = _objIPatient.GetPatientBookingById(id);
 
-            if (patientId != 0)
+            if (patientId > 0)
             {
                 var patientDetails = _objIPatient.GetPatientDetailsById(patientId);
                 if (patientDetails != null)

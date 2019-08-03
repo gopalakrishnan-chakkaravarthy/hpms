@@ -1,9 +1,12 @@
 ﻿@using Lab.Management.Entities;
 @using Lab.Management.Common;
+@using LabManagement.System.Common
 @model IList<lmsPatientBooking>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
+    var userInfo = Session["UserInfo"] as usp_ValidateUser_Result;
+    var hiddenClass = userInfo.GetDisplayCssByRole();
 }
 <div class="roundCornerDiv">
     @if (!string.IsNullOrEmpty(message))
@@ -33,13 +36,13 @@
             </a>
         </div>
     </div>
-    <hr />
+    <hr/>
     <div class="row">
         <div class="col-sm-1 col-md-1 col-lg-1">
             Date:
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3">
-            <input type="text" id="DDATE" style="width:70%" />
+            <input type="text" id="DDATE" style="width:70%"/>
             <button type="button" id="filterDate" class="btn btn-success">
                 <i class="glyphicon glyphicon-filter"></i>
             </button>
@@ -61,10 +64,11 @@
                                     <td>Status</td>
                                     <td>Consulting Doctor</td>
                                     <td>Edit</td>
-                                    <td>History</td>
-                                    <td>Prescription</td>
-                                    <td>Delete Booking</td>
-                                    <td>Delete Prescription</td>
+                                    <td>View Prescription</td>
+                                    <td class="@hiddenClass">History</td>
+                                    <td class="@hiddenClass">Prescription</td>
+                                    <td class="@hiddenClass">Delete Booking</td>
+                                    <td class="@hiddenClass">Delete Prescription</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,12 +91,27 @@
                                             </a>
                                         </td>
                                         <td>
+
+                                            @if (obj.lmsPatientPrescriptions.HasPrescription(obj.BOOKINGID))
+                                            {
+                                                <button class="btn btn-success patient-presc" data-prop="@obj.BOOKINGID">
+                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                    View Prescription
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <div>No Prescription Found</div>
+                                            }
+                                        </td>
+
+                                        <td class="@hiddenClass">
                                             <button class="btn btn-success" id="loadHistory" data-prop="@obj.PATIENTID">
                                                 <i class="glyphicon glyphicon-eye-open"></i>
                                                 History
                                             </button>
                                         </td>
-                                        <td>
+                                        <td class="@hiddenClass">
                                             @{
                                                 var patientBookingId = Convert.ToString(obj.BOOKINGID) + '_' + Convert.ToString(obj.PATIENTID);
 
@@ -102,13 +121,13 @@
                                                 </button>
                                             }
                                         </td>
-                                        <td>
+                                        <td class="@hiddenClass">
                                             <a href="@Url.Action("DeleteBooking", new { id = obj.BOOKINGID })" class="btn btn-danger">
                                                 <i class="glyphicon glyphicon-trash"></i>
                                                 Delete Booking
                                             </a>
                                         </td>
-                                        <td>
+                                        <td class="@hiddenClass">
                                             <a href="@Url.Action("DeletePrescription", new { id = obj.BOOKINGID })" class="btn btn-danger">
                                                 <i class="glyphicon glyphicon-trash"></i>
                                                 Delete Prescription
@@ -160,7 +179,7 @@
             var options = { "backdrop": "static", keyboard: true };
             var historyUrl = '/Patient/ViewPatientHistory';
             var bookingId, patientId;
-          
+            initViewPrescription();
             $("#loadHistory").on('click', (function () {
                 var prop = $(this).attr('data-prop');
                 var ids = prop.split('_');

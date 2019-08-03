@@ -15,13 +15,11 @@
 <body>
     <div id="body">
         <div class="container ">
-
             @RenderSection("featured", required: false)
             @RenderBody()
         </div>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/Ajquery")
     <script src="@Url.Content("~/Content/js/bootstrap.js")"></script>
     <script type="text/javascript">
         (function ($) {

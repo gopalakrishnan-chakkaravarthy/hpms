@@ -1,9 +1,12 @@
 ﻿@using Lab.Management.Entities;
 @using Lab.Management.Common;
+@using LabManagement.System.Common
 @model IList<lmsPatientRegistration>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
+    var userInfo = Session["UserInfo"] as usp_ValidateUser_Result;
+    var hiddenClass = userInfo.GetDisplayCssByRole();
 }
 <div class="roundCornerDiv">
     @if (!string.IsNullOrEmpty(message))
@@ -51,8 +54,8 @@
                                             <td>Patient Name</td>
                                             <td>DOB</td>
                                             <td>Geneder</td>
-                                            <td>Edit</td>
-                                            <td>Delete</td>
+                                            <td class="@hiddenClass">Edit</td>
+                                            <td class="@hiddenClass">Delete</td>
                                             <td>Book Appointment</td>
                                         </tr>
                                     </thead>
@@ -65,18 +68,20 @@
                                                 </td>
                                                 <td>@obj.DOB.ToUstDate()</td>
                                                 <td>@obj.GENDER</td>
-                                                <td>
+
+                                                <td class="@hiddenClass">
                                                     <a href="@Url.Action("ViewPatient", new { PatientId = @obj.PATIENTID })" class="btn btn-success">
                                                         <i class="glyphicon glyphicon-pencil"></i>
                                                         Edit
                                                     </a>
                                                 </td>
-                                                <td>
+                                                <td class="@hiddenClass">
                                                     <a href="@Url.Action("DeletePatient", new { PatientId = @obj.PATIENTID })" class="btn btn-danger">
                                                         <i class="glyphicon glyphicon-trash"></i>
                                                         Delete
                                                     </a>
                                                 </td>
+
                                                 <td>
                                                     <a href="@Url.Action("ViewBooking", new {id=0,viewMessage="", patientId = @obj.PATIENTID })" class="btn btn-primary">
                                                         <i class="glyphicon glyphicon-edit"></i>New Appointment

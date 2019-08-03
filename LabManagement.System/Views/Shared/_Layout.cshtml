@@ -9,8 +9,7 @@
     <meta name="author" content="">
     <title>@ViewBag.Title</title>
     <!-- Bootstrap core CSS -->
-    @Styles.Render("~/Content/css")
-    
+    @Styles.Render("~/Content/cssBndl")
 </head>
 <body>
     <header>
@@ -20,19 +19,23 @@
         <div class="container">
             @RenderSection("featured", required: false)
             @RenderBody()
-
             <div id="" class="hidden"></div>
         </div>
     </div>
     <div id="dvPrintElemet" class="hidden"></div>
     <footer class="text-center">
-
         <p>HPMS &copy; @DateTime.Now.Year - @ConfigurationWrapper.StringSettings(ConfigKey.HospitalName)</p>
     </footer>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @foreach (var bundle in BundleTable.Bundles)
+    {
+        if (!bundle.Path.ToLower().Contains("cssBndl"))
+        {
+            @Scripts.Render(bundle.Path)
+        }
+
+    }
+
     @RenderSection("scripts", required: false)
-    <script src="@Url.Content("~/Scripts/AppScripts/Common.js")"></script>
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {
