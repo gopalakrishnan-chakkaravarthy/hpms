@@ -701,7 +701,6 @@
     <Content Include="Views\HospitalMaster\ViewAllMedicalTestGroup.cshtml" />
     <Content Include="Views\HospitalMaster\ViewMedicalTestGroup.cshtml" />
     <Content Include="Views\Invoice\GenerateLaboratoryReport.cshtml" />
-    <Content Include="Views\Shared\_QrCodeGenerator.cshtml" />
     <Content Include="Views\WebCam\ChangePhoto.cshtml" />
     <Content Include="Views\WebCam\Index.cshtml" />
     <Content Include="Views\Patient\ViewAllBooking.cshtml" />

@@ -1,6 +1,7 @@
 ﻿using Lab.Management.Common;
 using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
+using LabManagement.System.Common;
 using LabManagement.System.Models;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -33,14 +34,14 @@ namespace LabManagement.System.Controllers
 
         public ActionResult LoadDefaultView()
         {
-            var userRole = Session["UserInfo"] != null ? (Session["UserInfo"] as usp_ValidateUser_Result).ROLENAME : string.Empty;
+            var userRole = Session["UserInfo"] as usp_ValidateUser_Result;
 
-            if (string.IsNullOrEmpty(userRole))
+            if (userRole == null)
             {
                 return RedirectToAction("Login", "Account");
             }
-            return userRole.ToUpper().Equals("ADMIN") ? RedirectToAction("Index", "AdminDashboard") :
-                RedirectToAction("ViewAllOutPatient", "Patient");
+            return userRole.IsAdmin() ? RedirectToAction("Index", "AdminDashboard") :
+                RedirectToAction("ViewAllMedicalBill", "Invoice");
         }
 
         //
