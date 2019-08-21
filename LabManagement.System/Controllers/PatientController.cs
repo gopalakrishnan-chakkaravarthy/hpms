@@ -39,7 +39,7 @@ namespace LabManagement.System.Controllers
 
         public ActionResult ViewAllPatient(string viewMessage = "")
         {
-            var getAll = _objIPatient.GetAllPatient("IN");
+            var getAll = _objIPatient.GetAllPatient("IN", true);
             ViewBag.Message = viewMessage;
             return View(getAll);
         }

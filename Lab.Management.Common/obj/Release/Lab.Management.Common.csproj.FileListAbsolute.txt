@@ -25,3 +25,11 @@ E:\hpms-master\Lab.Management.Common\obj\Release\Lab.Management.Common.csproj.Co
 E:\hpms-master\Lab.Management.Common\obj\Release\Lab.Management.Common.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Common\obj\Release\Lab.Management.Common.dll
 E:\hpms-master\Lab.Management.Common\obj\Release\Lab.Management.Common.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\bin\Release\Lab.Management.Common.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\bin\Release\Lab.Management.Common.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\bin\Release\AutoMapper.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.csproj.CoreCompileInputs.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.csproj.CopyComplete
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.csprojAssemblyReference.cache

@@ -24,3 +24,11 @@ E:\hpms-master\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.Co
 E:\hpms-master\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
 E:\hpms-master\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\bin\Release\Lab.Management.Logger.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\bin\Release\Lab.Management.Logger.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\bin\Release\log4net.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CoreCompileInputs.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CopyComplete
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csprojAssemblyReference.cache

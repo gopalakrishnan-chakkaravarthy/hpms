@@ -45,3 +45,17 @@ E:\hpms-master\Lab.Management.Entities\obj\Release\Lab.Management.Entities.cspro
 E:\hpms-master\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
 E:\hpms-master\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll.config
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\System.Web.Mvc.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Release\System.Web.Mvc.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CoreCompileInputs.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CopyComplete
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojAssemblyReference.cache

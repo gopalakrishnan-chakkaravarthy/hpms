@@ -1,0 +1,175 @@
+﻿@using Lab.Management.Entities;
+@model lmsPatientRegistration
+@{
+    ViewBag.Title = "View Patient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+
+}
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+<div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <h4 class="text-success"><i class="glyphicon glyphicon-hand-right">  Patient Details</i></h4>
+        </div>
+    </div>
+
+    <hr/>
+    @if (!string.IsNullOrEmpty(Model.QrCodeBase64))
+    {
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-7 text-right">
+                <div id="canvasElement">
+                    <img alt="qrCode" id="imgQrCode" src="@Model.QrCodeBase64"/>
+                </div>
+            </div>
+
+            <div class="col-sm-1 col-md-1 col-lg-1 pull-right">
+                <button class="btn btn-sm" id="printQr" title="Print Patient Qr Code" type="button">
+                    <i class="glyphicon glyphicon-print"></i>
+                </button>
+            </div>
+        </div>
+        <br/>
+    }
+    @using (Html.BeginForm("EditPatient", "Patient", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Name
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.PATIENTNAME, new { @class = "form-control", required = "required" })
+                @Html.HiddenFor(x => x.PATIENTID)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Gender
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                <div class="form-group">
+                    <div class="radio">
+                        <label>@Html.RadioButtonFor(x => x.Sex, 1, new { required = "required" })Male</label>
+                    </div>
+                    <div class="radio">
+                        <label>@Html.RadioButtonFor(x => x.Sex, 2, new { required = "required" })FeMale</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row hidden">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Date of Birth
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.DOB, new { @Id = "DOB", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row hidden">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Age
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.AGE, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Patient Address
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextAreaFor(m => m.PATIENTADDRESS, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row hidden">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Contact No
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.CONTACT, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row hidden">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Email
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.PATIENTEMAILID, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <hr/>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <a href="@Url.Action("ViewAllPatient", "Patient")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-floppy-disk"></i>
+                    Save
+                </button>
+                @if (Model.PATIENTID > 0)
+                {
+                    <a href="@Url.Action("DeletePatient", "Patient", new { PatientId = @Model.PATIENTID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash">
+                            Delete
+                        </i>
+                    </a>
+                    <a href="@Url.Action("ViewBooking", new { id=0, patientId=  @Model.PATIENTID })" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-edit"></i>New Appointment
+                    </a>
+
+                }
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    }
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#DOB').datepicker({ format: 'dd/mm/yyyy' });
+
+            $('#btnGenerate').click(function () {
+                var qrCodetxt = $('#QRCodeText').val();
+               $.ajax({
+                    url: '@Url.Action("GenerateQrCode", "Admin")',
+                    type: "POST",
+                   data: { "qRCodeText": qrCodetxt, "qRCodeImagePath": "" },
+                   success: function (ImageURL) {
+
+                       $('#imgQrCode').attr('src', ImageURL);
+
+                    },
+                    error: function (result) {
+                        alert("unable to generate Qr Code" + result);
+                    }
+                });
+            });
+            $('#printQr').click(function () {
+                PrintCanvasDiv('', 'canvasElement');
+            });
+
+        });
+        function ShowPopUp() {
+            window.open('/WebCam/Index/', "wndPopUp", 'width=400,height=400,left=100,top=100,resizable=no');
+        }
+    </script>
+}

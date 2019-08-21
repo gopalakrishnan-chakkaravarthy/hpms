@@ -29,3 +29,39 @@ E:\hpms-master\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.Core
 E:\hpms-master\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Utils\obj\Release\Lab.Management.Utils.dll
 E:\hpms-master\Lab.Management.Utils\obj\Release\Lab.Management.Utils.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Utils.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Utils.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\AForge.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\AForge.Video.DirectShow.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\AForge.Video.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Excel.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Common.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Engine.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Entities.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\System.Web.Mvc.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\zxing.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\zxing.presentation.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\StructureMap.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Logger.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\EntityFramework.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\log4net.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Common.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Engine.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Entities.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Entities.dll.config
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\AForge.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\AForge.Video.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\AForge.Video.DirectShow.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Excel.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\System.Web.Mvc.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\zxing.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\zxing.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\zxing.presentation.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\zxing.presentation.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Logger.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\EntityFramework.xml
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csprojAssemblyReference.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CoreCompileInputs.cache
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CopyComplete
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.pdb

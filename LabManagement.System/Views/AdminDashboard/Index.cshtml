@@ -4,9 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h4>Admin Dashboard</h4>
-
 
 <div class="col-md-12 col-sm-12 col-lg-12 ">
     <div id="Stats">
@@ -62,7 +60,6 @@
                 </b><i class="info">Today O/P Registration</i>
             </div>
         }
-
     </div>
 </div>
 <hr />
@@ -74,44 +71,40 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-
                     @{
                         if (@Model.DrugStocks.Count() > 0)
                         {
-                    <table id="drugStockTable" class=" dataTable table table-striped table-bordered dataTable no-footer">
-                        <thead>
-                            <tr>
-                                <td>Drug Name</td>
-                                <td>Available Stocks</td>
+                            <table id="drugStockTable" class=" dataTable table table-striped table-bordered dataTable no-footer">
+                                <thead>
+                                    <tr>
+                                        <td>Drug Name</td>
+                                        <td>Available Stocks</td>
 
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var drugs in @Model.DrugStocks)
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var drugs in @Model.DrugStocks)
                                     {
-                            <tr>
-                                <td>
-                                    @drugs.DRUGNAME
-                                </td>
-                                <td>
-                                    @drugs.AvailableStock
-                                </td>
-                            </tr>
+                                        <tr>
+                                            <td>
+                                                @drugs.DRUGNAME
+                                            </td>
+                                            <td>
+                                                @drugs.AvailableStock
+                                            </td>
+                                        </tr>
                                     }
-                        </tbody>
-
-                    </table>
+                                </tbody>
+                            </table>
                         }
                         else
                         {
-                    <div class="alert alert-info">No Data Available</div>
+                            <div class="alert alert-info">No Data Available</div>
                         }
                     }
                 </div>
             </div>
         </div>
-
     </div>
     <div class="col-md-6 col-sm-6 col-lg-6">
         <div class="panel panel-default">
@@ -120,52 +113,48 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-
                     @{
                         if (@Model.ExpiryDrugs.Count() > 0)
                         {
-                    <table id="expiredDrugTable" class=" dataTable table table-striped table-bordered dataTable no-footer">
-                        <thead>
-                            <tr>
-                                <td>Drug Name</td>
-                                <td>Rack Number</td>
-                                <td>Expiry Date</td>
-                                <td>Expiry Status</td>
+                            <table id="expiredDrugTable" class=" dataTable table table-striped table-bordered dataTable no-footer">
+                                <thead>
+                                    <tr>
+                                        <td>Drug Name</td>
+                                        <td>Rack Number</td>
+                                        <td>Expiry Date</td>
+                                        <td>Expiry Status</td>
 
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var drugs in @Model.ExpiryDrugs)
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var drugs in @Model.ExpiryDrugs)
                                     {
-                            <tr>
-                                <td>
-                                    @drugs.DRUGNAME
-                                </td>
-                                <td>
-                                    @drugs.RackNumber
-                                </td>
-                                <td>
-                                    @drugs.EXPIRYDATE
-                                </td>
-                                <td>
-                                    @drugs.ISEXPIRED
-                                </td>
-                            </tr>
+                                        <tr>
+                                            <td>
+                                                @drugs.DRUGNAME
+                                            </td>
+                                            <td>
+                                                @drugs.RackNumber
+                                            </td>
+                                            <td>
+                                                @drugs.EXPIRYDATE
+                                            </td>
+                                            <td>
+                                                @drugs.ISEXPIRED
+                                            </td>
+                                        </tr>
                                     }
-                        </tbody>
-
-                    </table>
+                                </tbody>
+                            </table>
                         }
                         else
                         {
-                    <div class="alert alert-info">No Data Available</div>
+                            <div class="alert alert-info">No Data Available</div>
                         }
                     }
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <div class="row">
@@ -176,7 +165,6 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-
                     @{
                         if (@Model.IpRegistration.Count() > 0)
                         {
@@ -187,7 +175,6 @@
                                         <td>Address</td>
                                         <td>Gender</td>
                                         <td>Phone</td>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -205,7 +192,6 @@
                                         </tr>
                                     }
                                 </tbody>
-
                             </table>
                         }
                         else
@@ -216,7 +202,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="col-md-6 col-sm-6 col-lg-6">
         <div class="panel panel-default">
@@ -225,7 +210,6 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-
                     @{
                         if (@Model.OpRegistration.Count() > 0)
                         {
@@ -236,7 +220,6 @@
                                         <td>Weight</td>
                                         <td>Height</td>
                                         <td>Age</td>
-
 
                                     </tr>
                                 </thead>
@@ -255,12 +238,10 @@
                                             </td>
                                             <td>
                                                 @objList.AGE
-
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
-
                             </table>
                         }
                         else
@@ -271,7 +252,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <div class="row">
@@ -282,7 +262,6 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-
                     @{
                         if (@Model.ProfitLoss.Count() > 0)
                         {
@@ -291,7 +270,6 @@
                                     <tr>
                                         <td>Drug Name</td>
                                         <td>Net Profit</td>
-
 
                                     </tr>
                                 </thead>
@@ -305,11 +283,9 @@
                                             <td>
                                                 @objList.NETPROFITPERDRUG
                                             </td>
-
                                         </tr>
                                     }
                                 </tbody>
-
                             </table>
                         }
                         else
@@ -320,7 +296,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="col-md-6 col-sm-6 col-lg-6">
         <div class="panel panel-default">
@@ -329,7 +304,6 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-
                     @{
                         if (@Model.MedicalBillByDate.Count() > 0)
                         {
@@ -339,8 +313,6 @@
                                         <td>Bill Name</td>
                                         <td>Bill Date</td>
                                         <td>Bill Amount</td>
-
-
 
                                     </tr>
                                 </thead>
@@ -357,11 +329,9 @@
                                             <td>
                                                 @objList.BILLAMOUNT
                                             </td>
-
                                         </tr>
                                     }
                                 </tbody>
-
                             </table>
                         }
                         else
@@ -372,18 +342,22 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
-
 @section Scripts {
-
     <script type="text/javascript">
 
         $(document).ready(function () {
             $('#drugStockTable').DataTable();
-            $('#expiredDrugTable').DataTable();
+            $('#expiredDrugTable').DataTable({
+                "columnDefs": [
+                    { "width": "20%", "targets": 0 },
+                    { "width": "3%", "targets": 1 },
+                    { "width": "8%", "targets": 2 },
+                    { "width": "14%", "targets": 3 }
+                ]
+            });
             $('#inPatientTable').DataTable();
             $('#opTable').DataTable();
             $('#profitLossTable').DataTable();
