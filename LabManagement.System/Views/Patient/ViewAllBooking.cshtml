@@ -106,7 +106,7 @@
                                         </td>
 
                                         <td class="@hiddenClass">
-                                            <button class="btn btn-success" id="loadHistory" data-prop="@obj.PATIENTID">
+                                            <button class="btn btn-history btn-success" id="loadHistory" data-prop="@obj.PATIENTID">
                                                 <i class="glyphicon glyphicon-eye-open"></i>
                                                 History
                                             </button>
@@ -115,7 +115,7 @@
                                             @{
                                                 var patientBookingId = Convert.ToString(obj.BOOKINGID) + '_' + Convert.ToString(obj.PATIENTID);
 
-                                                <button class="btn btn-info" id="generatePrescription" data-prop="@patientBookingId">
+                                                <button class="btn btn-Prescription btn-info"  data-prop="@patientBookingId">
                                                     <i class="glyphicon glyphicon-eye-open"></i>
                                                     Generate Prescription
                                                 </button>
@@ -180,7 +180,7 @@
             var historyUrl = '/Patient/ViewPatientHistory';
             var bookingId, patientId;
             initViewPrescription();
-            $("#loadHistory").on('click', (function () {
+            $(".btn-history").on('click', (function () {
                 var prop = $(this).attr('data-prop');
                 var ids = prop.split('_');
                 bookingId = ids[0];//Booking Id
@@ -234,7 +234,7 @@
                 }));
             }
             var prescriptionUrl = '/Patient/ViewPrescription';
-            $("#generatePrescription").on('click', (function () {
+            $(".btn-Prescription").on('click', (function () {
                 var prop = $(this).attr('data-prop');
                 var ids = prop.split('_');
                 bookingId = ids[0];//Booking Id

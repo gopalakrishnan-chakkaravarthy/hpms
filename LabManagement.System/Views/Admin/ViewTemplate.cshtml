@@ -1,5 +1,4 @@
 ﻿@using Lab.Management.Entities;
-
 @model lmsTemplateMaster
 @{
     ViewBag.Title = "View Template";
@@ -7,7 +6,6 @@
     var message = ViewBag.Message as string;
     var TemlpateContent = ViewBag.TemlpateContent as string;
 }
-
 
 @if (!string.IsNullOrEmpty(message))
 {
@@ -19,19 +17,16 @@
         </div>
     </div>
 }
-
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
-
     <div class="row">
         <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i>  View Template Details</h4>
-        <hr />
+        <hr/>
     </div>
     <div class="row">
         <div class="col-sm-3 col-md-3 col-lg-3">
             Template Name
         </div>
         <div class="col-sm-5 col-md-5 col-lg-5">
-
             @Html.TextBoxFor(m => m.TEMPLATENAME, new { @class = "form-control", @Id = "templateName", required = "required" })
             @Html.HiddenFor(x => x.TEMPLATEID)
             @Html.Hidden("hdnEditorContent", @TemlpateContent)
@@ -42,8 +37,6 @@
             Template Definition
         </div>
         <div class="col-sm-5 col-md-5 col-lg-5">
-
-
         </div>
     </div>
     <div class="row">
@@ -52,10 +45,8 @@
         </div>
         @*@Html.TextAreaFor(m => m.TEMPLATEDETAILS, new { @class = "ckeditor", @Id = "templateDetails", required = "required" })*@
     </div>
-
-    <hr />
+    <hr/>
     <div class="row">
-
         <div class="col-sm-8 col-md-8 col-lg-8">
             <a href="@Url.Action("ViewAllTemplate", "Admin")" class="btn btn-warning">
                 <i class="glyphicon glyphicon-arrow-left">
@@ -77,18 +68,15 @@
         </div>
     </div>
     <div class="row">
-
-        <hr />
+        <hr/>
     </div>
-
 </div>
-
 @section Scripts {
-    <link href="@Url.Content("~/Content/css/ckEditorStyle.css")" rel="stylesheet">
-    <script src="@Url.Content("~/Content/js/ckeditor/ckEditorUI.js")"></script>
+    @*<link href="@Url.Content("~/Content/css/ckEditorStyle.css")" rel="stylesheet">
+        <script src="@Url.Content("~/Content/js/ckeditor/ckEditorUI.js")"></script>*@
     <script type="text/javascript">
         $(document).ready(function () {
-
+            $('#hdnEditorContent').ckeditor();
             function SetEditorOnEdit() {
                 debugger;
                 var templateEditContent = $('#hdnEditorContent').val();
@@ -106,7 +94,6 @@
             setTimeout(function () {
                 SetEditorOnEdit();
             }, 1000);
-
 
             $('#btnSave').on('click', function () {
                 SaveTemplate();
@@ -129,7 +116,7 @@
                 debugger;
                 var templateName = $('#templateName').val();
                 var templateDetails = GetEditorContent();
-                
+
                 if (templateDetails === emptyString) {
                     alert("Unable to Save Template ,Error while Processing");
                     return;
@@ -150,6 +137,5 @@
                 });
             }
         });
-
     </script>
 }

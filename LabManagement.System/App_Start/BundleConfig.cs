@@ -35,6 +35,8 @@ namespace LabManagement.System
                 "~/Content/js/jscam.js"));
             bundles.Add(new ScriptBundle("~/bundles/Mjscamcanvasonly").Include(
                 "~/Content/js/jscam_canvas_only.swf"));
+            bundles.Add(new ScriptBundle("~/bundles/cckeditor").Include(
+                    "~/Content/js/ckeditor/ckeditor.js"));
             bundles.Add(new ScriptBundle("~/bundles/NCommon").Include(
               "~/Scripts/AppScripts/Common.js"));
 
@@ -46,7 +48,8 @@ namespace LabManagement.System
                 "~/Content/css/responsive.bootstrap.css",
                 "~/Content/css/bootstrap-datepicker.css",
                 "~/Content/css/bootstrap-select.css",
-                "~/Content/css/bootstrap-wysihtml5.css"
+                "~/Content/css/bootstrap-wysihtml5.css",
+                "~/Content/css/ckEditorStyle.css"
                 ));
         }
     }
