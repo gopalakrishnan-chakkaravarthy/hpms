@@ -78,5 +78,13 @@ namespace Lab.Management.Engine.Service
         int SaveGynacDischargeSummary(lmsGynacDischargeSummary objlmsPatientDischargeSummary);
 
         int DeleteGynacDischargeSummary(int ReportId);
+
+        lmsPatientReportStore GetPatientReportStoreById(int ReportId);
+
+        IList<lmsPatientReportStore> GetAllPatientReportStore(string filterDate = "");
+
+        int SavePatientReportStore(lmsPatientReportStore lmsPatientReportStore);
+
+        int DeletePatientReportStore(int ReportId);
     }
 }

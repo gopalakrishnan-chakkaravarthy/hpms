@@ -113,6 +113,8 @@ public partial class LabManagementEntities : DbContext
 
     public virtual DbSet<lmsPatientPrescription> lmsPatientPrescriptions { get; set; }
 
+    public virtual DbSet<lmsPatientReportStore> lmsPatientReportStores { get; set; }
+
 
     [DbFunction("LabManagementEntities", "SplitToTable")]
     public virtual IQueryable<string> SplitToTable(string iNPUT, string sPLITBY)

@@ -43,6 +43,8 @@ public partial class lmsPatientRegistration
 
         this.lmsPatientPrescriptions = new HashSet<lmsPatientPrescription>();
 
+        this.lmsPatientReportStores = new HashSet<lmsPatientReportStore>();
+
     }
 
 
@@ -93,6 +95,8 @@ public partial class lmsPatientRegistration
     public virtual ICollection<lmsPatientBooking> lmsPatientBookings1 { get; set; }
 
     public virtual ICollection<lmsPatientPrescription> lmsPatientPrescriptions { get; set; }
+
+    public virtual ICollection<lmsPatientReportStore> lmsPatientReportStores { get; set; }
 
 }
 

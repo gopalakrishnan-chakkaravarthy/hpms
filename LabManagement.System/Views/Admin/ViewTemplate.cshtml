@@ -76,7 +76,6 @@
         <script src="@Url.Content("~/Content/js/ckeditor/ckEditorUI.js")"></script>*@
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#hdnEditorContent').ckeditor();
             function SetEditorOnEdit() {
                 debugger;
                 var templateEditContent = $('#hdnEditorContent').val();
@@ -113,7 +112,6 @@
                 return iframeFormElement.contentDocument.body.innerHTML;
             }
             function SaveTemplate() {
-                debugger;
                 var templateName = $('#templateName').val();
                 var templateDetails = GetEditorContent();
 

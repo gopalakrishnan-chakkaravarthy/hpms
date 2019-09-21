@@ -12,43 +12,44 @@
 namespace Lab.Management.Entities
 {
 
-    using System;
+using System;
+    using System.Collections.Generic;
+    
+public partial class lmsPatientPrescription
+{
 
-    public partial class lmsPatientPrescription
-    {
+    public int PRESCID { get; set; }
 
-        public int PRESCID { get; set; }
+    public Nullable<int> BOOKINGID { get; set; }
 
-        public Nullable<int> BOOKINGID { get; set; }
+    public Nullable<int> PATIENTID { get; set; }
 
-        public Nullable<int> PATIENTID { get; set; }
+    public Nullable<int> DRUGID { get; set; }
 
-        public Nullable<int> DRUGID { get; set; }
+    public Nullable<int> MEDICINECOUNT { get; set; }
 
-        public Nullable<int> MEDICINECOUNT { get; set; }
+    public string STRENGTH { get; set; }
 
-        public string STRENGTH { get; set; }
+    public Nullable<int> DOSAGEID { get; set; }
 
-        public Nullable<int> DOSAGEID { get; set; }
+    public Nullable<int> FREQUENCYID { get; set; }
 
-        public Nullable<int> FREQUENCYID { get; set; }
+    public string FREQUENCY { get; set; }
 
-        public string FREQUENCY { get; set; }
-
-        public string INSTRUCTIONS { get; set; }
+    public string INSTRUCTIONS { get; set; }
 
 
 
-        public virtual lmsDrugDosage lmsDrugDosage { get; set; }
+    public virtual lmsDrugDosage lmsDrugDosage { get; set; }
 
-        public virtual lmsDrugFrequency lmsDrugFrequency { get; set; }
+    public virtual lmsDrugFrequency lmsDrugFrequency { get; set; }
 
-        public virtual lmsDrug lmsDrug { get; set; }
+    public virtual lmsDrug lmsDrug { get; set; }
 
-        public virtual lmsPatientBooking lmsPatientBooking { get; set; }
+    public virtual lmsPatientBooking lmsPatientBooking { get; set; }
 
-        public virtual lmsPatientRegistration lmsPatientRegistration { get; set; }
+    public virtual lmsPatientRegistration lmsPatientRegistration { get; set; }
 
-    }
+}
 
 }

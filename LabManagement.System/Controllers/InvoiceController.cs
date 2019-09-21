@@ -487,5 +487,45 @@ namespace LabManagement.System.Controllers
         }
 
         #endregion <<Discharge Summary New>>
+
+        #region <<Report TemplateStore>>
+
+        public ActionResult ViewPatientReportStore(int ReportId, string viewMessage = "")
+        {
+            var PatientList = _objIPatient.GetPatientDdl();
+            var getReportSummary = _objIInvoice.GetPatientReportStoreById(ReportId);
+            getReportSummary.PatientDdl = PatientList.GetDropDownList("PATIENTID", "PATIENTNAME");
+            if (ReportId > 0 && getReportSummary.PATIENTID.HasValue)
+            {
+                getReportSummary.SelectedPatient = getReportSummary.PATIENTID.Value;
+            }
+            ViewBag.Message = viewMessage;
+            return View(getReportSummary);
+        }
+
+        public ActionResult ViewAllPatientReportStore(string viewMessage = "", string filterDate = "")
+        {
+            var billFilterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
+            var getAll = _objIInvoice.GetAllPatientReportStore();
+            ViewBag.Message = viewMessage;
+            return View(getAll);
+        }
+
+        [HttpPost]
+        public ActionResult SavePatientReportStore(lmsPatientReportStore lmsPatientReportStore)
+        {
+            lmsPatientReportStore.PATIENTID = lmsPatientReportStore.SelectedPatient;
+
+            var saveReportDetails = _objIInvoice.SavePatientReportStore(lmsPatientReportStore);
+            return RedirectToAction("ViewPatientReportStore", new { ReportId = saveReportDetails, viewMessage = "Patient Report Details Saved Successfully" });
+        }
+
+        public ActionResult DeletePatientReportStore(int ReportId)
+        {
+            var deletReportStore = _objIInvoice.DeletePatientReportStore(ReportId);
+            return RedirectToAction("ViewAllPatientReportStore", new { viewMessage = "Patient Report Detail Deleted Successfully" });
+        }
+
+        #endregion <<Report TemplateStore>>
     }
 }

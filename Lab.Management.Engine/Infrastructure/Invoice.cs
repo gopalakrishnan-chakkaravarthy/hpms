@@ -729,5 +729,84 @@ namespace Lab.Management.Engine.Infrastructure
 
             return resultFlag;
         }
+
+        public lmsPatientReportStore GetPatientReportStoreById(int ReportId)
+        {
+            try
+            {
+                if (ReportId == 0)
+                {
+                    return new lmsPatientReportStore();
+                }
+                var resultDetails = _objLabManagementEntities.lmsPatientReportStores
+                    .FirstOrDefault(dt => dt.REPORTID == ReportId);
+                return resultDetails;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public IList<lmsPatientReportStore> GetAllPatientReportStore(string filterDate = "")
+        {
+            try
+            {
+                var queryDate = Convert.ToDateTime(filterDate).Date;
+                var resultDetails = _objLabManagementEntities.lmsPatientReportStores.Where(bt => bt.CREATEDDATE.HasValue
+                && EntityFunctions.TruncateTime(bt.CREATEDDATE.Value) == queryDate);
+                return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.REPORTID).ToList()
+                    : new List<lmsPatientReportStore>();
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+                return null;
+            }
+        }
+
+        public int SavePatientReportStore(lmsPatientReportStore lmsPatientReportStore)
+        {
+            var resultId = 0;
+            try
+            {
+                if (lmsPatientReportStore.REPORTID > 0)
+                {
+                    _objLabManagementEntities.lmsPatientReportStores.Attach(lmsPatientReportStore);
+                    _objLabManagementEntities.Entry(lmsPatientReportStore).State = EntityState.Modified;
+                    _objLabManagementEntities.SaveChanges();
+                    return lmsPatientReportStore.REPORTID;
+                }
+                _objLabManagementEntities.lmsPatientReportStores.Add(lmsPatientReportStore);
+                _objLabManagementEntities.SaveChanges();
+                resultId = _objLabManagementEntities.lmsPatientReportStores.LastOrDefault().REPORTID;
+            }
+            catch (Exception ex)
+            {
+                _objIAppLogger.LogError(ex);
+            }
+
+            return resultId;
+        }
+
+        public int DeletePatientReportStore(int ReportId)
+        {
+            var resultFlag = 0;
+            try
+            {
+                var billObject = _objLabManagementEntities.lmsPatientReportStores
+                    .FirstOrDefault(x => x.REPORTID == ReportId);
+                _objLabManagementEntities.lmsPatientReportStores.Remove(billObject);
+                _objLabManagementEntities.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                resultFlag = -1;
+                _objIAppLogger.LogError(ex);
+            }
+
+            return resultFlag;
+        }
     }
 }

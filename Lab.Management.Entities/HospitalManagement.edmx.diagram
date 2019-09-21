@@ -94,6 +94,8 @@
         <AssociationConnector Association="LabManagementModel.FK__lmsPatien__PATIE__65370702" />
         <AssociationConnector Association="LabManagementModel.FK__lmsPatien__PATIE__662B2B3B" />
         <AssociationConnector Association="LabManagementModel.FK__lmsPatien__PATIE__7D0E9093" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsPatientReportStore" Width="1.5" PointX="15.75" PointY="19.375" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsPatien__PATIE__0880433F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

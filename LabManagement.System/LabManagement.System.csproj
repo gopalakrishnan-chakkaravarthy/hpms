@@ -706,6 +706,8 @@
     <Content Include="Views\Patient\ViewBooking.cshtml" />
     <Content Include="Views\Patient\_ViewPrescription.cshtml" />
     <Content Include="Views\Patient\_PrintPatientPrescription.cshtml" />
+    <Content Include="Views\Invoice\ViewPatientReportStore.cshtml" />
+    <Content Include="Views\Invoice\ViewAllPatientReportStore.cshtml" />
     <None Include="Views\Patient\_ViewPatientHistory.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>

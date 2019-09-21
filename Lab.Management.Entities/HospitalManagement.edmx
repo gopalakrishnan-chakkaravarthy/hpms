@@ -4,1366 +4,1393 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LabManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LabManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="lmsBeds">
           <Key>
-            <PropertyRef Name="BEDID"/>
+            <PropertyRef Name="BEDID" />
           </Key>
-          <Property Name="BEDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="BEDNAME" Type="varchar" MaxLength="200"/>
-          <Property Name="ISACTIVE" Type="bit"/>
-          <Property Name="ChargePerDay" Type="float" Nullable="false"/>
+          <Property Name="BEDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BEDNAME" Type="varchar" MaxLength="200" />
+          <Property Name="ISACTIVE" Type="bit" />
+          <Property Name="ChargePerDay" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="lmsCityMaster">
           <Key>
-            <PropertyRef Name="CITYID"/>
+            <PropertyRef Name="CITYID" />
           </Key>
-          <Property Name="CITYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="CITYNAME" Type="varchar" MaxLength="200"/>
+          <Property Name="CITYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITYNAME" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="lmsDischargeBill">
           <Key>
-            <PropertyRef Name="DBILLID"/>
+            <PropertyRef Name="DBILLID" />
           </Key>
-          <Property Name="DBILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="DATEOFDISCHARGE" Type="datetime"/>
-          <Property Name="SERVICEPROVIDED" Type="nvarchar" MaxLength="1000"/>
-          <Property Name="DISCHARGEADVICE" Type="nvarchar(max)"/>
-          <Property Name="NOOFDAYSTAY" Type="int"/>
-          <Property Name="PHARMACCYCHARGE" Type="float"/>
-          <Property Name="BEDORROOMCHARGE" Type="float"/>
-          <Property Name="OPERATIONTHEATERCHARGE" Type="float"/>
-          <Property Name="OPERATIONCHARGE" Type="float"/>
-          <Property Name="SPECILISTDOCTORCHARGE" Type="float"/>
-          <Property Name="OPERATINGDOCTOR" Type="nvarchar" MaxLength="500"/>
-          <Property Name="ANAESTHESIACHARGE" Type="float"/>
-          <Property Name="NURSECHARGE" Type="float"/>
-          <Property Name="OTHERSERVICECHARGE" Type="float"/>
-          <Property Name="TOTALCHARGE" Type="float"/>
-          <Property Name="INSURANCEPAYMENT" Type="float"/>
-          <Property Name="INSURANCEPROVIDER" Type="nvarchar" MaxLength="400"/>
-          <Property Name="INSURANCEADJUSTMENT" Type="float"/>
-          <Property Name="PATIENTPAYMENTS" Type="float"/>
-          <Property Name="PATIENTDISCOUNT" Type="float"/>
-          <Property Name="COMMENTS" Type="nvarchar" MaxLength="2000"/>
-          <Property Name="CREATEDATE" Type="datetime"/>
-          <Property Name="CREATEUSER" Type="int"/>
-          <Property Name="LABOURROOMCHARGE" Type="float"/>
-          <Property Name="WARMERPLUSO2CHARGE" Type="float"/>
-          <Property Name="PAEDIATRICIANFEE" Type="float"/>
-          <Property Name="OXYGENFEE" Type="float"/>
-          <Property Name="PHOTOTHERAPYFEE" Type="float"/>
-          <Property Name="PAEDIATRICIANRESUSTFEE" Type="float"/>
+          <Property Name="DBILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="DATEOFDISCHARGE" Type="datetime" />
+          <Property Name="SERVICEPROVIDED" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DISCHARGEADVICE" Type="nvarchar(max)" />
+          <Property Name="NOOFDAYSTAY" Type="int" />
+          <Property Name="PHARMACCYCHARGE" Type="float" />
+          <Property Name="BEDORROOMCHARGE" Type="float" />
+          <Property Name="OPERATIONTHEATERCHARGE" Type="float" />
+          <Property Name="OPERATIONCHARGE" Type="float" />
+          <Property Name="SPECILISTDOCTORCHARGE" Type="float" />
+          <Property Name="OPERATINGDOCTOR" Type="nvarchar" MaxLength="500" />
+          <Property Name="ANAESTHESIACHARGE" Type="float" />
+          <Property Name="NURSECHARGE" Type="float" />
+          <Property Name="OTHERSERVICECHARGE" Type="float" />
+          <Property Name="TOTALCHARGE" Type="float" />
+          <Property Name="INSURANCEPAYMENT" Type="float" />
+          <Property Name="INSURANCEPROVIDER" Type="nvarchar" MaxLength="400" />
+          <Property Name="INSURANCEADJUSTMENT" Type="float" />
+          <Property Name="PATIENTPAYMENTS" Type="float" />
+          <Property Name="PATIENTDISCOUNT" Type="float" />
+          <Property Name="COMMENTS" Type="nvarchar" MaxLength="2000" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="CREATEUSER" Type="int" />
+          <Property Name="LABOURROOMCHARGE" Type="float" />
+          <Property Name="WARMERPLUSO2CHARGE" Type="float" />
+          <Property Name="PAEDIATRICIANFEE" Type="float" />
+          <Property Name="OXYGENFEE" Type="float" />
+          <Property Name="PHOTOTHERAPYFEE" Type="float" />
+          <Property Name="PAEDIATRICIANRESUSTFEE" Type="float" />
         </EntityType>
         <EntityType Name="lmsDischargeSummary">
           <Key>
-            <PropertyRef Name="SUMMARYID"/>
+            <PropertyRef Name="SUMMARYID" />
           </Key>
-          <Property Name="SUMMARYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="PATIENTPROBLEM" Type="varchar(max)"/>
-          <Property Name="PATIENTPREVIOUSHISTORY" Type="varchar(max)"/>
-          <Property Name="SUMMARY" Type="varchar(max)"/>
-          <Property Name="OTHERSUMMARY" Type="varchar(max)"/>
-          <Property Name="DISCHARGEDATE" Type="datetime"/>
-          <Property Name="CONSULTEDBY" Type="int"/>
+          <Property Name="SUMMARYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="PATIENTPROBLEM" Type="varchar(max)" />
+          <Property Name="PATIENTPREVIOUSHISTORY" Type="varchar(max)" />
+          <Property Name="SUMMARY" Type="varchar(max)" />
+          <Property Name="OTHERSUMMARY" Type="varchar(max)" />
+          <Property Name="DISCHARGEDATE" Type="datetime" />
+          <Property Name="CONSULTEDBY" Type="int" />
         </EntityType>
         <EntityType Name="lmsDiseaseMaster">
           <Key>
-            <PropertyRef Name="DISEASEID"/>
+            <PropertyRef Name="DISEASEID" />
           </Key>
-          <Property Name="DISEASEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="DISEASENAME" Type="varchar" MaxLength="200"/>
+          <Property Name="DISEASEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DISEASENAME" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="lmsDrugDosage">
           <Key>
-            <PropertyRef Name="DOSAGEID"/>
+            <PropertyRef Name="DOSAGEID" />
           </Key>
-          <Property Name="DOSAGEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="DOSAGEPOWER" Type="nvarchar" MaxLength="50"/>
+          <Property Name="DOSAGEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOSAGEPOWER" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="lmsDrugFrequency">
           <Key>
-            <PropertyRef Name="FREQUENCYID"/>
+            <PropertyRef Name="FREQUENCYID" />
           </Key>
-          <Property Name="FREQUENCYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="FREQUENCY" Type="nvarchar" MaxLength="50"/>
+          <Property Name="FREQUENCYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FREQUENCY" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="lmsDrugs">
           <Key>
-            <PropertyRef Name="DRUGID"/>
+            <PropertyRef Name="DRUGID" />
           </Key>
-          <Property Name="DRUGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="DRUGNAME" Type="varchar" MaxLength="500"/>
-          <Property Name="ORDERDATE" Type="datetime"/>
-          <Property Name="MANUFACTUREDATE" Type="datetime"/>
-          <Property Name="EXPIRYDATE" Type="datetime"/>
-          <Property Name="ISEXPIRED" Type="bit"/>
-          <Property Name="BUYINGPRICE" Type="float"/>
-          <Property Name="SELLINGPRICE" Type="float"/>
-          <Property Name="CREATEDATE" Type="datetime"/>
-          <Property Name="ORDERCOUNT" Type="int"/>
-          <Property Name="AVAILABLEORDER" Type="int"/>
-          <Property Name="RackNumber" Type="varchar" MaxLength="20"/>
-          <Property Name="QrCodeContent" Type="nvarchar(max)"/>
-          <Property Name="QrCodeBase64" Type="nvarchar(max)"/>
+          <Property Name="DRUGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DRUGNAME" Type="varchar" MaxLength="500" />
+          <Property Name="ORDERDATE" Type="datetime" />
+          <Property Name="MANUFACTUREDATE" Type="datetime" />
+          <Property Name="EXPIRYDATE" Type="datetime" />
+          <Property Name="ISEXPIRED" Type="bit" />
+          <Property Name="BUYINGPRICE" Type="float" />
+          <Property Name="SELLINGPRICE" Type="float" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="ORDERCOUNT" Type="int" />
+          <Property Name="AVAILABLEORDER" Type="int" />
+          <Property Name="RackNumber" Type="varchar" MaxLength="20" />
+          <Property Name="QrCodeContent" Type="nvarchar(max)" />
+          <Property Name="QrCodeBase64" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="lmsGeneralDischargeSummary">
           <Key>
-            <PropertyRef Name="SUMMARYID"/>
+            <PropertyRef Name="SUMMARYID" />
           </Key>
-          <Property Name="SUMMARYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="DIAGNOSIS" Type="nvarchar" MaxLength="2000"/>
-          <Property Name="DOD" Type="datetime"/>
-          <Property Name="INVESTIGATION" Type="nvarchar(max)"/>
-          <Property Name="PATIENTADMITTEDWITH" Type="nvarchar(max)"/>
-          <Property Name="PASTHISTORY" Type="nvarchar" MaxLength="1000"/>
-          <Property Name="FAMILYHISTORY" Type="nvarchar" MaxLength="1000"/>
-          <Property Name="PATIENTDISCHARGEDON" Type="datetime"/>
-          <Property Name="CONDITIONONDISCHARGE" Type="nvarchar" MaxLength="3000"/>
-          <Property Name="ADVISE" Type="nvarchar(max)"/>
-          <Property Name="CONSULTINGDOCTOR" Type="nvarchar" MaxLength="300"/>
-          <Property Name="CREATEDATE" Type="datetime" Nullable="false"/>
-          <Property Name="TREATMENT" Type="nvarchar(max)"/>
+          <Property Name="SUMMARYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="DIAGNOSIS" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DOD" Type="datetime" />
+          <Property Name="INVESTIGATION" Type="nvarchar(max)" />
+          <Property Name="PATIENTADMITTEDWITH" Type="nvarchar(max)" />
+          <Property Name="PASTHISTORY" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FAMILYHISTORY" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PATIENTDISCHARGEDON" Type="datetime" />
+          <Property Name="CONDITIONONDISCHARGE" Type="nvarchar" MaxLength="3000" />
+          <Property Name="ADVISE" Type="nvarchar(max)" />
+          <Property Name="CONSULTINGDOCTOR" Type="nvarchar" MaxLength="300" />
+          <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+          <Property Name="TREATMENT" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="lmsGynacDischargeSummary">
           <Key>
-            <PropertyRef Name="SUMMARYID"/>
+            <PropertyRef Name="SUMMARYID" />
           </Key>
-          <Property Name="SUMMARYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="DOS" Type="datetime"/>
-          <Property Name="DOD" Type="datetime"/>
-          <Property Name="DIAGNOSIS" Type="nvarchar" MaxLength="4000"/>
-          <Property Name="PATIENTADMITTEDWITHCO" Type="nvarchar" MaxLength="3000"/>
-          <Property Name="PASTHISTORY" Type="nvarchar" MaxLength="3000"/>
-          <Property Name="FAMILYHISTORY" Type="nvarchar" MaxLength="3000"/>
-          <Property Name="OBSTRICHISTORY" Type="varchar" MaxLength="3000"/>
-          <Property Name="URINEA" Type="nvarchar" MaxLength="30"/>
-          <Property Name="URINES" Type="nvarchar" MaxLength="30"/>
-          <Property Name="URINED" Type="nvarchar" MaxLength="30"/>
-          <Property Name="BlHb" Type="nvarchar" MaxLength="30"/>
-          <Property Name="TC" Type="nvarchar" MaxLength="30"/>
-          <Property Name="DC" Type="nvarchar" MaxLength="30"/>
-          <Property Name="ESR30MT" Type="nvarchar" MaxLength="30"/>
-          <Property Name="ESR6OMT" Type="nvarchar" MaxLength="30"/>
-          <Property Name="BT" Type="nvarchar" MaxLength="30"/>
-          <Property Name="CT" Type="nvarchar" MaxLength="30"/>
-          <Property Name="BLPLATELET" Type="nvarchar" MaxLength="30"/>
-          <Property Name="BLUREA" Type="nvarchar" MaxLength="30"/>
-          <Property Name="BLSUGAR" Type="nvarchar" MaxLength="30"/>
-          <Property Name="SRCREATININE" Type="nvarchar" MaxLength="30"/>
-          <Property Name="SRCHOLESTEROL" Type="nvarchar" MaxLength="30"/>
-          <Property Name="SRT3T4TDH" Type="nvarchar" MaxLength="90"/>
-          <Property Name="VDRL" Type="nvarchar" MaxLength="30"/>
-          <Property Name="HIV" Type="nvarchar" MaxLength="30"/>
-          <Property Name="HBSAG" Type="nvarchar" MaxLength="30"/>
-          <Property Name="HCV" Type="nvarchar" MaxLength="30"/>
-          <Property Name="CTSCAN" Type="nvarchar(max)"/>
-          <Property Name="MRISCAN" Type="nvarchar(max)"/>
-          <Property Name="USG" Type="nvarchar" MaxLength="2000"/>
-          <Property Name="BIOPSY" Type="nvarchar(max)"/>
-          <Property Name="SURGECIALPROCEDURE" Type="nvarchar(max)"/>
-          <Property Name="TREATMENT" Type="nvarchar" MaxLength="4000"/>
-          <Property Name="POSTOPPERIOD" Type="nvarchar" MaxLength="4000"/>
-          <Property Name="DRESSINGCHANGEDON" Type="datetime"/>
-          <Property Name="DISCHARGEDON" Type="datetime"/>
-          <Property Name="CONCLUSIONONDISCHARGE" Type="nvarchar" MaxLength="3000"/>
-          <Property Name="ADVISE" Type="nvarchar" MaxLength="3000"/>
-          <Property Name="CREATEDATE" Type="datetime" Nullable="false"/>
+          <Property Name="SUMMARYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="DOS" Type="datetime" />
+          <Property Name="DOD" Type="datetime" />
+          <Property Name="DIAGNOSIS" Type="nvarchar" MaxLength="4000" />
+          <Property Name="PATIENTADMITTEDWITHCO" Type="nvarchar" MaxLength="3000" />
+          <Property Name="PASTHISTORY" Type="nvarchar" MaxLength="3000" />
+          <Property Name="FAMILYHISTORY" Type="nvarchar" MaxLength="3000" />
+          <Property Name="OBSTRICHISTORY" Type="varchar" MaxLength="3000" />
+          <Property Name="URINEA" Type="nvarchar" MaxLength="30" />
+          <Property Name="URINES" Type="nvarchar" MaxLength="30" />
+          <Property Name="URINED" Type="nvarchar" MaxLength="30" />
+          <Property Name="BlHb" Type="nvarchar" MaxLength="30" />
+          <Property Name="TC" Type="nvarchar" MaxLength="30" />
+          <Property Name="DC" Type="nvarchar" MaxLength="30" />
+          <Property Name="ESR30MT" Type="nvarchar" MaxLength="30" />
+          <Property Name="ESR6OMT" Type="nvarchar" MaxLength="30" />
+          <Property Name="BT" Type="nvarchar" MaxLength="30" />
+          <Property Name="CT" Type="nvarchar" MaxLength="30" />
+          <Property Name="BLPLATELET" Type="nvarchar" MaxLength="30" />
+          <Property Name="BLUREA" Type="nvarchar" MaxLength="30" />
+          <Property Name="BLSUGAR" Type="nvarchar" MaxLength="30" />
+          <Property Name="SRCREATININE" Type="nvarchar" MaxLength="30" />
+          <Property Name="SRCHOLESTEROL" Type="nvarchar" MaxLength="30" />
+          <Property Name="SRT3T4TDH" Type="nvarchar" MaxLength="90" />
+          <Property Name="VDRL" Type="nvarchar" MaxLength="30" />
+          <Property Name="HIV" Type="nvarchar" MaxLength="30" />
+          <Property Name="HBSAG" Type="nvarchar" MaxLength="30" />
+          <Property Name="HCV" Type="nvarchar" MaxLength="30" />
+          <Property Name="CTSCAN" Type="nvarchar(max)" />
+          <Property Name="MRISCAN" Type="nvarchar(max)" />
+          <Property Name="USG" Type="nvarchar" MaxLength="2000" />
+          <Property Name="BIOPSY" Type="nvarchar(max)" />
+          <Property Name="SURGECIALPROCEDURE" Type="nvarchar(max)" />
+          <Property Name="TREATMENT" Type="nvarchar" MaxLength="4000" />
+          <Property Name="POSTOPPERIOD" Type="nvarchar" MaxLength="4000" />
+          <Property Name="DRESSINGCHANGEDON" Type="datetime" />
+          <Property Name="DISCHARGEDON" Type="datetime" />
+          <Property Name="CONCLUSIONONDISCHARGE" Type="nvarchar" MaxLength="3000" />
+          <Property Name="ADVISE" Type="nvarchar" MaxLength="3000" />
+          <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="lmsHospitalMaster">
           <Key>
-            <PropertyRef Name="HOSPITALID"/>
+            <PropertyRef Name="HOSPITALID" />
           </Key>
-          <Property Name="HOSPITALID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="HOSPITALNAME" Type="varchar" MaxLength="2000"/>
-          <Property Name="MANAGEDBY" Type="varchar" MaxLength="500"/>
-          <Property Name="ISOCERTIFIED" Type="bit"/>
-          <Property Name="LOGOPATH" Type="varchar" MaxLength="300"/>
-          <Property Name="HOSPITALADDRESS" Type="varchar" MaxLength="1000"/>
-          <Property Name="STATEID" Type="int"/>
-          <Property Name="CITYID" Type="int"/>
-          <Property Name="CONTACT" Type="varchar" MaxLength="100"/>
-          <Property Name="EMAILID" Type="varchar" MaxLength="200"/>
-          <Property Name="FAX" Type="varchar" MaxLength="100"/>
-          <Property Name="QUOTE1" Type="varchar" MaxLength="500"/>
-          <Property Name="QUOTE2" Type="varchar" MaxLength="500"/>
-          <Property Name="CREATEDATE" Type="datetime" Nullable="false"/>
-          <Property Name="CREATEDBY" Type="int"/>
+          <Property Name="HOSPITALID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HOSPITALNAME" Type="varchar" MaxLength="2000" />
+          <Property Name="MANAGEDBY" Type="varchar" MaxLength="500" />
+          <Property Name="ISOCERTIFIED" Type="bit" />
+          <Property Name="LOGOPATH" Type="varchar" MaxLength="300" />
+          <Property Name="HOSPITALADDRESS" Type="varchar" MaxLength="1000" />
+          <Property Name="STATEID" Type="int" />
+          <Property Name="CITYID" Type="int" />
+          <Property Name="CONTACT" Type="varchar" MaxLength="100" />
+          <Property Name="EMAILID" Type="varchar" MaxLength="200" />
+          <Property Name="FAX" Type="varchar" MaxLength="100" />
+          <Property Name="QUOTE1" Type="varchar" MaxLength="500" />
+          <Property Name="QUOTE2" Type="varchar" MaxLength="500" />
+          <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+          <Property Name="CREATEDBY" Type="int" />
         </EntityType>
         <EntityType Name="lmsInPatientBilling">
           <Key>
-            <PropertyRef Name="BILLID"/>
+            <PropertyRef Name="BILLID" />
           </Key>
-          <Property Name="BILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="NOOFDAYSTAY" Type="int"/>
-          <Property Name="STAFFFEE" Type="float"/>
-          <Property Name="BEDROOMCHARGE" Type="float"/>
-          <Property Name="DOCTORSFEEPERDAY" Type="float"/>
-          <Property Name="OPERATIONCOST" Type="float"/>
-          <Property Name="OPERATIINGDOCTORCOST" Type="float"/>
-          <Property Name="OPERATIONTHEATERCOST" Type="float"/>
-          <Property Name="ANAESTHESIAFEE" Type="float"/>
-          <Property Name="OVERALLTESTFEE" Type="float"/>
-          <Property Name="SCANFEE" Type="float"/>
-          <Property Name="CREATEDATE" Type="datetime"/>
+          <Property Name="BILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="NOOFDAYSTAY" Type="int" />
+          <Property Name="STAFFFEE" Type="float" />
+          <Property Name="BEDROOMCHARGE" Type="float" />
+          <Property Name="DOCTORSFEEPERDAY" Type="float" />
+          <Property Name="OPERATIONCOST" Type="float" />
+          <Property Name="OPERATIINGDOCTORCOST" Type="float" />
+          <Property Name="OPERATIONTHEATERCOST" Type="float" />
+          <Property Name="ANAESTHESIAFEE" Type="float" />
+          <Property Name="OVERALLTESTFEE" Type="float" />
+          <Property Name="SCANFEE" Type="float" />
+          <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsInventory">
           <Key>
-            <PropertyRef Name="INVENTORYID"/>
+            <PropertyRef Name="INVENTORYID" />
           </Key>
-          <Property Name="INVENTORYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="ITEMNAME" Type="varchar" MaxLength="500"/>
-          <Property Name="ISWORKING" Type="bit"/>
-          <Property Name="BUYINGPRICE" Type="float"/>
-          <Property Name="MANUFACTURIGDATE" Type="datetime"/>
-          <Property Name="WARRENTYPERIOD" Type="int"/>
-          <Property Name="GUARRETYPERIOD" Type="int"/>
-          <Property Name="VENDORID" Type="int"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
+          <Property Name="INVENTORYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ITEMNAME" Type="varchar" MaxLength="500" />
+          <Property Name="ISWORKING" Type="bit" />
+          <Property Name="BUYINGPRICE" Type="float" />
+          <Property Name="MANUFACTURIGDATE" Type="datetime" />
+          <Property Name="WARRENTYPERIOD" Type="int" />
+          <Property Name="GUARRETYPERIOD" Type="int" />
+          <Property Name="VENDORID" Type="int" />
+          <Property Name="CREATEDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsInvestigationReport">
           <Key>
-            <PropertyRef Name="REPORTID"/>
+            <PropertyRef Name="REPORTID" />
           </Key>
-          <Property Name="REPORTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="NAME" Type="varchar" MaxLength="200"/>
-          <Property Name="AGE" Type="int"/>
-          <Property Name="REPORTDATE" Type="datetime"/>
-          <Property Name="URINESUGAR" Type="varchar" MaxLength="100"/>
-          <Property Name="PUSCELL" Type="varchar" MaxLength="200"/>
-          <Property Name="RBC" Type="varchar" MaxLength="200"/>
-          <Property Name="EPTHELIALCELL" Type="varchar" MaxLength="200"/>
-          <Property Name="BLOODHAEMOGLOBIN" Type="varchar" MaxLength="200"/>
-          <Property Name="GROUPINGRHTYPING" Type="varchar" MaxLength="200"/>
-          <Property Name="BT" Type="varchar" MaxLength="200"/>
-          <Property Name="CT" Type="varchar" MaxLength="200"/>
-          <Property Name="PLATELET" Type="varchar" MaxLength="200"/>
-          <Property Name="BLOODUREA" Type="varchar" MaxLength="200"/>
-          <Property Name="SUGAR" Type="varchar" MaxLength="200"/>
-          <Property Name="SRCREATININE" Type="varchar" MaxLength="200"/>
-          <Property Name="SRFREET3" Type="varchar" MaxLength="200"/>
-          <Property Name="SRFREET4" Type="varchar" MaxLength="200"/>
-          <Property Name="TSH" Type="varchar" MaxLength="200"/>
-          <Property Name="VDRL" Type="varchar" MaxLength="200"/>
-          <Property Name="HIV" Type="varchar" MaxLength="200"/>
-          <Property Name="HBSAG" Type="varchar" MaxLength="200"/>
-          <Property Name="HCV" Type="varchar" MaxLength="200"/>
-          <Property Name="COMMENTS" Type="varchar(max)"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
-          <Property Name="ALBUMIN" Type="varchar" MaxLength="20"/>
+          <Property Name="REPORTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="200" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="REPORTDATE" Type="datetime" />
+          <Property Name="URINESUGAR" Type="varchar" MaxLength="100" />
+          <Property Name="PUSCELL" Type="varchar" MaxLength="200" />
+          <Property Name="RBC" Type="varchar" MaxLength="200" />
+          <Property Name="EPTHELIALCELL" Type="varchar" MaxLength="200" />
+          <Property Name="BLOODHAEMOGLOBIN" Type="varchar" MaxLength="200" />
+          <Property Name="GROUPINGRHTYPING" Type="varchar" MaxLength="200" />
+          <Property Name="BT" Type="varchar" MaxLength="200" />
+          <Property Name="CT" Type="varchar" MaxLength="200" />
+          <Property Name="PLATELET" Type="varchar" MaxLength="200" />
+          <Property Name="BLOODUREA" Type="varchar" MaxLength="200" />
+          <Property Name="SUGAR" Type="varchar" MaxLength="200" />
+          <Property Name="SRCREATININE" Type="varchar" MaxLength="200" />
+          <Property Name="SRFREET3" Type="varchar" MaxLength="200" />
+          <Property Name="SRFREET4" Type="varchar" MaxLength="200" />
+          <Property Name="TSH" Type="varchar" MaxLength="200" />
+          <Property Name="VDRL" Type="varchar" MaxLength="200" />
+          <Property Name="HIV" Type="varchar" MaxLength="200" />
+          <Property Name="HBSAG" Type="varchar" MaxLength="200" />
+          <Property Name="HCV" Type="varchar" MaxLength="200" />
+          <Property Name="COMMENTS" Type="varchar(max)" />
+          <Property Name="CREATEDDATE" Type="datetime" />
+          <Property Name="ALBUMIN" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="lmsLaboratoryBilling">
           <Key>
-            <PropertyRef Name="BILLID"/>
+            <PropertyRef Name="BILLID" />
           </Key>
-          <Property Name="BILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="BILLNAME" Type="varchar" MaxLength="200"/>
-          <Property Name="CONTACT" Type="varchar" MaxLength="20"/>
-          <Property Name="TESTID" Type="int"/>
-          <Property Name="TESTRESULT" Type="float"/>
-          <Property Name="UNITS" Type="varchar" MaxLength="10"/>
-          <Property Name="BILLAMOUNT" Type="float"/>
-          <Property Name="BILLBY" Type="varchar" MaxLength="200"/>
-          <Property Name="BILLDATE" Type="datetime"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
+          <Property Name="BILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BILLNAME" Type="varchar" MaxLength="200" />
+          <Property Name="CONTACT" Type="varchar" MaxLength="20" />
+          <Property Name="TESTID" Type="int" />
+          <Property Name="TESTRESULT" Type="float" />
+          <Property Name="UNITS" Type="varchar" MaxLength="10" />
+          <Property Name="BILLAMOUNT" Type="float" />
+          <Property Name="BILLBY" Type="varchar" MaxLength="200" />
+          <Property Name="BILLDATE" Type="datetime" />
+          <Property Name="CREATEDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsLaboratoryBillingDetails">
           <Key>
-            <PropertyRef Name="BILLDETAILID"/>
+            <PropertyRef Name="BILLDETAILID" />
           </Key>
-          <Property Name="BILLDETAILID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="BILLID" Type="int"/>
-          <Property Name="TESTID" Type="int"/>
-          <Property Name="ITEMCOST" Type="float"/>
-          <Property Name="CREATEDATE" Type="datetime"/>
-          <Property Name="TESTRESULT" Type="varchar" MaxLength="100"/>
+          <Property Name="BILLDETAILID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BILLID" Type="int" />
+          <Property Name="TESTID" Type="int" />
+          <Property Name="ITEMCOST" Type="float" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="TESTRESULT" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="lmsLoginRegistration">
           <Key>
-            <PropertyRef Name="LOGINID"/>
+            <PropertyRef Name="LOGINID" />
           </Key>
-          <Property Name="LOGINID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="FIRSTNAME" Type="varchar" MaxLength="50"/>
-          <Property Name="MIDDLENAME" Type="varchar" MaxLength="50"/>
-          <Property Name="LASTNAME" Type="varchar" MaxLength="50"/>
-          <Property Name="DOB" Type="datetime"/>
-          <Property Name="AGE" Type="int"/>
-          <Property Name="LOGINADDRESS" Type="varchar" MaxLength="1000"/>
-          <Property Name="STATEID" Type="int"/>
-          <Property Name="CITYID" Type="int"/>
-          <Property Name="ROLEID" Type="int"/>
-          <Property Name="LOGINEMAILID" Type="varchar" MaxLength="300"/>
-          <Property Name="LOGINPASSWORD" Type="varchar" MaxLength="200"/>
-          <Property Name="CONTACT" Type="varchar" MaxLength="20"/>
-          <Property Name="ISACTIVE" Type="bit"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
+          <Property Name="LOGINID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="varchar" MaxLength="50" />
+          <Property Name="MIDDLENAME" Type="varchar" MaxLength="50" />
+          <Property Name="LASTNAME" Type="varchar" MaxLength="50" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="LOGINADDRESS" Type="varchar" MaxLength="1000" />
+          <Property Name="STATEID" Type="int" />
+          <Property Name="CITYID" Type="int" />
+          <Property Name="ROLEID" Type="int" />
+          <Property Name="LOGINEMAILID" Type="varchar" MaxLength="300" />
+          <Property Name="LOGINPASSWORD" Type="varchar" MaxLength="200" />
+          <Property Name="CONTACT" Type="varchar" MaxLength="20" />
+          <Property Name="ISACTIVE" Type="bit" />
+          <Property Name="CREATEDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsMedicalBilling">
           <Key>
-            <PropertyRef Name="BILLID"/>
+            <PropertyRef Name="BILLID" />
           </Key>
-          <Property Name="BILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="BILLNAME" Type="varchar" MaxLength="200"/>
-          <Property Name="CONTACT" Type="varchar" MaxLength="20"/>
-          <Property Name="DRUGID" Type="int"/>
-          <Property Name="BILLAMOUNT" Type="float"/>
-          <Property Name="BILLBY" Type="varchar" MaxLength="200"/>
-          <Property Name="BILLDATE" Type="datetime"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
+          <Property Name="BILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BILLNAME" Type="varchar" MaxLength="200" />
+          <Property Name="CONTACT" Type="varchar" MaxLength="20" />
+          <Property Name="DRUGID" Type="int" />
+          <Property Name="BILLAMOUNT" Type="float" />
+          <Property Name="BILLBY" Type="varchar" MaxLength="200" />
+          <Property Name="BILLDATE" Type="datetime" />
+          <Property Name="CREATEDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsMedicalBillingDetails">
           <Key>
-            <PropertyRef Name="BILLDETAILID"/>
+            <PropertyRef Name="BILLDETAILID" />
           </Key>
-          <Property Name="BILLDETAILID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="BILLID" Type="int"/>
-          <Property Name="DRUGID" Type="int"/>
-          <Property Name="QUANTITY" Type="int"/>
-          <Property Name="ITEMCOST" Type="float"/>
-          <Property Name="CREATEDATE" Type="datetime"/>
+          <Property Name="BILLDETAILID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BILLID" Type="int" />
+          <Property Name="DRUGID" Type="int" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="ITEMCOST" Type="float" />
+          <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsMedicalTestFor">
           <Key>
-            <PropertyRef Name="TESTFORID"/>
+            <PropertyRef Name="TESTFORID" />
           </Key>
-          <Property Name="TESTFORID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="TESTFOR" Type="nvarchar" MaxLength="300"/>
+          <Property Name="TESTFORID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TESTFOR" Type="nvarchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="lmsMedicalTestGroup">
           <Key>
-            <PropertyRef Name="GROUPID"/>
+            <PropertyRef Name="GROUPID" />
           </Key>
-          <Property Name="GROUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="GROUPNAME" Type="nvarchar" MaxLength="300"/>
+          <Property Name="GROUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GROUPNAME" Type="nvarchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="lmsMedicalTests">
           <Key>
-            <PropertyRef Name="TESTID"/>
+            <PropertyRef Name="TESTID" />
           </Key>
-          <Property Name="TESTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="TESTNAME" Type="varchar" MaxLength="500"/>
-          <Property Name="MINAPPROXRANGEBELOW10AGE" Type="float"/>
-          <Property Name="MAXAPPROXRANGEBELOW10AGE" Type="float"/>
-          <Property Name="MINAPPROXRANGEBELOWADULT" Type="float"/>
-          <Property Name="MAXAPPROXRANGEBELOWADULT" Type="float"/>
-          <Property Name="SELLIGPRICE" Type="float"/>
-          <Property Name="NORMALVALUE" Type="nvarchar" MaxLength="4000"/>
-          <Property Name="GROUPID" Type="int"/>
-          <Property Name="TESTFORID" Type="int"/>
+          <Property Name="TESTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TESTNAME" Type="varchar" MaxLength="500" />
+          <Property Name="MINAPPROXRANGEBELOW10AGE" Type="float" />
+          <Property Name="MAXAPPROXRANGEBELOW10AGE" Type="float" />
+          <Property Name="MINAPPROXRANGEBELOWADULT" Type="float" />
+          <Property Name="MAXAPPROXRANGEBELOWADULT" Type="float" />
+          <Property Name="SELLIGPRICE" Type="float" />
+          <Property Name="NORMALVALUE" Type="nvarchar" MaxLength="4000" />
+          <Property Name="GROUPID" Type="int" />
+          <Property Name="TESTFORID" Type="int" />
         </EntityType>
         <EntityType Name="lmsPatientBooking">
           <Key>
-            <PropertyRef Name="BOOKINGID"/>
+            <PropertyRef Name="BOOKINGID" />
           </Key>
-          <Property Name="BOOKINGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="BOOKINGSTATUS" Type="nvarchar" MaxLength="30"/>
-          <Property Name="APPOINTMENTDATE" Type="datetime"/>
-          <Property Name="DISEASEID" Type="int"/>
-          <Property Name="DOCTORTOCONSULT" Type="varchar" MaxLength="200"/>
-          <Property Name="CONSULTINGFEE" Type="float"/>
-          <Property Name="DISCHARGEDATE" Type="datetime"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
-          <Property Name="GENERALINSTRUCTION" Type="nvarchar(max)"/>
+          <Property Name="BOOKINGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="BOOKINGSTATUS" Type="nvarchar" MaxLength="30" />
+          <Property Name="APPOINTMENTDATE" Type="datetime" />
+          <Property Name="DISEASEID" Type="int" />
+          <Property Name="DOCTORTOCONSULT" Type="varchar" MaxLength="200" />
+          <Property Name="CONSULTINGFEE" Type="float" />
+          <Property Name="DISCHARGEDATE" Type="datetime" />
+          <Property Name="CREATEDDATE" Type="datetime" />
+          <Property Name="GENERALINSTRUCTION" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="lmsPatientDischargeSummary">
           <Key>
-            <PropertyRef Name="SUMMARYID"/>
+            <PropertyRef Name="SUMMARYID" />
           </Key>
-          <Property Name="SUMMARYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="IPNO" Type="varchar" MaxLength="10"/>
-          <Property Name="DOA" Type="varchar" MaxLength="100"/>
-          <Property Name="DODEL" Type="varchar" MaxLength="100"/>
-          <Property Name="DOD" Type="varchar" MaxLength="100"/>
-          <Property Name="DIAGONOSIS" Type="varchar" MaxLength="200"/>
-          <Property Name="PHNO" Type="varchar" MaxLength="100"/>
-          <Property Name="OBSTEITICCODE" Type="varchar" MaxLength="100"/>
-          <Property Name="MODEOFDELIVERY" Type="varchar" MaxLength="100"/>
-          <Property Name="DDATE" Type="datetime"/>
-          <Property Name="DTIME" Type="varchar" MaxLength="20"/>
-          <Property Name="SEX" Type="varchar" MaxLength="20"/>
-          <Property Name="URINES" Type="varchar" MaxLength="50"/>
-          <Property Name="URINED" Type="varchar" MaxLength="50"/>
-          <Property Name="BLOODHBPERCENT" Type="varchar" MaxLength="50"/>
-          <Property Name="GPRH" Type="varchar" MaxLength="50"/>
-          <Property Name="BT" Type="varchar" MaxLength="50"/>
-          <Property Name="CT" Type="varchar" MaxLength="50"/>
-          <Property Name="PLATELET" Type="varchar" MaxLength="50"/>
-          <Property Name="BLOODUREA" Type="varchar" MaxLength="50"/>
-          <Property Name="BLOOGSUGAR" Type="varchar" MaxLength="50"/>
-          <Property Name="SRCREATININE" Type="varchar" MaxLength="50"/>
-          <Property Name="VDRL" Type="varchar" MaxLength="50"/>
-          <Property Name="HIV" Type="varchar" MaxLength="100"/>
-          <Property Name="HBSAG" Type="varchar" MaxLength="100"/>
-          <Property Name="PATIENTADMITTEDWITH" Type="varchar" MaxLength="2000"/>
-          <Property Name="POSTOP_POSTNATALPERIOD" Type="varchar" MaxLength="2000"/>
-          <Property Name="TREATMENT" Type="varchar(max)"/>
-          <Property Name="CONDITIONOFBABY" Type="varchar(max)"/>
-          <Property Name="DISCHARGEADVICE" Type="varchar(max)"/>
-          <Property Name="COMMENTS" Type="varchar(max)"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
-          <Property Name="Investigation" Type="varchar" MaxLength="2000"/>
-          <Property Name="PWEIGHT" Type="float"/>
-          <Property Name="PRESENTHISTORY" Type="nvarchar" MaxLength="2000"/>
-          <Property Name="OBSTETRICHISTORY" Type="nvarchar" MaxLength="2000"/>
-          <Property Name="HIGHRISK" Type="nvarchar" MaxLength="2000"/>
-          <Property Name="PWEIGHT2" Type="float"/>
-          <Property Name="DTIME2" Type="nvarchar" MaxLength="30"/>
-          <Property Name="SEX2" Type="nvarchar" MaxLength="10"/>
-          <Property Name="DDATE2" Type="datetime"/>
+          <Property Name="SUMMARYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="IPNO" Type="varchar" MaxLength="10" />
+          <Property Name="DOA" Type="varchar" MaxLength="100" />
+          <Property Name="DODEL" Type="varchar" MaxLength="100" />
+          <Property Name="DOD" Type="varchar" MaxLength="100" />
+          <Property Name="DIAGONOSIS" Type="varchar" MaxLength="200" />
+          <Property Name="PHNO" Type="varchar" MaxLength="100" />
+          <Property Name="OBSTEITICCODE" Type="varchar" MaxLength="100" />
+          <Property Name="MODEOFDELIVERY" Type="varchar" MaxLength="100" />
+          <Property Name="DDATE" Type="datetime" />
+          <Property Name="DTIME" Type="varchar" MaxLength="20" />
+          <Property Name="SEX" Type="varchar" MaxLength="20" />
+          <Property Name="URINES" Type="varchar" MaxLength="50" />
+          <Property Name="URINED" Type="varchar" MaxLength="50" />
+          <Property Name="BLOODHBPERCENT" Type="varchar" MaxLength="50" />
+          <Property Name="GPRH" Type="varchar" MaxLength="50" />
+          <Property Name="BT" Type="varchar" MaxLength="50" />
+          <Property Name="CT" Type="varchar" MaxLength="50" />
+          <Property Name="PLATELET" Type="varchar" MaxLength="50" />
+          <Property Name="BLOODUREA" Type="varchar" MaxLength="50" />
+          <Property Name="BLOOGSUGAR" Type="varchar" MaxLength="50" />
+          <Property Name="SRCREATININE" Type="varchar" MaxLength="50" />
+          <Property Name="VDRL" Type="varchar" MaxLength="50" />
+          <Property Name="HIV" Type="varchar" MaxLength="100" />
+          <Property Name="HBSAG" Type="varchar" MaxLength="100" />
+          <Property Name="PATIENTADMITTEDWITH" Type="varchar" MaxLength="2000" />
+          <Property Name="POSTOP_POSTNATALPERIOD" Type="varchar" MaxLength="2000" />
+          <Property Name="TREATMENT" Type="varchar(max)" />
+          <Property Name="CONDITIONOFBABY" Type="varchar(max)" />
+          <Property Name="DISCHARGEADVICE" Type="varchar(max)" />
+          <Property Name="COMMENTS" Type="varchar(max)" />
+          <Property Name="CREATEDDATE" Type="datetime" />
+          <Property Name="Investigation" Type="varchar" MaxLength="2000" />
+          <Property Name="PWEIGHT" Type="float" />
+          <Property Name="PRESENTHISTORY" Type="nvarchar" MaxLength="2000" />
+          <Property Name="OBSTETRICHISTORY" Type="nvarchar" MaxLength="2000" />
+          <Property Name="HIGHRISK" Type="nvarchar" MaxLength="2000" />
+          <Property Name="PWEIGHT2" Type="float" />
+          <Property Name="DTIME2" Type="nvarchar" MaxLength="30" />
+          <Property Name="SEX2" Type="nvarchar" MaxLength="10" />
+          <Property Name="DDATE2" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsPatientPrescription">
           <Key>
-            <PropertyRef Name="PRESCID"/>
+            <PropertyRef Name="PRESCID" />
           </Key>
-          <Property Name="PRESCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="BOOKINGID" Type="int"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="DRUGID" Type="int"/>
-          <Property Name="MEDICINECOUNT" Type="int"/>
-          <Property Name="STRENGTH" Type="nvarchar" MaxLength="30"/>
-          <Property Name="DOSAGEID" Type="int"/>
-          <Property Name="FREQUENCYID" Type="int"/>
-          <Property Name="FREQUENCY" Type="nvarchar" MaxLength="100"/>
-          <Property Name="INSTRUCTIONS" Type="nvarchar" MaxLength="1000"/>
+          <Property Name="PRESCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOOKINGID" Type="int" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="DRUGID" Type="int" />
+          <Property Name="MEDICINECOUNT" Type="int" />
+          <Property Name="STRENGTH" Type="nvarchar" MaxLength="30" />
+          <Property Name="DOSAGEID" Type="int" />
+          <Property Name="FREQUENCYID" Type="int" />
+          <Property Name="FREQUENCY" Type="nvarchar" MaxLength="100" />
+          <Property Name="INSTRUCTIONS" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="lmsPatientRegistration">
           <Key>
-            <PropertyRef Name="PATIENTID"/>
+            <PropertyRef Name="PATIENTID" />
           </Key>
-          <Property Name="PATIENTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="PATIENTNAME" Type="varchar" MaxLength="200"/>
-          <Property Name="DOB" Type="datetime"/>
-          <Property Name="AGE" Type="int"/>
-          <Property Name="PATIENTADDRESS" Type="varchar" MaxLength="2000"/>
-          <Property Name="CONTACT" Type="varchar" MaxLength="20"/>
-          <Property Name="PATIENTEMAILID" Type="varchar" MaxLength="300"/>
-          <Property Name="PATIENTTYPE" Type="varchar" MaxLength="3"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
-          <Property Name="GENDER" Type="varchar" MaxLength="20"/>
-          <Property Name="QrCodeContent" Type="nvarchar(max)"/>
-          <Property Name="QrCodeBase64" Type="nvarchar(max)"/>
+          <Property Name="PATIENTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTNAME" Type="varchar" MaxLength="200" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="PATIENTADDRESS" Type="varchar" MaxLength="2000" />
+          <Property Name="CONTACT" Type="varchar" MaxLength="20" />
+          <Property Name="PATIENTEMAILID" Type="varchar" MaxLength="300" />
+          <Property Name="PATIENTTYPE" Type="varchar" MaxLength="3" />
+          <Property Name="CREATEDDATE" Type="datetime" />
+          <Property Name="GENDER" Type="varchar" MaxLength="20" />
+          <Property Name="QrCodeContent" Type="nvarchar(max)" />
+          <Property Name="QrCodeBase64" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="lmsPatientReportStore">
+          <Key>
+            <PropertyRef Name="REPORTID" />
+          </Key>
+          <Property Name="REPORTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="CONTACT" Type="nvarchar" MaxLength="15" />
+          <Property Name="PATIENTNAME" Type="nvarchar" MaxLength="300" />
+          <Property Name="REPORTDETAIL" Type="varchar(max)" />
+          <Property Name="CREATEDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsPatientTemplate">
           <Key>
-            <PropertyRef Name="PTEMPLATEID"/>
+            <PropertyRef Name="PTEMPLATEID" />
           </Key>
-          <Property Name="PTEMPLATEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="TEMPLATEID" Type="int"/>
-          <Property Name="TEMPLATEDETAILS" Type="nvarchar(max)"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
+          <Property Name="PTEMPLATEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="TEMPLATEID" Type="int" />
+          <Property Name="TEMPLATEDETAILS" Type="nvarchar(max)" />
+          <Property Name="CREATEDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsRoleMaster">
           <Key>
-            <PropertyRef Name="ROLEID"/>
+            <PropertyRef Name="ROLEID" />
           </Key>
-          <Property Name="ROLEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="ROLENAME" Type="varchar" MaxLength="200"/>
+          <Property Name="ROLEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROLENAME" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="lmsScanReportDetails">
           <Key>
-            <PropertyRef Name="SCANREPORTDETAILSID"/>
+            <PropertyRef Name="SCANREPORTDETAILSID" />
           </Key>
-          <Property Name="SCANREPORTDETAILSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="SCANREPORTID" Type="int"/>
-          <Property Name="REPORTSUMMARY" Type="varchar" MaxLength="1000"/>
-          <Property Name="REPORTDESCRIPTION" Type="varchar(max)"/>
+          <Property Name="SCANREPORTDETAILSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SCANREPORTID" Type="int" />
+          <Property Name="REPORTSUMMARY" Type="varchar" MaxLength="1000" />
+          <Property Name="REPORTDESCRIPTION" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="lmsScanReportMaster">
           <Key>
-            <PropertyRef Name="SCANREPORTID"/>
+            <PropertyRef Name="SCANREPORTID" />
           </Key>
-          <Property Name="SCANREPORTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="SCANID" Type="int"/>
-          <Property Name="PATIENTID" Type="int"/>
-          <Property Name="REFEREDBY" Type="varchar" MaxLength="150"/>
-          <Property Name="BILLAMOUNT" Type="float"/>
-          <Property Name="BILLDATE" Type="datetime"/>
-          <Property Name="REPORTDATE" Type="datetime"/>
+          <Property Name="SCANREPORTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SCANID" Type="int" />
+          <Property Name="PATIENTID" Type="int" />
+          <Property Name="REFEREDBY" Type="varchar" MaxLength="150" />
+          <Property Name="BILLAMOUNT" Type="float" />
+          <Property Name="BILLDATE" Type="datetime" />
+          <Property Name="REPORTDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsScans">
           <Key>
-            <PropertyRef Name="SCANID"/>
+            <PropertyRef Name="SCANID" />
           </Key>
-          <Property Name="SCANID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="SCANNAME" Type="varchar" MaxLength="500"/>
+          <Property Name="SCANID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SCANNAME" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="lmsSignatureMaster">
           <Key>
-            <PropertyRef Name="SIGNATUREID"/>
+            <PropertyRef Name="SIGNATUREID" />
           </Key>
-          <Property Name="SIGNATUREID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="SIGNATUREFOR" Type="int"/>
-          <Property Name="SIGNATUREPATH" Type="varchar" MaxLength="500"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
+          <Property Name="SIGNATUREID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIGNATUREFOR" Type="int" />
+          <Property Name="SIGNATUREPATH" Type="varchar" MaxLength="500" />
+          <Property Name="CREATEDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsStateMaster">
           <Key>
-            <PropertyRef Name="STATEID"/>
+            <PropertyRef Name="STATEID" />
           </Key>
-          <Property Name="STATEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="STATENAME" Type="varchar" MaxLength="200"/>
-          <Property Name="CITYID" Type="int"/>
+          <Property Name="STATEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATENAME" Type="varchar" MaxLength="200" />
+          <Property Name="CITYID" Type="int" />
         </EntityType>
         <EntityType Name="lmsTemplateMaster">
           <Key>
-            <PropertyRef Name="TEMPLATEID"/>
+            <PropertyRef Name="TEMPLATEID" />
           </Key>
-          <Property Name="TEMPLATEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="TEMPLATENAME" Type="varchar" MaxLength="1000"/>
-          <Property Name="SIGNATUREID" Type="int"/>
-          <Property Name="TEMPLATEDETAILS" Type="nvarchar(max)"/>
-          <Property Name="CREATEDATE" Type="datetime"/>
+          <Property Name="TEMPLATEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEMPLATENAME" Type="varchar" MaxLength="1000" />
+          <Property Name="SIGNATUREID" Type="int" />
+          <Property Name="TEMPLATEDETAILS" Type="nvarchar(max)" />
+          <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsUltrSonogramReportOne">
           <Key>
-            <PropertyRef Name="REPORTID"/>
+            <PropertyRef Name="REPORTID" />
           </Key>
-          <Property Name="REPORTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="NAME" Type="varchar" MaxLength="200"/>
-          <Property Name="AGE" Type="int"/>
-          <Property Name="LMP" Type="varchar" MaxLength="30"/>
-          <Property Name="EDD" Type="varchar" MaxLength="30"/>
-          <Property Name="CRL" Type="varchar" MaxLength="100"/>
-          <Property Name="UTERUS" Type="varchar" MaxLength="1000"/>
-          <Property Name="GS" Type="varchar" MaxLength="100"/>
-          <Property Name="CERVIX" Type="varchar" MaxLength="1000"/>
-          <Property Name="PLACENTA" Type="varchar" MaxLength="500"/>
-          <Property Name="RO" Type="varchar" MaxLength="200"/>
-          <Property Name="LO" Type="varchar" MaxLength="200"/>
-          <Property Name="YOLKSAC" Type="varchar" MaxLength="1000"/>
-          <Property Name="FTALHEART" Type="varchar" MaxLength="1000"/>
-          <Property Name="GA" Type="varchar" MaxLength="1000"/>
-          <Property Name="IMPRESSION" Type="varchar(max)"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
-          <Property Name="COMMENTS" Type="varchar(max)"/>
-          <Property Name="POA" Type="nvarchar" MaxLength="500"/>
+          <Property Name="REPORTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="200" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="LMP" Type="varchar" MaxLength="30" />
+          <Property Name="EDD" Type="varchar" MaxLength="30" />
+          <Property Name="CRL" Type="varchar" MaxLength="100" />
+          <Property Name="UTERUS" Type="varchar" MaxLength="1000" />
+          <Property Name="GS" Type="varchar" MaxLength="100" />
+          <Property Name="CERVIX" Type="varchar" MaxLength="1000" />
+          <Property Name="PLACENTA" Type="varchar" MaxLength="500" />
+          <Property Name="RO" Type="varchar" MaxLength="200" />
+          <Property Name="LO" Type="varchar" MaxLength="200" />
+          <Property Name="YOLKSAC" Type="varchar" MaxLength="1000" />
+          <Property Name="FTALHEART" Type="varchar" MaxLength="1000" />
+          <Property Name="GA" Type="varchar" MaxLength="1000" />
+          <Property Name="IMPRESSION" Type="varchar(max)" />
+          <Property Name="CREATEDDATE" Type="datetime" />
+          <Property Name="COMMENTS" Type="varchar(max)" />
+          <Property Name="POA" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="lmsUltrSonogramReportTwo">
           <Key>
-            <PropertyRef Name="REPORTID"/>
+            <PropertyRef Name="REPORTID" />
           </Key>
-          <Property Name="REPORTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="NAME" Type="varchar" MaxLength="200"/>
-          <Property Name="AGE" Type="int"/>
-          <Property Name="IPNO" Type="varchar" MaxLength="200"/>
-          <Property Name="OBSTERICCODE" Type="varchar" MaxLength="200"/>
-          <Property Name="EDD" Type="varchar" MaxLength="200"/>
-          <Property Name="LMP" Type="varchar" MaxLength="30"/>
-          <Property Name="BPD" Type="varchar" MaxLength="30"/>
-          <Property Name="HC" Type="varchar" MaxLength="100"/>
-          <Property Name="FL" Type="varchar" MaxLength="100"/>
-          <Property Name="AC" Type="varchar" MaxLength="100"/>
-          <Property Name="AFI" Type="varchar" MaxLength="100"/>
-          <Property Name="PLACENTA" Type="varchar" MaxLength="500"/>
-          <Property Name="PWEIGHT" Type="varchar" MaxLength="200"/>
-          <Property Name="GA" Type="varchar" MaxLength="1000"/>
-          <Property Name="PRESENTATION" Type="varchar" MaxLength="200"/>
-          <Property Name="IMPRESSION" Type="varchar(max)"/>
-          <Property Name="COMMENTES" Type="varchar(max)"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
+          <Property Name="REPORTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="200" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="IPNO" Type="varchar" MaxLength="200" />
+          <Property Name="OBSTERICCODE" Type="varchar" MaxLength="200" />
+          <Property Name="EDD" Type="varchar" MaxLength="200" />
+          <Property Name="LMP" Type="varchar" MaxLength="30" />
+          <Property Name="BPD" Type="varchar" MaxLength="30" />
+          <Property Name="HC" Type="varchar" MaxLength="100" />
+          <Property Name="FL" Type="varchar" MaxLength="100" />
+          <Property Name="AC" Type="varchar" MaxLength="100" />
+          <Property Name="AFI" Type="varchar" MaxLength="100" />
+          <Property Name="PLACENTA" Type="varchar" MaxLength="500" />
+          <Property Name="PWEIGHT" Type="varchar" MaxLength="200" />
+          <Property Name="GA" Type="varchar" MaxLength="1000" />
+          <Property Name="PRESENTATION" Type="varchar" MaxLength="200" />
+          <Property Name="IMPRESSION" Type="varchar(max)" />
+          <Property Name="COMMENTES" Type="varchar(max)" />
+          <Property Name="CREATEDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsVendorBilling">
           <Key>
-            <PropertyRef Name="BILLID"/>
+            <PropertyRef Name="BILLID" />
           </Key>
-          <Property Name="BILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="BILLNAME" Type="varchar" MaxLength="200"/>
-          <Property Name="CONTACT" Type="varchar" MaxLength="20"/>
-          <Property Name="INVENTORYID" Type="int"/>
-          <Property Name="TESTRESULT" Type="float"/>
-          <Property Name="UNITS" Type="varchar" MaxLength="10"/>
-          <Property Name="TOTALBILLAMOUNT" Type="float"/>
-          <Property Name="BILLBY" Type="varchar" MaxLength="200"/>
-          <Property Name="BILLDATE" Type="datetime"/>
-          <Property Name="CREATEDDATE" Type="datetime"/>
+          <Property Name="BILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BILLNAME" Type="varchar" MaxLength="200" />
+          <Property Name="CONTACT" Type="varchar" MaxLength="20" />
+          <Property Name="INVENTORYID" Type="int" />
+          <Property Name="TESTRESULT" Type="float" />
+          <Property Name="UNITS" Type="varchar" MaxLength="10" />
+          <Property Name="TOTALBILLAMOUNT" Type="float" />
+          <Property Name="BILLBY" Type="varchar" MaxLength="200" />
+          <Property Name="BILLDATE" Type="datetime" />
+          <Property Name="CREATEDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="lmsVendors">
           <Key>
-            <PropertyRef Name="VENDORID"/>
+            <PropertyRef Name="VENDORID" />
           </Key>
-          <Property Name="VENDORID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="VENDORNAME" Type="varchar" MaxLength="500"/>
-          <Property Name="ISACTIVE" Type="bit"/>
+          <Property Name="VENDORID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VENDORNAME" Type="varchar" MaxLength="500" />
+          <Property Name="ISACTIVE" Type="bit" />
         </EntityType>
         <EntityType Name="lmsWards">
           <Key>
-            <PropertyRef Name="WARDID"/>
+            <PropertyRef Name="WARDID" />
           </Key>
-          <Property Name="WARDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
-          <Property Name="WARDNAME" Type="varchar" MaxLength="200"/>
-          <Property Name="BEDID" Type="int"/>
-          <Property Name="ISACTIVE" Type="bit"/>
-          <Property Name="ChargePerDay" Type="float" Nullable="false"/>
+          <Property Name="WARDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WARDNAME" Type="varchar" MaxLength="200" />
+          <Property Name="BEDID" Type="int" />
+          <Property Name="ISACTIVE" Type="bit" />
+          <Property Name="ChargePerDay" Type="float" Nullable="false" />
         </EntityType>
         <Association Name="FK__lmsDischa__CONSU__0B91BA14">
-          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1"/>
-          <End Role="lmsDischargeSummary" Type="Self.lmsDischargeSummary" Multiplicity="*"/>
+          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1" />
+          <End Role="lmsDischargeSummary" Type="Self.lmsDischargeSummary" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsLoginRegistration">
-              <PropertyRef Name="LOGINID"/>
+              <PropertyRef Name="LOGINID" />
             </Principal>
             <Dependent Role="lmsDischargeSummary">
-              <PropertyRef Name="CONSULTEDBY"/>
+              <PropertyRef Name="CONSULTEDBY" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsDischa__CREAT__09A971A2">
-          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1"/>
-          <End Role="lmsDischargeBill" Type="Self.lmsDischargeBill" Multiplicity="*"/>
+          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1" />
+          <End Role="lmsDischargeBill" Type="Self.lmsDischargeBill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsLoginRegistration">
-              <PropertyRef Name="LOGINID"/>
+              <PropertyRef Name="LOGINID" />
             </Principal>
             <Dependent Role="lmsDischargeBill">
-              <PropertyRef Name="CREATEUSER"/>
+              <PropertyRef Name="CREATEUSER" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsDischa__PATIE__0A9D95DB">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsDischargeBill" Type="Self.lmsDischargeBill" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsDischargeBill" Type="Self.lmsDischargeBill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsDischargeBill">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsDischa__PATIE__0C85DE4D">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsDischargeSummary" Type="Self.lmsDischargeSummary" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsDischargeSummary" Type="Self.lmsDischargeSummary" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsDischargeSummary">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsGenera__PATIE__10566F31">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsGeneralDischargeSummary" Type="Self.lmsGeneralDischargeSummary" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsGeneralDischargeSummary" Type="Self.lmsGeneralDischargeSummary" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsGeneralDischargeSummary">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsGynacD__PATIE__114A936A">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsGynacDischargeSummary" Type="Self.lmsGynacDischargeSummary" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsGynacDischargeSummary" Type="Self.lmsGynacDischargeSummary" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsGynacDischargeSummary">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsHospit__CITYI__123EB7A3">
-          <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1"/>
-          <End Role="lmsHospitalMaster" Type="Self.lmsHospitalMaster" Multiplicity="*"/>
+          <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1" />
+          <End Role="lmsHospitalMaster" Type="Self.lmsHospitalMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsCityMaster">
-              <PropertyRef Name="CITYID"/>
+              <PropertyRef Name="CITYID" />
             </Principal>
             <Dependent Role="lmsHospitalMaster">
-              <PropertyRef Name="CITYID"/>
+              <PropertyRef Name="CITYID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsHospit__CREAT__1332DBDC">
-          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1"/>
-          <End Role="lmsHospitalMaster" Type="Self.lmsHospitalMaster" Multiplicity="*"/>
+          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1" />
+          <End Role="lmsHospitalMaster" Type="Self.lmsHospitalMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsLoginRegistration">
-              <PropertyRef Name="LOGINID"/>
+              <PropertyRef Name="LOGINID" />
             </Principal>
             <Dependent Role="lmsHospitalMaster">
-              <PropertyRef Name="CREATEDBY"/>
+              <PropertyRef Name="CREATEDBY" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsHospit__STATE__14270015">
-          <End Role="lmsStateMaster" Type="Self.lmsStateMaster" Multiplicity="0..1"/>
-          <End Role="lmsHospitalMaster" Type="Self.lmsHospitalMaster" Multiplicity="*"/>
+          <End Role="lmsStateMaster" Type="Self.lmsStateMaster" Multiplicity="0..1" />
+          <End Role="lmsHospitalMaster" Type="Self.lmsHospitalMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsStateMaster">
-              <PropertyRef Name="STATEID"/>
+              <PropertyRef Name="STATEID" />
             </Principal>
             <Dependent Role="lmsHospitalMaster">
-              <PropertyRef Name="STATEID"/>
+              <PropertyRef Name="STATEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsInPati__PATIE__151B244E">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsInPatientBilling" Type="Self.lmsInPatientBilling" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsInPatientBilling" Type="Self.lmsInPatientBilling" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsInPatientBilling">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsInvent__VENDO__160F4887">
-          <End Role="lmsVendors" Type="Self.lmsVendors" Multiplicity="0..1"/>
-          <End Role="lmsInventory" Type="Self.lmsInventory" Multiplicity="*"/>
+          <End Role="lmsVendors" Type="Self.lmsVendors" Multiplicity="0..1" />
+          <End Role="lmsInventory" Type="Self.lmsInventory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsVendors">
-              <PropertyRef Name="VENDORID"/>
+              <PropertyRef Name="VENDORID" />
             </Principal>
             <Dependent Role="lmsInventory">
-              <PropertyRef Name="VENDORID"/>
+              <PropertyRef Name="VENDORID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsLabora__BILLI__17F790F9">
-          <End Role="lmsLaboratoryBilling" Type="Self.lmsLaboratoryBilling" Multiplicity="0..1"/>
-          <End Role="lmsLaboratoryBillingDetails" Type="Self.lmsLaboratoryBillingDetails" Multiplicity="*"/>
+          <End Role="lmsLaboratoryBilling" Type="Self.lmsLaboratoryBilling" Multiplicity="0..1" />
+          <End Role="lmsLaboratoryBillingDetails" Type="Self.lmsLaboratoryBillingDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsLaboratoryBilling">
-              <PropertyRef Name="BILLID"/>
+              <PropertyRef Name="BILLID" />
             </Principal>
             <Dependent Role="lmsLaboratoryBillingDetails">
-              <PropertyRef Name="BILLID"/>
+              <PropertyRef Name="BILLID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsLabora__TESTI__17036CC0">
-          <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="0..1"/>
-          <End Role="lmsLaboratoryBilling" Type="Self.lmsLaboratoryBilling" Multiplicity="*"/>
+          <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="0..1" />
+          <End Role="lmsLaboratoryBilling" Type="Self.lmsLaboratoryBilling" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsMedicalTests">
-              <PropertyRef Name="TESTID"/>
+              <PropertyRef Name="TESTID" />
             </Principal>
             <Dependent Role="lmsLaboratoryBilling">
-              <PropertyRef Name="TESTID"/>
+              <PropertyRef Name="TESTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsLabora__TESTI__18EBB532">
-          <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="0..1"/>
-          <End Role="lmsLaboratoryBillingDetails" Type="Self.lmsLaboratoryBillingDetails" Multiplicity="*"/>
+          <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="0..1" />
+          <End Role="lmsLaboratoryBillingDetails" Type="Self.lmsLaboratoryBillingDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsMedicalTests">
-              <PropertyRef Name="TESTID"/>
+              <PropertyRef Name="TESTID" />
             </Principal>
             <Dependent Role="lmsLaboratoryBillingDetails">
-              <PropertyRef Name="TESTID"/>
+              <PropertyRef Name="TESTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsLoginR__CITYI__1EA48E88">
-          <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1"/>
-          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*"/>
+          <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1" />
+          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsCityMaster">
-              <PropertyRef Name="CITYID"/>
+              <PropertyRef Name="CITYID" />
             </Principal>
             <Dependent Role="lmsLoginRegistration">
-              <PropertyRef Name="CITYID"/>
+              <PropertyRef Name="CITYID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsLoginR__ROLEI__1F98B2C1">
-          <End Role="lmsRoleMaster" Type="Self.lmsRoleMaster" Multiplicity="0..1"/>
-          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*"/>
+          <End Role="lmsRoleMaster" Type="Self.lmsRoleMaster" Multiplicity="0..1" />
+          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsRoleMaster">
-              <PropertyRef Name="ROLEID"/>
+              <PropertyRef Name="ROLEID" />
             </Principal>
             <Dependent Role="lmsLoginRegistration">
-              <PropertyRef Name="ROLEID"/>
+              <PropertyRef Name="ROLEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsLoginR__STATE__208CD6FA">
-          <End Role="lmsStateMaster" Type="Self.lmsStateMaster" Multiplicity="0..1"/>
-          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*"/>
+          <End Role="lmsStateMaster" Type="Self.lmsStateMaster" Multiplicity="0..1" />
+          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsStateMaster">
-              <PropertyRef Name="STATEID"/>
+              <PropertyRef Name="STATEID" />
             </Principal>
             <Dependent Role="lmsLoginRegistration">
-              <PropertyRef Name="STATEID"/>
+              <PropertyRef Name="STATEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsMedica__BILLI__22751F6C">
-          <End Role="lmsMedicalBilling" Type="Self.lmsMedicalBilling" Multiplicity="0..1"/>
-          <End Role="lmsMedicalBillingDetails" Type="Self.lmsMedicalBillingDetails" Multiplicity="*"/>
+          <End Role="lmsMedicalBilling" Type="Self.lmsMedicalBilling" Multiplicity="0..1" />
+          <End Role="lmsMedicalBillingDetails" Type="Self.lmsMedicalBillingDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsMedicalBilling">
-              <PropertyRef Name="BILLID"/>
+              <PropertyRef Name="BILLID" />
             </Principal>
             <Dependent Role="lmsMedicalBillingDetails">
-              <PropertyRef Name="BILLID"/>
+              <PropertyRef Name="BILLID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsMedica__DRUGI__2180FB33">
-          <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1"/>
-          <End Role="lmsMedicalBilling" Type="Self.lmsMedicalBilling" Multiplicity="*"/>
+          <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1" />
+          <End Role="lmsMedicalBilling" Type="Self.lmsMedicalBilling" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsDrugs">
-              <PropertyRef Name="DRUGID"/>
+              <PropertyRef Name="DRUGID" />
             </Principal>
             <Dependent Role="lmsMedicalBilling">
-              <PropertyRef Name="DRUGID"/>
+              <PropertyRef Name="DRUGID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsMedica__DRUGI__236943A5">
-          <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1"/>
-          <End Role="lmsMedicalBillingDetails" Type="Self.lmsMedicalBillingDetails" Multiplicity="*"/>
+          <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1" />
+          <End Role="lmsMedicalBillingDetails" Type="Self.lmsMedicalBillingDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsDrugs">
-              <PropertyRef Name="DRUGID"/>
+              <PropertyRef Name="DRUGID" />
             </Principal>
             <Dependent Role="lmsMedicalBillingDetails">
-              <PropertyRef Name="DRUGID"/>
+              <PropertyRef Name="DRUGID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsMedica__GROUP__55F4C372">
-          <End Role="lmsMedicalTestGroup" Type="Self.lmsMedicalTestGroup" Multiplicity="0..1"/>
-          <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="*"/>
+          <End Role="lmsMedicalTestGroup" Type="Self.lmsMedicalTestGroup" Multiplicity="0..1" />
+          <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsMedicalTestGroup">
-              <PropertyRef Name="GROUPID"/>
+              <PropertyRef Name="GROUPID" />
             </Principal>
             <Dependent Role="lmsMedicalTests">
-              <PropertyRef Name="GROUPID"/>
+              <PropertyRef Name="GROUPID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsMedica__TESTF__56E8E7AB">
-          <End Role="lmsMedicalTestFor" Type="Self.lmsMedicalTestFor" Multiplicity="0..1"/>
-          <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="*"/>
+          <End Role="lmsMedicalTestFor" Type="Self.lmsMedicalTestFor" Multiplicity="0..1" />
+          <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsMedicalTestFor">
-              <PropertyRef Name="TESTFORID"/>
+              <PropertyRef Name="TESTFORID" />
             </Principal>
             <Dependent Role="lmsMedicalTests">
-              <PropertyRef Name="TESTFORID"/>
+              <PropertyRef Name="TESTFORID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__BOOKI__793DFFAF">
-          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="0..1"/>
-          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*"/>
+          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="0..1" />
+          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientBooking">
-              <PropertyRef Name="BOOKINGID"/>
+              <PropertyRef Name="BOOKINGID" />
             </Principal>
             <Dependent Role="lmsPatientPrescription">
-              <PropertyRef Name="BOOKINGID"/>
+              <PropertyRef Name="BOOKINGID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__DISEA__634EBE90">
-          <End Role="lmsDiseaseMaster" Type="Self.lmsDiseaseMaster" Multiplicity="0..1"/>
-          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="*"/>
+          <End Role="lmsDiseaseMaster" Type="Self.lmsDiseaseMaster" Multiplicity="0..1" />
+          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsDiseaseMaster">
-              <PropertyRef Name="DISEASEID"/>
+              <PropertyRef Name="DISEASEID" />
             </Principal>
             <Dependent Role="lmsPatientBooking">
-              <PropertyRef Name="DISEASEID"/>
+              <PropertyRef Name="DISEASEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__DISEA__6442E2C9">
-          <End Role="lmsDiseaseMaster" Type="Self.lmsDiseaseMaster" Multiplicity="0..1"/>
-          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="*"/>
+          <End Role="lmsDiseaseMaster" Type="Self.lmsDiseaseMaster" Multiplicity="0..1" />
+          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsDiseaseMaster">
-              <PropertyRef Name="DISEASEID"/>
+              <PropertyRef Name="DISEASEID" />
             </Principal>
             <Dependent Role="lmsPatientBooking">
-              <PropertyRef Name="DISEASEID"/>
+              <PropertyRef Name="DISEASEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__DOSAG__7A3223E8">
-          <End Role="lmsDrugDosage" Type="Self.lmsDrugDosage" Multiplicity="0..1"/>
-          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*"/>
+          <End Role="lmsDrugDosage" Type="Self.lmsDrugDosage" Multiplicity="0..1" />
+          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsDrugDosage">
-              <PropertyRef Name="DOSAGEID"/>
+              <PropertyRef Name="DOSAGEID" />
             </Principal>
             <Dependent Role="lmsPatientPrescription">
-              <PropertyRef Name="DOSAGEID"/>
+              <PropertyRef Name="DOSAGEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__DRUGI__7B264821">
-          <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1"/>
-          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*"/>
+          <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1" />
+          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsDrugs">
-              <PropertyRef Name="DRUGID"/>
+              <PropertyRef Name="DRUGID" />
             </Principal>
             <Dependent Role="lmsPatientPrescription">
-              <PropertyRef Name="DRUGID"/>
+              <PropertyRef Name="DRUGID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__FREQU__7C1A6C5A">
-          <End Role="lmsDrugFrequency" Type="Self.lmsDrugFrequency" Multiplicity="0..1"/>
-          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*"/>
+          <End Role="lmsDrugFrequency" Type="Self.lmsDrugFrequency" Multiplicity="0..1" />
+          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsDrugFrequency">
-              <PropertyRef Name="FREQUENCYID"/>
+              <PropertyRef Name="FREQUENCYID" />
             </Principal>
             <Dependent Role="lmsPatientPrescription">
-              <PropertyRef Name="FREQUENCYID"/>
+              <PropertyRef Name="FREQUENCYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lmsPatien__PATIE__0880433F">
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsPatientReportStore" Type="Self.lmsPatientReportStore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsPatientRegistration">
+              <PropertyRef Name="PATIENTID" />
+            </Principal>
+            <Dependent Role="lmsPatientReportStore">
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__PATIE__2645B050">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsPatientDischargeSummary" Type="Self.lmsPatientDischargeSummary" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsPatientDischargeSummary" Type="Self.lmsPatientDischargeSummary" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsPatientDischargeSummary">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__PATIE__2B0A656D">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsPatientTemplate" Type="Self.lmsPatientTemplate" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsPatientTemplate" Type="Self.lmsPatientTemplate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsPatientTemplate">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__PATIE__65370702">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsPatientBooking">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__PATIE__662B2B3B">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsPatientBooking" Type="Self.lmsPatientBooking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsPatientBooking">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__PATIE__7D0E9093">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsPatientPrescription" Type="Self.lmsPatientPrescription" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsPatientPrescription">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsPatien__TEMPL__2BFE89A6">
-          <End Role="lmsTemplateMaster" Type="Self.lmsTemplateMaster" Multiplicity="0..1"/>
-          <End Role="lmsPatientTemplate" Type="Self.lmsPatientTemplate" Multiplicity="*"/>
+          <End Role="lmsTemplateMaster" Type="Self.lmsTemplateMaster" Multiplicity="0..1" />
+          <End Role="lmsPatientTemplate" Type="Self.lmsPatientTemplate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsTemplateMaster">
-              <PropertyRef Name="TEMPLATEID"/>
+              <PropertyRef Name="TEMPLATEID" />
             </Principal>
             <Dependent Role="lmsPatientTemplate">
-              <PropertyRef Name="TEMPLATEID"/>
+              <PropertyRef Name="TEMPLATEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsScanRe__PATIE__2DE6D218">
-          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1"/>
-          <End Role="lmsScanReportMaster" Type="Self.lmsScanReportMaster" Multiplicity="*"/>
+          <End Role="lmsPatientRegistration" Type="Self.lmsPatientRegistration" Multiplicity="0..1" />
+          <End Role="lmsScanReportMaster" Type="Self.lmsScanReportMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsPatientRegistration">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Principal>
             <Dependent Role="lmsScanReportMaster">
-              <PropertyRef Name="PATIENTID"/>
+              <PropertyRef Name="PATIENTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsScanRe__SCANI__2EDAF651">
-          <End Role="lmsScans" Type="Self.lmsScans" Multiplicity="0..1"/>
-          <End Role="lmsScanReportMaster" Type="Self.lmsScanReportMaster" Multiplicity="*"/>
+          <End Role="lmsScans" Type="Self.lmsScans" Multiplicity="0..1" />
+          <End Role="lmsScanReportMaster" Type="Self.lmsScanReportMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsScans">
-              <PropertyRef Name="SCANID"/>
+              <PropertyRef Name="SCANID" />
             </Principal>
             <Dependent Role="lmsScanReportMaster">
-              <PropertyRef Name="SCANID"/>
+              <PropertyRef Name="SCANID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsScanRe__SCANR__2CF2ADDF">
-          <End Role="lmsScanReportMaster" Type="Self.lmsScanReportMaster" Multiplicity="0..1"/>
-          <End Role="lmsScanReportDetails" Type="Self.lmsScanReportDetails" Multiplicity="*"/>
+          <End Role="lmsScanReportMaster" Type="Self.lmsScanReportMaster" Multiplicity="0..1" />
+          <End Role="lmsScanReportDetails" Type="Self.lmsScanReportDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsScanReportMaster">
-              <PropertyRef Name="SCANREPORTID"/>
+              <PropertyRef Name="SCANREPORTID" />
             </Principal>
             <Dependent Role="lmsScanReportDetails">
-              <PropertyRef Name="SCANREPORTID"/>
+              <PropertyRef Name="SCANREPORTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsSignat__SIGNA__2FCF1A8A">
-          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1"/>
-          <End Role="lmsSignatureMaster" Type="Self.lmsSignatureMaster" Multiplicity="*"/>
+          <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="0..1" />
+          <End Role="lmsSignatureMaster" Type="Self.lmsSignatureMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsLoginRegistration">
-              <PropertyRef Name="LOGINID"/>
+              <PropertyRef Name="LOGINID" />
             </Principal>
             <Dependent Role="lmsSignatureMaster">
-              <PropertyRef Name="SIGNATUREFOR"/>
+              <PropertyRef Name="SIGNATUREFOR" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsStateM__CITYI__30C33EC3">
-          <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1"/>
-          <End Role="lmsStateMaster" Type="Self.lmsStateMaster" Multiplicity="*"/>
+          <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1" />
+          <End Role="lmsStateMaster" Type="Self.lmsStateMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsCityMaster">
-              <PropertyRef Name="CITYID"/>
+              <PropertyRef Name="CITYID" />
             </Principal>
             <Dependent Role="lmsStateMaster">
-              <PropertyRef Name="CITYID"/>
+              <PropertyRef Name="CITYID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsTempla__SIGNA__31B762FC">
-          <End Role="lmsSignatureMaster" Type="Self.lmsSignatureMaster" Multiplicity="0..1"/>
-          <End Role="lmsTemplateMaster" Type="Self.lmsTemplateMaster" Multiplicity="*"/>
+          <End Role="lmsSignatureMaster" Type="Self.lmsSignatureMaster" Multiplicity="0..1" />
+          <End Role="lmsTemplateMaster" Type="Self.lmsTemplateMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsSignatureMaster">
-              <PropertyRef Name="SIGNATUREID"/>
+              <PropertyRef Name="SIGNATUREID" />
             </Principal>
             <Dependent Role="lmsTemplateMaster">
-              <PropertyRef Name="SIGNATUREID"/>
+              <PropertyRef Name="SIGNATUREID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsVendor__INVEN__32AB8735">
-          <End Role="lmsInventory" Type="Self.lmsInventory" Multiplicity="0..1"/>
-          <End Role="lmsVendorBilling" Type="Self.lmsVendorBilling" Multiplicity="*"/>
+          <End Role="lmsInventory" Type="Self.lmsInventory" Multiplicity="0..1" />
+          <End Role="lmsVendorBilling" Type="Self.lmsVendorBilling" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsInventory">
-              <PropertyRef Name="INVENTORYID"/>
+              <PropertyRef Name="INVENTORYID" />
             </Principal>
             <Dependent Role="lmsVendorBilling">
-              <PropertyRef Name="INVENTORYID"/>
+              <PropertyRef Name="INVENTORYID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__lmsWards__BEDID__339FAB6E">
-          <End Role="lmsBeds" Type="Self.lmsBeds" Multiplicity="0..1"/>
-          <End Role="lmsWards" Type="Self.lmsWards" Multiplicity="*"/>
+          <End Role="lmsBeds" Type="Self.lmsBeds" Multiplicity="0..1" />
+          <End Role="lmsWards" Type="Self.lmsWards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lmsBeds">
-              <PropertyRef Name="BEDID"/>
+              <PropertyRef Name="BEDID" />
             </Principal>
             <Dependent Role="lmsWards">
-              <PropertyRef Name="BEDID"/>
+              <PropertyRef Name="BEDID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Function Name="SplitToTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="INPUT" Type="nvarchar(max)" Mode="In"/>
-          <Parameter Name="SPLITBY" Type="char" Mode="In"/>
+          <Parameter Name="INPUT" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="SPLITBY" Type="char" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Item" Type="nvarchar" MaxLength="2000"/>
+                <Property Name="Item" Type="nvarchar" MaxLength="2000" />
               </RowType>
             </CollectionType>
           </ReturnType>
         </Function>
         <Function Name="USP_DATAARCHIVAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ARCHIVETYPE" Type="nvarchar" Mode="In"/>
-          <Parameter Name="FROMDATE" Type="datetime" Mode="In"/>
-          <Parameter Name="TODATE" Type="datetime" Mode="In"/>
+          <Parameter Name="ARCHIVETYPE" Type="nvarchar" Mode="In" />
+          <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
+          <Parameter Name="TODATE" Type="datetime" Mode="In" />
         </Function>
         <Function Name="usp_DeleteDrugs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="DrugIds" Type="nvarchar(max)" Mode="In"/>
+          <Parameter Name="DrugIds" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="usp_DeleteLaboratoryBilling" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TESTIds" Type="nvarchar(max)" Mode="In"/>
+          <Parameter Name="TESTIds" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="usp_DeleteMedicalBilling" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="DrugIds" Type="nvarchar(max)" Mode="In"/>
+          <Parameter Name="DrugIds" Type="nvarchar(max)" Mode="In" />
         </Function>
-        <Function Name="usp_GetDrugDdl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo"/>
-        <Function Name="usp_GetDrugStocks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo"/>
+        <Function Name="usp_GetDrugDdl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_GetDrugStocks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_GetExpiryDrugsByDays" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Days" Type="int" Mode="In"/>
+          <Parameter Name="Days" Type="int" Mode="In" />
         </Function>
         <Function Name="usp_GetInPatientDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="filterDate" Type="varchar" Mode="In"/>
+          <Parameter Name="filterDate" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_GetMedicalBillsByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="filterDate" Type="varchar" Mode="In"/>
+          <Parameter Name="filterDate" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_GetMedicalProfitLoss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="filterDate" Type="varchar" Mode="In"/>
+          <Parameter Name="filterDate" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_GetOutPatients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="filterDate" Type="varchar" Mode="In"/>
+          <Parameter Name="filterDate" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="usp_GetPatientDdlForBilling" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo"/>
+        <Function Name="usp_GetPatientDdlForBilling" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_ValidateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="userEmail" Type="varchar" Mode="In"/>
+          <Parameter Name="userEmail" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="LabManagementModelStoreContainer">
-          <EntitySet Name="lmsBeds" EntityType="Self.lmsBeds" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsCityMaster" EntityType="Self.lmsCityMaster" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsDischargeBill" EntityType="Self.lmsDischargeBill" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsDischargeSummary" EntityType="Self.lmsDischargeSummary" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsDiseaseMaster" EntityType="Self.lmsDiseaseMaster" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsDrugDosage" EntityType="Self.lmsDrugDosage" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsDrugFrequency" EntityType="Self.lmsDrugFrequency" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsDrugs" EntityType="Self.lmsDrugs" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsGeneralDischargeSummary" EntityType="Self.lmsGeneralDischargeSummary" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsGynacDischargeSummary" EntityType="Self.lmsGynacDischargeSummary" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsHospitalMaster" EntityType="Self.lmsHospitalMaster" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsInPatientBilling" EntityType="Self.lmsInPatientBilling" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsInventory" EntityType="Self.lmsInventory" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsInvestigationReport" EntityType="Self.lmsInvestigationReport" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsLaboratoryBilling" EntityType="Self.lmsLaboratoryBilling" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsLaboratoryBillingDetails" EntityType="Self.lmsLaboratoryBillingDetails" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsLoginRegistration" EntityType="Self.lmsLoginRegistration" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsMedicalBilling" EntityType="Self.lmsMedicalBilling" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsMedicalBillingDetails" EntityType="Self.lmsMedicalBillingDetails" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsMedicalTestFor" EntityType="Self.lmsMedicalTestFor" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsMedicalTestGroup" EntityType="Self.lmsMedicalTestGroup" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsMedicalTests" EntityType="Self.lmsMedicalTests" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsPatientBooking" EntityType="Self.lmsPatientBooking" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsPatientDischargeSummary" EntityType="Self.lmsPatientDischargeSummary" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsPatientPrescription" EntityType="Self.lmsPatientPrescription" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsPatientRegistration" EntityType="Self.lmsPatientRegistration" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsPatientTemplate" EntityType="Self.lmsPatientTemplate" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsRoleMaster" EntityType="Self.lmsRoleMaster" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsScanReportDetails" EntityType="Self.lmsScanReportDetails" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsScanReportMaster" EntityType="Self.lmsScanReportMaster" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsScans" EntityType="Self.lmsScans" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsSignatureMaster" EntityType="Self.lmsSignatureMaster" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsStateMaster" EntityType="Self.lmsStateMaster" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsTemplateMaster" EntityType="Self.lmsTemplateMaster" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsUltrSonogramReportOne" EntityType="Self.lmsUltrSonogramReportOne" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsUltrSonogramReportTwo" EntityType="Self.lmsUltrSonogramReportTwo" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsVendorBilling" EntityType="Self.lmsVendorBilling" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsVendors" EntityType="Self.lmsVendors" Schema="dbo" store:Type="Tables"/>
-          <EntitySet Name="lmsWards" EntityType="Self.lmsWards" Schema="dbo" store:Type="Tables"/>
+          <EntitySet Name="lmsBeds" EntityType="Self.lmsBeds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsCityMaster" EntityType="Self.lmsCityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsDischargeBill" EntityType="Self.lmsDischargeBill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsDischargeSummary" EntityType="Self.lmsDischargeSummary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsDiseaseMaster" EntityType="Self.lmsDiseaseMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsDrugDosage" EntityType="Self.lmsDrugDosage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsDrugFrequency" EntityType="Self.lmsDrugFrequency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsDrugs" EntityType="Self.lmsDrugs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsGeneralDischargeSummary" EntityType="Self.lmsGeneralDischargeSummary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsGynacDischargeSummary" EntityType="Self.lmsGynacDischargeSummary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsHospitalMaster" EntityType="Self.lmsHospitalMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsInPatientBilling" EntityType="Self.lmsInPatientBilling" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsInventory" EntityType="Self.lmsInventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsInvestigationReport" EntityType="Self.lmsInvestigationReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsLaboratoryBilling" EntityType="Self.lmsLaboratoryBilling" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsLaboratoryBillingDetails" EntityType="Self.lmsLaboratoryBillingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsLoginRegistration" EntityType="Self.lmsLoginRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsMedicalBilling" EntityType="Self.lmsMedicalBilling" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsMedicalBillingDetails" EntityType="Self.lmsMedicalBillingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsMedicalTestFor" EntityType="Self.lmsMedicalTestFor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsMedicalTestGroup" EntityType="Self.lmsMedicalTestGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsMedicalTests" EntityType="Self.lmsMedicalTests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsPatientBooking" EntityType="Self.lmsPatientBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsPatientDischargeSummary" EntityType="Self.lmsPatientDischargeSummary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsPatientPrescription" EntityType="Self.lmsPatientPrescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsPatientRegistration" EntityType="Self.lmsPatientRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsPatientReportStore" EntityType="Self.lmsPatientReportStore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsPatientTemplate" EntityType="Self.lmsPatientTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsRoleMaster" EntityType="Self.lmsRoleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsScanReportDetails" EntityType="Self.lmsScanReportDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsScanReportMaster" EntityType="Self.lmsScanReportMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsScans" EntityType="Self.lmsScans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsSignatureMaster" EntityType="Self.lmsSignatureMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsStateMaster" EntityType="Self.lmsStateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsTemplateMaster" EntityType="Self.lmsTemplateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsUltrSonogramReportOne" EntityType="Self.lmsUltrSonogramReportOne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsUltrSonogramReportTwo" EntityType="Self.lmsUltrSonogramReportTwo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsVendorBilling" EntityType="Self.lmsVendorBilling" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsVendors" EntityType="Self.lmsVendors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsWards" EntityType="Self.lmsWards" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__lmsDischa__CONSU__0B91BA14" Association="Self.FK__lmsDischa__CONSU__0B91BA14">
-            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration"/>
-            <End Role="lmsDischargeSummary" EntitySet="lmsDischargeSummary"/>
+            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
+            <End Role="lmsDischargeSummary" EntitySet="lmsDischargeSummary" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsDischa__CREAT__09A971A2" Association="Self.FK__lmsDischa__CREAT__09A971A2">
-            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration"/>
-            <End Role="lmsDischargeBill" EntitySet="lmsDischargeBill"/>
+            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
+            <End Role="lmsDischargeBill" EntitySet="lmsDischargeBill" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsDischa__PATIE__0A9D95DB" Association="Self.FK__lmsDischa__PATIE__0A9D95DB">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsDischargeBill" EntitySet="lmsDischargeBill"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsDischargeBill" EntitySet="lmsDischargeBill" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsDischa__PATIE__0C85DE4D" Association="Self.FK__lmsDischa__PATIE__0C85DE4D">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsDischargeSummary" EntitySet="lmsDischargeSummary"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsDischargeSummary" EntitySet="lmsDischargeSummary" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsGenera__PATIE__10566F31" Association="Self.FK__lmsGenera__PATIE__10566F31">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsGeneralDischargeSummary" EntitySet="lmsGeneralDischargeSummary"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsGeneralDischargeSummary" EntitySet="lmsGeneralDischargeSummary" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsGynacD__PATIE__114A936A" Association="Self.FK__lmsGynacD__PATIE__114A936A">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsGynacDischargeSummary" EntitySet="lmsGynacDischargeSummary"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsGynacDischargeSummary" EntitySet="lmsGynacDischargeSummary" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsHospit__CITYI__123EB7A3" Association="Self.FK__lmsHospit__CITYI__123EB7A3">
-            <End Role="lmsCityMaster" EntitySet="lmsCityMaster"/>
-            <End Role="lmsHospitalMaster" EntitySet="lmsHospitalMaster"/>
+            <End Role="lmsCityMaster" EntitySet="lmsCityMaster" />
+            <End Role="lmsHospitalMaster" EntitySet="lmsHospitalMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsHospit__CREAT__1332DBDC" Association="Self.FK__lmsHospit__CREAT__1332DBDC">
-            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration"/>
-            <End Role="lmsHospitalMaster" EntitySet="lmsHospitalMaster"/>
+            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
+            <End Role="lmsHospitalMaster" EntitySet="lmsHospitalMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsHospit__STATE__14270015" Association="Self.FK__lmsHospit__STATE__14270015">
-            <End Role="lmsStateMaster" EntitySet="lmsStateMaster"/>
-            <End Role="lmsHospitalMaster" EntitySet="lmsHospitalMaster"/>
+            <End Role="lmsStateMaster" EntitySet="lmsStateMaster" />
+            <End Role="lmsHospitalMaster" EntitySet="lmsHospitalMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsInPati__PATIE__151B244E" Association="Self.FK__lmsInPati__PATIE__151B244E">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsInPatientBilling" EntitySet="lmsInPatientBilling"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsInPatientBilling" EntitySet="lmsInPatientBilling" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsInvent__VENDO__160F4887" Association="Self.FK__lmsInvent__VENDO__160F4887">
-            <End Role="lmsVendors" EntitySet="lmsVendors"/>
-            <End Role="lmsInventory" EntitySet="lmsInventory"/>
+            <End Role="lmsVendors" EntitySet="lmsVendors" />
+            <End Role="lmsInventory" EntitySet="lmsInventory" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsLabora__BILLI__17F790F9" Association="Self.FK__lmsLabora__BILLI__17F790F9">
-            <End Role="lmsLaboratoryBilling" EntitySet="lmsLaboratoryBilling"/>
-            <End Role="lmsLaboratoryBillingDetails" EntitySet="lmsLaboratoryBillingDetails"/>
+            <End Role="lmsLaboratoryBilling" EntitySet="lmsLaboratoryBilling" />
+            <End Role="lmsLaboratoryBillingDetails" EntitySet="lmsLaboratoryBillingDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsLabora__TESTI__17036CC0" Association="Self.FK__lmsLabora__TESTI__17036CC0">
-            <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests"/>
-            <End Role="lmsLaboratoryBilling" EntitySet="lmsLaboratoryBilling"/>
+            <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
+            <End Role="lmsLaboratoryBilling" EntitySet="lmsLaboratoryBilling" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsLabora__TESTI__18EBB532" Association="Self.FK__lmsLabora__TESTI__18EBB532">
-            <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests"/>
-            <End Role="lmsLaboratoryBillingDetails" EntitySet="lmsLaboratoryBillingDetails"/>
+            <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
+            <End Role="lmsLaboratoryBillingDetails" EntitySet="lmsLaboratoryBillingDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsLoginR__CITYI__1EA48E88" Association="Self.FK__lmsLoginR__CITYI__1EA48E88">
-            <End Role="lmsCityMaster" EntitySet="lmsCityMaster"/>
-            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration"/>
+            <End Role="lmsCityMaster" EntitySet="lmsCityMaster" />
+            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsLoginR__ROLEI__1F98B2C1" Association="Self.FK__lmsLoginR__ROLEI__1F98B2C1">
-            <End Role="lmsRoleMaster" EntitySet="lmsRoleMaster"/>
-            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration"/>
+            <End Role="lmsRoleMaster" EntitySet="lmsRoleMaster" />
+            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsLoginR__STATE__208CD6FA" Association="Self.FK__lmsLoginR__STATE__208CD6FA">
-            <End Role="lmsStateMaster" EntitySet="lmsStateMaster"/>
-            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration"/>
+            <End Role="lmsStateMaster" EntitySet="lmsStateMaster" />
+            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsMedica__BILLI__22751F6C" Association="Self.FK__lmsMedica__BILLI__22751F6C">
-            <End Role="lmsMedicalBilling" EntitySet="lmsMedicalBilling"/>
-            <End Role="lmsMedicalBillingDetails" EntitySet="lmsMedicalBillingDetails"/>
+            <End Role="lmsMedicalBilling" EntitySet="lmsMedicalBilling" />
+            <End Role="lmsMedicalBillingDetails" EntitySet="lmsMedicalBillingDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsMedica__DRUGI__2180FB33" Association="Self.FK__lmsMedica__DRUGI__2180FB33">
-            <End Role="lmsDrugs" EntitySet="lmsDrugs"/>
-            <End Role="lmsMedicalBilling" EntitySet="lmsMedicalBilling"/>
+            <End Role="lmsDrugs" EntitySet="lmsDrugs" />
+            <End Role="lmsMedicalBilling" EntitySet="lmsMedicalBilling" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsMedica__DRUGI__236943A5" Association="Self.FK__lmsMedica__DRUGI__236943A5">
-            <End Role="lmsDrugs" EntitySet="lmsDrugs"/>
-            <End Role="lmsMedicalBillingDetails" EntitySet="lmsMedicalBillingDetails"/>
+            <End Role="lmsDrugs" EntitySet="lmsDrugs" />
+            <End Role="lmsMedicalBillingDetails" EntitySet="lmsMedicalBillingDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsMedica__GROUP__55F4C372" Association="Self.FK__lmsMedica__GROUP__55F4C372">
-            <End Role="lmsMedicalTestGroup" EntitySet="lmsMedicalTestGroup"/>
-            <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests"/>
+            <End Role="lmsMedicalTestGroup" EntitySet="lmsMedicalTestGroup" />
+            <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsMedica__TESTF__56E8E7AB" Association="Self.FK__lmsMedica__TESTF__56E8E7AB">
-            <End Role="lmsMedicalTestFor" EntitySet="lmsMedicalTestFor"/>
-            <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests"/>
+            <End Role="lmsMedicalTestFor" EntitySet="lmsMedicalTestFor" />
+            <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__BOOKI__793DFFAF" Association="Self.FK__lmsPatien__BOOKI__793DFFAF">
-            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking"/>
-            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription"/>
+            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking" />
+            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__DISEA__634EBE90" Association="Self.FK__lmsPatien__DISEA__634EBE90">
-            <End Role="lmsDiseaseMaster" EntitySet="lmsDiseaseMaster"/>
-            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking"/>
+            <End Role="lmsDiseaseMaster" EntitySet="lmsDiseaseMaster" />
+            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__DISEA__6442E2C9" Association="Self.FK__lmsPatien__DISEA__6442E2C9">
-            <End Role="lmsDiseaseMaster" EntitySet="lmsDiseaseMaster"/>
-            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking"/>
+            <End Role="lmsDiseaseMaster" EntitySet="lmsDiseaseMaster" />
+            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__DOSAG__7A3223E8" Association="Self.FK__lmsPatien__DOSAG__7A3223E8">
-            <End Role="lmsDrugDosage" EntitySet="lmsDrugDosage"/>
-            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription"/>
+            <End Role="lmsDrugDosage" EntitySet="lmsDrugDosage" />
+            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__DRUGI__7B264821" Association="Self.FK__lmsPatien__DRUGI__7B264821">
-            <End Role="lmsDrugs" EntitySet="lmsDrugs"/>
-            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription"/>
+            <End Role="lmsDrugs" EntitySet="lmsDrugs" />
+            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__FREQU__7C1A6C5A" Association="Self.FK__lmsPatien__FREQU__7C1A6C5A">
-            <End Role="lmsDrugFrequency" EntitySet="lmsDrugFrequency"/>
-            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription"/>
+            <End Role="lmsDrugFrequency" EntitySet="lmsDrugFrequency" />
+            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lmsPatien__PATIE__0880433F" Association="Self.FK__lmsPatien__PATIE__0880433F">
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsPatientReportStore" EntitySet="lmsPatientReportStore" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__PATIE__2645B050" Association="Self.FK__lmsPatien__PATIE__2645B050">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsPatientDischargeSummary" EntitySet="lmsPatientDischargeSummary"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsPatientDischargeSummary" EntitySet="lmsPatientDischargeSummary" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__PATIE__2B0A656D" Association="Self.FK__lmsPatien__PATIE__2B0A656D">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsPatientTemplate" EntitySet="lmsPatientTemplate"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsPatientTemplate" EntitySet="lmsPatientTemplate" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__PATIE__65370702" Association="Self.FK__lmsPatien__PATIE__65370702">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__PATIE__662B2B3B" Association="Self.FK__lmsPatien__PATIE__662B2B3B">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsPatientBooking" EntitySet="lmsPatientBooking" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__PATIE__7D0E9093" Association="Self.FK__lmsPatien__PATIE__7D0E9093">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescription" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsPatien__TEMPL__2BFE89A6" Association="Self.FK__lmsPatien__TEMPL__2BFE89A6">
-            <End Role="lmsTemplateMaster" EntitySet="lmsTemplateMaster"/>
-            <End Role="lmsPatientTemplate" EntitySet="lmsPatientTemplate"/>
+            <End Role="lmsTemplateMaster" EntitySet="lmsTemplateMaster" />
+            <End Role="lmsPatientTemplate" EntitySet="lmsPatientTemplate" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsScanRe__PATIE__2DE6D218" Association="Self.FK__lmsScanRe__PATIE__2DE6D218">
-            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration"/>
-            <End Role="lmsScanReportMaster" EntitySet="lmsScanReportMaster"/>
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
+            <End Role="lmsScanReportMaster" EntitySet="lmsScanReportMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsScanRe__SCANI__2EDAF651" Association="Self.FK__lmsScanRe__SCANI__2EDAF651">
-            <End Role="lmsScans" EntitySet="lmsScans"/>
-            <End Role="lmsScanReportMaster" EntitySet="lmsScanReportMaster"/>
+            <End Role="lmsScans" EntitySet="lmsScans" />
+            <End Role="lmsScanReportMaster" EntitySet="lmsScanReportMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsScanRe__SCANR__2CF2ADDF" Association="Self.FK__lmsScanRe__SCANR__2CF2ADDF">
-            <End Role="lmsScanReportMaster" EntitySet="lmsScanReportMaster"/>
-            <End Role="lmsScanReportDetails" EntitySet="lmsScanReportDetails"/>
+            <End Role="lmsScanReportMaster" EntitySet="lmsScanReportMaster" />
+            <End Role="lmsScanReportDetails" EntitySet="lmsScanReportDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsSignat__SIGNA__2FCF1A8A" Association="Self.FK__lmsSignat__SIGNA__2FCF1A8A">
-            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration"/>
-            <End Role="lmsSignatureMaster" EntitySet="lmsSignatureMaster"/>
+            <End Role="lmsLoginRegistration" EntitySet="lmsLoginRegistration" />
+            <End Role="lmsSignatureMaster" EntitySet="lmsSignatureMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsStateM__CITYI__30C33EC3" Association="Self.FK__lmsStateM__CITYI__30C33EC3">
-            <End Role="lmsCityMaster" EntitySet="lmsCityMaster"/>
-            <End Role="lmsStateMaster" EntitySet="lmsStateMaster"/>
+            <End Role="lmsCityMaster" EntitySet="lmsCityMaster" />
+            <End Role="lmsStateMaster" EntitySet="lmsStateMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsTempla__SIGNA__31B762FC" Association="Self.FK__lmsTempla__SIGNA__31B762FC">
-            <End Role="lmsSignatureMaster" EntitySet="lmsSignatureMaster"/>
-            <End Role="lmsTemplateMaster" EntitySet="lmsTemplateMaster"/>
+            <End Role="lmsSignatureMaster" EntitySet="lmsSignatureMaster" />
+            <End Role="lmsTemplateMaster" EntitySet="lmsTemplateMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsVendor__INVEN__32AB8735" Association="Self.FK__lmsVendor__INVEN__32AB8735">
-            <End Role="lmsInventory" EntitySet="lmsInventory"/>
-            <End Role="lmsVendorBilling" EntitySet="lmsVendorBilling"/>
+            <End Role="lmsInventory" EntitySet="lmsInventory" />
+            <End Role="lmsVendorBilling" EntitySet="lmsVendorBilling" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsWards__BEDID__339FAB6E" Association="Self.FK__lmsWards__BEDID__339FAB6E">
-            <End Role="lmsBeds" EntitySet="lmsBeds"/>
-            <End Role="lmsWards" EntitySet="lmsWards"/>
+            <End Role="lmsBeds" EntitySet="lmsBeds" />
+            <End Role="lmsWards" EntitySet="lmsWards" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LabManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1587,6 +1614,7 @@
           <NavigationProperty Name="lmsPatientBookings" Relationship="LabManagementModel.FK__lmsPatien__PATIE__65370702" FromRole="lmsPatientRegistration" ToRole="lmsPatientBooking"/>
           <NavigationProperty Name="lmsPatientBookings1" Relationship="LabManagementModel.FK__lmsPatien__PATIE__662B2B3B" FromRole="lmsPatientRegistration" ToRole="lmsPatientBooking"/>
           <NavigationProperty Name="lmsPatientPrescriptions" Relationship="LabManagementModel.FK__lmsPatien__PATIE__7D0E9093" FromRole="lmsPatientRegistration" ToRole="lmsPatientPrescription"/>
+          <NavigationProperty Name="lmsPatientReportStores" Relationship="LabManagementModel.FK__lmsPatien__PATIE__0880433F" FromRole="lmsPatientRegistration" ToRole="lmsPatientReportStore" />
         </EntityType>
         <EntityType Name="lmsRoleMaster">
           <Key>
@@ -2019,38 +2047,38 @@
             <End Role="lmsTemplateMaster" EntitySet="lmsTemplateMasters"/>
           </AssociationSet>
           <FunctionImport Name="SplitToTable" IsComposable="true" ReturnType="Collection(String)">
-            <Parameter Name="INPUT" Mode="In" Type="String"/>
-            <Parameter Name="SPLITBY" Mode="In" Type="String"/>
+            <Parameter Name="INPUT" Mode="In" Type="String" />
+            <Parameter Name="SPLITBY" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_DeleteDrugs">
-            <Parameter Name="DrugIds" Mode="In" Type="String"/>
+          <Parameter Name="DrugIds" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_DeleteLaboratoryBilling">
-            <Parameter Name="TESTIds" Mode="In" Type="String"/>
+          <Parameter Name="TESTIds" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_DeleteMedicalBilling">
-            <Parameter Name="DrugIds" Mode="In" Type="String"/>
+          <Parameter Name="DrugIds" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetDrugDdl" ReturnType="Collection(LabManagementModel.usp_GetDrugDdl_Result)"/>
           <FunctionImport Name="usp_GetDrugStocks" ReturnType="Collection(LabManagementModel.usp_GetDrugStocks_Result)"/>
           <FunctionImport Name="usp_GetExpiryDrugsByDays" ReturnType="Collection(LabManagementModel.usp_GetExpiryDrugsByDays_Result)">
-            <Parameter Name="Days" Mode="In" Type="Int32"/>
+          <Parameter Name="Days" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="usp_GetInPatientDetails" ReturnType="Collection(LabManagementModel.usp_GetInPatientDetails_Result)">
-            <Parameter Name="filterDate" Mode="In" Type="String"/>
+          <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetMedicalBillsByDate" ReturnType="Collection(LabManagementModel.usp_GetMedicalBillsByDate_Result)">
-            <Parameter Name="filterDate" Mode="In" Type="String"/>
+          <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetMedicalProfitLoss" ReturnType="Collection(LabManagementModel.usp_GetMedicalProfitLoss_Result)">
-            <Parameter Name="filterDate" Mode="In" Type="String"/>
+          <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetOutPatients" ReturnType="Collection(LabManagementModel.usp_GetOutPatients_Result)">
-            <Parameter Name="filterDate" Mode="In" Type="String"/>
+          <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetPatientDdlForBilling" ReturnType="Collection(LabManagementModel.usp_GetPatientDdlForBilling_Result)"/>
           <FunctionImport Name="usp_ValidateUser" ReturnType="Collection(LabManagementModel.usp_ValidateUser_Result)">
-            <Parameter Name="userEmail" Mode="In" Type="String"/>
+          <Parameter Name="userEmail" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="lmsGeneralDischargeSummaries" EntityType="LabManagementModel.lmsGeneralDischargeSummary"/>
 
@@ -2069,9 +2097,9 @@
             <End Role="lmsGynacDischargeSummary" EntitySet="lmsGynacDischargeSummaries"/>
           </AssociationSet>
           <FunctionImport Name="USP_DATAARCHIVAL">
-            <Parameter Name="ARCHIVETYPE" Mode="In" Type="String"/>
-            <Parameter Name="FROMDATE" Mode="In" Type="DateTime"/>
-            <Parameter Name="TODATE" Mode="In" Type="DateTime"/>
+            <Parameter Name="ARCHIVETYPE" Mode="In" Type="String" />
+            <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="TODATE" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="lmsMedicalTestFors" EntityType="LabManagementModel.lmsMedicalTestFor"/>
           <EntitySet Name="lmsMedicalTestGroups" EntityType="LabManagementModel.lmsMedicalTestGroup"/>
@@ -2122,6 +2150,11 @@
           <AssociationSet Name="FK__lmsPatien__PATIE__7D0E9093" Association="LabManagementModel.FK__lmsPatien__PATIE__7D0E9093">
             <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistrations"/>
             <End Role="lmsPatientPrescription" EntitySet="lmsPatientPrescriptions"/>
+          </AssociationSet>
+          <EntitySet Name="lmsPatientReportStores" EntityType="LabManagementModel.lmsPatientReportStore" />
+          <AssociationSet Name="FK__lmsPatien__PATIE__0880433F" Association="LabManagementModel.FK__lmsPatien__PATIE__0880433F">
+            <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistrations" />
+            <End Role="lmsPatientReportStore" EntitySet="lmsPatientReportStores" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="lmsDischargeBill">
@@ -2875,6 +2908,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="lmsPatientReportStore">
+          <Key>
+            <PropertyRef Name="REPORTID" />
+          </Key>
+          <Property Name="REPORTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATIENTID" Type="Int32" />
+          <Property Name="CONTACT" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PATIENTNAME" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="REPORTDETAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="lmsPatientRegistration" Relationship="LabManagementModel.FK__lmsPatien__PATIE__0880433F" FromRole="lmsPatientReportStore" ToRole="lmsPatientRegistration" />
+        </EntityType>
+        <Association Name="FK__lmsPatien__PATIE__0880433F">
+          <End Type="LabManagementModel.lmsPatientRegistration" Role="lmsPatientRegistration" Multiplicity="0..1" />
+          <End Type="LabManagementModel.lmsPatientReportStore" Role="lmsPatientReportStore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsPatientRegistration">
+              <PropertyRef Name="PATIENTID" />
+            </Principal>
+            <Dependent Role="lmsPatientReportStore">
+              <PropertyRef Name="PATIENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3610,6 +3667,18 @@
                 <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID"/>
                 <ScalarProperty Name="BOOKINGID" ColumnName="BOOKINGID"/>
                 <ScalarProperty Name="PRESCID" ColumnName="PRESCID"/>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lmsPatientReportStores">
+            <EntityTypeMapping TypeName="LabManagementModel.lmsPatientReportStore">
+              <MappingFragment StoreEntitySet="lmsPatientReportStore">
+                <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="REPORTDETAIL" ColumnName="REPORTDETAIL" />
+                <ScalarProperty Name="PATIENTNAME" ColumnName="PATIENTNAME" />
+                <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+                <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+                <ScalarProperty Name="REPORTID" ColumnName="REPORTID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
