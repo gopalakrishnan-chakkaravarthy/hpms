@@ -268,7 +268,7 @@ namespace Lab.Management.Engine.Infrastructure
                 {
                     return new lmsUltrSonogramReportOne();
                 }
-                var resultDetails = _objLabManagementEntities.lmsUltrSonogramReportOnes.FirstOrDefault(dt => dt.REPORTID == ReportId);
+                var resultDetails = _objLabManagementEntities.lmsUltrSonogramReportOnes.ToList().FirstOrDefault(dt => dt.REPORTID == ReportId);
                 return resultDetails;
             }
             catch (Exception ex)
@@ -306,7 +306,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsUltrSonogramReportOnes.Add(objlmsUltrSonogramReportOne);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsUltrSonogramReportOnes.LastOrDefault().REPORTID;
+                resultId = _objLabManagementEntities.lmsUltrSonogramReportOnes.ToList().LastOrDefault().REPORTID;
             }
             catch (Exception ex)
             {
@@ -381,7 +381,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsUltrSonogramReportTwoes.Add(objlmsUltrSonogramReportTwo);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsUltrSonogramReportTwoes.AsEnumerable().LastOrDefault().REPORTID;
+                resultId = _objLabManagementEntities.lmsUltrSonogramReportTwoes.ToList().LastOrDefault().REPORTID;
             }
             catch (Exception ex)
             {
@@ -457,7 +457,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsInvestigationReports.Add(objlmsInvestigationReport);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsInvestigationReports.AsEnumerable().LastOrDefault().REPORTID;
+                resultId = _objLabManagementEntities.lmsInvestigationReports.ToList().LastOrDefault().REPORTID;
             }
             catch (Exception ex)
             {
@@ -533,7 +533,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsDischargeBills.Add(objlmsDischargeBill);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsDischargeBills.LastOrDefault().DBILLID;
+                resultId = _objLabManagementEntities.lmsDischargeBills.ToList().LastOrDefault().DBILLID;
             }
             catch (Exception ex)
             {
@@ -625,7 +625,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsGeneralDischargeSummaries.Add(objlmsPatientDischargeSummary);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsGeneralDischargeSummaries.LastOrDefault().SUMMARYID;
+                resultId = _objLabManagementEntities.lmsGeneralDischargeSummaries.ToList().LastOrDefault().SUMMARYID;
             }
             catch (Exception ex)
             {
@@ -701,7 +701,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsGynacDischargeSummaries.Add(objlmsPatientDischargeSummary);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsGynacDischargeSummaries.LastOrDefault().SUMMARYID;
+                resultId = _objLabManagementEntities.lmsGynacDischargeSummaries.ToList().LastOrDefault().SUMMARYID;
             }
             catch (Exception ex)
             {
@@ -780,7 +780,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsPatientReportStores.Add(lmsPatientReportStore);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsPatientReportStores.LastOrDefault().REPORTID;
+                resultId = _objLabManagementEntities.lmsPatientReportStores.ToList().LastOrDefault().REPORTID;
             }
             catch (Exception ex)
             {

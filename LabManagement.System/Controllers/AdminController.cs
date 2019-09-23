@@ -216,6 +216,14 @@ namespace LabManagement.System.Controllers
             return View(getTemplate);
         }
 
+        public ActionResult GetTemplateHtml(int templateId, string viewMessage = "")
+        {
+            var getTemplate = _objIAdminOperations.GetTemplateDetailsById(templateId);
+            var TemlpateContent = string.IsNullOrEmpty(getTemplate.TEMPLATEDETAILS) ? "" : getTemplate.TEMPLATEDETAILS;
+            ViewBag.Message = viewMessage;
+            return Json(TemlpateContent, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult ViewAllTemplate(string viewMessage = "")
         {
             var getAll = _objIAdminOperations.GetAllTemplate();

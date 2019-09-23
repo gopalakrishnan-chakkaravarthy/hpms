@@ -15,11 +15,14 @@ namespace LabManagement.System.Controllers
         private readonly IInvoice _objIInvoice;
         private readonly IPatient _objIPatient;
         private readonly IHospitalMaster _objIHospitalMaster;
-        public InvoiceController(IInvoice objIInvoice, IPatient objIPatient, IHospitalMaster objIHospitalMaster)
+        private readonly IAdminOperations _adminOperations;
+        public InvoiceController(IInvoice objIInvoice, IPatient objIPatient,
+            IHospitalMaster objIHospitalMaster, IAdminOperations adminOperations)
         {
             _objIInvoice = objIInvoice;
             _objIPatient = objIPatient;
             _objIHospitalMaster = objIHospitalMaster;
+            _adminOperations = adminOperations;
         }
 
         public ActionResult ViewMedicalBill(int MedicalBillId, string viewMessage = "")
@@ -490,12 +493,24 @@ namespace LabManagement.System.Controllers
 
         #region <<Report TemplateStore>>
 
-        public ActionResult ViewPatientReportStore(int ReportId, string viewMessage = "")
+        public ActionResult ViewPatientReportStore(int reportId, string viewMessage = "")
         {
             var PatientList = _objIPatient.GetPatientDdl();
-            var getReportSummary = _objIInvoice.GetPatientReportStoreById(ReportId);
+            var templateDdl = new List<lmsTemplateMaster>
+            {
+                new lmsTemplateMaster{TEMPLATEID=-1,TEMPLATENAME="--Select--"}
+            };
+            var storedTemplateDdl = _adminOperations.GetAllTemplate();
+            if (storedTemplateDdl.Any())
+            {
+                templateDdl.AddRange(storedTemplateDdl);
+            }
+
+            var getReportSummary = _objIInvoice.GetPatientReportStoreById(reportId);
             getReportSummary.PatientDdl = PatientList.GetDropDownList("PATIENTID", "PATIENTNAME");
-            if (ReportId > 0 && getReportSummary.PATIENTID.HasValue)
+            getReportSummary.TemplateDdl = templateDdl.GetDropDownList("TEMPLATEID", "TEMPLATENAME");
+            ViewBag.TemlpateContent = getReportSummary.REPORTDETAIL ?? getReportSummary.REPORTDETAIL;
+            if (reportId > 0 && getReportSummary.PATIENTID.HasValue)
             {
                 getReportSummary.SelectedPatient = getReportSummary.PATIENTID.Value;
             }
@@ -506,8 +521,9 @@ namespace LabManagement.System.Controllers
         public ActionResult ViewAllPatientReportStore(string viewMessage = "", string filterDate = "")
         {
             var billFilterDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
-            var getAll = _objIInvoice.GetAllPatientReportStore();
+            var getAll = _objIInvoice.GetAllPatientReportStore(billFilterDate);
             ViewBag.Message = viewMessage;
+
             return View(getAll);
         }
 
@@ -515,14 +531,14 @@ namespace LabManagement.System.Controllers
         public ActionResult SavePatientReportStore(lmsPatientReportStore lmsPatientReportStore)
         {
             lmsPatientReportStore.PATIENTID = lmsPatientReportStore.SelectedPatient;
-
+            lmsPatientReportStore.CREATEDDATE = DateTime.Now;
             var saveReportDetails = _objIInvoice.SavePatientReportStore(lmsPatientReportStore);
-            return RedirectToAction("ViewPatientReportStore", new { ReportId = saveReportDetails, viewMessage = "Patient Report Details Saved Successfully" });
+            return Json(new { reportId = saveReportDetails, viewMessage = "Patient Report Details Saved Successfully" }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult DeletePatientReportStore(int ReportId)
+        public ActionResult DeletePatientReportStore(int reportId)
         {
-            var deletReportStore = _objIInvoice.DeletePatientReportStore(ReportId);
+            var deletReportStore = _objIInvoice.DeletePatientReportStore(reportId);
             return RedirectToAction("ViewAllPatientReportStore", new { viewMessage = "Patient Report Detail Deleted Successfully" });
         }
 

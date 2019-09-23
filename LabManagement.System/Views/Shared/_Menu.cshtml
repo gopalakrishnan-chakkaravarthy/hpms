@@ -160,7 +160,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Invoice<b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Billing</a>
@@ -168,6 +168,15 @@
                                         <li><a href="@Url.Action("ViewAllMedicalBill", "Invoice")">Dashboard</a></li>
                                         <li class="divider"></li>
                                         <li><a href="@Url.Action("ViewMedicalBill", "Invoice", new { MedicalBillId =0 })">New Bill</a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Report Editor</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="@Url.Action("ViewAllPatientReportStore", "Invoice")">Dashboard</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="@Url.Action("ViewPatientReportStore", "Invoice", new { reportId = 0 })">New </a></li>
                                     </ul>
                                 </li>
                                 <li class="divider"></li>

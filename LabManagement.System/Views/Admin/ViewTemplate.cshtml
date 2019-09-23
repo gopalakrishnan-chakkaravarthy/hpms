@@ -17,7 +17,7 @@
         </div>
     </div>
 }
-<div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
+<div class="col-sm-12 col-md-12 col-lg-12 ">
     <div class="row">
         <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i>  View Template Details</h4>
         <hr/>
@@ -30,13 +30,6 @@
             @Html.TextBoxFor(m => m.TEMPLATENAME, new { @class = "form-control", @Id = "templateName", required = "required" })
             @Html.HiddenFor(x => x.TEMPLATEID)
             @Html.Hidden("hdnEditorContent", @TemlpateContent)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3 col-md-3 col-lg-3">
-            Template Definition
-        </div>
-        <div class="col-sm-5 col-md-5 col-lg-5">
         </div>
     </div>
     <div class="row">
@@ -72,8 +65,7 @@
     </div>
 </div>
 @section Scripts {
-    @*<link href="@Url.Content("~/Content/css/ckEditorStyle.css")" rel="stylesheet">
-        <script src="@Url.Content("~/Content/js/ckeditor/ckEditorUI.js")"></script>*@
+  
     <script type="text/javascript">
         $(document).ready(function () {
             function SetEditorOnEdit() {

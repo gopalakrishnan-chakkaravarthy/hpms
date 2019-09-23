@@ -1,6 +1,192 @@
-﻿@{
+﻿@using Lab.Management.Entities;
+@model lmsPatientReportStore
+@{
     ViewBag.Title = "ViewPatientReportStore";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+    var TemlpateContent = ViewBag.TemlpateContent as string;
 }
 
-<h2>ViewPatientReportStore</h2>
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="row">
+        <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i>  Patient Report Editor</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            Select Patient
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            @Html.DropDownListFor(x => x.SelectedPatient, Model.PatientDdl, new { @id = "Idpatientddl", @class = "form-control selectpicker", required = "required" })
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            Select Template
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            @Html.DropDownListFor(x => x.SelectedTemplate, Model.TemplateDdl, new { @id = "IdTemplateDdl", @class = "form-control selectpicker", required = "required" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            Patient Name
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            @Html.TextBoxFor(m => m.PATIENTNAME, new { @class = "form-control", @Id = "patientName", required = "required" })
+            @Html.HiddenFor(x => x.REPORTID)
+            @Html.Hidden("hdnEditorContent", @TemlpateContent)
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            Contact
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            @Html.TextBoxFor(m => m.CONTACT, new { @class = "form-control", @Id = "contact", required = "required" })
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <a href="@Url.Action("ViewAllPatientReportStore", "Invoice")" class="btn btn-warning">
+                <i class="glyphicon glyphicon-arrow-left">
+                    Back
+                </i>
+            </a>
+            <button type="button" class="btn btn-primary" id="btnSave">
+                <i class="glyphicon glyphicon-floppy-disk"></i>
+                Save
+            </button>
+            @if (Model.REPORTID > 0)
+            {
+                <a href="@Url.Action("DeleteTemplate", "Invoice", new { reportId = @Model.REPORTID })" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash">
+                        Delete
+                    </i>
+                </a>
+            }
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            @Html.TextArea("templateDetails", new { @class = "ckeditor", @Id = "templateDetails", required = "required" })
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var SelectedPatient = '';
+            $('#Idpatientddl').on('change', function () {
+                var patientddl = $('#Idpatientddl option:selected').text();
+                SelectedPatient = $('#Idpatientddl option:selected').val();
+                $('#patientName').val(patientddl);
+
+            });
+            $('#IdTemplateDdl').on('change', function () {
+                var templateId = $('#IdTemplateDdl option:selected').val();
+                setTemplateHtml(templateId);
+            });
+
+            function SetEditorOnEdit(fromAjax,templateContent) {
+                var templateEditContent = '';
+                if (fromAjax) {
+                    templateEditContent = templateContent;
+                }
+                else {
+                      templateEditContent =  $('#hdnEditorContent').val();;
+                }
+
+                var htmliFrame = $('iframe')[0];
+                if (htmliFrame === undefined)
+                    return;
+                var closestElement = ($(htmliFrame)[0]);
+                if (closestElement === undefined)
+                    return;
+                var iframeFormElement = $(closestElement)[0];
+                if (iframeFormElement === undefined)
+                    return;
+                iframeFormElement.contentDocument.body.innerHTML = templateEditContent;
+            }
+            setTimeout(function () {
+                SetEditorOnEdit(false);
+            }, 1000);
+
+            $('#btnSave').on('click', function () {
+                SaveTemplate();
+            });
+            var emptyString = "";
+            function GetEditorContent() {
+
+                var htmliFrame = $('iframe')[0];
+                if (htmliFrame === undefined)
+                    return emptyString;
+                var closestElement = ($(htmliFrame)[0]);
+                if (closestElement === undefined)
+                    return emptyString;
+                var iframeFormElement = $(closestElement)[0];
+                if (iframeFormElement === undefined)
+                    return emptyString;
+                return iframeFormElement.contentDocument.body.innerHTML;
+            }
+            function setTemplateHtml(templateId) {
+                var getTemplate = "@Url.Action("GetTemplateHtml", "Admin")" + '?templateId=' + templateId ;
+                $.ajax({
+                    url: getTemplate,
+                    type: "GET",
+                    success: function (result) {
+                        SetEditorOnEdit(true,result);
+                    },
+                    error: function (errorResult) {
+                        alert("Error in loading template content");
+                    }
+                });
+            }
+            function SaveTemplate() {
+                var templateDetails = GetEditorContent();
+
+                if (templateDetails === '' || templateDetails === undefined
+                    || templateDetails === null) {
+                    alert("Unable to Save Template ,Error while Processing");
+                    return;
+                }
+                var patientName = $('#patientName').val();;
+                if (patientName === '' || patientName === undefined) {
+                    alert("Please select/enter patient name");
+                    return;
+                }
+                var contact = $('#contact').val();;
+                if (contact === '' || patientName === undefined) {
+                    alert("Please enter contact");
+                    return;
+                }
+                var postData = {
+                    REPORTID: $('#REPORTID').val(),
+                    SelectedPatient: SelectedPatient,
+                    CONTACT: contact,
+                    PATIENTNAME: patientName,
+                    REPORTDETAIL: templateDetails
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("SavePatientReportStore")",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(postData),
+                    success: function (data) {
+                        window.location.href = "ViewPatientReportStore?reportId=" + data.reportId + '&viewMessage=' + data.viewMessage;
+                    },
+                    failure: function (errMsg) {
+                        alert('failure' + errMsg);
+                    }
+                });
+            }
+        });
+    </script>
+}
