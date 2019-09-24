@@ -610,17 +610,6 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -674,7 +663,6 @@
     <Content Include="Views\HospitalMaster\UploadFile.cshtml" />
     <Content Include="Views\HospitalMaster\ViewFileDownload.cshtml" />
     <Content Include="Views\Invoice\GeenrateBill.cshtml" />
-    <Content Include="Views\Home\LandingPage.cshtml" />
     <Content Include="Views\Shared\_HospitalDetail.cshtml" />
     <Content Include="Views\Invoice\GenerateIvestigationReport.cshtml" />
     <Content Include="Views\Invoice\GenrateLaboratoryBill.cshtml" />
