@@ -77,10 +77,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HospitalManagement.edmx</DependentUpon>
     </Compile>
+    <Compile Include="lmsAdditionalNote.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="lmsBed.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsCityMaster.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lmsDeliveryIndication.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsDischargeBill.cs">
@@ -143,6 +149,18 @@
     <Compile Include="lmsMedicalTestGroup.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="lmsNote.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lmsObstericAdmissionSheet.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lmsObstericSurgeryNote.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lmsOtherCaseSheet.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="lmsPatientBooking.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
@@ -179,6 +197,9 @@
     <Compile Include="lmsStateMaster.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="lmsSurgeryNote.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="lmsTemplateMaster.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
@@ -186,6 +207,9 @@
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsUltrSonogramReportTwo.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lmsVaccumDeliveryNote.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsVendor.cs">

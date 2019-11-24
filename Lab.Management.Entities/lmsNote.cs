@@ -12,27 +12,24 @@
 namespace Lab.Management.Entities
 {
 
-using System;
-    using System.Collections.Generic;
-    
-public partial class lmsPatientReportStore
+    using System;
+
+    public partial class lmsNote
 {
 
-    public int REPORTID { get; set; }
+    public int ANID { get; set; }
 
-    public Nullable<int> PATIENTID { get; set; }
+    public Nullable<int> OCSID { get; set; }
 
-    public string CONTACT { get; set; }
+    public Nullable<System.DateTime> DATE { get; set; }
 
-    public string PATIENTNAME { get; set; }
+    public string TREATMENT { get; set; }
 
-    public string REPORTDETAIL { get; set; }
-
-    public Nullable<System.DateTime> CREATEDDATE { get; set; }
+    public Nullable<bool> IsVaccumDeliveryNotes { get; set; }
 
 
 
-    public virtual lmsPatientRegistration lmsPatientRegistration { get; set; }
+    public virtual lmsOtherCaseSheet lmsOtherCaseSheet { get; set; }
 
 }
 

@@ -96,6 +96,19 @@
         <AssociationConnector Association="LabManagementModel.FK__lmsPatien__PATIE__7D0E9093" />
         <EntityTypeShape EntityType="LabManagementModel.lmsPatientReportStore" Width="1.5" PointX="15.75" PointY="19.375" />
         <AssociationConnector Association="LabManagementModel.FK__lmsPatien__PATIE__0880433F" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsAdditionalNote" Width="1.5" PointX="23.625" PointY="3.75" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsObstericAdmissionSheet" Width="1.5" PointX="18.375" PointY="22.125" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsObstericSurgeryNote" Width="1.5" PointX="20.625" PointY="23" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsOtherCaseSheet" Width="1.5" PointX="21.375" PointY="1.625" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsSurgeryNote" Width="1.5" PointX="13.375" PointY="6.75" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsVaccumDeliveryNote" Width="1.5" PointX="23.625" PointY="1" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsAdditi__OCSID__1E6F845E" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsObster__OASID__2CBDA3B5" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsVaccum__OCSID__214BF109" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsDeliveryIndication" Width="1.5" PointX="20.625" PointY="29" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsDelive__OASID__308E3499" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsNote" Width="1.5" PointX="23.625" PointY="21.375" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsNotes__OCSID__3552E9B6" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

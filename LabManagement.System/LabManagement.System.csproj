@@ -159,6 +159,7 @@
     <Compile Include="Controllers\HospitalMasterController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\WebCamController.cs" />
     <Compile Include="DIResolver\StructureMapControllerFactory .cs" />
     <Compile Include="DIResolver\StructureMapDependencyResolver .cs" />

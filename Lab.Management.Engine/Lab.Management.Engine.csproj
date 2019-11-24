@@ -60,15 +60,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\AdminOperations.cs" />
+    <Compile Include="Infrastructure\DeliveryIndication.cs" />
     <Compile Include="Infrastructure\HospitalMaster.cs" />
+    <Compile Include="Infrastructure\Notes.cs" />
+    <Compile Include="Infrastructure\ObstericAdmissionSheetReports.cs" />
+    <Compile Include="Infrastructure\ObstericSurgeryNotes.cs" />
+    <Compile Include="Infrastructure\OtherCaseSheets.cs" />
+    <Compile Include="Infrastructure\SurgeryNotes.cs" />
     <Compile Include="Models\DropDown.cs" />
     <Compile Include="Models\PrescriptionModel.cs" />
+    <Compile Include="Service\IDeliveryIndication.cs" />
     <Compile Include="Service\IHospitalMaster.cs" />
     <Compile Include="Service\IInvoice.cs" />
     <Compile Include="Infrastructure\Invoice.cs" />
+    <Compile Include="Service\IObstericSurgeryNotes.cs" />
+    <Compile Include="Service\IOtherCaseSheets.cs" />
     <Compile Include="Service\IPatient.cs" />
     <Compile Include="Models\AdminDashboard.cs" />
     <Compile Include="Infrastructure\Patient.cs" />
+    <Compile Include="Service\IObstericAdmissionSheetReports.cs" />
+    <Compile Include="Service\ISurgeryNotes.cs" />
+    <Compile Include="Service\INotes.cs" />
     <Compile Include="StructureMapContainer\DependencyResolver.cs" />
     <Compile Include="Service\IAdminOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
