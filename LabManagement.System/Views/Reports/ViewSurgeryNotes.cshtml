@@ -1,0 +1,131 @@
+﻿@using Lab.Management.Entities;
+@model lmsSurgeryNote
+@{
+    ViewBag.Title = " Surgery Notes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+    var TemlpateContent = ViewBag.TemlpateContent as string;
+}
+
+<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+    @using (Html.BeginForm("EditSurgeryNotes", "Reports", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                @Html.Partial("_HospitalDetail")
+                <p><h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Surgery Notes</h4></p>
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Name
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.NAME, new { @Id = "NAME", @class = "form-control", required = "required" })
+                @Html.HiddenFor(x => x.SNID)
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Age
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.AGE, new { @Id = "AGE", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                I.P.NO
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.IPNO, new { @Id = "IPNO", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Name of Surgery
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextBoxFor(x => x.NAMEOFSURGERY, new { @Id = "NAMEOFSURGERY", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Indication
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.INDICATION, new { @Id = "INDICATION", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                D/B DR
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                @Html.TextBoxFor(x => x.DB, new { @Id = "DB", @class = "form-control" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                ANAES
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                @Html.TextBoxFor(x => x.ANAES, new { @Id = "ANAES", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                A/B S/N
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                @Html.TextBoxFor(x => x.AB, new { @Id = "AB", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Procedure
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.SNPROCEDURE, new { @Id = "SNPROCEDURE", @class = "form-control" })
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <a href="@Url.Action("ViewAllSurgeryNotes", "Reports")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.SNID > 0)
+                {
+                    <a href="@Url.Action("DeleteSurgeryNotes", "Reports", new { id = Model.SNID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                    <a href="@Url.Action("GenerateSurgeryNotes", "Reports", new { id = Model.SNID })" class="btn btn-info">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        Generate Report
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    }
+</div>

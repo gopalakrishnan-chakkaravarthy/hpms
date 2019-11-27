@@ -698,6 +698,12 @@
     <Content Include="Views\Invoice\ViewPatientReportStore.cshtml" />
     <Content Include="Views\Invoice\ViewAllPatientReportStore.cshtml" />
     <None Include="Views\Patient\_ViewPatientHistory.cshtml" />
+    <Content Include="Views\Reports\ViewSurgeryNotes.cshtml" />
+    <Content Include="Views\Reports\ViewAllSurgeryNotes.cshtml" />
+    <Content Include="Views\Reports\GenerateSurgeryNotes.cshtml" />
+    <Content Include="Views\Reports\ViewObstetricAdmissionSheet.cshtml" />
+    <Content Include="Views\Reports\ViewAllObstetricAdmissionSheet.cshtml" />
+    <Content Include="Views\Reports\GenerateObstetricAdmissionSheet.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

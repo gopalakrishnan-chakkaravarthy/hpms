@@ -1,0 +1,264 @@
+﻿@using Lab.Management.Entities;
+@model lmsObstericAdmissionSheet
+@{
+    ViewBag.Title = " Obstetric Admission Sheet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+    var TemlpateContent = ViewBag.TemlpateContent as string;
+}
+
+<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+    @using (Html.BeginForm("EditObstetricAdmissionSheet", "Reports", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                @Html.Partial("_HospitalDetail")
+                <p><h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Admission Sheet</h4></p>
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Name :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.NAME, new { @Id = "NAME", @class = "form-control", required = "required" })
+                @Html.HiddenFor(x => x.OASID)
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Age :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.AGE, new { @Id = "AGE", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Sex :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.GENDER, new { @Id = "GENDER", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Occupation :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.OCCUPATION, new { @Id = "OCCUPATION", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Hosp.No :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.HOSPITALNO, new { @Id = "HOSPITALNO", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Bed.No:
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.BEDNO, new { @Id = "BEDNO", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Father's/Husband Name:
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.FATHERORHUSBANDNAME, new { @Id = "FATHERORHUSBANDNAME", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Obs.Code :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.OBSCODE, new { @Id = "OBSCODE", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                LMP :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.LMP, new { @Id = "LMP", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Address :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextAreaFor(x => x.ADDRESS, new { @Id = "ADDRESS", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Do Del :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.DODEL, new { @Id = "DODEL", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                EDD :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.EDD, new { @Id = "EDD", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Phone No :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.PHONE, new { @Id = "PHONE", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Mode of Del :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.MRDEOFDEL, new { @Id = "MRDEOFDEL", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Date & Time of Admission :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.DATETIMEOFADMISSION, new { @Id = "DATETIMEOFADMISSION", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Date & Time of Discharge :
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.DATETIMEOFDISCHARGE, new { @Id = "DATETIMEOFDISCHARGE", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Present History
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.PATIENTHISTORY, new { @Id = "PATIENTHISTORY", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Menarche
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.MENARCHE, new { @Id = "MENARCHE", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Mensural History
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.MENSURALHISTORY, new { @Id = "MENSURALHISTORY", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Marital History
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.MARITALHISTORY, new { @Id = "MARITALHISTORY", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Family History
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.FAMILYHISTORY, new { @Id = "FAMILYHISTORY", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Past History
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.PASTHISTORY, new { @Id = "PASTHISTORY", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Examination
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.EXAMINATION, new { @Id = "EXAMINATION", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Treatment
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.TREATMENT, new { @Id = "TREATMENT", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <a href="@Url.Action("ViewAllObstetricAdmissionSheet", "Reports")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.OASID > 0)
+                {
+                    <a href="@Url.Action("DeleteObstetricAdmissionSheet", "Reports", new { id = Model.OASID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                    <a href="@Url.Action("GenerateObstetricAdmissionSheet", "Reports", new { id = Model.OASID })" class="btn btn-info">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        Generate Report
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#DODEL').datepicker({ format: 'dd/mm/yyyy' });
+            $('#EDD').datepicker({ format: 'dd/mm/yyyy' });
+            $('#DATETIMEOFADMISSION').datepicker({ format: 'dd/mm/yyyy' });
+            $('#DATETIMEOFDISCHARGE').datepicker({ format: 'dd/mm/yyyy' });
+        });
+    </script>
+}

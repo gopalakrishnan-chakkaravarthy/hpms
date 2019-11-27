@@ -364,20 +364,29 @@ input[type="checkbox"] + label {
     width: 98% !important;
     overflow-y: auto;
 }
-.patient-presc{
-    width:auto;
+
+.patient-presc {
+    width: auto;
 }
-.hidden-by-role{
-    display:none;
+
+.hidden-by-role {
+    display: none;
 }
+
 .display-by-role {
     width: auto;
 }
-.presc-instruction{
-    width:40rem;
-    max-width:40rem;
-    text-align:justify;
+
+.presc-instruction {
+    width: 40rem;
+    max-width: 40rem;
+    text-align: justify;
 }
-.login-footer{
-    margin-top:8rem;
+
+.login-footer {
+    margin-top: 8rem;
+}
+
+.text-justify {
+    text-align: justify;
 }
