@@ -115,8 +115,6 @@ public partial class LabManagementEntities : DbContext
 
     public virtual DbSet<lmsPatientReportStore> lmsPatientReportStores { get; set; }
 
-    public virtual DbSet<lmsAdditionalNote> lmsAdditionalNotes { get; set; }
-
     public virtual DbSet<lmsObstericAdmissionSheet> lmsObstericAdmissionSheets { get; set; }
 
     public virtual DbSet<lmsObstericSurgeryNote> lmsObstericSurgeryNotes { get; set; }
@@ -124,8 +122,6 @@ public partial class LabManagementEntities : DbContext
     public virtual DbSet<lmsOtherCaseSheet> lmsOtherCaseSheets { get; set; }
 
     public virtual DbSet<lmsSurgeryNote> lmsSurgeryNotes { get; set; }
-
-    public virtual DbSet<lmsVaccumDeliveryNote> lmsVaccumDeliveryNotes { get; set; }
 
     public virtual DbSet<lmsDeliveryIndication> lmsDeliveryIndications { get; set; }
 

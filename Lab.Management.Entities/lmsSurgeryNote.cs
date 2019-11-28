@@ -32,13 +32,9 @@ public partial class lmsSurgeryNote
 
     public string DB { get; set; }
 
-    public string DR { get; set; }
-
     public string ANAES { get; set; }
 
     public string AB { get; set; }
-
-    public string SN { get; set; }
 
     public string SNPROCEDURE { get; set; }
 

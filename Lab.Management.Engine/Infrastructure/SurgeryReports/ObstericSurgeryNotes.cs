@@ -38,12 +38,12 @@ namespace Lab.Management.Engine.Infrastructure
             return resultFlag;
         }
 
-        public IList<lmsObstericSurgeryNote> GetAll(int id = 0, string filterDate = "")
+        public IList<lmsObstericSurgeryNote> GetAll(string filterDate = "")
         {
             try
             {
                 var queryDate = Convert.ToDateTime(filterDate).Date;
-                var resultDetails = _objLabManagementEntities.lmsObstericSurgeryNotes.Where(bt => bt.OASID == id);
+                var resultDetails = _objLabManagementEntities.lmsObstericSurgeryNotes.Where(bt => bt.lmsObstericAdmissionSheet.CREATEDDATE == queryDate);
                 return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.OSNID).ToList()
                     : new List<lmsObstericSurgeryNote>();
             }

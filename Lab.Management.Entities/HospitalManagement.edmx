@@ -23,9 +23,9 @@
         </EntityType>
         <EntityType Name="lmsDeliveryIndication">
           <Key>
-            <PropertyRef Name="VDIID"/>
+            <PropertyRef Name="DIID"/>
           </Key>
-          <Property Name="VDIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
+          <Property Name="DIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false"/>
           <Property Name="OASID" Type="int"/>
           <Property Name="GENDER" Type="int"/>
           <Property Name="WEIGHT" Type="int"/>
@@ -434,6 +434,7 @@
           <Property Name="BLOODGROUP" Type="nvarchar" MaxLength="50"/>
           <Property Name="TREATMENT" Type="nvarchar(max)"/>
           <Property Name="OPERATIONREPORT" Type="nvarchar(max)"/>
+          <Property Name="CREATEDDATE" Type="datetime"/>
         </EntityType>
         <EntityType Name="lmsOtherCaseSheets">
           <Key>
@@ -629,10 +630,8 @@
           <Property Name="NAMEOFSURGERY" Type="nvarchar" MaxLength="1000"/>
           <Property Name="INDICATION" Type="nvarchar" MaxLength="3000"/>
           <Property Name="DB" Type="nvarchar" MaxLength="1000"/>
-          <Property Name="DR" Type="nvarchar" MaxLength="1000"/>
           <Property Name="ANAES" Type="nvarchar" MaxLength="1000"/>
           <Property Name="AB" Type="nvarchar" MaxLength="1000"/>
-          <Property Name="SN" Type="nvarchar" MaxLength="1000"/>
           <Property Name="SNPROCEDURE" Type="nvarchar" MaxLength="1000"/>
           <Property Name="TREATMENT" Type="nvarchar(max)"/>
           <Property Name="CREDATEDDATE" Type="datetime"/>
@@ -728,7 +727,7 @@
           <Property Name="ISACTIVE" Type="bit"/>
           <Property Name="ChargePerDay" Type="float" Nullable="false"/>
         </EntityType>
-        <Association Name="FK__lmsDelive__OASID__308E3499">
+        <Association Name="FK__lmsDelive__OASID__3EDC53F0">
           <End Role="lmsObstericAdmissionSheet" Type="Self.lmsObstericAdmissionSheet" Multiplicity="0..1"/>
           <End Role="lmsDeliveryIndication" Type="Self.lmsDeliveryIndication" Multiplicity="*"/>
           <ReferentialConstraint>
@@ -1016,7 +1015,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__lmsObster__OASID__2CBDA3B5">
+        <Association Name="FK__lmsObster__OASID__42ACE4D4">
           <End Role="lmsObstericAdmissionSheet" Type="Self.lmsObstericAdmissionSheet" Multiplicity="0..1"/>
           <End Role="lmsObstericSurgeryNotes" Type="Self.lmsObstericSurgeryNotes" Multiplicity="*"/>
           <ReferentialConstraint>
@@ -1373,7 +1372,7 @@
           <EntitySet Name="lmsVendorBilling" EntityType="Self.lmsVendorBilling" Schema="dbo" store:Type="Tables"/>
           <EntitySet Name="lmsVendors" EntityType="Self.lmsVendors" Schema="dbo" store:Type="Tables"/>
           <EntitySet Name="lmsWards" EntityType="Self.lmsWards" Schema="dbo" store:Type="Tables"/>
-          <AssociationSet Name="FK__lmsDelive__OASID__308E3499" Association="Self.FK__lmsDelive__OASID__308E3499">
+          <AssociationSet Name="FK__lmsDelive__OASID__3EDC53F0" Association="Self.FK__lmsDelive__OASID__3EDC53F0">
             <End Role="lmsObstericAdmissionSheet" EntitySet="lmsObstericAdmissionSheet"/>
             <End Role="lmsDeliveryIndication" EntitySet="lmsDeliveryIndication"/>
           </AssociationSet>
@@ -1469,7 +1468,7 @@
             <End Role="lmsOtherCaseSheets" EntitySet="lmsOtherCaseSheets"/>
             <End Role="lmsNotes" EntitySet="lmsNotes"/>
           </AssociationSet>
-          <AssociationSet Name="FK__lmsObster__OASID__2CBDA3B5" Association="Self.FK__lmsObster__OASID__2CBDA3B5">
+          <AssociationSet Name="FK__lmsObster__OASID__42ACE4D4" Association="Self.FK__lmsObster__OASID__42ACE4D4">
             <End Role="lmsObstericAdmissionSheet" EntitySet="lmsObstericAdmissionSheet"/>
             <End Role="lmsObstericSurgeryNotes" EntitySet="lmsObstericSurgeryNotes"/>
           </AssociationSet>
@@ -3180,6 +3179,7 @@
           <Property Name="TREATMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <Property Name="OPERATIONREPORT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <NavigationProperty Name="lmsObstericAdmissionSheet" Relationship="LabManagementModel.FK__lmsObster__OASID__2CBDA3B5" FromRole="lmsObstericSurgeryNote" ToRole="lmsObstericAdmissionSheet"/>
+          <Property Name="CREATEDDATE" Type="DateTime" Precision="3"/>
         </EntityType>
         <EntityType Name="lmsOtherCaseSheet">
           <Key>
@@ -3210,10 +3210,8 @@
           <Property Name="NAMEOFSURGERY" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
           <Property Name="INDICATION" Type="String" MaxLength="3000" FixedLength="false" Unicode="true"/>
           <Property Name="DB" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
-          <Property Name="DR" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
           <Property Name="ANAES" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
           <Property Name="AB" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
-          <Property Name="SN" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
           <Property Name="SNPROCEDURE" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
           <Property Name="TREATMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <Property Name="CREDATEDDATE" Type="DateTime" Precision="3"/>
@@ -3234,9 +3232,9 @@
 
         <EntityType Name="lmsDeliveryIndication">
           <Key>
-            <PropertyRef Name="VDIID"/>
+            <PropertyRef Name="DIID"/>
           </Key>
-          <Property Name="VDIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity"/>
+
           <Property Name="OASID" Type="Int32"/>
           <Property Name="GENDER" Type="Int32"/>
           <Property Name="WEIGHT" Type="Int32"/>
@@ -3246,6 +3244,7 @@
           <Property Name="BLOODGROUP" Type="String" MaxLength="500" FixedLength="false" Unicode="true"/>
           <Property Name="ISFORCEPSDELIVERY" Type="Boolean"/>
           <NavigationProperty Name="lmsObstericAdmissionSheet" Relationship="LabManagementModel.FK__lmsDelive__OASID__308E3499" FromRole="lmsDeliveryIndication" ToRole="lmsObstericAdmissionSheet"/>
+          <Property Name="DIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity"/>
         </EntityType>
         <Association Name="FK__lmsDelive__OASID__308E3499">
           <End Type="LabManagementModel.lmsObstericAdmissionSheet" Role="lmsObstericAdmissionSheet" Multiplicity="0..1"/>
@@ -4068,6 +4067,7 @@
           <EntitySetMapping Name="lmsObstericSurgeryNotes">
             <EntityTypeMapping TypeName="LabManagementModel.lmsObstericSurgeryNote">
               <MappingFragment StoreEntitySet="lmsObstericSurgeryNotes">
+                <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE"/>
                 <ScalarProperty Name="OPERATIONREPORT" ColumnName="OPERATIONREPORT"/>
                 <ScalarProperty Name="TREATMENT" ColumnName="TREATMENT"/>
                 <ScalarProperty Name="BLOODGROUP" ColumnName="BLOODGROUP"/>
@@ -4112,10 +4112,8 @@
                 <ScalarProperty Name="CREDATEDDATE" ColumnName="CREDATEDDATE"/>
                 <ScalarProperty Name="TREATMENT" ColumnName="TREATMENT"/>
                 <ScalarProperty Name="SNPROCEDURE" ColumnName="SNPROCEDURE"/>
-                <ScalarProperty Name="SN" ColumnName="SN"/>
                 <ScalarProperty Name="AB" ColumnName="AB"/>
                 <ScalarProperty Name="ANAES" ColumnName="ANAES"/>
-                <ScalarProperty Name="DR" ColumnName="DR"/>
                 <ScalarProperty Name="DB" ColumnName="DB"/>
                 <ScalarProperty Name="INDICATION" ColumnName="INDICATION"/>
                 <ScalarProperty Name="NAMEOFSURGERY" ColumnName="NAMEOFSURGERY"/>
@@ -4129,6 +4127,7 @@
           <EntitySetMapping Name="lmsDeliveryIndications">
             <EntityTypeMapping TypeName="LabManagementModel.lmsDeliveryIndication">
               <MappingFragment StoreEntitySet="lmsDeliveryIndication">
+                <ScalarProperty Name="DIID" ColumnName="DIID"/>
                 <ScalarProperty Name="ISFORCEPSDELIVERY" ColumnName="ISFORCEPSDELIVERY"/>
                 <ScalarProperty Name="BLOODGROUP" ColumnName="BLOODGROUP"/>
                 <ScalarProperty Name="APGAR" ColumnName="APGAR"/>
@@ -4137,7 +4136,6 @@
                 <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT"/>
                 <ScalarProperty Name="GENDER" ColumnName="GENDER"/>
                 <ScalarProperty Name="OASID" ColumnName="OASID"/>
-                <ScalarProperty Name="VDIID" ColumnName="VDIID"/>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

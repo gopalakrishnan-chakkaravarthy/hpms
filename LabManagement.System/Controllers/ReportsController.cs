@@ -113,5 +113,48 @@ namespace LabManagement.System.Controllers
         }
 
         #endregion ObstericAdmissionSheet
+
+        #region ObstericSurgeryNotes
+
+        public ActionResult ViewObstetricSurgeryNotes(int id, string viewMessage = "")
+        {
+            var data = obstericSurgeryNotes.GetById(id);
+            ViewBag.Message = viewMessage;
+            return View(data);
+        }
+
+        public ActionResult ViewAllObstetricSurgeryNotes(string filterDate = "", string viewMessage = "")
+        {
+            var filterByData = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
+            var allData = obstericSurgeryNotes.GetAll(filterByData);
+            ViewBag.Message = viewMessage;
+            return View(allData);
+        }
+
+        [HttpPost]
+        public ActionResult EditObstetricSurgeryNotes(lmsObstericSurgeryNote data)
+        {
+            //if (!data.CREDATEDDATE.HasValue)
+            //{
+            //    data.CREDATEDDATE = DateTime.Now;
+            //}
+            var saveData = obstericSurgeryNotes.Save(data);
+            //ViewBag.Message = viewMessage;
+            return RedirectToAction("ViewObstetricSurgeryNotes", new { id = saveData, viewMessage = "Surgery Notes Saved Successfully" });
+        }
+
+        public ActionResult DeleteObstetricSurgeryNotes(int id)
+        {
+            var deletData = obstericSurgeryNotes.Delete(id);
+            return RedirectToAction("ViewAllObstetricSurgeryNotes", new { viewMessage = "Surgery Notes Deleted Successfully" });
+        }
+
+        public ActionResult GenerateObstetricSurgeryNotes(int id)
+        {
+            var data = obstericSurgeryNotes.GetById(id);
+            return View(data);
+        }
+
+        #endregion ObstericSurgeryNotes
     }
 }

@@ -44,7 +44,7 @@ namespace Lab.Management.Engine.Infrastructure
             {
                 var queryDate = Convert.ToDateTime(filterDate).Date;
                 var resultDetails = _objLabManagementEntities.lmsDeliveryIndications.Where(bt => bt.OASID == id);
-                return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.VDIID).ToList()
+                return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.DIID).ToList()
                     : new List<lmsDeliveryIndication>();
             }
             catch (Exception ex)
@@ -77,17 +77,17 @@ namespace Lab.Management.Engine.Infrastructure
             var resultId = 0;
             try
             {
-                if (data.VDIID > 0)
+                if (data.DIID > 0)
                 {
                     _objLabManagementEntities.lmsDeliveryIndications.Attach(data);
                     _objLabManagementEntities.Entry(data).State = EntityState.Modified;
                     _objLabManagementEntities.SaveChanges();
-                    return data.VDIID;
+                    return data.DIID;
                 }
                 _objLabManagementEntities.lmsDeliveryIndications.Add(data);
                 _objLabManagementEntities.SaveChanges();
                 var result = _objLabManagementEntities.lmsDeliveryIndications.ToList().LastOrDefault();
-                resultId = result.VDIID;
+                resultId = result.DIID;
             }
             catch (Exception ex)
             {

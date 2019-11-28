@@ -18,8 +18,6 @@ using System;
 public partial class lmsDeliveryIndication
 {
 
-    public int VDIID { get; set; }
-
     public Nullable<int> OASID { get; set; }
 
     public Nullable<int> GENDER { get; set; }
@@ -35,6 +33,8 @@ public partial class lmsDeliveryIndication
     public string BLOODGROUP { get; set; }
 
     public Nullable<bool> ISFORCEPSDELIVERY { get; set; }
+
+    public int DIID { get; set; }
 
 
 

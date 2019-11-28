@@ -21,10 +21,6 @@ public partial class lmsOtherCaseSheet
     public lmsOtherCaseSheet()
     {
 
-        this.lmsAdditionalNotes = new HashSet<lmsAdditionalNote>();
-
-        this.lmsVaccumDeliveryNotes = new HashSet<lmsVaccumDeliveryNote>();
-
         this.lmsNotes = new HashSet<lmsNote>();
 
     }
@@ -53,10 +49,6 @@ public partial class lmsOtherCaseSheet
     public Nullable<System.DateTime> CREDATEDDATE { get; set; }
 
 
-
-    public virtual ICollection<lmsAdditionalNote> lmsAdditionalNotes { get; set; }
-
-    public virtual ICollection<lmsVaccumDeliveryNote> lmsVaccumDeliveryNotes { get; set; }
 
     public virtual ICollection<lmsNote> lmsNotes { get; set; }
 

@@ -12,9 +12,10 @@
 namespace Lab.Management.Entities
 {
 
-    using System;
-
-    public partial class lmsNote
+using System;
+    using System.Collections.Generic;
+    
+public partial class lmsNote
 {
 
     public int ANID { get; set; }

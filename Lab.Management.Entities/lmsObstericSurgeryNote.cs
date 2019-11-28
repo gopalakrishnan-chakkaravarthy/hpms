@@ -54,6 +54,8 @@ public partial class lmsObstericSurgeryNote
 
     public string OPERATIONREPORT { get; set; }
 
+    public Nullable<System.DateTime> CREATEDDATE { get; set; }
+
 
 
     public virtual lmsObstericAdmissionSheet lmsObstericAdmissionSheet { get; set; }

@@ -77,7 +77,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HospitalManagement.edmx</DependentUpon>
     </Compile>
-    <Compile Include="lmsAdditionalNote.cs">
+    <Compile Include="HospitalManagement1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsBed.cs">
@@ -209,9 +211,6 @@
     <Compile Include="lmsUltrSonogramReportTwo.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="lmsVaccumDeliveryNote.cs">
-      <DependentUpon>HospitalManagement.tt</DependentUpon>
-    </Compile>
     <Compile Include="lmsVendor.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
@@ -285,7 +284,7 @@
     <None Include="HospitalManagement.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HospitalManagement.edmx</DependentUpon>
-      <LastGenOutput>HospitalManagement.cs</LastGenOutput>
+      <LastGenOutput>HospitalManagement1.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

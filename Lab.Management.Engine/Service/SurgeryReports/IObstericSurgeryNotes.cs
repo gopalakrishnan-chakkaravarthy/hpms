@@ -7,7 +7,7 @@ namespace Lab.Management.Engine.Service
     {
         lmsObstericSurgeryNote GetById(int id);
 
-        IList<lmsObstericSurgeryNote> GetAll(int id = 0, string filterDate = "");
+        IList<lmsObstericSurgeryNote> GetAll(string filterDate = "");
 
         int Save(lmsObstericSurgeryNote data);
 
