@@ -109,6 +109,7 @@
         <AssociationConnector Association="LabManagementModel.FK__lmsDelive__OASID__308E3499" />
         <EntityTypeShape EntityType="LabManagementModel.lmsNote" Width="1.5" PointX="23.625" PointY="21.375" />
         <AssociationConnector Association="LabManagementModel.FK__lmsNotes__OCSID__3552E9B6" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsLabourNote" Width="1.5" PointX="15.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

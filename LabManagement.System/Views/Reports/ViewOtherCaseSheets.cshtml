@@ -1,0 +1,156 @@
+﻿@using Lab.Management.Entities;
+@model lmsOtherCaseSheet
+@{
+    ViewBag.Title = " Other Case Sheets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+    var TemlpateContent = ViewBag.TemlpateContent as string;
+}
+
+<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+    @using (Html.BeginForm("EditOtherCaseSheets", "Reports", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                @Html.Partial("_HospitalDetail")
+                <p><h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Other Case Sheets</h4></p>
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Name
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.NAME, new { @Id = "NAME", @class = "form-control", required = "required" })
+                @Html.HiddenFor(x => x.OCSID)
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Age
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.AGE, new { @Id = "AGE", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                I.P.NO
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextAreaFor(x => x.ipno, new { @Id = "ipno", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Address
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                @Html.TextBoxFor(x => x.ADDRESS, new { @Id = "ADDRESS", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                DOA
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                @Html.TextAreaFor(x => x.DOA, new { @Id = "INDICATION", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                DOD
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                @Html.TextBoxFor(x => x.DOD, new { @Id = "DB", @class = "form-control" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Phone
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                @Html.TextBoxFor(x => x.PHNO, new { @Id = "ANAES", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Complaints
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                @Html.TextAreaFor(x => x.COMPLAINTS, new { @Id = "COMPLAINTS", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Examination
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.EXAMINATION, new { @Id = "EXAMINATION", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Treatment
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.TREATMENT, new { @Id = "EXAMINATION", @class = "ckeditor" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Additional Notes
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.ADDITINOALNOTES, new { @class = "ckeditor", @Id = "ADDITINOALNOTES" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Vaccum Delivery Notes
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.VACCUMDELIVERYNATES, new { @class = "ckeditor", @Id = "VACCUMDELIVERYNATES" })
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <a href="@Url.Action("ViewAllSurgeryNotes", "Reports")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.OCSID > 0)
+                {
+                    <a href="@Url.Action("DeleteOtherCaseSheets", "Reports", new { id = Model.OCSID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                    <a href="@Url.Action("GenerateOtherCaseSheets", "Reports", new { id = Model.OCSID })" class="btn btn-info">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        Generate Report
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    }
+</div>

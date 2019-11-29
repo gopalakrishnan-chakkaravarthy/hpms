@@ -11,26 +11,21 @@ namespace LabManagement.System.Controllers
     {
         private ISurgeryNotes surgeryNotes;
         private IOtherCaseSheets otherCaseSheets;
-
-        private IObstericSurgeryNotes obstericSurgeryNotes;
         private IObstericAdmissionSheetReports obstericAdmissionSheetReports;
-        private INotes notes;
-        private IDeliveryIndication deliveryIndication;
+        private ILabourNotes labourNotes;
         public ReportsController(ISurgeryNotes surgeryNotes,
 
             IOtherCaseSheets otherCaseSheets,
-            IObstericSurgeryNotes obstericSurgeryNotes,
              IObstericAdmissionSheetReports obstericAdmissionSheetReports,
-             INotes notes,
-             IDeliveryIndication deliveryIndication)
+             ILabourNotes labourNotes)
         {
             this.surgeryNotes = surgeryNotes;
             this.otherCaseSheets = otherCaseSheets;
-            this.obstericSurgeryNotes = obstericSurgeryNotes;
             this.obstericAdmissionSheetReports = obstericAdmissionSheetReports;
-            this.notes = notes;
-            this.deliveryIndication = deliveryIndication;
+            this.labourNotes = labourNotes;
         }
+
+        #region SurgeryNotes
 
         public ActionResult ViewSurgeryNotes(int id, string viewMessage = "")
         {
@@ -70,6 +65,8 @@ namespace LabManagement.System.Controllers
             var data = surgeryNotes.GetById(id);
             return View(data);
         }
+
+        #endregion SurgeryNotes
 
         #region ObstericAdmissionSheet
 
@@ -114,47 +111,90 @@ namespace LabManagement.System.Controllers
 
         #endregion ObstericAdmissionSheet
 
-        #region ObstericSurgeryNotes
+        #region OtherCaseSheets
 
-        public ActionResult ViewObstetricSurgeryNotes(int id, string viewMessage = "")
+        public ActionResult ViewOtherCaseSheets(int id, string viewMessage = "")
         {
-            var data = obstericSurgeryNotes.GetById(id);
+            var data = otherCaseSheets.GetById(id);
             ViewBag.Message = viewMessage;
             return View(data);
         }
 
-        public ActionResult ViewAllObstetricSurgeryNotes(string filterDate = "", string viewMessage = "")
+        public ActionResult ViewAllOtherCaseSheets(string filterDate = "", string viewMessage = "")
         {
             var filterByData = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
-            var allData = obstericSurgeryNotes.GetAll(filterByData);
+            var allData = otherCaseSheets.GetAll(filterByData);
             ViewBag.Message = viewMessage;
             return View(allData);
         }
 
         [HttpPost]
-        public ActionResult EditObstetricSurgeryNotes(lmsObstericSurgeryNote data)
+        public ActionResult EditOtherCaseSheets(lmsOtherCaseSheet data)
         {
-            //if (!data.CREDATEDDATE.HasValue)
-            //{
-            //    data.CREDATEDDATE = DateTime.Now;
-            //}
-            var saveData = obstericSurgeryNotes.Save(data);
+            if (!data.CREDATEDDATE.HasValue)
+            {
+                data.CREDATEDDATE = DateTime.Now;
+            }
+            var saveData = otherCaseSheets.Save(data);
             //ViewBag.Message = viewMessage;
-            return RedirectToAction("ViewObstetricSurgeryNotes", new { id = saveData, viewMessage = "Surgery Notes Saved Successfully" });
+            return RedirectToAction("ViewOtherCaseSheets", new { id = saveData, viewMessage = "Case Sheet Saved Successfully" });
         }
 
-        public ActionResult DeleteObstetricSurgeryNotes(int id)
+        public ActionResult DeleteOtherCaseSheets(int id)
         {
-            var deletData = obstericSurgeryNotes.Delete(id);
-            return RedirectToAction("ViewAllObstetricSurgeryNotes", new { viewMessage = "Surgery Notes Deleted Successfully" });
+            var deletData = otherCaseSheets.Delete(id);
+            return RedirectToAction("ViewAllOtherCaseSheets", new { viewMessage = "Case Sheet Deleted Successfully" });
         }
 
-        public ActionResult GenerateObstetricSurgeryNotes(int id)
+        public ActionResult GenerateOtherCaseSheets(int id)
         {
-            var data = obstericSurgeryNotes.GetById(id);
+            var data = otherCaseSheets.GetById(id);
             return View(data);
         }
 
-        #endregion ObstericSurgeryNotes
+        #endregion OtherCaseSheets
+
+        #region LabourNotes
+
+        public ActionResult ViewLabourNotes(int id, string viewMessage = "")
+        {
+            var data = labourNotes.GetById(id);
+            ViewBag.Message = viewMessage;
+            return View(data);
+        }
+
+        public ActionResult ViewAllLabourNotes(string filterDate = "", string viewMessage = "")
+        {
+            var filterByData = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
+            var allData = labourNotes.GetAll(filterByData);
+            ViewBag.Message = viewMessage;
+            return View(allData);
+        }
+
+        [HttpPost]
+        public ActionResult EditLabourNotes(lmsLabourNote data)
+        {
+            if (!data.CREATEDATE.HasValue)
+            {
+                data.CREATEDATE = DateTime.Now;
+            }
+            var saveData = labourNotes.Save(data);
+            //ViewBag.Message = viewMessage;
+            return RedirectToAction("ViewLabourNotes", new { id = saveData, viewMessage = "Labour Notes Saved Successfully" });
+        }
+
+        public ActionResult DeleteLabourNotes(int id)
+        {
+            var deletData = labourNotes.Delete(id);
+            return RedirectToAction("ViewAllLabourNotes", new { viewMessage = "Labour Notes Deleted Successfully" });
+        }
+
+        public ActionResult GenerateLabourNotes(int id)
+        {
+            var data = labourNotes.GetById(id);
+            return View(data);
+        }
+
+        #endregion LabourNotes
     }
 }

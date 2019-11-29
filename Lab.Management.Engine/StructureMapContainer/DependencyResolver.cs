@@ -25,11 +25,10 @@ namespace Lab.Management.Engine
                 x.For<IInvoice>().Use<Invoice>();
                 x.For<IHospitalMaster>().Use<HospitalMaster>();
                 x.For<IObstericAdmissionSheetReports>().Use<ObstericAdmissionSheetReports>();
-                x.For<IObstericSurgeryNotes>().Use<ObstericSurgeryNotes>();
-                x.For<IDeliveryIndication>().Use<DeliveryIndication>();
+
                 x.For<ISurgeryNotes>().Use<ISurgeryNotes>();
                 x.For<IOtherCaseSheets>().Use<OtherCaseSheets>();
-                x.For<INotes>().Use<Notes>();
+                x.For<ILabourNotes>().Use<LabourNotes>();
             });
         }
     }

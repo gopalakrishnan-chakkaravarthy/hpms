@@ -88,9 +88,6 @@
     <Compile Include="lmsCityMaster.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="lmsDeliveryIndication.cs">
-      <DependentUpon>HospitalManagement.tt</DependentUpon>
-    </Compile>
     <Compile Include="lmsDischargeBill.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
@@ -133,6 +130,9 @@
     <Compile Include="lmsLaboratoryBillingDetail.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="lmsLabourNote.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="lmsLoginRegistration.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
@@ -151,13 +151,7 @@
     <Compile Include="lmsMedicalTestGroup.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="lmsNote.cs">
-      <DependentUpon>HospitalManagement.tt</DependentUpon>
-    </Compile>
     <Compile Include="lmsObstericAdmissionSheet.cs">
-      <DependentUpon>HospitalManagement.tt</DependentUpon>
-    </Compile>
-    <Compile Include="lmsObstericSurgeryNote.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsOtherCaseSheet.cs">

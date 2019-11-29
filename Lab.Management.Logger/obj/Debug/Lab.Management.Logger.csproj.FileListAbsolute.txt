@@ -21,4 +21,3 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Debug\L
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csprojAssemblyReference.cache

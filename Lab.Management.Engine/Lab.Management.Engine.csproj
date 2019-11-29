@@ -60,27 +60,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\AdminOperations.cs" />
-    <Compile Include="Infrastructure\SurgeryReports\DeliveryIndication.cs" />
     <Compile Include="Infrastructure\HospitalMaster.cs" />
-    <Compile Include="Infrastructure\SurgeryReports\Notes.cs" />
+    <Compile Include="Infrastructure\SurgeryReports\LabourNotes.cs" />
     <Compile Include="Infrastructure\SurgeryReports\ObstericAdmissionSheetReports.cs" />
-    <Compile Include="Infrastructure\SurgeryReports\ObstericSurgeryNotes.cs" />
     <Compile Include="Infrastructure\SurgeryReports\OtherCaseSheets.cs" />
     <Compile Include="Infrastructure\SurgeryReports\SurgeryNotes.cs" />
     <Compile Include="Models\DropDown.cs" />
     <Compile Include="Models\PrescriptionModel.cs" />
-    <Compile Include="Service\SurgeryReports\IDeliveryIndication.cs" />
     <Compile Include="Service\IHospitalMaster.cs" />
     <Compile Include="Service\IInvoice.cs" />
     <Compile Include="Infrastructure\Invoice.cs" />
-    <Compile Include="Service\SurgeryReports\IObstericSurgeryNotes.cs" />
     <Compile Include="Service\SurgeryReports\IOtherCaseSheets.cs" />
     <Compile Include="Service\IPatient.cs" />
     <Compile Include="Models\AdminDashboard.cs" />
     <Compile Include="Infrastructure\Patient.cs" />
     <Compile Include="Service\SurgeryReports\IObstericAdmissionSheetReports.cs" />
     <Compile Include="Service\SurgeryReports\ISurgeryNotes.cs" />
-    <Compile Include="Service\SurgeryReports\INotes.cs" />
+    <Compile Include="Service\SurgeryReports\ILabourNotes.cs" />
     <Compile Include="StructureMapContainer\DependencyResolver.cs" />
     <Compile Include="Service\IAdminOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

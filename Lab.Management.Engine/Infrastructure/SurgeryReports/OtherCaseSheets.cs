@@ -38,12 +38,12 @@ namespace Lab.Management.Engine.Infrastructure
             return resultFlag;
         }
 
-        public IList<lmsOtherCaseSheet> GetAll(int id = 0, string filterDate = "")
+        public IList<lmsOtherCaseSheet> GetAll(string filterDate = "")
         {
             try
             {
                 var queryDate = Convert.ToDateTime(filterDate).Date;
-                var resultDetails = _objLabManagementEntities.lmsOtherCaseSheets.Where(bt => bt.OCSID == id);
+                var resultDetails = _objLabManagementEntities.lmsOtherCaseSheets.Where(bt => bt.CREDATEDDATE == queryDate);
                 return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.OCSID).ToList()
                     : new List<lmsOtherCaseSheet>();
             }

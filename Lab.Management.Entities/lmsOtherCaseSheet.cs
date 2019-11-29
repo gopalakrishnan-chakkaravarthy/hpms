@@ -18,14 +18,6 @@ using System;
 public partial class lmsOtherCaseSheet
 {
 
-    public lmsOtherCaseSheet()
-    {
-
-        this.lmsNotes = new HashSet<lmsNote>();
-
-    }
-
-
     public int OCSID { get; set; }
 
     public string NAME { get; set; }
@@ -48,9 +40,11 @@ public partial class lmsOtherCaseSheet
 
     public Nullable<System.DateTime> CREDATEDDATE { get; set; }
 
+    public string ADDITINOALNOTES { get; set; }
 
+    public string VACCUMDELIVERYNATES { get; set; }
 
-    public virtual ICollection<lmsNote> lmsNotes { get; set; }
+    public string ipno { get; set; }
 
 }
 

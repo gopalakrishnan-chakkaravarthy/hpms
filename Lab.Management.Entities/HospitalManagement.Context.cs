@@ -117,15 +117,11 @@ public partial class LabManagementEntities : DbContext
 
     public virtual DbSet<lmsObstericAdmissionSheet> lmsObstericAdmissionSheets { get; set; }
 
-    public virtual DbSet<lmsObstericSurgeryNote> lmsObstericSurgeryNotes { get; set; }
-
     public virtual DbSet<lmsOtherCaseSheet> lmsOtherCaseSheets { get; set; }
 
     public virtual DbSet<lmsSurgeryNote> lmsSurgeryNotes { get; set; }
 
-    public virtual DbSet<lmsDeliveryIndication> lmsDeliveryIndications { get; set; }
-
-    public virtual DbSet<lmsNote> lmsNotes { get; set; }
+    public virtual DbSet<lmsLabourNote> lmsLabourNotes { get; set; }
 
 
     [DbFunction("LabManagementEntities", "SplitToTable")]

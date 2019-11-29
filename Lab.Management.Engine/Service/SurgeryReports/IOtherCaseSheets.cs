@@ -7,7 +7,7 @@ namespace Lab.Management.Engine.Service
     {
         lmsOtherCaseSheet GetById(int id);
 
-        IList<lmsOtherCaseSheet> GetAll(int id = 0, string filterDate = "");
+        IList<lmsOtherCaseSheet> GetAll(string filterDate = "");
 
         int Save(lmsOtherCaseSheet data);
 

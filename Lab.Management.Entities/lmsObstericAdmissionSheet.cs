@@ -18,16 +18,6 @@ using System;
 public partial class lmsObstericAdmissionSheet
 {
 
-    public lmsObstericAdmissionSheet()
-    {
-
-        this.lmsObstericSurgeryNotes = new HashSet<lmsObstericSurgeryNote>();
-
-        this.lmsDeliveryIndications = new HashSet<lmsDeliveryIndication>();
-
-    }
-
-
     public int OASID { get; set; }
 
     public string NAME { get; set; }
@@ -81,12 +71,6 @@ public partial class lmsObstericAdmissionSheet
     public string TREATMENT { get; set; }
 
     public Nullable<System.DateTime> CREATEDDATE { get; set; }
-
-
-
-    public virtual ICollection<lmsObstericSurgeryNote> lmsObstericSurgeryNotes { get; set; }
-
-    public virtual ICollection<lmsDeliveryIndication> lmsDeliveryIndications { get; set; }
 
 }
 

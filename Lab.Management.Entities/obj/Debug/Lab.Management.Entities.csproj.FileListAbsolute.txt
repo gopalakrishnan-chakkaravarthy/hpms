@@ -49,4 +49,3 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csprojAssemblyReference.cache

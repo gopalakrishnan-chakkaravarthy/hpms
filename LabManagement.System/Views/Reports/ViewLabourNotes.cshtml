@@ -1,0 +1,106 @@
+﻿@using Lab.Management.Entities;
+@model lmsLabourNote
+@{
+    ViewBag.Title = "Labour Notes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = ViewBag.Message as string;
+    var TemlpateContent = ViewBag.TemlpateContent as string;
+}
+
+<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+    @using (Html.BeginForm("EditLabourNotes", "Reports", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                @Html.Partial("_HospitalDetail")
+                <p><h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Labour Notes</h4></p>
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Name
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.Name, new { @Id = "Name", @class = "form-control", required = "required" })
+                @Html.HiddenFor(x => x.LNID)
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Age
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextBoxFor(x => x.AGE, new { @Id = "AGE", @class = "form-control", required = "required" })
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                I.P.NO
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+
+                @Html.TextAreaFor(x => x.IPNO, new { @Id = "IPNO", @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Mode of Delivery
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                @Html.TextBoxFor(x => x.MODEOFDELIVERY, new { @Id = "MODEOFDELIVERY", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Labour Notes
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.LABOURNOTES, new { @Id = "LABOURNOTES", @class = "ckeditor" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Treatment
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+
+                @Html.TextAreaFor(x => x.TREATMENT, new { @Id = "TREATMENT", @class = "ckeditor" })
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <a href="@Url.Action("ViewAllLabourNotes", "Reports")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.LNID > 0)
+                {
+                    <a href="@Url.Action("DeleteLabourNotes", "Reports", new { id = Model.LNID })" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                    <a href="@Url.Action("GenerateLabourNotes", "Reports", new { id = Model.LNID })" class="btn btn-info">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        Generate Report
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    }
+</div>

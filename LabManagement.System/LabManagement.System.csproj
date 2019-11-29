@@ -707,6 +707,12 @@
     <Content Include="Views\Reports\ViewObstetricSurgeryNotes.cshtml" />
     <Content Include="Views\Reports\ViewAllObstetricSurgeryNotes.cshtml" />
     <Content Include="Views\Reports\GenerateObstetricSurgeryNotes.cshtml" />
+    <Content Include="Views\Reports\ViewOtherCaseSheets.cshtml" />
+    <Content Include="Views\Reports\ViewAllOtherCaseSheets.cshtml" />
+    <Content Include="Views\Reports\GenerateOtherCaseSheets.cshtml" />
+    <Content Include="Views\Reports\ViewLabourNotes.cshtml" />
+    <Content Include="Views\Reports\ViewAllLabourNotes.cshtml" />
+    <Content Include="Views\Reports\GenerateLabourNotes.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
