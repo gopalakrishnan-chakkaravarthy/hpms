@@ -26,7 +26,7 @@ namespace Lab.Management.Engine
                 x.For<IHospitalMaster>().Use<HospitalMaster>();
                 x.For<IObstericAdmissionSheetReports>().Use<ObstericAdmissionSheetReports>();
 
-                x.For<ISurgeryNotes>().Use<ISurgeryNotes>();
+                x.For<ISurgeryNotes>().Use<SurgeryNotes>();
                 x.For<IOtherCaseSheets>().Use<OtherCaseSheets>();
                 x.For<ILabourNotes>().Use<LabourNotes>();
             });

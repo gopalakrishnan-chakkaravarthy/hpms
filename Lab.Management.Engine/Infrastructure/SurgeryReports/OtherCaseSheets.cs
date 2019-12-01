@@ -4,6 +4,7 @@ using Lab.Management.Logger;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 
 namespace Lab.Management.Engine.Infrastructure
@@ -43,7 +44,7 @@ namespace Lab.Management.Engine.Infrastructure
             try
             {
                 var queryDate = Convert.ToDateTime(filterDate).Date;
-                var resultDetails = _objLabManagementEntities.lmsOtherCaseSheets.Where(bt => bt.CREDATEDDATE == queryDate);
+                var resultDetails = _objLabManagementEntities.lmsOtherCaseSheets.Where(bt => EntityFunctions.TruncateTime(bt.CREDATEDDATE.Value) == queryDate);
                 return resultDetails.Any() ? resultDetails.OrderByDescending(x => x.OCSID).ToList()
                     : new List<lmsOtherCaseSheet>();
             }

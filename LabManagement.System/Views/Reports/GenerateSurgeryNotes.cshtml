@@ -19,15 +19,15 @@
 
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                Name
+                Name :
             </div>
-            <div class="col-sm-2 col-md-2 col-lg-2">
+            <div class="col-sm-2 col-md-2 col-lg-2 lms-font-nomal">
                 @Model.NAME
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
-                Age
+                Age :
             </div>
-            <div class="col-sm-2 col-md-2 col-lg-2">
+            <div class="col-sm-2 col-md-2 col-lg-2 lms-font-nomal">
 
                 @if (Model.AGE != null)
                 {
@@ -39,10 +39,10 @@
                 }
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
-                I.P.NO
+                I.P.NO :
             </div>
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                @if (!Model.IPNO.stringIsNotNull())
+            <div class="col-sm-2 col-md-2 col-lg-2 lms-font-nomal">
+                @if (Model.IPNO.stringIsNotNull())
                 {
                     <div>@Model.IPNO</div>
                 }
@@ -54,10 +54,10 @@
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                Name of Surgery
+                Name of Surgery :
             </div>
-            <div class="col-sm-8 col-md-8 col-lg-8">
-                @if (!Model.NAMEOFSURGERY.stringIsNotNull())
+            <div class="col-sm-8 col-md-8 col-lg-8 lms-font-nomal">
+                @if (Model.NAMEOFSURGERY.stringIsNotNull())
                 {
                     <div>@Model.NAMEOFSURGERY</div>
                 }
@@ -69,10 +69,10 @@
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                Indication
+                Indication :
             </div>
-            <div class="col-sm-8 col-md-8 col-lg-8">
-                @if (!Model.INDICATION.stringIsNotNull())
+            <div class="col-sm-8 col-md-8 col-lg-8 lms-font-nomal">
+                @if (Model.INDICATION.stringIsNotNull())
                 {
                     <p class="text-justify">@Model.INDICATION</p>
                 }
@@ -84,10 +84,10 @@
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                D/B DR
+                D/B DR :
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                @if (!Model.DB.stringIsNotNull())
+            <div class="col-sm-3 col-md-3 col-lg-3 lms-font-nomal">
+                @if (Model.DB.stringIsNotNull())
                 {
                     <div>@Model.DB</div>
                 }
@@ -97,10 +97,10 @@
                 }
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
-                ANAES
+                ANAES :
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                @if (!Model.ANAES.stringIsNotNull())
+            <div class="col-sm-3 col-md-3 col-lg-3 lms-font-nomal">
+                @if (Model.ANAES.stringIsNotNull())
                 {
                     <div>@Model.ANAES</div>
                 }
@@ -112,10 +112,10 @@
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                A/B S/N
+                A/B S/N :
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                @if (!Model.AB.stringIsNotNull())
+            <div class="col-sm-3 col-md-3 col-lg-3 lms-font-nomal">
+                @if (Model.AB.stringIsNotNull())
                 {
                     <div>@Model.AB</div>
                 }
@@ -127,10 +127,10 @@
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                Procedure
+                Procedure :
             </div>
-            <div class="col-sm-8 col-md-8 col-lg-8 ">
-                @if (!Model.SNPROCEDURE.stringIsNotNull())
+            <div class="col-sm-8 col-md-8 col-lg-8  lms-font-nomal">
+                @if (Model.SNPROCEDURE.stringIsNotNull())
                 {
                     <p class="text-justify">@Model.SNPROCEDURE</p>
                 }

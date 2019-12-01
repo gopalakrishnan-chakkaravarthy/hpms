@@ -184,7 +184,33 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admission Sheet</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="@Url.Action("ViewAllObstetricAdmissionSheet", "Reports")">Dashboard</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="@Url.Action("ViewObstetricAdmissionSheet", "Reports", new { id = 0 })">New </a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Case Sheets</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="@Url.Action("ViewAllOtherCaseSheets", "Reports")">Dashboard</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="@Url.Action("ViewOtherCaseSheets", "Reports", new { id = 0 })">New </a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labour Notes</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="@Url.Action("ViewAllLabourNotes", "Reports")">Dashboard</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="@Url.Action("ViewLabourNotes", "Reports", new { id = 0 })">New </a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Report Editor</a>
                                     <ul class="dropdown-menu">
@@ -259,6 +285,7 @@
                                 </li>
                             </ul>
                         </li>
+
                         @if (userInfo.IsAdmin())
                         {
                             <li class="dropdown">

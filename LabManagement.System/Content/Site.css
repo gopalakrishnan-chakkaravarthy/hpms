@@ -390,3 +390,9 @@ input[type="checkbox"] + label {
 .text-justify {
     text-align: justify;
 }
+.lms-font-nomal{
+    font-weight:normal !important;
+}
+.lms-font-bold {
+    font-weight: bold !important;
+}

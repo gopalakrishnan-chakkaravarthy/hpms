@@ -4,7 +4,6 @@
     ViewBag.Title = " Other Case Sheets";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
-    var TemlpateContent = ViewBag.TemlpateContent as string;
 }
 
 <div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
@@ -43,7 +42,7 @@
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
 
-                @Html.TextAreaFor(x => x.ipno, new { @Id = "ipno", @class = "form-control", required = "required" })
+                @Html.TextBoxFor(x => x.ipno, new { @Id = "ipno", @class = "form-control", required = "required" })
             </div>
         </div>
         <div class="row">
@@ -52,14 +51,14 @@
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
 
-                @Html.TextBoxFor(x => x.ADDRESS, new { @Id = "ADDRESS", @class = "form-control", required = "required" })
+                @Html.TextAreaFor(x => x.ADDRESS, new { @Id = "ADDRESS", @class = "form-control", required = "required" })
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
                 DOA
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
 
-                @Html.TextAreaFor(x => x.DOA, new { @Id = "INDICATION", @class = "form-control" })
+                @Html.TextBoxFor(x => x.DOA, new { @Id = "DOA", @class = "form-control" })
             </div>
         </div>
         <div class="row">
@@ -68,14 +67,14 @@
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
 
-                @Html.TextBoxFor(x => x.DOD, new { @Id = "DB", @class = "form-control" })
+                @Html.TextBoxFor(x => x.DOD, new { @Id = "DOD", @class = "form-control" })
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Phone
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
 
-                @Html.TextBoxFor(x => x.PHNO, new { @Id = "ANAES", @class = "form-control" })
+                @Html.TextBoxFor(x => x.PHNO, new { @Id = "PHNO", @class = "form-control" })
             </div>
         </div>
         <div class="row">
@@ -85,6 +84,7 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
 
                 @Html.TextAreaFor(x => x.COMPLAINTS, new { @Id = "COMPLAINTS", @class = "form-control" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -94,6 +94,7 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
 
                 @Html.TextAreaFor(x => x.EXAMINATION, new { @Id = "EXAMINATION", @class = "form-control" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -102,7 +103,8 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
 
-                @Html.TextAreaFor(x => x.TREATMENT, new { @Id = "EXAMINATION", @class = "ckeditor" })
+                @Html.TextAreaFor(x => x.TREATMENT, new { @Id = "TREATMENT", @class = "form-control" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -112,6 +114,7 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
 
                 @Html.TextAreaFor(x => x.ADDITINOALNOTES, new { @class = "ckeditor", @Id = "ADDITINOALNOTES" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -121,6 +124,8 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
 
                 @Html.TextAreaFor(x => x.VACCUMDELIVERYNATES, new { @class = "ckeditor", @Id = "VACCUMDELIVERYNATES" })
+
+                <br/>
             </div>
         </div>
         <hr/>
@@ -154,3 +159,38 @@
         </div>
     }
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#DOA').datepicker({ format: 'dd/mm/yyyy' });
+            $('#DOD').datepicker({ format: 'dd/mm/yyyy' });
+
+            function SetEditorForEdit() {
+                setEditorByIndex(0);
+                setEditorByIndex(1);
+            }
+            function setEditorByIndex(index) {
+                var htmliFrame = $('iframe')[index];
+                if (htmliFrame === undefined)
+                    return;
+                var closestElement = ($(htmliFrame)[0]);
+                if (closestElement === undefined)
+                    return;
+                var iframeFormElement = $(closestElement)[0];
+                if (iframeFormElement === undefined)
+                    return;
+                var addNotes = '@Model.ADDITINOALNOTES';
+                var additionalNotes = addNotes !== undefined && addNotes !== null ? addNotes : '';
+                var vaccNotes='@Model.VACCUMDELIVERYNATES'
+                var vaccumNotes = vaccNotes !== undefined && vaccNotes !== null ? vaccNotes : '';
+                iframeFormElement.contentDocument.body.innerHTML = index == 0 ? additionalNotes : vaccumNotes;
+            }
+            setTimeout(function () {
+                SetEditorForEdit();
+            }, 1000);
+
+        });
+    </script>
+}

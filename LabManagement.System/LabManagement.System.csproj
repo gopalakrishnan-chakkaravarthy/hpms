@@ -704,9 +704,6 @@
     <Content Include="Views\Reports\ViewObstetricAdmissionSheet.cshtml" />
     <Content Include="Views\Reports\ViewAllObstetricAdmissionSheet.cshtml" />
     <Content Include="Views\Reports\GenerateObstetricAdmissionSheet.cshtml" />
-    <Content Include="Views\Reports\ViewObstetricSurgeryNotes.cshtml" />
-    <Content Include="Views\Reports\ViewAllObstetricSurgeryNotes.cshtml" />
-    <Content Include="Views\Reports\GenerateObstetricSurgeryNotes.cshtml" />
     <Content Include="Views\Reports\ViewOtherCaseSheets.cshtml" />
     <Content Include="Views\Reports\ViewAllOtherCaseSheets.cshtml" />
     <Content Include="Views\Reports\GenerateOtherCaseSheets.cshtml" />

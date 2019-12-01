@@ -52,7 +52,7 @@
                         {
                             if (!string.IsNullOrEmpty(group.GroupName))
                             {
-                                <tr><th colspan="4" class="text-muted text-center">******************<i>@group.GroupName</i>****************** </th></tr>
+                                <tr><th colspan="4" class="text-muted text-center"><i>@group.GroupName</i></th></tr>
                             }
 
                             foreach (var detail in group.lmsLaboratoryBillingDetails)
@@ -79,10 +79,6 @@
                                         }
                                     </td>
                                 </tr>
-                            }
-                            if (!string.IsNullOrEmpty(group.GroupName))
-                            {
-                                <tr><th colspan="4" class="text-muted text-center"><i>******************</i> </th></tr>
                             }
                         }
                     </tbody>

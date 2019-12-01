@@ -116,12 +116,20 @@ namespace LabManagement.System.Controllers
             var testList = _objIHospitalMaster.GetAllMedicalTest();
             foreach (var test in testList)
             {
-                test.TESTNAME = $"{test.TESTNAME} {test.lmsMedicalTestFor?.TESTFOR}";
+                UpdateTestName(test);
             }
             ViewBag.TestList = new SelectList(testList, "TESTID", "TESTNAME");
             var getLaboratoryBilling = _objIInvoice.GetLaboratoryBillingDetailsById(LaboratoryBillingId);
             ViewBag.Message = viewMessage;
             return View(getLaboratoryBilling);
+        }
+
+        private void UpdateTestName(lmsMedicalTest lmsMedicalTest)
+        {
+            if (lmsMedicalTest.lmsMedicalTestFor != null && lmsMedicalTest.lmsMedicalTestGroup != null)
+            {
+                lmsMedicalTest.TESTNAME = $"{lmsMedicalTest.TESTNAME} - {lmsMedicalTest.lmsMedicalTestFor?.TESTFOR} - {lmsMedicalTest.lmsMedicalTestGroup?.GROUPNAME}";
+            }
         }
 
         public ActionResult SaveMedicalTestBillInfo(TestBill objTestBill, List<TestBillDetails> objTestBillDetails)

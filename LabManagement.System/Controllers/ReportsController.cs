@@ -129,6 +129,7 @@ namespace LabManagement.System.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditOtherCaseSheets(lmsOtherCaseSheet data)
         {
             if (!data.CREDATEDDATE.HasValue)
@@ -172,6 +173,7 @@ namespace LabManagement.System.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditLabourNotes(lmsLabourNote data)
         {
             if (!data.CREATEDATE.HasValue)

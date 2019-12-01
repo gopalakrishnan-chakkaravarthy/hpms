@@ -43,7 +43,7 @@
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
 
-                @Html.TextAreaFor(x => x.IPNO, new { @Id = "IPNO", @class = "form-control", required = "required" })
+                @Html.TextBoxFor(x => x.IPNO, new { @Id = "IPNO", @class = "form-control", required = "required" })
             </div>
         </div>
         <div class="row">
@@ -62,6 +62,7 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
 
                 @Html.TextAreaFor(x => x.LABOURNOTES, new { @Id = "LABOURNOTES", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -71,6 +72,7 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
 
                 @Html.TextAreaFor(x => x.TREATMENT, new { @Id = "TREATMENT", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <hr/>
@@ -104,3 +106,37 @@
         </div>
     }
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            function SetEditorForEdit() {
+                setEditorByIndex(0);
+                setEditorByIndex(1);
+            }
+            function setEditorByIndex(index) {
+                var htmliFrame = $('iframe')[index];
+                if (htmliFrame === undefined)
+                    return;
+                var closestElement = ($(htmliFrame)[0]);
+                if (closestElement === undefined)
+                    return;
+                var iframeFormElement = $(closestElement)[0];
+                if (iframeFormElement === undefined)
+                    return;
+                 var labrNote = '@Model.LABOURNOTES';
+                var labourNotes = labrNote !== undefined && labrNote !== null ? labrNote : '';
+                var trtmnt='@Model.TREATMENT'
+                var treatMent = trtmnt !== undefined && trtmnt !== null ? trtmnt : '';
+                iframeFormElement.contentDocument.body.innerHTML = index == 0 ? labourNotes : treatMent;
+                
+            }
+            setTimeout(function () {
+                SetEditorForEdit();
+            }, 1000);
+
+        });
+    </script>
+}
