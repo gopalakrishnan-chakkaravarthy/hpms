@@ -9,7 +9,6 @@
     var groupedData = ViewBag.groupedDetails as List<LaboratoryResultGroup>;
 
 }
-
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
     <div id="canvasElement">
         <div class="row">
@@ -50,7 +49,7 @@
                     <tbody>
                         @foreach (var group in groupedData)
                         {
-                            if (!string.IsNullOrEmpty(group.GroupName))
+                            if (!string.IsNullOrEmpty(group.GroupName) && group.GroupName.ToLower() !== "na")
                             {
                                 <tr><th colspan="4" class="text-muted text-center"><i>@group.GroupName</i></th></tr>
                             }
@@ -58,19 +57,15 @@
                             foreach (var detail in group.lmsLaboratoryBillingDetails)
                             {
                                 <tr>
-
                                     <td class="text-left ">@detail.lmsMedicalTest.TESTNAME</td>
-
                                     <td class="text-left">@detail.TESTRESULT</td>
                                     <td class="text-left">
                                         @if (detail.lmsMedicalTest != null && !string.IsNullOrEmpty(detail.lmsMedicalTest.NORMALVALUE))
                                         {
                                             @detail.lmsMedicalTest.NORMALVALUE
 
-
                                         }
                                     </td>
-
                                     <td class="text-right">
                                         @if (detail.lmsMedicalTest != null && detail.lmsMedicalTest.lmsMedicalTestFor != null
                                             && !string.IsNullOrEmpty(detail.lmsMedicalTest.lmsMedicalTestFor.TESTFOR))

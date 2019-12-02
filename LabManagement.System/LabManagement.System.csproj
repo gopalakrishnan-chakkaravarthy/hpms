@@ -663,10 +663,10 @@
     <Content Include="Views\Invoice\GenerateUltraSonagramReportTwo.cshtml" />
     <Content Include="Views\HospitalMaster\UploadFile.cshtml" />
     <Content Include="Views\HospitalMaster\ViewFileDownload.cshtml" />
-    <Content Include="Views\Invoice\GeenrateBill.cshtml" />
+    <Content Include="Views\Invoice\GenerateBill.cshtml" />
     <Content Include="Views\Shared\_HospitalDetail.cshtml" />
-    <Content Include="Views\Invoice\GenerateIvestigationReport.cshtml" />
-    <Content Include="Views\Invoice\GenrateLaboratoryBill.cshtml" />
+    <Content Include="Views\Invoice\GenerateInvestigationReport.cshtml" />
+    <Content Include="Views\Invoice\GenerateLaboratoryBill.cshtml" />
     <Content Include="Views\Invoice\ViewLaboratoryBilling.cshtml" />
     <Content Include="Views\Invoice\ViewAllLaboratoryBilling.cshtml" />
     <Content Include="Views\Admin\ViewTemplate.cshtml" />

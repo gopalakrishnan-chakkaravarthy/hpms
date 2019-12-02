@@ -98,7 +98,7 @@ namespace LabManagement.System.Controllers
             return View(new List<lmsMedicalBilling>());
         }
 
-        public ActionResult GeenrateBill(int MedicalBillId)
+        public ActionResult GenerateBill(int MedicalBillId)
         {
             var getMedicalBill = _objIInvoice.GetMedicalBillDetailsById(MedicalBillId);
             getMedicalBill.BILLAMOUNT = Math.Round(getMedicalBill.BILLAMOUNT.Value, 2);
@@ -181,7 +181,7 @@ namespace LabManagement.System.Controllers
             return View(new List<lmsLaboratoryBilling>());
         }
 
-        public ActionResult GenrateLaboratoryBill(int LaboratoryBillingId)
+        public ActionResult GenerateLaboratoryBill(int LaboratoryBillingId)
         {
             var getLaboratoryBilling = _objIInvoice.GetLaboratoryBillingDetailsById(LaboratoryBillingId);
 
@@ -351,7 +351,7 @@ namespace LabManagement.System.Controllers
             return RedirectToAction("ViewAllInvestigationReport", new { viewMessage = "InvestigationReport Detail Deleted Successfully" });
         }
 
-        public ActionResult GenerateIvestigationReport(int ReportId)
+        public ActionResult GenerateInvestigationReport(int ReportId)
         {
             var getReport = _objIInvoice.GetInvestigationReportDetailsById(ReportId);
             return View(getReport);

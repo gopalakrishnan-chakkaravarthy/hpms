@@ -126,7 +126,7 @@
                         </i>
                     </a>
 
-                    <a href="@Url.Action("GeenrateBill", "Invoice", new { MedicalBillId = @Model.BILLID })" class="btn btn-danger">
+                    <a href="@Url.Action("GenerateBill", "Invoice", new { MedicalBillId = @Model.BILLID })" class="btn btn-danger">
                         <i class="glyphicon glyphicon-th-large">
                             View Generated Bill
                         </i>
@@ -245,7 +245,7 @@
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(postData),
                     success: function (data) {
-                        window.location.href = "GeenrateBill?MedicalBillId=" + data;
+                        window.location.href = "GenerateBill?MedicalBillId=" + data;
                     },
                     failure: function (errMsg) {
                         alert('failure' + errMsg);
