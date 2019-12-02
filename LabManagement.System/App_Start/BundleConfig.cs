@@ -51,6 +51,7 @@ namespace LabManagement.System
                 "~/Content/css/bootstrap-wysihtml5.css",
                 "~/Content/css/ckEditorStyle.css"
                 ));
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

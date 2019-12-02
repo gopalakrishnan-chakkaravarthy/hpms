@@ -80,7 +80,8 @@
                 var iframeFormElement = $(closestElement)[0];
                 if (iframeFormElement === undefined)
                     return;
-                iframeFormElement.contentDocument.body.innerHTML = templateEditContent;
+                var editorContent = templateEditContent !== '' && templateEditContent !== '' ? templateEditContent:'';
+                iframeFormElement.contentDocument.body.innerHTML = editorContent;
             }
             setTimeout(function () {
                 SetEditorOnEdit();
