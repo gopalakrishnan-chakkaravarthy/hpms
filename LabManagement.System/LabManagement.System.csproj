@@ -697,6 +697,10 @@
     <Content Include="Views\Patient\_PrintPatientPrescription.cshtml" />
     <Content Include="Views\Invoice\ViewPatientReportStore.cshtml" />
     <Content Include="Views\Invoice\ViewAllPatientReportStore.cshtml" />
+    <Content Include="Views\Admin\ViewAllDrugDosage.cshtml" />
+    <Content Include="Views\Admin\ViewAllDrugFrequency.cshtml" />
+    <Content Include="Views\Admin\ViewDrugDosage.cshtml" />
+    <Content Include="Views\Admin\ViewDrugFrequency.cshtml" />
     <None Include="Views\Patient\_ViewPatientHistory.cshtml" />
     <Content Include="Views\Reports\ViewSurgeryNotes.cshtml" />
     <Content Include="Views\Reports\ViewAllSurgeryNotes.cshtml" />
