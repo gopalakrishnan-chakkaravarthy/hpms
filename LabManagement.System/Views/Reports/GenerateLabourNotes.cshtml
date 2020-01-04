@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row">
-            <hr />
+            <hr/>
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -31,7 +31,7 @@
                 Age :
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2 lms-font-nomal">
-                @if (Model.AGE!=null)
+                @if (Model.AGE != null)
                 {
                     <div>@Model.AGE</div>
                 }
@@ -78,7 +78,9 @@
 
                 @if (Model.LABOURNOTES.stringIsNotNull())
                 {
-                    @Html.Raw(Model.LABOURNOTES)
+                    <p>
+                        @Html.Raw(Model.LABOURNOTES)
+                    </p>
                 }
                 else
                 {
@@ -94,7 +96,9 @@
 
                 @if (Model.TREATMENT.stringIsNotNull())
                 {
-                    @Html.Raw(Model.TREATMENT)
+                    <p>
+                        @Html.Raw(Model.TREATMENT)
+                    </p>
                 }
                 else
                 {

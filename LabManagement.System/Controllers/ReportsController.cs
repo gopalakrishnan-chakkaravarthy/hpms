@@ -43,6 +43,7 @@ namespace LabManagement.System.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditSurgeryNotes(lmsSurgeryNote data)
         {
             if (!data.CREDATEDDATE.HasValue)
@@ -86,6 +87,7 @@ namespace LabManagement.System.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditObstetricAdmissionSheet(lmsObstericAdmissionSheet data)
         {
             if (!data.CREATEDDATE.HasValue)

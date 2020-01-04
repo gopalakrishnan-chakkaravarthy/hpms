@@ -59,7 +59,7 @@
             <div class="col-sm-6 col-md-6 col-lg-6 lms-font-nomal">
                 @if (Model.NAMEOFSURGERY.stringIsNotNull())
                 {
-                    <div>@Model.NAMEOFSURGERY</div>
+                    <div><strong>@Model.NAMEOFSURGERY</strong></div>
                 }
                 else
                 {
@@ -74,7 +74,9 @@
             <div class="col-sm-6 col-md-6 col-lg-6 lms-font-nomal">
                 @if (Model.INDICATION.stringIsNotNull())
                 {
-                    <p class="text-justify">@Model.INDICATION</p>
+                    <p class="text-justify">
+                        @Html.Raw(Model.INDICATION)
+                    </p>
                 }
                 else
                 {
@@ -132,7 +134,9 @@
             <div class="col-sm-8 col-md-8 col-lg-8  lms-font-nomal">
                 @if (Model.SNPROCEDURE.stringIsNotNull())
                 {
-                    <p class="text-justify">@Model.SNPROCEDURE</p>
+                    <p class="text-justify">
+                        @Html.Raw(Model.SNPROCEDURE)
+                    </p>
                 }
                 else
                 {
@@ -140,6 +144,24 @@
                 }
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                Treatment :
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8  lms-font-nomal">
+                @if (Model.TREATMENT.stringIsNotNull())
+                {
+                    <p class="text-justify">
+                        @Html.Raw(Model.TREATMENT)
+                    </p>
+                }
+                else
+                {
+                    <div>--</div>
+                }
+            </div>
+        </div>
+
         <hr/>
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8 text-center" id="appendElements">

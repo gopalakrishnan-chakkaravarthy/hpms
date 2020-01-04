@@ -43,7 +43,7 @@
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                 <label>
-                    @Html.RadioButtonFor(m => m.GENDER, "0",new {  required = "required" })
+                    @Html.RadioButtonFor(m => m.GENDER, "0", new { required = "required" })
                     Male
                 </label>
                 <label>
@@ -62,7 +62,7 @@
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
 
-                @Html.TextBoxFor(x => x.OCCUPATION, new { @Id = "OCCUPATION", @class = "form-control"})
+                @Html.TextBoxFor(x => x.OCCUPATION, new { @Id = "OCCUPATION", @class = "form-control" })
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Hosp.No :
@@ -109,7 +109,7 @@
             <div class="col-sm-2 col-md-2 col-lg-2">
 
                 @Html.TextAreaFor(x => x.ADDRESS, new { @Id = "ADDRESS", @class = "form-control" })
-                <br />
+                <br/>
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Do Del :
@@ -132,14 +132,14 @@
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
 
-                @Html.TextBoxFor(x => x.PHONE, new { @Id = "PHONE", @class = "form-control"})
+                @Html.TextBoxFor(x => x.PHONE, new { @Id = "PHONE", @class = "form-control" })
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4">
                 Mode of Del :
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
 
-                @Html.TextBoxFor(x => x.MRDEOFDEL, new { @Id = "MRDEOFDEL", @class = "form-control"})
+                @Html.TextBoxFor(x => x.MRDEOFDEL, new { @Id = "MRDEOFDEL", @class = "form-control" })
             </div>
         </div>
         <div class="row">
@@ -148,7 +148,7 @@
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
 
-                @Html.TextBoxFor(x => x.DATETIMEOFADMISSION, new { @Id = "DATETIMEOFADMISSION", @class = "form-control"})
+                @Html.TextBoxFor(x => x.DATETIMEOFADMISSION, new { @Id = "DATETIMEOFADMISSION", @class = "form-control" })
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4">
                 Date & Time of Discharge :
@@ -164,8 +164,8 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
 
-                @Html.TextAreaFor(x => x.PATIENTHISTORY, new { @Id = "PATIENTHISTORY", @class = "form-control" })
-                <br />
+                @Html.TextAreaFor(x => x.PATIENTHISTORY, new { @Id = "PATIENTHISTORY", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -174,8 +174,8 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
 
-                @Html.TextAreaFor(x => x.MENARCHE, new { @Id = "MENARCHE", @class = "form-control" })
-                <br />
+                @Html.TextAreaFor(x => x.MENARCHE, new { @Id = "MENARCHE", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -184,8 +184,8 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
 
-                @Html.TextAreaFor(x => x.MENSURALHISTORY, new { @Id = "MENSURALHISTORY", @class = "form-control"})
-                <br />
+                @Html.TextAreaFor(x => x.MENSURALHISTORY, new { @Id = "MENSURALHISTORY", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -194,8 +194,8 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
 
-                @Html.TextAreaFor(x => x.MARITALHISTORY, new { @Id = "MARITALHISTORY", @class = "form-control" })
-                <br />
+                @Html.TextAreaFor(x => x.MARITALHISTORY, new { @Id = "MARITALHISTORY", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -204,8 +204,8 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
 
-                @Html.TextAreaFor(x => x.FAMILYHISTORY, new { @Id = "FAMILYHISTORY", @class = "form-control" })
-                <br />
+                @Html.TextAreaFor(x => x.FAMILYHISTORY, new { @Id = "FAMILYHISTORY", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -214,8 +214,8 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
 
-                @Html.TextAreaFor(x => x.PASTHISTORY, new { @Id = "PASTHISTORY", @class = "form-control" })
-                <br />
+                @Html.TextAreaFor(x => x.PASTHISTORY, new { @Id = "PASTHISTORY", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -224,8 +224,8 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
 
-                @Html.TextAreaFor(x => x.EXAMINATION, new { @Id = "EXAMINATION", @class = "form-control" })
-                <br />
+                @Html.TextAreaFor(x => x.EXAMINATION, new { @Id = "EXAMINATION", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <div class="row">
@@ -234,8 +234,8 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
 
-                @Html.TextAreaFor(x => x.TREATMENT, new { @Id = "TREATMENT", @class = "form-control" })
-                <br />
+                @Html.TextAreaFor(x => x.TREATMENT, new { @Id = "TREATMENT", @class = "ckeditor" })
+                <br/>
             </div>
         </div>
         <hr/>
