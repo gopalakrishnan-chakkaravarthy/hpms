@@ -715,6 +715,7 @@
     <Content Include="Views\Reports\ViewLabourNotes.cshtml" />
     <Content Include="Views\Reports\ViewAllLabourNotes.cshtml" />
     <Content Include="Views\Reports\GenerateLabourNotes.cshtml" />
+    <Content Include="Views\Shared\_MockMenu.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

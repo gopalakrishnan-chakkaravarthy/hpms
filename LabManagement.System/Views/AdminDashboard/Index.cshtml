@@ -1,68 +1,74 @@
 ﻿@using Lab.Management.Engine.Models;
+@using Lab.Management.Entities;
+@using LabManagement.System.Common;
 @model AdminDashboard
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var userInfo = Session["UserInfo"] as usp_ValidateUser_Result;
 }
 <h4>Admin Dashboard</h4>
-
-<div class="col-md-12 col-sm-12 col-lg-12 ">
-    <div id="Stats">
-        @{
-            <div class="col col-md-3 col-lg-3 col-sm-3">
-                <b class="value">
-                    @if (Model.AvailableDrugsCount > 0)
-                    {
-                        @Model.AvailableDrugsCount
-                    }
-                    else
-                    {
-                        <label>0</label>
-                    }
-                </b>
-                <i class="info">Available Drug Stocks</i>
-            </div>
-            <div class="col col-md-3 col-lg-3 col-sm-3">
-                <b class="value">
-                    @if (@Model.NetPharmachyProfitLLoss > 0)
-                    {
-                        <lable class="text-muted" style="font-size:1rem"> Rupees</lable>
-                        @Model.NetPharmachyProfitLLoss;
-                    }
-                    else
-                    {
-                        <label>N/A</label>
-                    }
-                </b><i class="info">Medical Profit Loss</i>
-            </div>
-            <div class="col col-md-3 col-lg-3 col-sm-3">
-                <b class="value">
-                    @if (@Model.TotalTodayIpRegistration > 0)
-                    {
-                        @Model.TotalTodayIpRegistration;
-                    }
-                    else
-                    {
-                        <label>0</label>
-                    }
-                </b><i class="info">Today I/P Registration</i>
-            </div>
-            <div class="col col-md-3 col-lg-3 col-sm-3">
-                <b class="value">
-                    @if (@Model.TotalTodayOpRegistration > 0)
-                    {
-                        @Model.TotalTodayOpRegistration
-                    }
-                    else
-                    {
-                        <label>0</label>
-                    }
-                </b><i class="info">Today O/P Registration</i>
-            </div>
-        }
+@if (userInfo.IsAdmin())
+{
+    <div class="col-md-12 col-sm-12 col-lg-12 ">
+        <div id="Stats">
+            @{
+                <div class="col col-md-3 col-lg-3 col-sm-3">
+                    <b class="value">
+                        @if (Model.AvailableDrugsCount > 0)
+                        {
+                            @Model.AvailableDrugsCount
+                        }
+                        else
+                        {
+                            <label>0</label>
+                        }
+                    </b>
+                    <i class="info">Available Drug Stocks</i>
+                </div>
+                <div class="col col-md-3 col-lg-3 col-sm-3">
+                    <b class="value">
+                        @if (@Model.NetPharmachyProfitLLoss > 0)
+                        {
+                            <lable class="text-muted" style="font-size:1rem"> Rupees</lable>
+                            @Model.NetPharmachyProfitLLoss;
+                        }
+                        else
+                        {
+                            <label>N/A</label>
+                        }
+                    </b><i class="info">Medical Profit Loss</i>
+                </div>
+                <div class="col col-md-3 col-lg-3 col-sm-3">
+                    <b class="value">
+                        @if (@Model.TotalTodayIpRegistration > 0)
+                        {
+                            @Model.TotalTodayIpRegistration;
+                        }
+                        else
+                        {
+                            <label>0</label>
+                        }
+                    </b><i class="info">Today I/P Registration</i>
+                </div>
+                <div class="col col-md-3 col-lg-3 col-sm-3">
+                    <b class="value">
+                        @if (@Model.TotalTodayOpRegistration > 0)
+                        {
+                            @Model.TotalTodayOpRegistration
+                        }
+                        else
+                        {
+                            <label>0</label>
+                        }
+                    </b><i class="info">Today O/P Registration</i>
+                </div>
+            }
+        </div>
     </div>
-</div>
-<hr />
+}
+
+<hr/>
 <div class="row">
     <div class="col-md-6 col-sm-6 col-lg-6">
         <div class="panel panel-default">
@@ -79,7 +85,6 @@
                                     <tr>
                                         <td>Drug Name</td>
                                         <td>Available Stocks</td>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -123,7 +128,6 @@
                                         <td>Rack Number</td>
                                         <td>Expiry Date</td>
                                         <td>Expiry Status</td>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -220,7 +224,6 @@
                                         <td>Weight</td>
                                         <td>Height</td>
                                         <td>Age</td>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -261,39 +264,41 @@
                 <i class="glyphicon glyphicon-credit-card"></i> Pharmacy Profit Loss Info
             </div>
             <div class="panel-body">
-                <div class="table-responsive">
-                    @{
-                        if (@Model.ProfitLoss.Count() > 0)
-                        {
-                            <table id="profitLossTable" class=" dataTable table table-striped table-bordered dataTable no-footer">
-                                <thead>
-                                    <tr>
-                                        <td>Drug Name</td>
-                                        <td>Net Profit</td>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var objList in @Model.ProfitLoss)
-                                    {
+                @if (userInfo.IsAdmin())
+                {
+                    <div class="table-responsive">
+                        @{
+                            if (@Model.ProfitLoss.Count() > 0)
+                            {
+                                <table id="profitLossTable" class=" dataTable table table-striped table-bordered dataTable no-footer">
+                                    <thead>
                                         <tr>
-                                            <td>
-                                                @objList.DRUGNAME
-                                            </td>
-                                            <td>
-                                                @objList.NETPROFITPERDRUG
-                                            </td>
+                                            <td>Drug Name</td>
+                                            <td>Net Profit</td>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var objList in @Model.ProfitLoss)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @objList.DRUGNAME
+                                                </td>
+                                                <td>
+                                                    @objList.NETPROFITPERDRUG
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">No Data Available</div>
+                            }
                         }
-                        else
-                        {
-                            <div class="alert alert-info">No Data Available</div>
-                        }
-                    }
-                </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
@@ -313,7 +318,6 @@
                                         <td>Bill Name</td>
                                         <td>Bill Date</td>
                                         <td>Bill Amount</td>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -363,6 +367,5 @@
             $('#profitLossTable').DataTable();
             $('#medicalBillTable').DataTable();
         });
-
     </script>
 }

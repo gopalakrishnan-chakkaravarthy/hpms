@@ -40,8 +40,8 @@ namespace LabManagement.System.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            return userRole.IsAdmin() ? RedirectToAction("Index", "AdminDashboard") :
-                RedirectToAction("ViewAllMedicalBill", "Invoice");
+            return userRole.IsAdmin() || userRole.IsTestUser() ? RedirectToAction("Index", "AdminDashboard") :
+            RedirectToAction("ViewAllMedicalBill", "Invoice");
         }
 
         //

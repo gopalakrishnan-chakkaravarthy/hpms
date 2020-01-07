@@ -22,7 +22,6 @@ E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\bin\Debug\Lab.Management.Common.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\bin\Debug\Lab.Management.Common.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\bin\Debug\AutoMapper.dll
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.csprojAssemblyReference.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.CoreCompileInputs.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.dll
