@@ -1,0 +1,169 @@
+﻿@using Lab.Management.Entities;
+@using LabManagement.System.Common;
+@{
+    var userInfo = Session["UserInfo"] as usp_ValidateUser_Result;
+}
+<div class="navbar ">
+    <div class="container">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:black">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" style="font-size:1em;">Hospital Management System</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Diagnosis Types </a>
+                                    <ul class="dropdown-menu">
+
+                                        <li>
+                                            <a href="@Url.Action("ViewDisease", "Admin", new { DiseaseId = 0 })"> New</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Define Template</a>
+                                    <ul class="dropdown-menu">
+
+                                        <li>
+                                            <a href="@Url.Action("ViewTemplate", "Admin", new { templateId = 0 })"> New</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drug Dosage </a>
+                                    <ul class="dropdown-menu">
+
+                                        <li>
+                                            <a href="@Url.Action("ViewDrugDosage", "Admin", new { id = 0 })"> New</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drug Frequency</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Management<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Registration</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Booking</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Invoice<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pharmacy Bill</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laboratory Billing</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admission Sheet</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Surgery Notes</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Case Sheets</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labour Notes</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Report Editor</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scan Reports</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Discharge Summary</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ultra Sonogram Report One</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ultra Sonogram Report Two</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Investigation Report</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Discharge Bill</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown">
+                            <a id="btnScan" title="Patient Booking" onclick="ShowQrScanner('patient');">
+                                <i class="glyphicon glyphicon-qrcode">
+                                </i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img style="height:23px;border-radius:20px;" src="../Content/Images/avatar5.png" alt="profile photo"/>
+                                <span class="user-info">
+                                    <small>Welcome,</small>
+                                    @if (userInfo != null)
+                                    {
+                                        @userInfo.UserName
+                                    }
+                                </span><b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li class="dropdown ">
+                                    <a href="@Url.Action("Index", "AdminDashboard")" class="dropdown-toggle"><i class="glyphicon glyphicon-dashboard">My Dashboard</i></a>
+                                </li>
+
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="@Url.Action("LogOff", "Account")" class="dropdown-toggle"><i class="glyphicon glyphicon-log-out">LogOff</i></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

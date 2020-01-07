@@ -122,6 +122,13 @@ namespace LabManagement.System.Common
             return userRole.ToUpper() == "ADMIN" || userRole.ToUpper() == "DOCTOR";
         }
 
+        public static bool IsTestUser(this usp_ValidateUser_Result userInfo)
+        {
+            var userRole = userInfo == null ? string.Empty : userInfo.ROLENAME;
+
+            return userRole.ToUpper() == "TEST";
+        }
+
         public static bool HasPrescription(this ICollection<lmsPatientPrescription> lmsPatientPrescriptions, int bookingId)
         {
             return lmsPatientPrescriptions != null && lmsPatientPrescriptions.Any(x => x.BOOKINGID == bookingId);

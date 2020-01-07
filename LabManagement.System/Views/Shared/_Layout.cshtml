@@ -1,4 +1,9 @@
 ﻿@using Lab.Management.Common;
+@using Lab.Management.Entities;
+@using LabManagement.System.Common;
+@{
+    var userInfo = Session["UserInfo"] as usp_ValidateUser_Result;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +19,14 @@
 </head>
 <body>
     <header>
-        @Html.Partial("_Menu")
+        @if (userInfo.IsTestUser())
+        {
+            @Html.Partial("_MockMenu")
+        }
+        else
+        {
+            @Html.Partial("_Menu")
+        }
     </header>
     <div id="body">
         <div class="container">
