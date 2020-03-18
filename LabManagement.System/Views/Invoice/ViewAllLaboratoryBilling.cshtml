@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
     var GrandTotal = Convert.ToString(ViewBag.GrandTotal);
+    var userInfo = Session["UserInfo"] as usp_ValidateUser_Result;
+    var hiddenClass = userInfo.GetDisplayCssByRole();
 }
 <div class="roundCornerDiv">
     @if (!string.IsNullOrEmpty(message))
@@ -25,13 +27,13 @@
             </a>
         </div>
     </div>
-    <hr/>
+    <hr />
     <div class="row">
         <div class="col-sm-1 col-md-1 col-lg-1">
             Date:
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3">
-            <input type="text" id="DDATE" style="width:70%"/>
+            <input type="text" id="DDATE" style="width:70%" />
             <button type="button" id="filterDate" class="btn btn-success">
                 <i class="glyphicon glyphicon-filter"></i>
             </button>
@@ -44,7 +46,7 @@
                 Grand Total :<strong>@GrandTotal</strong>
             </div>
         </div>
-        <hr/>
+        <hr />
         <div class="row">
             <div class="col-sm-8 col-lg-8 col-md-8">
                 <div class="panel panel-default">
@@ -62,7 +64,7 @@
                                             <td>Bill amount</td>
                                             <td>View Bill</td>
                                             <td>View Report</td>
-                                            <td>Delete</td>
+                                            <td class="@hiddenClass">Delete</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -82,7 +84,7 @@
                                                         <i class="glyphicon glyphicon-record"></i>
                                                     </a>
                                                 </td>
-                                                <td>
+                                                <td class="@hiddenClass">
                                                     <a href="@Url.Action("DeleteLaboratoryBilling", new { LaboratoryBillingId = @obj.BILLID })" class="btn btn-danger">
                                                         <i class="glyphicon glyphicon-trash"></i>
                                                         Delete Bill

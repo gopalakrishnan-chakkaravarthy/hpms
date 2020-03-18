@@ -36,17 +36,3 @@ E:\hpms-master\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csproj.
 E:\hpms-master\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.dll
 E:\hpms-master\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Debug\Lab.Management.Entities.dll.config
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Debug\Lab.Management.Entities.dll
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Debug\Lab.Management.Entities.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Debug\EntityFramework.dll
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Debug\EntityFramework.SqlServer.dll
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Debug\System.Web.Mvc.dll
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Debug\EntityFramework.xml
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Debug\EntityFramework.SqlServer.xml
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\bin\Debug\System.Web.Mvc.xml
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csproj.CoreCompileInputs.cache
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csproj.CopyComplete
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.dll
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.pdb
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Debug\Lab.Management.Entities.csprojAssemblyReference.cache

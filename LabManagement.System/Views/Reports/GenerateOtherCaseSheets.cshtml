@@ -7,11 +7,11 @@
     var message = ViewBag.Message as string;
 }
 
-<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+<div class="col-sm-12 col-md-12 col-lg-12 roundCornerDiv">
     <div id="canvasElement">
 
         <div class="row">
-            <hr/>
+            <hr />
         </div>
         <div class="row">
             <div class="col-sm-10 col-md-10 col-lg-10 text-center">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row">
-            <hr/>
+            <hr />
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -135,7 +135,7 @@
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Complaints :
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3 text-justify lms-font-nomal">
+            <div class="col-sm-12 col-md-12 col-lg-12 text-justify lms-font-nomal">
 
                 @if (Model.COMPLAINTS != null)
                 {
@@ -145,14 +145,14 @@
                 {
                     <div>--</div>
                 }
-                <br/>
+                <br />
             </div>
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Examination :
             </div>
-            <div class="col-sm-8 col-md-8 col-lg-8 text-justify lms-font-nomal">
+            <div class="col-sm-12 col-md-12 col-lg-12 text-justify lms-font-nomal">
 
                 @if (Model.EXAMINATION != null)
                 {
@@ -162,14 +162,14 @@
                 {
                     <div>--</div>
                 }
-                <br/>
+                <br />
             </div>
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Treatment :
             </div>
-            <div class="col-sm-8 col-md-8 col-lg-8 lms-font-nomal">
+            <div class="col-sm-12 col-md-12 col-lg-12 lms-font-nomal">
 
                 @if (Model.TREATMENT != null)
                 {
@@ -179,14 +179,14 @@
                 {
                     <div>--</div>
                 }
-                <br/>
+                <br />
             </div>
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
                 Additional Notes :
             </div>
-            <div class="col-sm-8 col-md-8 col-lg-8 text-justify">
+            <div class="col-sm-12 col-md-12 col-lg-12 text-justify">
 
                 @if (Model.ADDITINOALNOTES != null)
                 {
@@ -196,14 +196,14 @@
                 {
                     <div>--</div>
                 }
-                <br/>
+                <br />
                 </p>
             </div>
             <div class="row">
                 <div class="col-sm-2 col-md-2 col-lg-2">
                     Vaccum Delivery Notes :
                 </div>
-                <div class="col-sm-8 col-md-8 col-lg-8 text-justify">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-justify">
 
                     @if (Model.VACCUMDELIVERYNATES != null)
                     {
@@ -215,7 +215,7 @@
                     {
                         <div>--</div>
                     }
-                    <br/>
+                    <br />
                 </div>
             </div>
             <div class="row">
@@ -233,16 +233,17 @@
             </div>
         </div>
     </div>
+</div>
 
-    @section Scripts {
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#btnPrint').on('click', function () {
-                    var hideShowelements = [];
-                    hideShowelements.push('btnBack');
-                    hideShowelements.push('btnPrint');
-                    PrintCanvasDiv(hideShowelements, 'canvasElement');
-                });
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnPrint').on('click', function () {
+                var hideShowelements = [];
+                hideShowelements.push('btnBack');
+                hideShowelements.push('btnPrint');
+                PrintCanvasDiv(hideShowelements, 'canvasElement');
+            });
 
-            });</script>
-    }
+        });</script>
+}

@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
     var GrandTotal = Convert.ToString(ViewBag.GrandTotal);
+    var userInfo = Session["UserInfo"] as usp_ValidateUser_Result;
+    var hiddenClass = userInfo.GetDisplayCssByRole();
 }
 <div class="roundCornerDiv">
 
@@ -68,7 +70,7 @@
                                             <td>Date</td>
                                             <td>Bill Amount</td>
                                             <td>View</td>
-                                            <td>Delete</td>
+                                            <td class="@hiddenClass">Delete</td>
 
                                         </tr>
                                     </thead>
@@ -93,7 +95,7 @@
                                                     </a>
 
                                                 </td>
-                                                <td>
+                                                <td class="@hiddenClass">
                                                     <a href="@Url.Action("DeleteMedicalBill", new { MedicalBillId = @obj.BILLID })" class="btn btn-danger">
                                                         <i class="glyphicon glyphicon-trash"></i>
                                                         Delete Bill

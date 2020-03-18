@@ -9,6 +9,10 @@ body, div, input[type], textarea, button, a, p, ul, li, span, label, h1, h2, h3,
     border-radius: 0 !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    margin: 0.1rem !important;
+}
+
 .form-control {
     border-radius: 0 !important;
 }
@@ -401,4 +405,7 @@ input[type="checkbox"] + label {
 
 .roundCornerDiv #canvasElement .row {
     margin-bottom: 1rem !important;
+}
+.lms-font-big{
+    font-size:2rem !important;
 }

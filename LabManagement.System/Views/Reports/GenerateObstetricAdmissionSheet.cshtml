@@ -8,7 +8,7 @@
     var TemlpateContent = ViewBag.TemlpateContent as string;
 }
 
-<div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
+<div class="col-sm-12 col-md-12 col-lg-12 roundCornerDiv">
     <div id="canvasElement">
         <div class="row">
             <hr/>
@@ -263,7 +263,7 @@
         @if (Model.PATIENTHISTORY.stringIsNotNull())
         {
             <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4 lms-font-bold">
+                <div class="col-sm-2 col-md-2 col-lg-2 lms-font-bold">
                     Present History :
                 </div>
                 <div class="col-sm-8 col-md-8 col-lg-8 text-justify lms-font-nomal">
@@ -274,87 +274,87 @@
         }
         @if (Model.MENARCHE.stringIsNotNull())
         {
-            <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4 lms-font-bold">
-                    Menarche :
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8 text-justify lms-font-nomal">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2 lms-font-bold">
+            Menarche :
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8 text-justify lms-font-nomal">
 
-                    <p class="text-justify">@Html.Raw(Model.MENARCHE)</p>
-                </div>
-            </div>
+            <p class="text-justify">@Html.Raw(Model.MENARCHE)</p>
+        </div>
+    </div>
         }
         @if (Model.MENSURALHISTORY.stringIsNotNull())
         {
-            <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4 lms-font-bold">
-                    Mensural History :
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8 lms-font-nomal">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2 lms-font-bold">
+            Mensural History :
+        </div>
+          <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal">
 
-                    <p class="text-justify">@Html.Raw(Model.MENSURALHISTORY)</p>
-                </div>
-            </div>
+            <p class="text-justify">@Html.Raw(Model.MENSURALHISTORY)</p>
+        </div>
+    </div>
         }
         @if (Model.MARITALHISTORY.stringIsNotNull())
         {
-            <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4 lms-font-bold">
-                    Marital History :
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8 lms-font-nomal">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2 lms-font-bold">
+            Marital History :
+        </div>
+          <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal">
 
-                    <p class="text-justify">@Html.Raw(Model.MARITALHISTORY)</p>
-                </div>
-            </div>
+            <p class="text-justify">@Html.Raw(Model.MARITALHISTORY)</p>
+        </div>
+    </div>
         }
         @if (Model.FAMILYHISTORY.stringIsNotNull())
         {
-            <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4 lms-font-bold">
-                    Family History :
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8 lms-font-nomal">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2 lms-font-bold">
+            Family History :
+        </div>
+          <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal">
 
-                    <p class="text-justify">@Html.Raw(Model.FAMILYHISTORY)</p>
-                </div>
-            </div>
+            <p class="text-justify">@Html.Raw(Model.FAMILYHISTORY)</p>
+        </div>
+    </div>
         }
         @if (Model.PASTHISTORY.stringIsNotNull())
         {
-            <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4 lms-font-bold">
-                    Past History :
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8 lms-font-nomal">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2 lms-font-bold">
+            Past History :
+        </div>
+          <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal">
 
-                    <p class="text-justify">@Html.Raw(Model.PASTHISTORY)</p>
-                </div>
-            </div>
+            <p class="text-justify">@Html.Raw(Model.PASTHISTORY)</p>
+        </div>
+    </div>
         }
         @if (Model.EXAMINATION.stringIsNotNull())
         {
-            <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4 lms-font-bold">
-                    Examination :
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8 lms-font-nomal">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2 lms-font-bold">
+            Examination :
+        </div>
+         <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal">
 
-                    <p class="text-justify">@Html.Raw(Model.EXAMINATION)</p>
-                </div>
-            </div>
+            <p class="text-justify">@Html.Raw(Model.EXAMINATION)</p>
+        </div>
+    </div>
         }
         @if (Model.TREATMENT.stringIsNotNull())
         {
-            <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4 lms-font-bold">
-                    Treatment :
-                </div>
-                <div class="col-sm-8 col-md-8 col-lg-8 lms-font-nomal">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2 lms-font-bold">
+            Treatment :
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal">
 
-                    <p class="text-justify">@Html.Raw(Model.TREATMENT)</p>
-                </div>
-            </div>
+            <p class="text-justify">@Html.Raw(Model.TREATMENT)</p>
+        </div>
+    </div>
         }
         <hr/>
         <div class="row">
