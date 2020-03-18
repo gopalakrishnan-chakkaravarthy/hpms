@@ -61,7 +61,6 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\Lab.Management.Logger.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\bin\Release\EntityFramework.xml
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csprojAssemblyReference.cache
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CoreCompileInputs.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.pdb

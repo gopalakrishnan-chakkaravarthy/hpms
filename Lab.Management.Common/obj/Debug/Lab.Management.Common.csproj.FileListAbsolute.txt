@@ -19,3 +19,9 @@ E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.Core
 E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.dll
 E:\hpms-master\Lab.Management.Common\obj\Debug\Lab.Management.Common.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\bin\Debug\Lab.Management.Common.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\bin\Debug\Lab.Management.Common.pdb
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\bin\Debug\AutoMapper.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.csproj.CopyComplete
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.dll
+E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Debug\Lab.Management.Common.pdb

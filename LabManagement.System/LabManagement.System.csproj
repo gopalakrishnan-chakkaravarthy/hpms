@@ -198,7 +198,6 @@
     <Content Include="Content\js\ckeditor\ckeditor.js" />
     <Content Include="Content\js\ckeditor\adapters\jquery.js" />
     <Content Include="Content\js\ckeditor\build-config.js" />
-    <Content Include="Content\js\ckeditor\ckEditorUI.js" />
     <Content Include="Content\js\ckeditor\config.js" />
     <Content Include="Content\js\ckeditor\contents.css" />
     <Content Include="Content\js\ckeditor\lang\af.js" />
@@ -327,7 +326,6 @@
     <Content Include="Content\js\ckeditor\plugins\colordialog\dialogs\colordialog.js" />
     <Content Include="Content\js\ckeditor\plugins\dialog\dialogDefinition.js" />
     <Content Include="Content\js\ckeditor\plugins\div\dialogs\div.js" />
-    <Content Include="Content\js\ckeditor\plugins\fakeobjects\images\spacer.gif" />
     <Content Include="Content\js\ckeditor\plugins\find\dialogs\find.js" />
     <Content Include="Content\js\ckeditor\plugins\flash\dialogs\flash.js" />
     <Content Include="Content\js\ckeditor\plugins\flash\images\placeholder.png" />
@@ -446,34 +444,10 @@
     <Content Include="Content\js\ckeditor\plugins\templates\templates\images\template2.gif" />
     <Content Include="Content\js\ckeditor\plugins\templates\templates\images\template3.gif" />
     <Content Include="Content\js\ckeditor\plugins\wsc\dialogs\ciframe.html" />
-    <Content Include="Content\js\ckeditor\plugins\wsc\dialogs\tmp.html" />
     <Content Include="Content\js\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
     <Content Include="Content\js\ckeditor\plugins\wsc\dialogs\wsc.css" />
     <Content Include="Content\js\ckeditor\plugins\wsc\dialogs\wsc.js" />
     <Content Include="Content\js\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
-    <Content Include="Content\js\ckeditor\skins\moono\dialog.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\dialog_ie.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\dialog_ie7.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\dialog_ie8.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\dialog_iequirks.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\dialog_opera.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\editor.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\editor_gecko.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\editor_ie.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\editor_ie7.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\editor_ie8.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\editor_iequirks.css" />
-    <Content Include="Content\js\ckeditor\skins\moono\icons.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\icons_hidpi.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\images\arrow.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\images\close.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\images\hidpi\close.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\images\hidpi\lock-open.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\images\hidpi\lock.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\images\hidpi\refresh.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\images\lock-open.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\images\lock.png" />
-    <Content Include="Content\js\ckeditor\skins\moono\images\refresh.png" />
     <Content Include="Content\js\ckeditor\styles.js" />
     <Content Include="Content\js\dataTables.bootstrap.js" />
     <Content Include="Content\js\dataTables.bootstrap.min.js" />
@@ -575,7 +549,6 @@
     <Content Include="Content\js\ckeditor\plugins\wsc\LICENSE.md" />
     <Content Include="Content\js\ckeditor\plugins\wsc\README.md" />
     <Content Include="Content\js\ckeditor\README.md" />
-    <Content Include="Content\js\ckeditor\skins\moono\readme.md" />
     <Content Include="log4net.config" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -725,6 +698,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\js\ckeditor\plugins\fakeobjects\images\" />
     <Folder Include="QrCodePath\Capture\" />
   </ItemGroup>
   <ItemGroup>

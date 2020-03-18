@@ -200,7 +200,6 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\Excel.pd
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\zxing.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\bin\zxing.xml
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\obj\Release\LabManagement.System.csprojAssemblyReference.cache
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\obj\Release\LabManagement.System.csproj.CoreCompileInputs.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\obj\Release\LabManagement.System.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\obj\Release\LabManagement.System.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\LabManagement.System\obj\Release\LabManagement.System.pdb

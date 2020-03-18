@@ -103,7 +103,6 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.xml
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\bin\Release\System.Web.Mvc.xml
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csprojAssemblyReference.cache
-E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CoreCompileInputs.cache
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb

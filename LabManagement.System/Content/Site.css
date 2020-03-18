@@ -56,6 +56,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .roundCornerDiv .row {
     margin-left: 0px;
+    margin-bottom:1.6rem;
+    margin-top:1.4rem;
 }
 
 .roundCornerDiv::-webkit-scrollbar {
@@ -403,9 +405,6 @@ input[type="checkbox"] + label {
     font-weight: bold !important;
 }
 
-.roundCornerDiv #canvasElement .row {
-    margin-bottom: 1rem !important;
-}
 .lms-font-big{
     font-size:2rem !important;
 }
