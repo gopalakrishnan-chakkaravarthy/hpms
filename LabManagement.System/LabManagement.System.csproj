@@ -184,7 +184,6 @@
     <Content Include="Content\css\ckEditorStyle.css" />
     <Content Include="Content\css\dataTables.bootstrap.css" />
     <Content Include="Content\css\responsive.bootstrap.css" />
-    <Content Include="Content\css\simditor.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\avatar5.png" />
     <Content Include="Content\Images\LoginBg.png" />
@@ -196,7 +195,6 @@
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\canvas2image.js" />
-    <Content Include="Content\js\ckeditor.js" />
     <Content Include="Content\js\ckeditor\ckeditor.js" />
     <Content Include="Content\js\ckeditor\adapters\jquery.js" />
     <Content Include="Content\js\ckeditor\build-config.js" />
@@ -483,9 +481,6 @@
     <Content Include="Content\js\jscam.swf" />
     <Content Include="Content\js\jscam_canvas_only.swf" />
     <Content Include="Content\js\responsive.bootstrap.min.js" />
-    <Content Include="Content\css\trumbowyg.css" />
-    <Content Include="Content\js\simditor.js" />
-    <Content Include="Content\js\trumbowyg.js" />
     <Content Include="Content\plugins\dataTables\dataTables.bootstrap.css" />
     <Content Include="Content\plugins\dataTables\dataTables.bootstrap.js" />
     <Content Include="Content\plugins\dataTables\jquery.dataTables.js" />
