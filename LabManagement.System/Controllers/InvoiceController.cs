@@ -320,7 +320,7 @@ namespace LabManagement.System.Controllers
             var deletUltraSonagramReportTwo = _objIInvoice.DeleteUltraSonagramReportTwo(ReportId);
             return RedirectToAction("ViewAllUltraSonagramReportTwo", new { viewMessage = "UltraSonagramReportTwo Detail Deleted Successfully" });
         }
-
+      
         public ActionResult ViewInvestigationReport(int ReportId, string viewMessage = "")
         {
             var patientList = _objIPatient.GetAllPatient("IN");
@@ -338,6 +338,7 @@ namespace LabManagement.System.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditInvestigationReport(lmsInvestigationReport objlmsInvestigationReport)
         {
             var saveInvestigationReportDetails = _objIInvoice.SaveInvestigationReport(objlmsInvestigationReport);
