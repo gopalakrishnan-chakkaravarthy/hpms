@@ -15,26 +15,20 @@ namespace Lab.Management.Entities
 using System;
     using System.Collections.Generic;
     
-public partial class lmsDrug
+public partial class lmsDrugDetail
 {
 
-    public lmsDrug()
-    {
+    public int DRUGDETAILID { get; set; }
 
-        this.lmsMedicalBillings = new HashSet<lmsMedicalBilling>();
+    public Nullable<int> DRUGDID { get; set; }
 
-        this.lmsMedicalBillingDetails = new HashSet<lmsMedicalBillingDetail>();
+    public string VENDORNAME { get; set; }
 
-        this.lmsPatientPrescriptions = new HashSet<lmsPatientPrescription>();
+    public string VENDORADDRESS { get; set; }
 
-        this.lmsDrugDetails = new HashSet<lmsDrugDetail>();
+    public string VENDORPHONE { get; set; }
 
-    }
-
-
-    public int DRUGID { get; set; }
-
-    public string DRUGNAME { get; set; }
+    public string VENDORNOTES { get; set; }
 
     public Nullable<System.DateTime> ORDERDATE { get; set; }
 
@@ -62,13 +56,7 @@ public partial class lmsDrug
 
 
 
-    public virtual ICollection<lmsMedicalBilling> lmsMedicalBillings { get; set; }
-
-    public virtual ICollection<lmsMedicalBillingDetail> lmsMedicalBillingDetails { get; set; }
-
-    public virtual ICollection<lmsPatientPrescription> lmsPatientPrescriptions { get; set; }
-
-    public virtual ICollection<lmsDrugDetail> lmsDrugDetails { get; set; }
+    public virtual lmsDrug lmsDrug { get; set; }
 
 }
 

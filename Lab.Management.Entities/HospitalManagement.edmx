@@ -76,6 +76,29 @@
           <Property Name="DISEASEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DISEASENAME" Type="varchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="lmsDrugDetails">
+          <Key>
+            <PropertyRef Name="DRUGDETAILID" />
+          </Key>
+          <Property Name="DRUGDETAILID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DRUGDID" Type="int" />
+          <Property Name="VENDORNAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="VENDORADDRESS" Type="nvarchar" MaxLength="500" />
+          <Property Name="VENDORPHONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="VENDORNOTES" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ORDERDATE" Type="datetime" />
+          <Property Name="MANUFACTUREDATE" Type="datetime" />
+          <Property Name="EXPIRYDATE" Type="datetime" />
+          <Property Name="ISEXPIRED" Type="bit" />
+          <Property Name="BUYINGPRICE" Type="float" />
+          <Property Name="SELLINGPRICE" Type="float" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="ORDERCOUNT" Type="int" />
+          <Property Name="AVAILABLEORDER" Type="int" />
+          <Property Name="RackNumber" Type="varchar" MaxLength="20" />
+          <Property Name="QrCodeContent" Type="nvarchar(max)" />
+          <Property Name="QrCodeBase64" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="lmsDrugDosage">
           <Key>
             <PropertyRef Name="DOSAGEID" />
@@ -256,6 +279,8 @@
           <Property Name="COMMENTS" Type="varchar(max)" />
           <Property Name="CREATEDDATE" Type="datetime" />
           <Property Name="ALBUMIN" Type="varchar" MaxLength="20" />
+          <Property Name="HASADDITIONALREPORT" Type="bit" />
+          <Property Name="ADDITIONALREPORT" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="lmsLaboratoryBilling">
           <Key>
@@ -513,6 +538,7 @@
           <Property Name="GENDER" Type="varchar" MaxLength="20" />
           <Property Name="QrCodeContent" Type="nvarchar(max)" />
           <Property Name="QrCodeBase64" Type="nvarchar(max)" />
+          <Property Name="CUSTOMID" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="lmsPatientReportStore">
           <Key>
@@ -740,6 +766,18 @@
             </Principal>
             <Dependent Role="lmsDischargeSummary">
               <PropertyRef Name="PATIENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lmsDrugDe__DRUGD__67DE6983">
+          <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1" />
+          <End Role="lmsDrugDetails" Type="Self.lmsDrugDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsDrugs">
+              <PropertyRef Name="DRUGID" />
+            </Principal>
+            <Dependent Role="lmsDrugDetails">
+              <PropertyRef Name="DRUGDID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1263,6 +1301,7 @@
           <EntitySet Name="lmsDischargeBill" EntityType="Self.lmsDischargeBill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsDischargeSummary" EntityType="Self.lmsDischargeSummary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsDiseaseMaster" EntityType="Self.lmsDiseaseMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsDrugDetails" EntityType="Self.lmsDrugDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsDrugDosage" EntityType="Self.lmsDrugDosage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsDrugFrequency" EntityType="Self.lmsDrugFrequency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsDrugs" EntityType="Self.lmsDrugs" Schema="dbo" store:Type="Tables" />
@@ -1317,6 +1356,10 @@
           <AssociationSet Name="FK__lmsDischa__PATIE__0C85DE4D" Association="Self.FK__lmsDischa__PATIE__0C85DE4D">
             <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
             <End Role="lmsDischargeSummary" EntitySet="lmsDischargeSummary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lmsDrugDe__DRUGD__67DE6983" Association="Self.FK__lmsDrugDe__DRUGD__67DE6983">
+            <End Role="lmsDrugs" EntitySet="lmsDrugs" />
+            <End Role="lmsDrugDetails" EntitySet="lmsDrugDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsGenera__PATIE__10566F31" Association="Self.FK__lmsGenera__PATIE__10566F31">
             <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
@@ -1545,6 +1588,7 @@
           <Property Name="QrCodeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <Property Name="QrCodeBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <NavigationProperty Name="lmsPatientPrescriptions" Relationship="LabManagementModel.FK__lmsPatien__DRUGI__7B264821" FromRole="lmsDrug" ToRole="lmsPatientPrescription"/>
+          <NavigationProperty Name="lmsDrugDetails" Relationship="LabManagementModel.FK__lmsDrugDe__DRUGD__67DE6983" FromRole="lmsDrug" ToRole="lmsDrugDetail" />
         </EntityType>
         <EntityType Name="lmsHospitalMaster">
           <Key>
@@ -1700,6 +1744,7 @@
           <NavigationProperty Name="lmsPatientBookings1" Relationship="LabManagementModel.FK__lmsPatien__PATIE__662B2B3B" FromRole="lmsPatientRegistration" ToRole="lmsPatientBooking"/>
           <NavigationProperty Name="lmsPatientPrescriptions" Relationship="LabManagementModel.FK__lmsPatien__PATIE__7D0E9093" FromRole="lmsPatientRegistration" ToRole="lmsPatientPrescription"/>
           <NavigationProperty Name="lmsPatientReportStores" Relationship="LabManagementModel.FK__lmsPatien__PATIE__0880433F" FromRole="lmsPatientRegistration" ToRole="lmsPatientReportStore"/>
+          <Property Name="CUSTOMID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="lmsRoleMaster">
           <Key>
@@ -2247,6 +2292,11 @@
           <EntitySet Name="lmsSurgeryNotes" EntityType="LabManagementModel.lmsSurgeryNote"/>
 
           <EntitySet Name="lmsLabourNotes" EntityType="LabManagementModel.lmsLabourNote"/>
+          <EntitySet Name="lmsDrugDetails" EntityType="LabManagementModel.lmsDrugDetail" />
+          <AssociationSet Name="FK__lmsDrugDe__DRUGD__67DE6983" Association="LabManagementModel.FK__lmsDrugDe__DRUGD__67DE6983">
+            <End Role="lmsDrug" EntitySet="lmsDrugs" />
+            <End Role="lmsDrugDetail" EntitySet="lmsDrugDetails" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="lmsDischargeBill">
           <Key>
@@ -2315,6 +2365,8 @@
           <Property Name="COMMENTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false"/>
           <Property Name="CREATEDDATE" Type="DateTime" Precision="3"/>
           <Property Name="ALBUMIN" Type="String" MaxLength="20" FixedLength="false" Unicode="false"/>
+          <Property Name="HASADDITIONALREPORT" Type="Boolean" />
+          <Property Name="ADDITIONALREPORT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="lmsLaboratoryBilling">
           <Key>
@@ -3108,6 +3160,42 @@
           <Property Name="TREATMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <Property Name="CREATEDATE" Type="DateTime" Precision="3"/>
         </EntityType>
+        <EntityType Name="lmsDrugDetail">
+          <Key>
+            <PropertyRef Name="DRUGDETAILID" />
+          </Key>
+          <Property Name="DRUGDETAILID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DRUGDID" Type="Int32" />
+          <Property Name="VENDORNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VENDORADDRESS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VENDORPHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VENDORNOTES" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ORDERDATE" Type="DateTime" Precision="3" />
+          <Property Name="MANUFACTUREDATE" Type="DateTime" Precision="3" />
+          <Property Name="EXPIRYDATE" Type="DateTime" Precision="3" />
+          <Property Name="ISEXPIRED" Type="Boolean" />
+          <Property Name="BUYINGPRICE" Type="Double" />
+          <Property Name="SELLINGPRICE" Type="Double" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="ORDERCOUNT" Type="Int32" />
+          <Property Name="AVAILABLEORDER" Type="Int32" />
+          <Property Name="RackNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="QrCodeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QrCodeBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="lmsDrug" Relationship="LabManagementModel.FK__lmsDrugDe__DRUGD__67DE6983" FromRole="lmsDrugDetail" ToRole="lmsDrug" />
+        </EntityType>
+        <Association Name="FK__lmsDrugDe__DRUGD__67DE6983">
+          <End Type="LabManagementModel.lmsDrug" Role="lmsDrug" Multiplicity="0..1" />
+          <End Type="LabManagementModel.lmsDrugDetail" Role="lmsDrugDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsDrug">
+              <PropertyRef Name="DRUGID" />
+            </Principal>
+            <Dependent Role="lmsDrugDetail">
+              <PropertyRef Name="DRUGDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3283,6 +3371,7 @@
           <EntitySetMapping Name="lmsPatientRegistrations">
             <EntityTypeMapping TypeName="LabManagementModel.lmsPatientRegistration">
               <MappingFragment StoreEntitySet="lmsPatientRegistration">
+                <ScalarProperty Name="CUSTOMID" ColumnName="CUSTOMID" />
                 <ScalarProperty Name="QrCodeBase64" ColumnName="QrCodeBase64"/>
                 <ScalarProperty Name="QrCodeContent" ColumnName="QrCodeContent"/>
                 <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID"/>
@@ -3421,6 +3510,8 @@
           <EntitySetMapping Name="lmsInvestigationReports">
             <EntityTypeMapping TypeName="LabManagementModel.lmsInvestigationReport">
               <MappingFragment StoreEntitySet="lmsInvestigationReport">
+                <ScalarProperty Name="ADDITIONALREPORT" ColumnName="ADDITIONALREPORT" />
+                <ScalarProperty Name="HASADDITIONALREPORT" ColumnName="HASADDITIONALREPORT" />
                 <ScalarProperty Name="ALBUMIN" ColumnName="ALBUMIN"/>
                 <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE"/>
                 <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS"/>
@@ -3940,6 +4031,30 @@
                 <ScalarProperty Name="AGE" ColumnName="AGE"/>
                 <ScalarProperty Name="Name" ColumnName="Name"/>
                 <ScalarProperty Name="LNID" ColumnName="LNID"/>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lmsDrugDetails">
+            <EntityTypeMapping TypeName="LabManagementModel.lmsDrugDetail">
+              <MappingFragment StoreEntitySet="lmsDrugDetails">
+                <ScalarProperty Name="QrCodeBase64" ColumnName="QrCodeBase64" />
+                <ScalarProperty Name="QrCodeContent" ColumnName="QrCodeContent" />
+                <ScalarProperty Name="RackNumber" ColumnName="RackNumber" />
+                <ScalarProperty Name="AVAILABLEORDER" ColumnName="AVAILABLEORDER" />
+                <ScalarProperty Name="ORDERCOUNT" ColumnName="ORDERCOUNT" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="SELLINGPRICE" ColumnName="SELLINGPRICE" />
+                <ScalarProperty Name="BUYINGPRICE" ColumnName="BUYINGPRICE" />
+                <ScalarProperty Name="ISEXPIRED" ColumnName="ISEXPIRED" />
+                <ScalarProperty Name="EXPIRYDATE" ColumnName="EXPIRYDATE" />
+                <ScalarProperty Name="MANUFACTUREDATE" ColumnName="MANUFACTUREDATE" />
+                <ScalarProperty Name="ORDERDATE" ColumnName="ORDERDATE" />
+                <ScalarProperty Name="VENDORNOTES" ColumnName="VENDORNOTES" />
+                <ScalarProperty Name="VENDORPHONE" ColumnName="VENDORPHONE" />
+                <ScalarProperty Name="VENDORADDRESS" ColumnName="VENDORADDRESS" />
+                <ScalarProperty Name="VENDORNAME" ColumnName="VENDORNAME" />
+                <ScalarProperty Name="DRUGDID" ColumnName="DRUGDID" />
+                <ScalarProperty Name="DRUGDETAILID" ColumnName="DRUGDETAILID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

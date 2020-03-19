@@ -27,8 +27,6 @@ namespace LabManagement.System
                   "~/Content/js/base64.js"));
             bundles.Add(new ScriptBundle("~/bundles/Icanvas2image").Include(
                   "~/Content/js/canvas2image.js"));
-            bundles.Add(new ScriptBundle("~/bundles/Jckeditor").Include(
-                "~/Content/js/ckeditor.js"));
             bundles.Add(new ScriptBundle("~/bundles/Kjquerywebcam").Include(
                 "~/Content/js/jquery.webcam.js"));
             bundles.Add(new ScriptBundle("~/bundles/Ljscam").Include(

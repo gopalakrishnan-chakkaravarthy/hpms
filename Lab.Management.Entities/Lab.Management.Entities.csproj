@@ -100,6 +100,9 @@
     <Compile Include="lmsDrug.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="lmsDrugDetail.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="lmsDrugDosage.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
@@ -215,6 +218,7 @@
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\QRCodeModel.cs" />
+    <Compile Include="Partials\lmsInvestigationReport.cs" />
     <Compile Include="Partials\lmsPatientBooking.cs" />
     <Compile Include="Partials\lmsPatientReportStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

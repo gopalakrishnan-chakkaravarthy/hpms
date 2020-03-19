@@ -72,6 +72,8 @@ public partial class lmsPatientRegistration
 
     public string QrCodeBase64 { get; set; }
 
+    public string CUSTOMID { get; set; }
+
 
 
     public virtual ICollection<lmsDischargeSummary> lmsDischargeSummaries { get; set; }
