@@ -1,0 +1,142 @@
+﻿@using Lab.Management.Entities;
+@using LabManagement.System.Common;
+@model lmsDrug
+@{
+    ViewBag.Title = "View Drug";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var transactionType = ViewBag.TransactionType as string;
+    var message = transactionType.GetTransactionMessage();
+}
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("EditDrug", "Drugs", new { @id = "IdEdit", @name = "EditForm" }))
+{
+    <h4 class="text-success">
+        <i class="glyphicon glyphicon-hand-right"> </i>
+        @if (Model.DRUGID > 0)
+        {
+            <span> Model.DRUGNAME</span>
+        }
+        else
+        {
+            <span>New Drug</span>
+        }
+    </h4>
+    <div class="roundCornerDiv">
+        <div class="row ">
+            <div class="col-sm-5 col-md-5 col-lg-5 ">
+                @if (!string.IsNullOrEmpty(Model.QrCodeBase64))
+                {
+                    <div class="row">
+                        <div class="col-sm-8 col-md-8 col-lg-8 pull-right">
+                            <img alt="qrCode" id="imgQrCode" src="@Model.QrCodeBase64" />
+                        </div>
+                    </div>
+                }
+                <fieldset class="lms-fs-border">
+                    <legend class="lms-fs-border">Drug Details</legend>
+                    <div class="control-group">
+                        <label for="DRUGNAME"> Item Name</label>
+                        @Html.TextBoxFor(m => m.DRUGNAME, new { @class = "form-control", required = "required" })<br><br>
+                        @Html.HiddenFor(x => x.DRUGID)
+                        @Html.HiddenFor(x => x.OLDORDERCOUNT)
+                        <label for="RackNumber"> Rack Number</label>
+                        @Html.TextBoxFor(m => m.RackNumber, new { @class = "form-control", required = "required" })
+                        <label for="BUYINGPRICE"> Drug Buying Price</label>
+                        @Html.TextBoxFor(m => m.BUYINGPRICE, new { @class = "form-control", required = "required" })
+                        <label for="SELLINGPRICE"> Drug Selling Price</label>
+                        @Html.TextBoxFor(m => m.SELLINGPRICE, new { @class = "form-control", required = "required" })
+                        <label for="ORDERCOUNT"> Total Order Quantity</label>
+                        @Html.TextBoxFor(m => m.ORDERCOUNT, new { @class = "form-control", required = "required" })
+                        <label for="MANUFACTUREDATE"> Drug Manufacture Date</label>
+                        @Html.TextBoxFor(m => m.MANUFACTUREDATE, new { @id = "MANUFACTUREDATE", @class = "form-control", required = "required" })
+                        <label for="EXPIRYDATE"> Drug Expiry Date</label>
+                        @Html.TextBoxFor(m => m.EXPIRYDATE, new { @id = "EXPIRYDATE", @class = "form-control", required = "required" })
+
+
+                    </div>
+                </fieldset>
+
+
+
+
+            </div>
+            <div class="col-sm-5 col-md-5 col-mlg-5">
+                <fieldset class="lms-fs-border">
+                    <legend class="lms-fs-border">Vendor Details</legend>
+                    <div class="control-group">
+                        <label for="VENDORNAME">Vendor Name</label>
+                        @Html.TextBoxFor(m => m.VENDORNAME, new { @class = "form-control", required = "required" })<br><br>
+                        <label for="VENDORPHONE">Vendor Phone </label>
+                        @Html.TextBoxFor(m => m.VENDORPHONE, new { @class = "form-control", required = "required" })<br><br>
+                        <label for="VENDORADDRESS">Vendor Address </label>
+                        @Html.TextBoxFor(m => m.VENDORADDRESS, new { @class = "form-control" })<br><br>
+                        <label for="VENDORNOTES">Additional notes</label>
+                        @Html.TextBoxFor(m => m.VENDORNOTES, new { @class = "form-control" })<br><br>
+                    </div>
+                </fieldset>
+
+            </div>
+            @*@if (Model.DRUGID > 0)
+            {
+                <div class="row">
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                        <fieldset class="lms-fs-border">
+                            <legend class="lms-fs-border">Tax Details</legend>
+                            <div class="row">
+                                <div class="col-sm-11 col-md-11 col-lg-11">
+                                    <div class="input-group ">
+                                        @Html.TextBoxFor(m => m.VENDORNAME, new { @placeholder = "Tax Name", @class = "form-control", required = "required" })<br><br>
+                                        <div class="input-group-btn lms-tax-btn">
+                                            <button type="button" class="btn btn-secondary">
+                                                <i class="glyphicon glyphicon-plus"> </i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            }*@
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 pull-right">
+                <a href="@Url.Action("ViewAllDrug", "Drugs")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.DRUGID > 0)
+                {
+                    <a href="@Url.Action("DeleteDrug", "Drugs", new { DrugId=Model.DRUGID})" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MANUFACTUREDATE').datepicker({ format: 'dd/mm/yyyy' });
+            $('#EXPIRYDATE').datepicker({ format: 'dd/mm/yyyy' });
+        });</script>
+}

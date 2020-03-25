@@ -59,14 +59,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\QueryFilterAttribute.cs" />
     <Compile Include="Infrastructure\AdminOperations.cs" />
+    <Compile Include="Infrastructure\Drugs\DrugDetailService.cs" />
     <Compile Include="Infrastructure\HospitalMaster.cs" />
     <Compile Include="Infrastructure\SurgeryReports\LabourNotes.cs" />
     <Compile Include="Infrastructure\SurgeryReports\ObstericAdmissionSheetReports.cs" />
     <Compile Include="Infrastructure\SurgeryReports\OtherCaseSheets.cs" />
     <Compile Include="Infrastructure\SurgeryReports\SurgeryNotes.cs" />
+    <Compile Include="Infrastructure\Tax\TaxService.cs" />
     <Compile Include="Models\DropDown.cs" />
+    <Compile Include="Models\PatientFilterModel.cs" />
     <Compile Include="Models\PrescriptionModel.cs" />
+    <Compile Include="QueryBuilder\PredicateBuilder.cs" />
+    <Compile Include="Reporsitory\Generic\GenericRepository.cs" />
+    <Compile Include="Reporsitory\Interface\IDrugDetailsRepository.cs" />
+    <Compile Include="Reporsitory\Interface\ITaxRepository.cs" />
+    <Compile Include="Reporsitory\Service\DrugDetailsRepository.cs" />
+    <Compile Include="Reporsitory\Service\TaxRepository.cs" />
+    <Compile Include="Service\Drugs\IDrugDetailService.cs" />
     <Compile Include="Service\IHospitalMaster.cs" />
     <Compile Include="Service\IInvoice.cs" />
     <Compile Include="Infrastructure\Invoice.cs" />
@@ -77,6 +88,7 @@
     <Compile Include="Service\SurgeryReports\IObstericAdmissionSheetReports.cs" />
     <Compile Include="Service\SurgeryReports\ISurgeryNotes.cs" />
     <Compile Include="Service\SurgeryReports\ILabourNotes.cs" />
+    <Compile Include="Service\Tax\ITaxService.cs" />
     <Compile Include="StructureMapContainer\DependencyResolver.cs" />
     <Compile Include="Service\IAdminOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +111,7 @@
       <Name>Lab.Management.Logger</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

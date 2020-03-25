@@ -17,39 +17,6 @@ namespace LabManagement.System.Controllers
         {
             _objIHospitalMaster = objIHospitalMaster;
         }
-
-        public ActionResult ViewDrug(int DrugId, string viewMessage = "")
-        {
-            var getDrug = _objIHospitalMaster.GetDrugDetailsById(DrugId);
-            ViewBag.Message = viewMessage;
-            return View(getDrug);
-        }
-
-        public ActionResult ViewAllDrug(string viewMessage = "")
-        {
-            var getAll = _objIHospitalMaster.GetAllDrug();
-            ViewBag.Message = viewMessage;
-            return View(getAll);
-        }
-
-        [HttpPost]
-        public ActionResult EditDrug(lmsDrug objDrugMaster)
-        {
-            objDrugMaster.MANUFACTUREDATE = Request["MANUFACTUREDATE"] == null ? DateTime.Now : Request["MANUFACTUREDATE"].ToLmsSystemDate();
-            objDrugMaster.EXPIRYDATE = Request["EXPIRYDATE"] == null ? DateTime.Now : Request["EXPIRYDATE"].ToLmsSystemDate();
-            var qrCodeData = $"{objDrugMaster.DRUGNAME}-{objDrugMaster.EXPIRYDATE}";
-            objDrugMaster.QrCodeContent = qrCodeData;
-            objDrugMaster.QrCodeBase64 = qrCodeData.GenerateQrCode();
-            var saveDrugDetails = _objIHospitalMaster.SaveDrug(objDrugMaster);
-            return RedirectToAction("ViewDrug", new { DrugId = saveDrugDetails, viewMessage = "Drug Details Saved Successfully" });
-        }
-
-        public ActionResult DeleteDrug(int DrugId)
-        {
-            var deletDrug = _objIHospitalMaster.DeleteDrug(DrugId);
-            return RedirectToAction("ViewAllDrug", new { viewMessage = "Drug Detail Deleted Successfully" });
-        }
-
         public ActionResult ViewMedicalTest(int MedicalTestId, string viewMessage = "")
         {
             var getMedicalTest = _objIHospitalMaster.GetMedicalTestDetailsById(MedicalTestId);
@@ -112,7 +79,6 @@ namespace LabManagement.System.Controllers
         public ActionResult EditScan(lmsScan objScanMaster)
         {
             var saveScanDetails = _objIHospitalMaster.SaveScan(objScanMaster);
-            //ViewBag.Message = viewMessage;
             return RedirectToAction("ViewScan", new { ScanId = saveScanDetails, viewMessage = "Scan Details Saved Successfully" });
         }
 

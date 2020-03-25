@@ -12,83 +12,68 @@
 namespace Lab.Management.Entities
 {
 
-    using System;
+using System;
     using System.Collections.Generic;
+    
+public partial class lmsInvestigationReport
+{
 
-    public partial class lmsInvestigationReport
-    {
+    public int REPORTID { get; set; }
 
-        public int REPORTID { get; set; }
+    public string NAME { get; set; }
 
-        public string NAME { get; set; }
+    public Nullable<int> AGE { get; set; }
 
-        public Nullable<int> AGE { get; set; }
+    public Nullable<System.DateTime> REPORTDATE { get; set; }
 
-        public Nullable<System.DateTime> REPORTDATE { get; set; }
+    public string URINESUGAR { get; set; }
 
-        public string URINESUGAR { get; set; }
+    public string PUSCELL { get; set; }
 
-        public string PUSCELL { get; set; }
+    public string RBC { get; set; }
 
-        public string RBC { get; set; }
+    public string EPTHELIALCELL { get; set; }
 
-        public string EPTHELIALCELL { get; set; }
+    public string BLOODHAEMOGLOBIN { get; set; }
 
-        public string BLOODHAEMOGLOBIN { get; set; }
+    public string GROUPINGRHTYPING { get; set; }
 
-        public string GROUPINGRHTYPING { get; set; }
+    public string BT { get; set; }
 
-        public string BT { get; set; }
+    public string CT { get; set; }
 
-        public string CT { get; set; }
+    public string PLATELET { get; set; }
 
-        public string PLATELET { get; set; }
+    public string BLOODUREA { get; set; }
 
-        public string BLOODUREA { get; set; }
+    public string SUGAR { get; set; }
 
-        public string SUGAR { get; set; }
+    public string SRCREATININE { get; set; }
 
-        public string SRCREATININE { get; set; }
+    public string SRFREET3 { get; set; }
 
-        public string SRFREET3 { get; set; }
+    public string SRFREET4 { get; set; }
 
-        public string SRFREET4 { get; set; }
+    public string TSH { get; set; }
 
-        public string TSH { get; set; }
+    public string VDRL { get; set; }
 
-        public string VDRL { get; set; }
+    public string HIV { get; set; }
 
-        public string HIV { get; set; }
+    public string HBSAG { get; set; }
 
-        public string HBSAG { get; set; }
+    public string HCV { get; set; }
 
-        public string HCV { get; set; }
+    public string COMMENTS { get; set; }
 
-        public string COMMENTS { get; set; }
+    public Nullable<System.DateTime> CREATEDDATE { get; set; }
 
-        public Nullable<System.DateTime> CREATEDDATE { get; set; }
+    public string ALBUMIN { get; set; }
 
-        public string ALBUMIN { get; set; }
+    public Nullable<bool> HASADDITIONALREPORT { get; set; }
 
-        private bool? hasReport { get; set; }
-        public Nullable<bool> HASADDITIONALREPORT
-        {
-            get
-            {
-                if (!hasReport.HasValue)
-                {
-                    return false;
-                }
-                return hasReport;
-            }
-            set
-            {
-                hasReport = value;
-            }
-        }
+    public string ADDITIONALREPORT { get; set; }
 
-        public string ADDITIONALREPORT { get; set; }
-
-    }
+}
 
 }

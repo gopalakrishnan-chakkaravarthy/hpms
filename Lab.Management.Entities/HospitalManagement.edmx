@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LabManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LabManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="lmsBeds">
           <Key>
             <PropertyRef Name="BEDID" />
@@ -98,6 +98,7 @@
           <Property Name="RackNumber" Type="varchar" MaxLength="20" />
           <Property Name="QrCodeContent" Type="nvarchar(max)" />
           <Property Name="QrCodeBase64" Type="nvarchar(max)" />
+          <Property Name="TAXID" Type="int" />
         </EntityType>
         <EntityType Name="lmsDrugDosage">
           <Key>
@@ -131,6 +132,18 @@
           <Property Name="RackNumber" Type="varchar" MaxLength="20" />
           <Property Name="QrCodeContent" Type="nvarchar(max)" />
           <Property Name="QrCodeBase64" Type="nvarchar(max)" />
+          <Property Name="VENDORNAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="VENDORADDRESS" Type="nvarchar" MaxLength="500" />
+          <Property Name="VENDORPHONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="VENDORNOTES" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="lmsDrugsTax">
+          <Key>
+            <PropertyRef Name="DTAXID" />
+          </Key>
+          <Property Name="DTAXID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DRUGID" Type="int" />
+          <Property Name="TAXID" Type="int" />
         </EntityType>
         <EntityType Name="lmsGeneralDischargeSummary">
           <Key>
@@ -630,6 +643,17 @@
           <Property Name="TREATMENT" Type="nvarchar(max)" />
           <Property Name="CREDATEDDATE" Type="datetime" />
         </EntityType>
+        <EntityType Name="lmsTaxMaster">
+          <Key>
+            <PropertyRef Name="TAXID" />
+          </Key>
+          <Property Name="TAXID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TAXNAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="TAXDESCRIPTION" Type="nvarchar" MaxLength="3000" />
+          <Property Name="PERCENTAGE" Type="float" />
+          <Property Name="ISACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
         <EntityType Name="lmsTemplateMaster">
           <Key>
             <PropertyRef Name="TEMPLATEID" />
@@ -778,6 +802,42 @@
             </Principal>
             <Dependent Role="lmsDrugDetails">
               <PropertyRef Name="DRUGDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lmsDrugDe__TAXID__7BE56230">
+          <End Role="lmsTaxMaster" Type="Self.lmsTaxMaster" Multiplicity="0..1" />
+          <End Role="lmsDrugDetails" Type="Self.lmsDrugDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsTaxMaster">
+              <PropertyRef Name="TAXID" />
+            </Principal>
+            <Dependent Role="lmsDrugDetails">
+              <PropertyRef Name="TAXID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lmsDrugsT__DRUGI__7FB5F314">
+          <End Role="lmsDrugs" Type="Self.lmsDrugs" Multiplicity="0..1" />
+          <End Role="lmsDrugsTax" Type="Self.lmsDrugsTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsDrugs">
+              <PropertyRef Name="DRUGID" />
+            </Principal>
+            <Dependent Role="lmsDrugsTax">
+              <PropertyRef Name="DRUGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lmsDrugsT__TAXID__00AA174D">
+          <End Role="lmsTaxMaster" Type="Self.lmsTaxMaster" Multiplicity="0..1" />
+          <End Role="lmsDrugsTax" Type="Self.lmsDrugsTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsTaxMaster">
+              <PropertyRef Name="TAXID" />
+            </Principal>
+            <Dependent Role="lmsDrugsTax">
+              <PropertyRef Name="TAXID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1305,6 +1365,7 @@
           <EntitySet Name="lmsDrugDosage" EntityType="Self.lmsDrugDosage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsDrugFrequency" EntityType="Self.lmsDrugFrequency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsDrugs" EntityType="Self.lmsDrugs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsDrugsTax" EntityType="Self.lmsDrugsTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsGeneralDischargeSummary" EntityType="Self.lmsGeneralDischargeSummary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsGynacDischargeSummary" EntityType="Self.lmsGynacDischargeSummary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsHospitalMaster" EntityType="Self.lmsHospitalMaster" Schema="dbo" store:Type="Tables" />
@@ -1335,6 +1396,7 @@
           <EntitySet Name="lmsSignatureMaster" EntityType="Self.lmsSignatureMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsStateMaster" EntityType="Self.lmsStateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsSurgeryNotes" EntityType="Self.lmsSurgeryNotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsTaxMaster" EntityType="Self.lmsTaxMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsTemplateMaster" EntityType="Self.lmsTemplateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsUltrSonogramReportOne" EntityType="Self.lmsUltrSonogramReportOne" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsUltrSonogramReportTwo" EntityType="Self.lmsUltrSonogramReportTwo" Schema="dbo" store:Type="Tables" />
@@ -1360,6 +1422,15 @@
           <AssociationSet Name="FK__lmsDrugDe__DRUGD__67DE6983" Association="Self.FK__lmsDrugDe__DRUGD__67DE6983">
             <End Role="lmsDrugs" EntitySet="lmsDrugs" />
             <End Role="lmsDrugDetails" EntitySet="lmsDrugDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lmsDrugDe__TAXID__7BE56230" Association="Self.FK__lmsDrugDe__TAXID__7BE56230">
+            <End Role="lmsTaxMaster" EntitySet="lmsTaxMaster" />
+            <End Role="lmsDrugDetails" EntitySet="lmsDrugDetails" />
+          </AssociationSet>
+
+          <AssociationSet Name="FK__lmsDrugsT__TAXID__00AA174D" Association="Self.FK__lmsDrugsT__TAXID__00AA174D">
+            <End Role="lmsTaxMaster" EntitySet="lmsTaxMaster" />
+            <End Role="lmsDrugsTax" EntitySet="lmsDrugsTax" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsGenera__PATIE__10566F31" Association="Self.FK__lmsGenera__PATIE__10566F31">
             <End Role="lmsPatientRegistration" EntitySet="lmsPatientRegistration" />
@@ -1518,7 +1589,8 @@
             <End Role="lmsWards" EntitySet="lmsWards" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LabManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1589,6 +1661,12 @@
           <Property Name="QrCodeBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <NavigationProperty Name="lmsPatientPrescriptions" Relationship="LabManagementModel.FK__lmsPatien__DRUGI__7B264821" FromRole="lmsDrug" ToRole="lmsPatientPrescription"/>
           <NavigationProperty Name="lmsDrugDetails" Relationship="LabManagementModel.FK__lmsDrugDe__DRUGD__67DE6983" FromRole="lmsDrug" ToRole="lmsDrugDetail" />
+          <Property Name="VENDORNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VENDORADDRESS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VENDORPHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VENDORNOTES" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+
+
         </EntityType>
         <EntityType Name="lmsHospitalMaster">
           <Key>
@@ -2181,34 +2259,34 @@
             <Parameter Name="SPLITBY" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_DeleteDrugs">
-          <Parameter Name="DrugIds" Mode="In" Type="String" />
+            <Parameter Name="DrugIds" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_DeleteLaboratoryBilling">
-          <Parameter Name="TESTIds" Mode="In" Type="String" />
+            <Parameter Name="TESTIds" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_DeleteMedicalBilling">
-          <Parameter Name="DrugIds" Mode="In" Type="String" />
+            <Parameter Name="DrugIds" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetDrugDdl" ReturnType="Collection(LabManagementModel.usp_GetDrugDdl_Result)"/>
           <FunctionImport Name="usp_GetDrugStocks" ReturnType="Collection(LabManagementModel.usp_GetDrugStocks_Result)"/>
           <FunctionImport Name="usp_GetExpiryDrugsByDays" ReturnType="Collection(LabManagementModel.usp_GetExpiryDrugsByDays_Result)">
-          <Parameter Name="Days" Mode="In" Type="Int32" />
+            <Parameter Name="Days" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="usp_GetInPatientDetails" ReturnType="Collection(LabManagementModel.usp_GetInPatientDetails_Result)">
-          <Parameter Name="filterDate" Mode="In" Type="String" />
+            <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetMedicalBillsByDate" ReturnType="Collection(LabManagementModel.usp_GetMedicalBillsByDate_Result)">
-          <Parameter Name="filterDate" Mode="In" Type="String" />
+            <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetMedicalProfitLoss" ReturnType="Collection(LabManagementModel.usp_GetMedicalProfitLoss_Result)">
-          <Parameter Name="filterDate" Mode="In" Type="String" />
+            <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetOutPatients" ReturnType="Collection(LabManagementModel.usp_GetOutPatients_Result)">
-          <Parameter Name="filterDate" Mode="In" Type="String" />
+            <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetPatientDdlForBilling" ReturnType="Collection(LabManagementModel.usp_GetPatientDdlForBilling_Result)"/>
           <FunctionImport Name="usp_ValidateUser" ReturnType="Collection(LabManagementModel.usp_ValidateUser_Result)">
-          <Parameter Name="userEmail" Mode="In" Type="String" />
+            <Parameter Name="userEmail" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="lmsGeneralDischargeSummaries" EntityType="LabManagementModel.lmsGeneralDischargeSummary"/>
 
@@ -2296,6 +2374,20 @@
           <AssociationSet Name="FK__lmsDrugDe__DRUGD__67DE6983" Association="LabManagementModel.FK__lmsDrugDe__DRUGD__67DE6983">
             <End Role="lmsDrug" EntitySet="lmsDrugs" />
             <End Role="lmsDrugDetail" EntitySet="lmsDrugDetails" />
+          </AssociationSet>
+          <EntitySet Name="lmsTaxMasters" EntityType="LabManagementModel.lmsTaxMaster" />
+          <AssociationSet Name="FK__lmsDrugDe__TAXID__7BE56230" Association="LabManagementModel.FK__lmsDrugDe__TAXID__7BE56230">
+            <End Role="lmsTaxMaster" EntitySet="lmsTaxMasters" />
+            <End Role="lmsDrugDetail" EntitySet="lmsDrugDetails" />
+          </AssociationSet>
+          <EntitySet Name="lmsDrugsTaxes" EntityType="LabManagementModel.lmsDrugsTax" />
+          <AssociationSet Name="FK__lmsDrugsT__DRUGI__7FB5F314" Association="LabManagementModel.FK__lmsDrugsT__DRUGI__7FB5F314">
+            <End Role="lmsDrug" EntitySet="lmsDrugs" />
+            <End Role="lmsDrugsTax" EntitySet="lmsDrugsTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lmsDrugsT__TAXID__00AA174D" Association="LabManagementModel.FK__lmsDrugsT__TAXID__00AA174D">
+            <End Role="lmsTaxMaster" EntitySet="lmsTaxMasters" />
+            <End Role="lmsDrugsTax" EntitySet="lmsDrugsTaxes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="lmsDischargeBill">
@@ -3183,6 +3275,8 @@
           <Property Name="QrCodeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="QrCodeBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="lmsDrug" Relationship="LabManagementModel.FK__lmsDrugDe__DRUGD__67DE6983" FromRole="lmsDrugDetail" ToRole="lmsDrug" />
+          <Property Name="TAXID" Type="Int32" />
+          <NavigationProperty Name="lmsTaxMaster" Relationship="LabManagementModel.FK__lmsDrugDe__TAXID__7BE56230" FromRole="lmsDrugDetail" ToRole="lmsTaxMaster" />
         </EntityType>
         <Association Name="FK__lmsDrugDe__DRUGD__67DE6983">
           <End Type="LabManagementModel.lmsDrug" Role="lmsDrug" Multiplicity="0..1" />
@@ -3193,6 +3287,65 @@
             </Principal>
             <Dependent Role="lmsDrugDetail">
               <PropertyRef Name="DRUGDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="lmsTaxMaster">
+          <Key>
+            <PropertyRef Name="TAXID" />
+          </Key>
+          <Property Name="TAXID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TAXNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TAXDESCRIPTION" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="PERCENTAGE" Type="Double" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="lmsDrugDetails" Relationship="LabManagementModel.FK__lmsDrugDe__TAXID__7BE56230" FromRole="lmsTaxMaster" ToRole="lmsDrugDetail" />
+          <NavigationProperty Name="lmsDrugsTaxes" Relationship="LabManagementModel.FK__lmsDrugsT__TAXID__00AA174D" FromRole="lmsTaxMaster" ToRole="lmsDrugsTax" />
+        </EntityType>
+        <Association Name="FK__lmsDrugDe__TAXID__7BE56230">
+          <End Type="LabManagementModel.lmsTaxMaster" Role="lmsTaxMaster" Multiplicity="0..1" />
+          <End Type="LabManagementModel.lmsDrugDetail" Role="lmsDrugDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsTaxMaster">
+              <PropertyRef Name="TAXID" />
+            </Principal>
+            <Dependent Role="lmsDrugDetail">
+              <PropertyRef Name="TAXID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="lmsDrugsTax">
+          <Key>
+            <PropertyRef Name="DTAXID" />
+          </Key>
+          <Property Name="DTAXID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DRUGID" Type="Int32" />
+          <Property Name="TAXID" Type="Int32" />
+          <NavigationProperty Name="lmsDrug" Relationship="LabManagementModel.FK__lmsDrugsT__DRUGI__7FB5F314" FromRole="lmsDrugsTax" ToRole="lmsDrug" />
+          <NavigationProperty Name="lmsTaxMaster" Relationship="LabManagementModel.FK__lmsDrugsT__TAXID__00AA174D" FromRole="lmsDrugsTax" ToRole="lmsTaxMaster" />
+        </EntityType>
+        <Association Name="FK__lmsDrugsT__DRUGI__7FB5F314">
+          <End Type="LabManagementModel.lmsDrug" Role="lmsDrug" Multiplicity="0..1" />
+          <End Type="LabManagementModel.lmsDrugsTax" Role="lmsDrugsTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsDrug">
+              <PropertyRef Name="DRUGID" />
+            </Principal>
+            <Dependent Role="lmsDrugsTax">
+              <PropertyRef Name="DRUGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lmsDrugsT__TAXID__00AA174D">
+          <End Type="LabManagementModel.lmsTaxMaster" Role="lmsTaxMaster" Multiplicity="0..1" />
+          <End Type="LabManagementModel.lmsDrugsTax" Role="lmsDrugsTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsTaxMaster">
+              <PropertyRef Name="TAXID" />
+            </Principal>
+            <Dependent Role="lmsDrugsTax">
+              <PropertyRef Name="TAXID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3245,6 +3398,10 @@
           <EntitySetMapping Name="lmsDrugs">
             <EntityTypeMapping TypeName="LabManagementModel.lmsDrug">
               <MappingFragment StoreEntitySet="lmsDrugs">
+                <ScalarProperty Name="VENDORNOTES" ColumnName="VENDORNOTES" />
+                <ScalarProperty Name="VENDORPHONE" ColumnName="VENDORPHONE" />
+                <ScalarProperty Name="VENDORADDRESS" ColumnName="VENDORADDRESS" />
+                <ScalarProperty Name="VENDORNAME" ColumnName="VENDORNAME" />
                 <ScalarProperty Name="QrCodeBase64" ColumnName="QrCodeBase64"/>
                 <ScalarProperty Name="QrCodeContent" ColumnName="QrCodeContent"/>
                 <ScalarProperty Name="RackNumber" ColumnName="RackNumber"/>
@@ -4037,6 +4194,7 @@
           <EntitySetMapping Name="lmsDrugDetails">
             <EntityTypeMapping TypeName="LabManagementModel.lmsDrugDetail">
               <MappingFragment StoreEntitySet="lmsDrugDetails">
+                <ScalarProperty Name="TAXID" ColumnName="TAXID" />
                 <ScalarProperty Name="QrCodeBase64" ColumnName="QrCodeBase64" />
                 <ScalarProperty Name="QrCodeContent" ColumnName="QrCodeContent" />
                 <ScalarProperty Name="RackNumber" ColumnName="RackNumber" />
@@ -4055,6 +4213,27 @@
                 <ScalarProperty Name="VENDORNAME" ColumnName="VENDORNAME" />
                 <ScalarProperty Name="DRUGDID" ColumnName="DRUGDID" />
                 <ScalarProperty Name="DRUGDETAILID" ColumnName="DRUGDETAILID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lmsTaxMasters">
+            <EntityTypeMapping TypeName="LabManagementModel.lmsTaxMaster">
+              <MappingFragment StoreEntitySet="lmsTaxMaster">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="PERCENTAGE" ColumnName="PERCENTAGE" />
+                <ScalarProperty Name="TAXDESCRIPTION" ColumnName="TAXDESCRIPTION" />
+                <ScalarProperty Name="TAXNAME" ColumnName="TAXNAME" />
+                <ScalarProperty Name="TAXID" ColumnName="TAXID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lmsDrugsTaxes">
+            <EntityTypeMapping TypeName="LabManagementModel.lmsDrugsTax">
+              <MappingFragment StoreEntitySet="lmsDrugsTax">
+                <ScalarProperty Name="TAXID" ColumnName="TAXID" />
+                <ScalarProperty Name="DRUGID" ColumnName="DRUGID" />
+                <ScalarProperty Name="DTAXID" ColumnName="DTAXID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

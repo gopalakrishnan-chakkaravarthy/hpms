@@ -77,10 +77,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HospitalManagement.edmx</DependentUpon>
     </Compile>
-    <Compile Include="HospitalManagement1.cs">
+    <Compile Include="HospitalManagement1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HospitalManagement.tt</DependentUpon>
+      <DependentUpon>HospitalManagement.edmx</DependentUpon>
     </Compile>
     <Compile Include="lmsBed.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
@@ -107,6 +107,9 @@
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsDrugFrequency.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lmsDrugsTax.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsGeneralDischargeSummary.cs">
@@ -199,6 +202,9 @@
     <Compile Include="lmsSurgeryNote.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="lmsTaxMaster.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="lmsTemplateMaster.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
@@ -218,7 +224,7 @@
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\QRCodeModel.cs" />
-    <Compile Include="Partials\lmsInvestigationReport.cs" />
+    <Compile Include="Partials\lmsDrug.cs" />
     <Compile Include="Partials\lmsPatientBooking.cs" />
     <Compile Include="Partials\lmsPatientReportStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -269,7 +275,7 @@
     <None Include="App.config" />
     <EntityDeploy Include="HospitalManagement.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HospitalManagement.Designer.cs</LastGenOutput>
+      <LastGenOutput>HospitalManagement1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="HospitalManagement.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

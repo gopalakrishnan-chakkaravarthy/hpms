@@ -1,4 +1,6 @@
-﻿using Lab.Management.Entities;
+﻿using Lab.Management.Engine.Enum;
+using Lab.Management.Engine.Models;
+using Lab.Management.Entities;
 using System.Collections.Generic;
 
 namespace Lab.Management.Engine.Service
@@ -11,7 +13,7 @@ namespace Lab.Management.Engine.Service
 
         lmsPatientRegistration GetPatientDetailsById(int PatientId);
 
-        IList<lmsPatientRegistration> GetAllPatient(string patientType, bool includeAll = false);
+        IList<lmsPatientRegistration> GetAllPatient( QueryFilterAttribute queryFilterAttribute, string filterValue, string patientType, bool includeAll = false);
 
         int SavePatient(lmsPatientRegistration objPatientMaster);
 
@@ -33,5 +35,6 @@ namespace Lab.Management.Engine.Service
         int SavePatientPrescription(List<lmsPatientPrescription> objPatientMaster);
 
         int DeletePatientPrescription(int bookingId);
+        IList<PatientFilterModel> GetFilterList();
     }
 }

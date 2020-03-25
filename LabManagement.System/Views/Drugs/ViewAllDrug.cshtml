@@ -3,7 +3,8 @@
 @model IList<lmsDrug>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var message = ViewBag.Message as string;
+    var transactionType = ViewBag.TransactionType as string;
+    var message = transactionType.GetTransactionMessage();
 }
 <div class="roundCornerDiv">
 
@@ -68,8 +69,8 @@
                                             <td>@obj.DRUGNAME</td>
                                             <td>
                                                 @{
-                                        var rackNo = obj.RackNumber == null ? "N/A" : obj.RackNumber;
-                                        <label>@rackNo</label>
+                                                    var rackNo = obj.RackNumber == null ? "N/A" : obj.RackNumber;
+                                                    <label>@rackNo</label>
                                                 }
 
                                             </td>
@@ -143,12 +144,9 @@
 @section Scripts {
 
     <script type="text/javascript">
-
         $(document).ready(function () {
             $('#allDetails').DataTable();
-        });
-
-    </script>
+        });</script>
 }
 
 

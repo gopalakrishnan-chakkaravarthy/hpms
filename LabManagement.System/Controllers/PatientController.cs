@@ -1,4 +1,5 @@
 ﻿using Lab.Management.Common;
+using Lab.Management.Engine.Enum;
 using Lab.Management.Engine.Models;
 using Lab.Management.Engine.Service;
 using Lab.Management.Engine.Utils;
@@ -37,9 +38,11 @@ namespace LabManagement.System.Controllers
             return View(getPatient);
         }
 
-        public ActionResult ViewAllPatient(string viewMessage = "")
+        public ActionResult ViewAllPatient(QueryFilterAttribute queryFilterAttribute=QueryFilterAttribute.none,string filterValue="", string viewMessage = "")
         {
-            var getAll = _objIPatient.GetAllPatient("IN", true);
+            var getAll = _objIPatient.GetAllPatient(queryFilterAttribute, filterValue, "IN", true);
+            var filterList = _objIPatient.GetFilterList();
+            ViewBag.FilterList = new SelectList(filterList, "Value", "Text");
             ViewBag.Message = viewMessage;
             return View(getAll);
         }

@@ -112,6 +112,12 @@
         <EntityTypeShape EntityType="LabManagementModel.lmsLabourNote" Width="1.5" PointX="15.375" PointY="6.75" />
         <EntityTypeShape EntityType="LabManagementModel.lmsDrugDetail" Width="1.5" PointX="8" PointY="19.875" />
         <AssociationConnector Association="LabManagementModel.FK__lmsDrugDe__DRUGD__67DE6983" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsTaxMaster" Width="1.5" PointX="21.375" PointY="21" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsDrugDe__TAXID__7BE56230" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsDrugs__TAXID__7CD98669" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsDrugsTax" Width="1.5" PointX="24.625" PointY="16.875" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsDrugsT__DRUGI__7FB5F314" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsDrugsT__TAXID__00AA174D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -54,9 +54,13 @@ public partial class lmsDrugDetail
 
     public string QrCodeBase64 { get; set; }
 
+    public Nullable<int> TAXID { get; set; }
+
 
 
     public virtual lmsDrug lmsDrug { get; set; }
+
+    public virtual lmsTaxMaster lmsTaxMaster { get; set; }
 
 }
 

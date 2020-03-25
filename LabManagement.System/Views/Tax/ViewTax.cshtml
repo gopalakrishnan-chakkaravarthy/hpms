@@ -1,0 +1,82 @@
+﻿@using Lab.Management.Entities;
+@using LabManagement.System.Common;
+@model lmsTaxMaster
+@{
+    ViewBag.Title = "View Tax";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var transactionType = ViewBag.TransactionType as string;
+    var message = transactionType.GetTransactionMessage();
+}
+
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="alert alert-info">
+                @message
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
+
+    @using (Html.BeginForm("Edit", "Tax", new { @id = "IdEdit", @name = "EditForm" }))
+    {
+        <div class="row">
+            <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> View Tax Details</h4>
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Name
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.TAXNAME, new { @class = "form-control", required = "required" })
+                @Html.HiddenFor(x => x.TAXID)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Description
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextAreaFor(m => m.TAXDESCRIPTION, new { @class = "form-control", required = "required" })
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Value in %
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.PERCENTAGE, new { @class = "form-control", required = "required" })
+
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <a href="@Url.Action("Index", "Tax")" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-arrow-left">
+                        Back
+                    </i>
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil">
+                        Save
+                    </i>
+                </button>
+                @if (Model.TAXID > 0)
+                {
+                    <a href="@Url.Action("Delete", "Tax", new { id=Model.TAXID})" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                }
+            </div>
+        </div>
+    }
+</div>

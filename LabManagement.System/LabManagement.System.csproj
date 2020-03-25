@@ -156,15 +156,18 @@
     <Compile Include="Controllers\AdminDashboardController.cs" />
     <Compile Include="Controllers\AppErrorController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DrugsController.cs" />
     <Compile Include="Controllers\HospitalMasterController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\TaxController.cs" />
     <Compile Include="Controllers\WebCamController.cs" />
     <Compile Include="DIResolver\StructureMapControllerFactory .cs" />
     <Compile Include="DIResolver\StructureMapDependencyResolver .cs" />
     <Compile Include="DIResolver\StructureMapDependencyScope .cs" />
     <Compile Include="DIResolver\StructuremapMvc.cs" />
+    <Compile Include="Enums\TransactionType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -628,8 +631,6 @@
     <Content Include="Views\Admin\ViewAllUser.cshtml" />
     <Content Include="Views\Admin\ViewDisease.cshtml" />
     <Content Include="Views\Admin\ViewAllDisease.cshtml" />
-    <Content Include="Views\HospitalMaster\ViewDrug.cshtml" />
-    <Content Include="Views\HospitalMaster\ViewAllDrug.cshtml" />
     <Content Include="Views\HospitalMaster\ViewMedicalTest.cshtml" />
     <Content Include="Views\HospitalMaster\ViewAllMedicalTest.cshtml" />
     <Content Include="Views\HospitalMaster\ViewAllScan.cshtml" />
@@ -697,6 +698,8 @@
     <Content Include="Views\Admin\ViewAllDrugFrequency.cshtml" />
     <Content Include="Views\Admin\ViewDrugDosage.cshtml" />
     <Content Include="Views\Admin\ViewDrugFrequency.cshtml" />
+    <Content Include="Views\Drugs\ViewDrug.cshtml" />
+    <Content Include="Views\Drugs\ViewAllDrug.cshtml" />
     <None Include="Views\Patient\_ViewPatientHistory.cshtml" />
     <Content Include="Views\Reports\ViewSurgeryNotes.cshtml" />
     <Content Include="Views\Reports\ViewAllSurgeryNotes.cshtml" />
@@ -711,6 +714,9 @@
     <Content Include="Views\Reports\ViewAllLabourNotes.cshtml" />
     <Content Include="Views\Reports\GenerateLabourNotes.cshtml" />
     <Content Include="Views\Shared\_MockMenu.cshtml" />
+    <Content Include="Views\Shared\_FilterLayout.cshtml" />
+    <Content Include="Views\Tax\ViewTax.cshtml" />
+    <Content Include="Views\Tax\Index.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

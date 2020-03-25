@@ -1,5 +1,6 @@
 ﻿using Lab.Management.Common;
 using Lab.Management.Entities;
+using LabManagement.System.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,20 +119,49 @@ namespace LabManagement.System.Common
         public static bool IsAdmin(this usp_ValidateUser_Result userInfo)
         {
             var userRole = userInfo == null ? string.Empty : userInfo.ROLENAME;
-
+            if(userRole == null)
+            {
+                return false;
+            }
             return userRole.ToUpper() == "ADMIN" || userRole.ToUpper() == "DOCTOR";
         }
 
         public static bool IsTestUser(this usp_ValidateUser_Result userInfo)
         {
             var userRole = userInfo == null ? string.Empty : userInfo.ROLENAME;
-
+            //if(userRole==null)
+            //{
+            //    return false;
+            //}
             return userRole.ToUpper() == "TEST";
         }
 
         public static bool HasPrescription(this ICollection<lmsPatientPrescription> lmsPatientPrescriptions, int bookingId)
         {
             return lmsPatientPrescriptions != null && lmsPatientPrescriptions.Any(x => x.BOOKINGID == bookingId);
+        }
+        public static string GetTransactionMessage(this string transaction)
+        {
+            if(string.IsNullOrEmpty(transaction))
+            {
+                return string.Empty;
+            }
+            TransactionType transactionType = (TransactionType)Enum.Parse(
+                                          typeof(TransactionType), transaction, true);
+            switch (transactionType)
+            {
+                case TransactionType.Save:
+                    return "Item saved successfully";
+                case TransactionType.Remove:
+                    return "Item removed successfully";
+                case TransactionType.RemoveError:
+                    return "Error in removing item,please try again later";
+                case TransactionType.SaveError:
+                    return "Error in saving item,please try again later";
+                default:
+                    return string.Empty;
+
+            }
         }
     }
 }

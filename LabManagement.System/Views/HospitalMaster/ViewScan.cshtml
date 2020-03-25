@@ -66,19 +66,3 @@
         </div>
     }
 </div>
-@section Scripts {
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $('#btnPrint').on('click', function () {
-                var hideShowelements = [];
-                hideShowelements.push('btnBack');
-                hideShowelements.push('btnPrint');
-                PrintCanvasDiv(hideShowelements, 'canvasElement');
-            });
-
-        });
-
-    </script>
-}

@@ -1,4 +1,7 @@
-﻿using Lab.Management.Engine.Service;
+﻿using Lab.Management.Engine.Enum;
+using Lab.Management.Engine.Models;
+using Lab.Management.Engine.QueryBuilder;
+using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
 using Lab.Management.Logger;
 using System;
@@ -6,6 +9,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Lab.Management.Engine.Infrastructure
 {
@@ -59,12 +63,18 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
-        public IList<lmsPatientRegistration> GetAllPatient(string patientType, bool includeAll = false)
+        public IList<lmsPatientRegistration> GetAllPatient(QueryFilterAttribute queryFilterAttribute, string filterValue, string patientType, bool includeAll = false)
         {
             try
             {
                 var resultDetails = _objLabManagementEntities.lmsPatientRegistrations.Select(x => x);
-                return includeAll ? resultDetails.OrderByDescending(x => x.PATIENTID).ToList() : resultDetails.Where(x => x.PATIENTTYPE == patientType).OrderByDescending(x => x.PATIENTID).ToList();
+                if (queryFilterAttribute != QueryFilterAttribute.none && !string.IsNullOrEmpty(filterValue))
+                {
+                    var predicate = GetWhereClass(queryFilterAttribute, filterValue);
+                    resultDetails = resultDetails.Where(predicate);
+                    return resultDetails.ToList();
+                }
+                return includeAll ? resultDetails.Take(100).OrderByDescending(x => x.PATIENTID).ToList() : resultDetails.Take(100).Where(x => x.PATIENTTYPE == patientType).OrderByDescending(x => x.PATIENTID).ToList();
             }
             catch (Exception ex)
             {
@@ -269,6 +279,40 @@ namespace Lab.Management.Engine.Infrastructure
                 _objIAppLogger.LogError(ex);
             }
             return resultFlag;
+        }
+        public IList<PatientFilterModel> GetFilterList()
+        {
+            var filterList = new List<PatientFilterModel>() {
+            new PatientFilterModel { Text="Name",Value=QueryFilterAttribute.firstname},
+            new PatientFilterModel { Text="Id",Value=QueryFilterAttribute.customId},
+            new PatientFilterModel { Text="Date of Birth",Value=QueryFilterAttribute.dob},
+            new PatientFilterModel { Text="Mobile",Value=QueryFilterAttribute.mobileno},
+            new PatientFilterModel { Text="Email",Value=QueryFilterAttribute.email}
+            };
+            return filterList;
+        }
+        private Expression<Func<lmsPatientRegistration, bool>> GetWhereClass(QueryFilterAttribute filterBy, string value)
+        {
+            var predicate = PredicateBuilder.True<lmsPatientRegistration>();
+            switch (filterBy)
+            {
+                case QueryFilterAttribute.firstname:
+                    return predicate.And(x => x.PATIENTNAME.Contains(value));
+
+                case QueryFilterAttribute.customId:
+                    return predicate.And(x => x.CUSTOMID == value);
+
+                case QueryFilterAttribute.dob:
+                    var dob = Convert.ToDateTime(value).Date;
+                    return predicate.And(x => x.DOB.HasValue && EntityFunctions.TruncateTime(x.DOB.Value) == dob);
+
+                case QueryFilterAttribute.mobileno:
+                    return predicate.And(x => x.CONTACT.Contains(value));
+
+                case QueryFilterAttribute.email:
+                    return predicate = predicate.And(x => x.PATIENTEMAILID == value);
+            }
+            return predicate;
         }
     }
 }

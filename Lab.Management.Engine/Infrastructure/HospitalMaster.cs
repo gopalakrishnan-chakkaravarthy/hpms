@@ -81,7 +81,16 @@ namespace Lab.Management.Engine.Infrastructure
 
             return resultId;
         }
-
+        private void UpdateDrugOrder(lmsDrug objDrugMaster)
+        {
+            var orderCount = _objLabManagementEntities.lmsDrugs.Single(x => x.DRUGID == objDrugMaster.DRUGID).ORDERCOUNT;
+            if (orderCount.HasValue)
+            {
+                var orderValue = orderCount.Value > 0 ? orderCount.Value : 0;
+                var newOrderValue = (objDrugMaster.ORDERCOUNT.HasValue ? objDrugMaster.ORDERCOUNT.Value : 0) + orderValue;
+                objDrugMaster.ORDERCOUNT = newOrderValue;
+            }
+        }
         public int DeleteDrug(int DrugId)
         {
             var resultFlag = 0;

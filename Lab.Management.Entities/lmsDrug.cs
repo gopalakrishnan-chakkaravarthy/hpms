@@ -29,6 +29,8 @@ public partial class lmsDrug
 
         this.lmsDrugDetails = new HashSet<lmsDrugDetail>();
 
+        this.lmsDrugsTaxes = new HashSet<lmsDrugsTax>();
+
     }
 
 
@@ -60,6 +62,16 @@ public partial class lmsDrug
 
     public string QrCodeBase64 { get; set; }
 
+    public string VENDORNAME { get; set; }
+
+    public string VENDORADDRESS { get; set; }
+
+    public string VENDORPHONE { get; set; }
+
+    public string VENDORNOTES { get; set; }
+
+    public Nullable<int> TAXID { get; set; }
+
 
 
     public virtual ICollection<lmsMedicalBilling> lmsMedicalBillings { get; set; }
@@ -69,6 +81,10 @@ public partial class lmsDrug
     public virtual ICollection<lmsPatientPrescription> lmsPatientPrescriptions { get; set; }
 
     public virtual ICollection<lmsDrugDetail> lmsDrugDetails { get; set; }
+
+    public virtual lmsTaxMaster lmsTaxMaster { get; set; }
+
+    public virtual ICollection<lmsDrugsTax> lmsDrugsTaxes { get; set; }
 
 }
 

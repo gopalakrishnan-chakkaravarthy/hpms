@@ -296,9 +296,9 @@
                                     <li class="dropdown dropdown-submenu">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drugs</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="@Url.Action("ViewAllDrug", "HospitalMaster")">Dashboard</a></li>
+                                            <li><a href="@Url.Action("ViewAllDrug", "Drugs")">Dashboard</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="@Url.Action("ViewDrug", "HospitalMaster", new { DrugId = 0 })">New </a></li>
+                                            <li><a href="@Url.Action("ViewDrug", "Drugs", new { DrugId = 0 })">New </a></li>
                                         </ul>
                                     </li>
                                     <li class="divider"></li>
@@ -348,6 +348,15 @@
                                             <li><a href="@Url.Action("ViewAllBed", "HospitalMaster")">Dashboard</a></li>
                                             <li class="divider"></li>
                                             <li><a href="@Url.Action("ViewBed", "HospitalMaster", new { BedId = 0 })">New </a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tax Master</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="@Url.Action("Index", "Tax")">Dashboard</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="@Url.Action("ViewTax", "Tax", new { id = 0 })">New </a></li>
                                         </ul>
                                     </li>
                                 </ul>

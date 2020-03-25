@@ -23,13 +23,13 @@
         </div>
     </div>
 
-    <hr/>
+    <hr />
     @if (!string.IsNullOrEmpty(Model.QrCodeBase64))
     {
         <div class="row">
             <div class="col-sm-7 col-md-7 col-lg-7 text-right">
                 <div id="canvasElement">
-                    <img alt="qrCode" id="imgQrCode" src="@Model.QrCodeBase64"/>
+                    <img alt="qrCode" id="imgQrCode" src="@Model.QrCodeBase64" />
                 </div>
             </div>
 
@@ -109,7 +109,14 @@
                 @Html.TextBoxFor(m => m.PATIENTEMAILID, new { @class = "form-control" })
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Patient Id
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.CUSTOMID, new { @class = "form-control", required = "required" })
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <a href="@Url.Action("ViewAllPatient", "Patient")" class="btn btn-warning">
@@ -136,7 +143,7 @@
             </div>
         </div>
         <div class="row">
-            <hr/>
+            <hr />
         </div>
     }
 </div>

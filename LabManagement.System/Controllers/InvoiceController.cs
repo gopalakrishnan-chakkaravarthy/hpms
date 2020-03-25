@@ -1,4 +1,5 @@
 ﻿using Lab.Management.Common;
+using Lab.Management.Engine.Enum;
 using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
 using LabManagement.System.Common;
@@ -323,7 +324,7 @@ namespace LabManagement.System.Controllers
       
         public ActionResult ViewInvestigationReport(int ReportId, string viewMessage = "")
         {
-            var patientList = _objIPatient.GetAllPatient("IN");
+            var patientList = _objIPatient.GetAllPatient(QueryFilterAttribute.none,"","IN");
             ViewBag.PatientList = patientList.GetInPatientDropdowList();
             var getInvestigationReport = _objIInvoice.GetInvestigationReportDetailsById(ReportId);
             ViewBag.Message = viewMessage;
