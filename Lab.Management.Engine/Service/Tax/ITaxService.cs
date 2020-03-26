@@ -1,4 +1,4 @@
-﻿using Lab.Management.Engine.Enum;
+﻿using Lab.Management.Engine.Models;
 using Lab.Management.Entities;
 using System.Collections.Generic;
 
@@ -9,7 +9,7 @@ namespace Lab.Management.Engine.Service.Tax
         bool Save(lmsTaxMaster entity);
 
         IEnumerable<lmsTaxMaster> GetAll();
-
+        IList<DropDown> GetTaxList();
         lmsTaxMaster Get(int id);
         int GetIdByText(string taxName);
 

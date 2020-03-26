@@ -6,6 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var transactionType = ViewBag.TransactionType as string;
     var message = transactionType.GetTransactionMessage();
+    var taxDdl = ViewBag.TaxDdl as IEnumerable<SelectListItem>;
 }
 
 @if (!string.IsNullOrEmpty(message))
@@ -86,7 +87,7 @@
                 </fieldset>
 
             </div>
-            @*@if (Model.DRUGID > 0)
+            @if (Model.DRUGID > 0)
             {
                 <div class="row">
                     <div class="col-sm-5 col-md-5 col-lg-5">
@@ -95,19 +96,29 @@
                             <div class="row">
                                 <div class="col-sm-11 col-md-11 col-lg-11">
                                     <div class="input-group ">
-                                        @Html.TextBoxFor(m => m.VENDORNAME, new { @placeholder = "Tax Name", @class = "form-control", required = "required" })<br><br>
-                                        <div class="input-group-btn lms-tax-btn">
-                                            <button type="button" class="btn btn-secondary">
+                                        <select class="selectpicker" data-live-search="true" id="taxDdl">
+                                            @foreach (var dropdown in taxDdl)
+                                            {
+                                                <option data-tokens="@dropdown.Text" value="@dropdown.Value">@dropdown.Text</option>
+                                            }
+                                        </select>
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-secondary" id="btnAddTax">
                                                 <i class="glyphicon glyphicon-plus"> </i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-10 col-md-10 col-lg-10">
+                                    <div id="drugTaxGrid"></div>
+                                </div>
+                            </div>
                         </fieldset>
                     </div>
                 </div>
-            }*@
+            }
 
         </div>
         <div class="row">
@@ -132,11 +143,94 @@
             </div>
         </div>
     </div>
+
+
 }
 @section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {
             $('#MANUFACTUREDATE').datepicker({ format: 'dd/mm/yyyy' });
             $('#EXPIRYDATE').datepicker({ format: 'dd/mm/yyyy' });
+
+            $("#btnAddTax").on('click', (function () {
+                debugger;
+                var drugId = '@Model.DRUGID';
+                var taxId = $('#taxDdl option:selected').val();
+                 $("#btnAddTax").attr("disabled", true);
+                validateTaxExists(drugId,taxId);
+            }));
+            function validateTaxExists(drugId, taxId) {
+                 $.ajax({
+                    url: '@Url.Action("IsExists", "DrugTax")',
+                    type: "GET",
+                    data: { "drugId": drugId, "taxId": taxId },
+                     success: function (result) {
+                         $("#btnAddTax").removeAttr("disabled");
+                         if (result === false) {
+                             saveTaxDetails(drugId, taxId);
+                         }
+                         else {
+                               alert("Already tax mapped to the item,please choose some other.");
+                         }
+
+
+                    },
+                    error: function () {
+                         $("#btnAddTax").removeAttr("disabled");
+                        alert("Unable to add tax");
+                    }
+                });
+            }
+            function saveTaxDetails(drugId, taxId) {
+                var postData = { "DrugId":drugId,"TaxId":taxId};
+                    $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Edit","DrugTax")",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(postData),
+                    success: function (data) {
+                        $('#drugTaxGrid').html(data);
+                    },
+                    failure: function (errMsg) {
+                        alert('failure' + errMsg);
+                    }
+                });
+            }
+            
+            function hasGridDataExists() {
+                var drugId = '@Model.DRUGID';
+                if (drugId == 0 || drugId == '0') {
+                    return;
+                }
+                 $.ajax({
+                    url: '@Url.Action("HasDataExists", "DrugTax")',
+                    type: "GET",
+                    data: { "drugId": drugId },
+                     success: function (result) {
+                          if (result === true) {
+                             loadTaxGridDataOnInit(drugId);
+                         }
+                    },
+                    error: function () {
+
+                        alert("Unable to load tax details");
+                    }
+                });
+            }
+            function loadTaxGridDataOnInit(drugId) {
+                 $.ajax({
+                    url: '@Url.Action("Index", "DrugTax")',
+                    type: "GET",
+                    data: { "drugId": drugId },
+                     success: function (data) {
+                           $('#drugTaxGrid').html(data);
+                    },
+                    error: function () {
+
+                        alert("Unable to load tax details");
+                    }
+                });
+            }
+            hasGridDataExists();
         });</script>
 }

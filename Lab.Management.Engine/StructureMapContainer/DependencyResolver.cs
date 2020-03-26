@@ -39,8 +39,9 @@ namespace Lab.Management.Engine
                 x.For<ITaxService>().Use<TaxService>();
                 x.For<IDrugDetailsRepository>().Use<DrugDetailsRepository>();
                 x.For<IDrugDetailService>().Use<DrugDetailService>();
+                x.For<ITaxRepository>().Use<TaxRepository>();
+                x.For<IDrugTaxService>().Use<DrugTaxService>();
                 
-
 
             });
         }

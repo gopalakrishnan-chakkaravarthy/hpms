@@ -157,6 +157,7 @@
     <Compile Include="Controllers\AppErrorController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DrugsController.cs" />
+    <Compile Include="Controllers\DrugTaxController.cs" />
     <Compile Include="Controllers\HospitalMasterController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
@@ -173,7 +174,6 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ErrorModel.cs" />
-    <Compile Include="Models\GlobalModels.cs" />
     <Compile Include="Models\LaboratoryResultGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -700,6 +700,7 @@
     <Content Include="Views\Admin\ViewDrugFrequency.cshtml" />
     <Content Include="Views\Drugs\ViewDrug.cshtml" />
     <Content Include="Views\Drugs\ViewAllDrug.cshtml" />
+    <Content Include="Views\DrugTax\_Index.cshtml" />
     <None Include="Views\Patient\_ViewPatientHistory.cshtml" />
     <Content Include="Views\Reports\ViewSurgeryNotes.cshtml" />
     <Content Include="Views\Reports\ViewAllSurgeryNotes.cshtml" />

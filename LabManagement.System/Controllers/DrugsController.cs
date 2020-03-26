@@ -1,8 +1,10 @@
 ﻿using Lab.Management.Common;
 using Lab.Management.Engine.Service;
+using Lab.Management.Engine.Service.Tax;
 using Lab.Management.Entities;
 using Lab.Management.Utils.QrCode;
 using LabManagement.System.Enums;
+using LabManagement.System.Common;
 using System;
 using System.Web.Mvc;
 
@@ -11,20 +13,25 @@ namespace LabManagement.System.Controllers
     public class DrugsController : Controller
     {
         private readonly IHospitalMaster _objIHospitalMaster;
-        public DrugsController(IHospitalMaster objIHospitalMaster)
+        private readonly ITaxService taxService;
+        public DrugsController(IHospitalMaster objIHospitalMaster,
+            ITaxService taxService)
         {
             _objIHospitalMaster = objIHospitalMaster;
+            this.taxService = taxService;
         }
 
-        public ActionResult ViewDrug(int DrugId, string transactionType)
+        public ActionResult ViewDrug(int DrugId, string transactionType="")
         {
             var getDrug = _objIHospitalMaster.GetDrugDetailsById(DrugId);
             getDrug.OLDORDERCOUNT = getDrug.ORDERCOUNT;
+            var taxDdl = taxService.GetTaxList();
+            ViewBag.TaxDdl = taxDdl.GetDropDownList("Key", "Value");
             ViewBag.transactionType = transactionType;
             return View(getDrug);
         }
 
-        public ActionResult ViewAllDrug(string transactionType)
+        public ActionResult ViewAllDrug(string transactionType = "")
         {
             var getAll = _objIHospitalMaster.GetAllDrug();
             ViewBag.transactionType = transactionType;

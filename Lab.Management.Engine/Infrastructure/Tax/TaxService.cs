@@ -1,4 +1,5 @@
-﻿using Lab.Management.Engine.QueryBuilder;
+﻿using Lab.Management.Engine.Models;
+using Lab.Management.Engine.QueryBuilder;
 using Lab.Management.Engine.Reporsitory.Interface;
 using Lab.Management.Engine.Service.Tax;
 using Lab.Management.Entities;
@@ -17,9 +18,18 @@ namespace Lab.Management.Engine.Infrastructure.Tax
         }
         public IEnumerable<lmsTaxMaster> GetAll()
         {
-            return taxRepository.GetAll();
+            return taxRepository.GetAll().ToList();
         }
-
+        public IList<DropDown> GetTaxList()
+        {
+            var allText = taxRepository.GetAll().Where(x => x.ISACTIVE.HasValue && x.ISACTIVE.Value).ToList();
+            if(!allText.Any())
+            {
+                return new List<DropDown>();
+            }
+            var ddlTax = allText.Select(x => new DropDown { Key = x.TAXID.ToString(), Value = $"{x.TAXNAME} - {x.PERCENTAGE}" });
+            return ddlTax.ToList();
+        }
         public lmsTaxMaster Get(int id)
         {
             if(id==0)

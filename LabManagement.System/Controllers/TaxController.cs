@@ -28,6 +28,7 @@ namespace LabManagement.System.Controllers
         [HttpPost]
         public ActionResult Edit(lmsTaxMaster entity)
         {
+            entity.ISACTIVE = entity.IsActiveTax;
             taxService.Save(entity);
             var id = entity.TAXID == 0 ? taxService.GetIdByText(entity.TAXNAME) : entity.TAXID;
             return RedirectToAction("ViewTax", new { id , transactionType = nameof(TransactionType.Save) });
