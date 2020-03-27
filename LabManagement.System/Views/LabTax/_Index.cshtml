@@ -1,0 +1,55 @@
+﻿@using Lab.Management.Engine.Models;
+@model IEnumerable<LabTaxResponse>
+@if (Model.Count() > 0)
+{
+    <table id="allLabTax" class=" dataTable table table-striped table-bordered dataTable no-footer">
+        <thead>
+            <tr>
+                <td>Available Tax</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>
+                        @obj.Name
+                    </td>
+                    <td>
+
+                        <button class="btn btn-danger btn-sm btn-drug-tax" type="button" id="deleteDrugTax" data-prop="@string.Format("{0}-{1}", obj.LTaxId, obj.TestId)">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </button>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+      $(".btn-drug-tax").on('click', (function () {
+                var testTaxId = $(this).attr('data-prop');
+                var ids = testTaxId.split('-');
+                var lTaxId = ids[0];
+                var testId = ids[1];
+                 $.ajax({
+                    url: '@Url.Action("Remove", "LabTax")',
+                    type: "GET",
+                    data: { "lTaxId": lTaxId, "testId": testId },
+                     success: function (data) {
+                           $('#labTaxGrid').html(data);
+                    },
+                    error: function () {
+
+                        alert("Unable to add remove tax,as the tax can be used in multiple test");
+                    }
+                });
+            }));
+    });
+
+</script>

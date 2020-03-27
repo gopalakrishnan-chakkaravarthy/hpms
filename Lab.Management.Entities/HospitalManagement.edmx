@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LabManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LabManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="lmsBeds">
           <Key>
             <PropertyRef Name="BEDID" />
@@ -320,6 +320,7 @@
           <Property Name="ITEMCOST" Type="float" />
           <Property Name="CREATEDATE" Type="datetime" />
           <Property Name="TESTRESULT" Type="varchar" MaxLength="100" />
+          <Property Name="TAXAMOUNT" Type="float" />
         </EntityType>
         <EntityType Name="lmsLabourNotes">
           <Key>
@@ -333,6 +334,14 @@
           <Property Name="LABOURNOTES" Type="nvarchar(max)" />
           <Property Name="TREATMENT" Type="nvarchar(max)" />
           <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="lmsLabTax">
+          <Key>
+            <PropertyRef Name="LTAXID" />
+          </Key>
+          <Property Name="LTAXID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TESTID" Type="int" />
+          <Property Name="TAXID" Type="int" />
         </EntityType>
         <EntityType Name="lmsLoginRegistration">
           <Key>
@@ -377,6 +386,7 @@
           <Property Name="QUANTITY" Type="int" />
           <Property Name="ITEMCOST" Type="float" />
           <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="TAXAMOUNT" Type="float" />
         </EntityType>
         <EntityType Name="lmsMedicalTestFor">
           <Key>
@@ -961,6 +971,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__lmsLabTax__TAXID__047AA831">
+          <End Role="lmsTaxMaster" Type="Self.lmsTaxMaster" Multiplicity="0..1" />
+          <End Role="lmsLabTax" Type="Self.lmsLabTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsTaxMaster">
+              <PropertyRef Name="TAXID" />
+            </Principal>
+            <Dependent Role="lmsLabTax">
+              <PropertyRef Name="TAXID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lmsLabTax__TESTI__038683F8">
+          <End Role="lmsMedicalTests" Type="Self.lmsMedicalTests" Multiplicity="0..1" />
+          <End Role="lmsLabTax" Type="Self.lmsLabTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsMedicalTests">
+              <PropertyRef Name="TESTID" />
+            </Principal>
+            <Dependent Role="lmsLabTax">
+              <PropertyRef Name="TESTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__lmsLoginR__CITYI__1EA48E88">
           <End Role="lmsCityMaster" Type="Self.lmsCityMaster" Multiplicity="0..1" />
           <End Role="lmsLoginRegistration" Type="Self.lmsLoginRegistration" Multiplicity="*" />
@@ -1375,6 +1409,7 @@
           <EntitySet Name="lmsLaboratoryBilling" EntityType="Self.lmsLaboratoryBilling" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsLaboratoryBillingDetails" EntityType="Self.lmsLaboratoryBillingDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsLabourNotes" EntityType="Self.lmsLabourNotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lmsLabTax" EntityType="Self.lmsLabTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsLoginRegistration" EntityType="Self.lmsLoginRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsMedicalBilling" EntityType="Self.lmsMedicalBilling" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lmsMedicalBillingDetails" EntityType="Self.lmsMedicalBillingDetails" Schema="dbo" store:Type="Tables" />
@@ -1427,7 +1462,10 @@
             <End Role="lmsTaxMaster" EntitySet="lmsTaxMaster" />
             <End Role="lmsDrugDetails" EntitySet="lmsDrugDetails" />
           </AssociationSet>
-
+          <AssociationSet Name="FK__lmsDrugsT__DRUGI__7FB5F314" Association="Self.FK__lmsDrugsT__DRUGI__7FB5F314">
+            <End Role="lmsDrugs" EntitySet="lmsDrugs" />
+            <End Role="lmsDrugsTax" EntitySet="lmsDrugsTax" />
+          </AssociationSet>
           <AssociationSet Name="FK__lmsDrugsT__TAXID__00AA174D" Association="Self.FK__lmsDrugsT__TAXID__00AA174D">
             <End Role="lmsTaxMaster" EntitySet="lmsTaxMaster" />
             <End Role="lmsDrugsTax" EntitySet="lmsDrugsTax" />
@@ -1471,6 +1509,14 @@
           <AssociationSet Name="FK__lmsLabora__TESTI__18EBB532" Association="Self.FK__lmsLabora__TESTI__18EBB532">
             <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
             <End Role="lmsLaboratoryBillingDetails" EntitySet="lmsLaboratoryBillingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lmsLabTax__TAXID__047AA831" Association="Self.FK__lmsLabTax__TAXID__047AA831">
+            <End Role="lmsTaxMaster" EntitySet="lmsTaxMaster" />
+            <End Role="lmsLabTax" EntitySet="lmsLabTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lmsLabTax__TESTI__038683F8" Association="Self.FK__lmsLabTax__TESTI__038683F8">
+            <End Role="lmsMedicalTests" EntitySet="lmsMedicalTests" />
+            <End Role="lmsLabTax" EntitySet="lmsLabTax" />
           </AssociationSet>
           <AssociationSet Name="FK__lmsLoginR__CITYI__1EA48E88" Association="Self.FK__lmsLoginR__CITYI__1EA48E88">
             <End Role="lmsCityMaster" EntitySet="lmsCityMaster" />
@@ -1589,8 +1635,7 @@
             <End Role="lmsWards" EntitySet="lmsWards" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LabManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1787,6 +1832,7 @@
           <Property Name="TESTFORID" Type="Int32"/>
           <NavigationProperty Name="lmsMedicalTestFor" Relationship="LabManagementModel.FK__lmsMedica__TESTF__56E8E7AB" FromRole="lmsMedicalTest" ToRole="lmsMedicalTestFor"/>
           <NavigationProperty Name="lmsMedicalTestGroup" Relationship="LabManagementModel.FK__lmsMedica__GROUP__55F4C372" FromRole="lmsMedicalTest" ToRole="lmsMedicalTestGroup"/>
+          <NavigationProperty Name="lmsLabTaxes" Relationship="LabManagementModel.FK__lmsLabTax__TESTI__038683F8" FromRole="lmsMedicalTest" ToRole="lmsLabTax" />
         </EntityType>
         <EntityType Name="lmsPatientRegistration">
           <Key>
@@ -2259,34 +2305,34 @@
             <Parameter Name="SPLITBY" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_DeleteDrugs">
-            <Parameter Name="DrugIds" Mode="In" Type="String" />
+          <Parameter Name="DrugIds" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_DeleteLaboratoryBilling">
-            <Parameter Name="TESTIds" Mode="In" Type="String" />
+          <Parameter Name="TESTIds" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_DeleteMedicalBilling">
-            <Parameter Name="DrugIds" Mode="In" Type="String" />
+          <Parameter Name="DrugIds" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetDrugDdl" ReturnType="Collection(LabManagementModel.usp_GetDrugDdl_Result)"/>
           <FunctionImport Name="usp_GetDrugStocks" ReturnType="Collection(LabManagementModel.usp_GetDrugStocks_Result)"/>
           <FunctionImport Name="usp_GetExpiryDrugsByDays" ReturnType="Collection(LabManagementModel.usp_GetExpiryDrugsByDays_Result)">
-            <Parameter Name="Days" Mode="In" Type="Int32" />
+          <Parameter Name="Days" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="usp_GetInPatientDetails" ReturnType="Collection(LabManagementModel.usp_GetInPatientDetails_Result)">
-            <Parameter Name="filterDate" Mode="In" Type="String" />
+          <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetMedicalBillsByDate" ReturnType="Collection(LabManagementModel.usp_GetMedicalBillsByDate_Result)">
-            <Parameter Name="filterDate" Mode="In" Type="String" />
+          <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetMedicalProfitLoss" ReturnType="Collection(LabManagementModel.usp_GetMedicalProfitLoss_Result)">
-            <Parameter Name="filterDate" Mode="In" Type="String" />
+          <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetOutPatients" ReturnType="Collection(LabManagementModel.usp_GetOutPatients_Result)">
-            <Parameter Name="filterDate" Mode="In" Type="String" />
+          <Parameter Name="filterDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_GetPatientDdlForBilling" ReturnType="Collection(LabManagementModel.usp_GetPatientDdlForBilling_Result)"/>
           <FunctionImport Name="usp_ValidateUser" ReturnType="Collection(LabManagementModel.usp_ValidateUser_Result)">
-            <Parameter Name="userEmail" Mode="In" Type="String" />
+          <Parameter Name="userEmail" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="lmsGeneralDischargeSummaries" EntityType="LabManagementModel.lmsGeneralDischargeSummary"/>
 
@@ -2389,6 +2435,15 @@
             <End Role="lmsTaxMaster" EntitySet="lmsTaxMasters" />
             <End Role="lmsDrugsTax" EntitySet="lmsDrugsTaxes" />
           </AssociationSet>
+          <EntitySet Name="lmsLabTaxes" EntityType="LabManagementModel.lmsLabTax" />
+          <AssociationSet Name="FK__lmsLabTax__TAXID__047AA831" Association="LabManagementModel.FK__lmsLabTax__TAXID__047AA831">
+            <End Role="lmsTaxMaster" EntitySet="lmsTaxMasters" />
+            <End Role="lmsLabTax" EntitySet="lmsLabTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lmsLabTax__TESTI__038683F8" Association="LabManagementModel.FK__lmsLabTax__TESTI__038683F8">
+            <End Role="lmsMedicalTest" EntitySet="lmsMedicalTests" />
+            <End Role="lmsLabTax" EntitySet="lmsLabTaxes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="lmsDischargeBill">
           <Key>
@@ -2489,6 +2544,7 @@
           <Property Name="TESTRESULT" Type="String" MaxLength="100" FixedLength="false" Unicode="false"/>
           <NavigationProperty Name="lmsLaboratoryBilling" Relationship="LabManagementModel.FK__lmsLabora__BILLI__71D1E811" FromRole="lmsLaboratoryBillingDetail" ToRole="lmsLaboratoryBilling"/>
           <NavigationProperty Name="lmsMedicalTest" Relationship="LabManagementModel.FK__lmsLabora__TESTI__72C60C4A" FromRole="lmsLaboratoryBillingDetail" ToRole="lmsMedicalTest"/>
+          <Property Name="TAXAMOUNT" Type="Double" />
         </EntityType>
         <EntityType Name="lmsMedicalBillingDetail">
           <Key>
@@ -2502,6 +2558,7 @@
           <Property Name="CREATEDATE" Type="DateTime" Precision="3"/>
           <NavigationProperty Name="lmsDrug" Relationship="LabManagementModel.FK__lmsMedica__DRUGI__6E01572D" FromRole="lmsMedicalBillingDetail" ToRole="lmsDrug"/>
           <NavigationProperty Name="lmsMedicalBilling" Relationship="LabManagementModel.FK__lmsMedica__BILLI__6D0D32F4" FromRole="lmsMedicalBillingDetail" ToRole="lmsMedicalBilling"/>
+          <Property Name="TAXAMOUNT" Type="Double" />
         </EntityType>
 
         <EntityType Name="lmsPatientDischargeSummary">
@@ -3302,6 +3359,7 @@
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="lmsDrugDetails" Relationship="LabManagementModel.FK__lmsDrugDe__TAXID__7BE56230" FromRole="lmsTaxMaster" ToRole="lmsDrugDetail" />
           <NavigationProperty Name="lmsDrugsTaxes" Relationship="LabManagementModel.FK__lmsDrugsT__TAXID__00AA174D" FromRole="lmsTaxMaster" ToRole="lmsDrugsTax" />
+          <NavigationProperty Name="lmsLabTaxes" Relationship="LabManagementModel.FK__lmsLabTax__TAXID__047AA831" FromRole="lmsTaxMaster" ToRole="lmsLabTax" />
         </EntityType>
         <Association Name="FK__lmsDrugDe__TAXID__7BE56230">
           <End Type="LabManagementModel.lmsTaxMaster" Role="lmsTaxMaster" Multiplicity="0..1" />
@@ -3346,6 +3404,40 @@
             </Principal>
             <Dependent Role="lmsDrugsTax">
               <PropertyRef Name="TAXID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="lmsLabTax">
+          <Key>
+            <PropertyRef Name="LTAXID" />
+          </Key>
+          <Property Name="LTAXID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TESTID" Type="Int32" />
+          <Property Name="TAXID" Type="Int32" />
+          <NavigationProperty Name="lmsTaxMaster" Relationship="LabManagementModel.FK__lmsLabTax__TAXID__047AA831" FromRole="lmsLabTax" ToRole="lmsTaxMaster" />
+          <NavigationProperty Name="lmsMedicalTest" Relationship="LabManagementModel.FK__lmsLabTax__TESTI__038683F8" FromRole="lmsLabTax" ToRole="lmsMedicalTest" />
+        </EntityType>
+        <Association Name="FK__lmsLabTax__TAXID__047AA831">
+          <End Type="LabManagementModel.lmsTaxMaster" Role="lmsTaxMaster" Multiplicity="0..1" />
+          <End Type="LabManagementModel.lmsLabTax" Role="lmsLabTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsTaxMaster">
+              <PropertyRef Name="TAXID" />
+            </Principal>
+            <Dependent Role="lmsLabTax">
+              <PropertyRef Name="TAXID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lmsLabTax__TESTI__038683F8">
+          <End Type="LabManagementModel.lmsMedicalTest" Role="lmsMedicalTest" Multiplicity="0..1" />
+          <End Type="LabManagementModel.lmsLabTax" Role="lmsLabTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lmsMedicalTest">
+              <PropertyRef Name="TESTID" />
+            </Principal>
+            <Dependent Role="lmsLabTax">
+              <PropertyRef Name="TESTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3717,6 +3809,7 @@
           <EntitySetMapping Name="lmsLaboratoryBillingDetails">
             <EntityTypeMapping TypeName="LabManagementModel.lmsLaboratoryBillingDetail">
               <MappingFragment StoreEntitySet="lmsLaboratoryBillingDetails">
+                <ScalarProperty Name="TAXAMOUNT" ColumnName="TAXAMOUNT" />
                 <ScalarProperty Name="TESTRESULT" ColumnName="TESTRESULT"/>
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE"/>
                 <ScalarProperty Name="ITEMCOST" ColumnName="ITEMCOST"/>
@@ -3729,6 +3822,7 @@
           <EntitySetMapping Name="lmsMedicalBillingDetails">
             <EntityTypeMapping TypeName="LabManagementModel.lmsMedicalBillingDetail">
               <MappingFragment StoreEntitySet="lmsMedicalBillingDetails">
+                <ScalarProperty Name="TAXAMOUNT" ColumnName="TAXAMOUNT" />
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE"/>
                 <ScalarProperty Name="ITEMCOST" ColumnName="ITEMCOST"/>
                 <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY"/>
@@ -4234,6 +4328,15 @@
                 <ScalarProperty Name="TAXID" ColumnName="TAXID" />
                 <ScalarProperty Name="DRUGID" ColumnName="DRUGID" />
                 <ScalarProperty Name="DTAXID" ColumnName="DTAXID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lmsLabTaxes">
+            <EntityTypeMapping TypeName="LabManagementModel.lmsLabTax">
+              <MappingFragment StoreEntitySet="lmsLabTax">
+                <ScalarProperty Name="TAXID" ColumnName="TAXID" />
+                <ScalarProperty Name="TESTID" ColumnName="TESTID" />
+                <ScalarProperty Name="LTAXID" ColumnName="LTAXID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

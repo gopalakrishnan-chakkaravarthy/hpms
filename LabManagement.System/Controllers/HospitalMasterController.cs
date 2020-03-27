@@ -1,7 +1,6 @@
 ﻿using Lab.Management.Common;
 using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
-using Lab.Management.Utils.QrCode;
 using System;
 using System.IO;
 using System.Linq;
@@ -17,49 +16,7 @@ namespace LabManagement.System.Controllers
         {
             _objIHospitalMaster = objIHospitalMaster;
         }
-        public ActionResult ViewMedicalTest(int MedicalTestId, string viewMessage = "")
-        {
-            var getMedicalTest = _objIHospitalMaster.GetMedicalTestDetailsById(MedicalTestId);
-            var testFor = _objIHospitalMaster.GetAllMedicalTestFor();
-            if (testFor != null)
-            {
-                getMedicalTest.TestForForDdl = new SelectList(testFor, "TESTFORID", "TESTFOR");
-            }
-            var testGroup = _objIHospitalMaster.GetAllMedicalTestGroup();
-            if (testGroup != null)
-            {
-                getMedicalTest.GroupForDdl = new SelectList(testGroup, "GROUPID", "GROUPNAME");
-            }
-            if (MedicalTestId > 0)
-            {
-                getMedicalTest.SelectedGroup = getMedicalTest.GROUPID.HasValue ? getMedicalTest.GROUPID.Value : 0;
-                getMedicalTest.SelectedTestFor = getMedicalTest.TESTFORID.HasValue ? getMedicalTest.TESTFORID.Value : 0;
-            }
-            ViewBag.Message = viewMessage;
-            return View(getMedicalTest);
-        }
-
-        public ActionResult ViewAllMedicalTest(string viewMessage = "")
-        {
-            var getAll = _objIHospitalMaster.GetAllMedicalTest();
-            ViewBag.Message = viewMessage;
-            return View(getAll);
-        }
-
-        [HttpPost]
-        public ActionResult EditMedicalTest(lmsMedicalTest objMedicalTestMaster)
-        {
-            objMedicalTestMaster.GROUPID = objMedicalTestMaster.SelectedGroup;
-            objMedicalTestMaster.TESTFORID = objMedicalTestMaster.SelectedTestFor;
-            var saveMedicalTestDetails = _objIHospitalMaster.SaveMedicalTest(objMedicalTestMaster);
-            return RedirectToAction("ViewMedicalTest", new { MedicalTestId = saveMedicalTestDetails, viewMessage = "MedicalTest Details Saved Successfully" });
-        }
-
-        public ActionResult DeleteMedicalTest(int MedicalTestId)
-        {
-            var deletMedicalTest = _objIHospitalMaster.DeleteMedicalTest(MedicalTestId);
-            return RedirectToAction("ViewAllMedicalTest", new { viewMessage = "MedicalTest Detail Deleted Successfully" });
-        }
+   
 
         public ActionResult ViewScan(int ScanId, string viewMessage = "")
         {
@@ -273,60 +230,5 @@ namespace LabManagement.System.Controllers
             return RedirectToAction("ViewAllWard", new { viewMessage = "Ward Detail Deleted Successfully" });
         }
 
-        public ActionResult ViewMedicalTestFor(int id, string viewMessage = "")
-        {
-            var result = _objIHospitalMaster.GetMedicalTestForById(id);
-
-            ViewBag.Message = viewMessage;
-            return View(result);
-        }
-
-        public ActionResult ViewAllMedicalTestFor(string viewMessage = "")
-        {
-            var getAll = _objIHospitalMaster.GetAllMedicalTestFor();
-            ViewBag.Message = viewMessage;
-            return View(getAll);
-        }
-
-        [HttpPost]
-        public ActionResult EditMedicalTestFor(lmsMedicalTestFor saveData)
-        {
-            var result = _objIHospitalMaster.SaveMedicalTestFor(saveData);
-            return RedirectToAction("ViewMedicalTestFor", new { id = result, viewMessage = "Test For Saved Successfully" });
-        }
-
-        public ActionResult DeleteMedicalTestFor(int id)
-        {
-            var result = _objIHospitalMaster.DeleteMedicalTestFor(id);
-            return RedirectToAction("ViewAllMedicalTestFor", new { viewMessage = "Test For Deleted Successfully" });
-        }
-
-        public ActionResult ViewMedicalTestGroup(int Id, string viewMessage = "")
-        {
-            var result = _objIHospitalMaster.GetMedicalGroupById(Id);
-
-            ViewBag.Message = viewMessage;
-            return View(result);
-        }
-
-        public ActionResult ViewAllMedicalTestGroup(string viewMessage = "")
-        {
-            var getAll = _objIHospitalMaster.GetAllMedicalTestGroup();
-            ViewBag.Message = viewMessage;
-            return View(getAll);
-        }
-
-        [HttpPost]
-        public ActionResult EditMedicalTestGroup(lmsMedicalTestGroup saveData)
-        {
-            var result = _objIHospitalMaster.SaveMedicalTestGroup(saveData);
-            return RedirectToAction("ViewMedicalTestGroup", new { id = result, viewMessage = "Test Group Saved Successfully" });
-        }
-
-        public ActionResult DeleteMedicalTestGroup(int id)
-        {
-            var result = _objIHospitalMaster.DeleteMedicalTestGroup(id);
-            return RedirectToAction("ViewAllMedicalTestGroup", new { viewMessage = "Test Group Deleted Successfully" });
-        }
     }
 }

@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-10 col-md-10 col-lg-10 text-center">
                 @Html.Partial("_HospitalDetail")
-                <p><h4 class="text-info"><i class="glyphicon glyphicon-print"></i>Medical Bill</h4></p>
+                <p><h4 class="text-info">Medical Bill</h4></p>
             </div>
         </div>
         <div class="row">
@@ -36,7 +36,7 @@
                 </table>
             </div>
         </div>
-    
+
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <table class="table dataTable no-footer">
@@ -44,9 +44,11 @@
                         <tr>
                             <td class="text-strong">Particulars</td>
                             <td class="text-strong">Quantity</td>
-                            @*<td class="text-strong">Exp.Date</td>*@
                             <td class="text-right text-strong">
                                 Price
+                            </td>
+                            <td class="text-right text-strong">
+                                Tax
                             </td>
 
                         </tr>
@@ -62,11 +64,18 @@
                                 <td>
                                     @bill.QUANTITY
                                 </td>
-                                @*<td>
-                                        @bill.lmsDrug.EXPIRYDATE.ParseIstDate()
-                                    </td>*@
                                 <td class="text-right">
                                     @bill.ITEMCOST
+                                </td>
+                                <td class="text-right">
+                                    @if (bill.TAXAMOUNT.HasValue && bill.TAXAMOUNT.Value > 0)
+                                    {
+                                        <div>@bill.TAXAMOUNT</div>
+                                    }
+                                    else
+                                    {
+                                        <div>N/A</div>
+                                    }
                                 </td>
                             </tr>
                         }
@@ -99,7 +108,7 @@
 
                 </div>
             </div>
-           
+
 
         </div>
     </div>

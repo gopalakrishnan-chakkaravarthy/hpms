@@ -20,7 +20,7 @@
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
     <div class="row">
         <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Bill Details</h4>
-        <hr/>
+        <hr />
     </div>
     <div class="row">
         <div class="col-sm-2 col-md-2 col-lg-2">
@@ -53,6 +53,9 @@
                         <th>
                             Cost
                         </th>
+                        <th>
+                            Tax Amount
+                        </th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -76,10 +79,9 @@
                     <option data-tokens="@dropdown.Text" value="@dropdown.Value">@dropdown.Text</option>
                 }
             </select>
-            @*@Html.DropDownList("Testddl", Testddl, new { @Id = "IdTestddl", @class = "selectpicker" })*@
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
-            <input type="text" class="form-control" id="IdResult"/>
+            <input type="text" class="form-control" id="IdResult" />
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             <button class="btn btn-success" id="btnAddTest">
@@ -89,7 +91,7 @@
             </button>
         </div>
     </div>
-    <hr/>
+    <hr />
     <div class="row">
         <div class="col-sm-8 col-md-8 col-lg-8">
             <a href="@Url.Action("ViewLaboratoryBilling", "Invoice")" class="btn btn-warning">
@@ -118,7 +120,7 @@
         </div>
     </div>
     <div class="row">
-        <hr/>
+        <hr />
     </div>
 </div>
 @section Scripts {
@@ -185,7 +187,8 @@
                         var TestId = rowId.split('_');
                         if (TestId.length > 0) {
                             var cost = $("#txtPrice_" + TestId[1].replace(/"/g, '')).val();
-                            subTotal = subTotal + parseFloat(cost);
+                            var taxAmount = $("#txtTaxAmount_" + TestId[1].replace(/"/g, '')).val();
+                            subTotal = subTotal + parseFloat(cost)+ parseFloat(taxAmount);
 
                         }
                     }
@@ -202,7 +205,11 @@
                         if (TestId.length > 0) {
                             var result = $("#txtresult_" + TestId[1].replace(/"/g, '')).val();
                             var cost = $("#txtPrice_" + TestId[1].replace(/"/g, '')).val();
-                            TestDetails.push({ 'TESTID': TestId[1].replace(/"/g, ''), 'TESTRESULT': result, 'COST': cost });
+                             var taxAmount = $("#txtTaxAmount_" + TestId[1].replace(/"/g, '')).val();
+                            if (taxAmount === null || taxAmount === undefined) {
+                                taxAmount = 0;
+                            }
+                            TestDetails.push({ 'TESTID': TestId[1].replace(/"/g, ''), 'TESTRESULT': result, 'COST': cost,'TAXAMOUNT':taxAmount  });
 
                         }
                     }
@@ -229,7 +236,7 @@
                     type: "GET",
                     data: { "testId": TestId, "result": result },
                     success: function (resultData) {
-                        var newtableRow = '<tr id=tr_"' + TestId + '"><td>' + resultData.TESTNAME + '</td><td><input type="text" value="' + result + '" id="txtresult_' + TestId + '" style="color: black;" /></td><td><input type="text" value="' + resultData.SELLINGPRICE + '" id="txtPrice_' + TestId + '" style="color: black;;width:70%;" /><button id="btnRemove_' + TestId + '" name="btnRemove" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-minus"></i></button></td></tr>';
+                        var newtableRow = '<tr id=tr_"' + TestId + '"><td>' + resultData.TESTNAME + '</td><td><input type="text" value="' + result + '" id="txtresult_' + TestId + '" style="color: black;" readonly/></td><td><input type="text" value="' + resultData.SELLINGPRICE + '" id="txtPrice_' + TestId + '" style="color: black;;width:70%;" readonly/><td><input type="text" value="' + resultData.TAXAMOUNT + '" id="txtTaxAmount_' + TestId + '" style="color: black;width:40%;" readonly /><button id="btnRemove_' + TestId + '" name="btnRemove" type="button" class="btn btn-sm btn-danger lms-btn-bottom-margin"><i class="glyphicon glyphicon-minus"></i></button></td></tr>';
                         $('#tableTest tbody').append(newtableRow);
                         $('#btnAddTest').removeAttr('disabled');
                         alreadyAddedTests.push(TestId);

@@ -77,6 +77,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HospitalManagement.edmx</DependentUpon>
     </Compile>
+    <Compile Include="HospitalManagement1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="HospitalManagement1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,6 +142,9 @@
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsLabourNote.cs">
+      <DependentUpon>HospitalManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lmsLabTax.cs">
       <DependentUpon>HospitalManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="lmsLoginRegistration.cs">

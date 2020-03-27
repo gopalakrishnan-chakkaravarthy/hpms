@@ -1,12 +1,13 @@
 ﻿@using Lab.Management.Entities;
 @using LabManagement.System.Common;
-@model lmsDrug
+@model lmsMedicalTest
 @{
-    ViewBag.Title = "View Drug";
+    ViewBag.Title = "View MedicalTest";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var transactionType = ViewBag.TransactionType as string;
     var message = transactionType.GetTransactionMessage();
     var taxDdl = ViewBag.TaxDdl as IEnumerable<SelectListItem>;
+}
 }
 
 @if (!string.IsNullOrEmpty(message))
@@ -19,75 +20,50 @@
         </div>
     </div>
 }
-@using (Html.BeginForm("EditDrug", "Drugs", new { @id = "IdEdit", @name = "EditForm" }))
+
+
+@using (Html.BeginForm("EditMedicalTest", "MedicalTest", new { @id = "IdEdit", @name = "EditForm" }))
 {
     <h4 class="text-success">
         <i class="glyphicon glyphicon-hand-right"> </i>
-        @if (Model.DRUGID > 0)
+        @if (Model.TESTID > 0)
         {
-            <span> Model.DRUGNAME</span>
+            <span> @Model.TESTNAME</span>
         }
         else
         {
-            <span>New Drug</span>
+            <span>Medical Test</span>
         }
     </h4>
     <div class="roundCornerDiv">
         <div class="row ">
             <div class="col-sm-5 col-md-5 col-lg-5 ">
-                @if (!string.IsNullOrEmpty(Model.QrCodeBase64))
-                {
-                    <div class="row">
-                        <div class="col-sm-8 col-md-8 col-lg-8 pull-right">
-                            <img alt="qrCode" id="imgQrCode" src="@Model.QrCodeBase64" />
-                        </div>
-                    </div>
-                }
                 <fieldset class="lms-fs-border">
-                    <legend class="lms-fs-border">Drug Details</legend>
+                    <legend class="lms-fs-border">Test Details</legend>
                     <div class="control-group">
-                        <label for="DRUGNAME"> Item Name</label>
-                        @Html.TextBoxFor(m => m.DRUGNAME, new { @class = "form-control", required = "required" })<br><br>
-                        @Html.HiddenFor(x => x.DRUGID)
-                        @Html.HiddenFor(x => x.OLDORDERCOUNT)
-                        <label for="RackNumber"> Rack Number</label>
-                        @Html.TextBoxFor(m => m.RackNumber, new { @class = "form-control", required = "required" })
-                        <label for="BUYINGPRICE"> Drug Buying Price</label>
-                        @Html.TextBoxFor(m => m.BUYINGPRICE, new { @class = "form-control", required = "required" })
-                        <label for="SELLINGPRICE"> Drug Selling Price</label>
-                        @Html.TextBoxFor(m => m.SELLINGPRICE, new { @class = "form-control", required = "required" })
-                        <label for="ORDERCOUNT"> Total Order Quantity</label>
-                        @Html.TextBoxFor(m => m.ORDERCOUNT, new { @class = "form-control", required = "required" })
-                        <label for="MANUFACTUREDATE"> Drug Manufacture Date</label>
-                        @Html.TextBoxFor(m => m.MANUFACTUREDATE, new { @id = "MANUFACTUREDATE", @class = "form-control", required = "required" })
-                        <label for="EXPIRYDATE"> Drug Expiry Date</label>
-                        @Html.TextBoxFor(m => m.EXPIRYDATE, new { @id = "EXPIRYDATE", @class = "form-control", required = "required" })
+                        <label for="TESTNAME"> Test Name</label>
+                        @Html.TextBoxFor(m => m.TESTNAME, new { @class = "form-control", required = "required" })<br><br>
+                        @Html.HiddenFor(x => x.TESTID)
+                        <label for="SELLIGPRICE"> Test Price</label>
+                        @Html.TextBoxFor(m => m.SELLIGPRICE, new { @class = "form-control", required = "required" })
+                        <label for="NORMALVALUE"> Normal Value</label>
+                        @Html.TextBoxFor(m => m.NORMALVALUE, new { @class = "form-control", required = "required" })
+                        <label for="TestForForDdl">  Test For</label>
+                        @if (Model.TestForForDdl != null)
+                        {
+                            @Html.DropDownListFor(x => x.SelectedTestFor, Model.TestForForDdl, new { @class = "form-control selectpicker", @required = "required" })
+                        }
+                        <label for="GroupForDdl">  Group By</label>
+                        @if (Model.GroupForDdl != null)
+                        {
+                            @Html.DropDownListFor(x => x.SelectedGroup, Model.GroupForDdl, new { @class = "form-control selectpicker", @required = "required" })
+                        }
 
 
                     </div>
                 </fieldset>
-
-
-
-
             </div>
-            <div class="col-sm-5 col-md-5 col-mlg-5">
-                <fieldset class="lms-fs-border">
-                    <legend class="lms-fs-border">Vendor Details</legend>
-                    <div class="control-group">
-                        <label for="VENDORNAME">Vendor Name</label>
-                        @Html.TextBoxFor(m => m.VENDORNAME, new { @class = "form-control", required = "required" })<br><br>
-                        <label for="VENDORPHONE">Vendor Phone </label>
-                        @Html.TextBoxFor(m => m.VENDORPHONE, new { @class = "form-control", required = "required" })<br><br>
-                        <label for="VENDORADDRESS">Vendor Address </label>
-                        @Html.TextBoxFor(m => m.VENDORADDRESS, new { @class = "form-control" })<br><br>
-                        <label for="VENDORNOTES">Additional notes</label>
-                        @Html.TextBoxFor(m => m.VENDORNOTES, new { @class = "form-control" })<br><br>
-                    </div>
-                </fieldset>
-
-            </div>
-            @if (Model.DRUGID > 0)
+            @if (Model.TESTID > 0)
             {
                 <div class="row">
                     <div class="col-sm-5 col-md-5 col-lg-5">
@@ -112,7 +88,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-10 col-md-10 col-lg-10">
-                                    <div id="drugTaxGrid"></div>
+                                    <div id="labTaxGrid"></div>
                                 </div>
                             </div>
                         </fieldset>
@@ -123,7 +99,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 pull-right">
-                <a href="@Url.Action("ViewAllDrug", "Drugs")" class="btn btn-warning">
+                <a href="@Url.Action("ViewAllMedicalTest", "MedicalTest")" class="btn btn-warning">
                     <i class="glyphicon glyphicon-arrow-left">
                         Back
                     </i>
@@ -133,9 +109,9 @@
                         Save
                     </i>
                 </button>
-                @if (Model.DRUGID > 0)
+                @if (Model.TESTID > 0)
                 {
-                    <a href="@Url.Action("DeleteDrug", "Drugs", new { DrugId=Model.DRUGID})" class="btn btn-danger">
+                    <a href="@Url.Action("DeleteMedicalTest", "MedicalTest", new { MedicalTestId=Model.TESTID})" class="btn btn-danger">
                         <i class="glyphicon glyphicon-trash"></i>
                         Delete
                     </a>
@@ -150,24 +126,22 @@
 @section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#MANUFACTUREDATE').datepicker({ format: 'dd/mm/yyyy' });
-            $('#EXPIRYDATE').datepicker({ format: 'dd/mm/yyyy' });
 
             $("#btnAddTax").on('click', (function () {
-                var drugId = '@Model.DRUGID';
+                var testId = '@Model.TESTID';
                 var taxId = $('#taxDdl option:selected').val();
                  $("#btnAddTax").attr("disabled", true);
-                validateTaxExists(drugId,taxId);
+                validateTaxExists(testId,taxId);
             }));
-            function validateTaxExists(drugId, taxId) {
+            function validateTaxExists(testId, taxId) {
                  $.ajax({
-                    url: '@Url.Action("IsExists", "DrugTax")',
+                    url: '@Url.Action("IsExists", "LabTax")',
                     type: "GET",
-                    data: { "drugId": drugId, "taxId": taxId },
+                    data: { "testId": testId, "taxId": taxId },
                      success: function (result) {
                          $("#btnAddTax").removeAttr("disabled");
                          if (result === false) {
-                             saveTaxDetails(drugId, taxId);
+                             saveTaxDetails(testId, taxId);
                          }
                          else {
                                alert("Already tax mapped to the item,please choose some other.");
@@ -181,34 +155,34 @@
                     }
                 });
             }
-            function saveTaxDetails(drugId, taxId) {
-                var postData = { "DrugId":drugId,"TaxId":taxId};
+            function saveTaxDetails(testId, taxId) {
+                var postData = { "TestId":testId,"TaxId":taxId};
                     $.ajax({
                     type: "POST",
-                    url: "@Url.Action("Edit","DrugTax")",
+                    url: "@Url.Action("Edit","LabTax")",
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(postData),
                     success: function (data) {
-                        $('#drugTaxGrid').html(data);
+                        $('#labTaxGrid').html(data);
                     },
                     failure: function (errMsg) {
                         alert('failure' + errMsg);
                     }
                 });
             }
-            
+
             function hasGridDataExists() {
-                var drugId = '@Model.DRUGID';
-                if (drugId == 0 || drugId == '0') {
+                var testId = '@Model.TESTID';
+                if (testId == 0 || testId == '0') {
                     return;
                 }
                  $.ajax({
-                    url: '@Url.Action("HasDataExists", "DrugTax")',
+                    url: '@Url.Action("HasDataExists", "LabTax")',
                     type: "GET",
-                    data: { "drugId": drugId },
+                    data: { "testId": testId },
                      success: function (result) {
                           if (result === true) {
-                             loadTaxGridDataOnInit(drugId);
+                             loadTaxGridDataOnInit(testId);
                          }
                     },
                     error: function () {
@@ -217,13 +191,13 @@
                     }
                 });
             }
-            function loadTaxGridDataOnInit(drugId) {
+            function loadTaxGridDataOnInit(testId) {
                  $.ajax({
-                    url: '@Url.Action("Index", "DrugTax")',
+                    url: '@Url.Action("Index", "LabTax")',
                     type: "GET",
-                    data: { "drugId": drugId },
+                    data: { "testId": testId },
                      success: function (data) {
-                           $('#drugTaxGrid').html(data);
+                           $('#labTaxGrid').html(data);
                     },
                     error: function () {
 
@@ -234,3 +208,5 @@
             hasGridDataExists();
         });</script>
 }
+
+

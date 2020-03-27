@@ -25,6 +25,8 @@ public partial class lmsMedicalTest
 
         this.lmsLaboratoryBillingDetails = new HashSet<lmsLaboratoryBillingDetail>();
 
+        this.lmsLabTaxes = new HashSet<lmsLabTax>();
+
     }
 
 
@@ -57,6 +59,8 @@ public partial class lmsMedicalTest
     public virtual lmsMedicalTestFor lmsMedicalTestFor { get; set; }
 
     public virtual lmsMedicalTestGroup lmsMedicalTestGroup { get; set; }
+
+    public virtual ICollection<lmsLabTax> lmsLabTaxes { get; set; }
 
 }
 

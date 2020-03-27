@@ -20,7 +20,7 @@
 <div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
     <div class="row">
         <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> Bill Details</h4>
-        <hr/>
+        <hr />
     </div>
     <div class="col-sm-10 col-md-10 col-lg-10">
         <div class="row">
@@ -36,7 +36,7 @@
                 </select>
             </div>
         </div>
-        <hr/>
+        <hr />
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Bill Name
@@ -68,6 +68,9 @@
                             <th>
                                 Cost
                             </th>
+                            <th>
+                                Tax Amount
+                            </th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -91,12 +94,11 @@
                         <option data-tokens="@dropdown.Text" value="@dropdown.Value">@dropdown.Text</option>
                     }
                 </select>
-                @*@Html.DropDownList("drugddl", drugddl, new { @Id = "Iddrugddl", @class = "selectpicker" })*@
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
-                <input type="text" class="form-control" id="Idquantity"/>
+                <input type="number" class="form-control" id="Idquantity" />
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
                 <button class="btn btn-success" id="btnAddDrug">
@@ -106,7 +108,7 @@
                 </button>
             </div>
         </div>
-        <hr/>
+        <hr />
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <a href="@Url.Action("ViewAllMedicalBill", "Invoice")" class="btn btn-warning">
@@ -135,7 +137,7 @@
             </div>
         </div>
         <div class="row">
-            <hr/>
+            <hr />
         </div>
     </div>
 </div>
@@ -148,7 +150,9 @@
                 var patientddl = $('#Idpatientddl option:selected').text();
                 var indexStart = patientddl.indexOf('-') + 1;
                 var indexEnd = patientddl.lastIndexOf('(');
-                patientddl = patientddl.substring(indexStart, indexEnd);
+                if (indexStart > -1 && indexEnd > -1) {
+                  patientddl = patientddl.substring(indexStart, indexEnd);
+                }
                 $('#BILLNAME').val(patientddl);
 
             });
@@ -212,10 +216,11 @@
                     var tblRow = $(this)
                     var rowId = tblRow.length > 0 ? tblRow[0].id : '';
                     if (rowId != undefined && rowId !== "") {
-                        var TestId = rowId.split('_');
-                        if (TestId.length > 0) {
-                            var cost = $("#txtPrice_" + TestId[1].replace(/"/g, '')).val();
-                            subTotal = subTotal + parseFloat(cost);
+                        var drugId = rowId.split('_');
+                        if (drugId.length > 0) {
+                            var cost = $("#txtPrice_" + drugId[1].replace(/"/g, '')).val();
+                            var taxAmount = $("#txtTaxAmount_" + drugId[1].replace(/"/g, '')).val();
+                            subTotal = subTotal + parseFloat(cost) + parseFloat(taxAmount);
 
                         }
                     }
@@ -232,7 +237,11 @@
                         if (drugId.length > 0) {
                             var quantity = $("#txtQuantity_" + drugId[1].replace(/"/g, '')).val();
                             var cost = $("#txtPrice_" + drugId[1].replace(/"/g, '')).val();
-                            drugDetails.push({ 'DRUGID': drugId[1].replace(/"/g, ''), 'QUANTITY': quantity, 'COST': cost });
+                            var taxAmount = $("#txtTaxAmount_" + drugId[1].replace(/"/g, '')).val();
+                            if (taxAmount === null || taxAmount === undefined) {
+                                taxAmount = 0;
+                            }
+                            drugDetails.push({ 'DRUGID': drugId[1].replace(/"/g, ''), 'QUANTITY': quantity, 'COST': cost,'TAXAMOUNT':taxAmount });
 
                         }
                     }
@@ -258,7 +267,7 @@
                     type: "GET",
                     data: { "drugId": drugId, "quantity": quantity },
                     success: function (result) {
-                        var newtableRow = '<tr id=tr_"' + drugId + '"><td>' + result.DRUGNAME + '</td><td><input type="text" value="' + quantity + '" id="txtQuantity_' + drugId + '" style="color: black;" /></td><td><input type="text" value="' + result.SELLINGPRICE + '" id="txtPrice_' + drugId + '" style="color: black;width:70%;" /><button id="btnRemove_' + drugId + '" name="btnRemove" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-minus"></i></button></td></tr>';
+                        var newtableRow = '<tr id=tr_"' + drugId + '"><td>' + result.DRUGNAME + '</td><td><input type="text" value="' + quantity + '" id="txtQuantity_' + drugId + '" style="color: black;" readonly /></td><td><input type="text" value="' + result.SELLINGPRICE + '" id="txtPrice_' + drugId + '" style="color: black;width:70%;" readonly /><td><input type="text" value="' + result.TAXAMOUNT + '" id="txtTaxAmount_' + drugId + '" style="color: black;width:40%;" readonly /><button id="btnRemove_' + drugId + '" name="btnRemove" type="button" class="btn btn-sm btn-danger lms-btn-bottom-margin"><i class="glyphicon glyphicon-minus"></i></button></td></tr>';
                         $('#tableDrug tbody').append(newtableRow);
                         $('#btnAddDrug').removeAttr('disabled');
                         alreadyAddedDrugs.push(drugId);

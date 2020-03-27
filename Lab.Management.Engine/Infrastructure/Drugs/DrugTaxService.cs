@@ -20,9 +20,17 @@ namespace Lab.Management.Engine.Infrastructure.Drugs
             return drugTaxRepository.GetSingle(id);
         }
 
-        public IEnumerable<DrugTaxResponse> GetTaxForDrugs(int drugId)
+        public List<double?> GetTaxesPercentByDrugId(int drugId)
         {
             var allDrugTax = drugTaxRepository.GetAll().Where(x => x.DRUGID == drugId);
+            var allTaxes = allDrugTax.Select(x => x.lmsTaxMaster.PERCENTAGE).ToList();
+            return allTaxes;
+        }
+        public IEnumerable<DrugTaxResponse> GetTaxForDrugs(int drugId)
+        {
+            var allDrugTax = drugTaxRepository.GetAll().Where(x => x.DRUGID == drugId
+            
+            );
             if (!allDrugTax.Any())
             {
                 return new List<DrugTaxResponse>();

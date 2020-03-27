@@ -162,9 +162,7 @@
                     url: "@Url.Action("MultiDeleteBill")",
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(postData),
-                    //data: postData,
                     success: function (data) {
-                        debugger;
                         console.log('delete result' + data);
                         window.location.href = "ViewAllMedicalBill?viewMessage=Selected Rows Deleted Successfully&filterDate=" + formattedDate;
                     },

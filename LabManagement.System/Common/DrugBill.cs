@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace LabManagement.System.Common
 {
 
-    public class DrugPrice
+    public class DrugPrice : BaseTaxCalculator
     {
-        public double SELLINGPRICE { get; set; }
 
         public string DRUGNAME { get; set; }
-    }
-    public class TestPrice
-    {
-        public double SELLINGPRICE { get; set; }
-        public string TESTNAME { get; set; }
+        public DrugPrice(List<double?> taxValues) : base(taxValues)
+        {
+
+        }
     }
     public class DrugBill
     {
@@ -33,7 +28,7 @@ namespace LabManagement.System.Common
         public int DRUGID { get; set; }
         public int QUANTITY { get; set; }
         public double COST { get; set; }
-
+        public double TAXAMOUNT { get; set; }
 
     }
     public class TestBillDetails
@@ -41,6 +36,7 @@ namespace LabManagement.System.Common
         public int TESTID { get; set; }
         public string TESTRESULT { get; set; }
         public double COST { get; set; }
+        public double TAXAMOUNT { get; set; }
 
 
     }

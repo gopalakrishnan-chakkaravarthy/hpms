@@ -149,8 +149,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\BaseTaxCalculator.cs" />
     <Compile Include="Common\DrugBill.cs" />
     <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Common\TestPrice.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminDashboardController.cs" />
@@ -160,6 +162,8 @@
     <Compile Include="Controllers\DrugTaxController.cs" />
     <Compile Include="Controllers\HospitalMasterController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\LabTaxController.cs" />
+    <Compile Include="Controllers\MedicalTestController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\TaxController.cs" />
@@ -631,8 +635,6 @@
     <Content Include="Views\Admin\ViewAllUser.cshtml" />
     <Content Include="Views\Admin\ViewDisease.cshtml" />
     <Content Include="Views\Admin\ViewAllDisease.cshtml" />
-    <Content Include="Views\HospitalMaster\ViewMedicalTest.cshtml" />
-    <Content Include="Views\HospitalMaster\ViewAllMedicalTest.cshtml" />
     <Content Include="Views\HospitalMaster\ViewAllScan.cshtml" />
     <Content Include="Views\HospitalMaster\ViewScan.cshtml" />
     <Content Include="Views\HospitalMaster\ViewVendor.cshtml" />
@@ -681,10 +683,10 @@
     <Content Include="Views\Invoice\GenerateGynacDischargeSummary.cshtml" />
     <Content Include="Views\Invoice\ViewAllGynacDischargeSummary.cshtml" />
     <Content Include="Views\Admin\DataArchival.cshtml" />
-    <Content Include="Views\HospitalMaster\ViewMedicalTestFor.cshtml" />
-    <Content Include="Views\HospitalMaster\ViewAllMedicalTestFor.cshtml" />
-    <Content Include="Views\HospitalMaster\ViewAllMedicalTestGroup.cshtml" />
-    <Content Include="Views\HospitalMaster\ViewMedicalTestGroup.cshtml" />
+    <Content Include="Views\MedicalTest\ViewMedicalTestFor.cshtml" />
+    <Content Include="Views\MedicalTest\ViewAllMedicalTestFor.cshtml" />
+    <Content Include="Views\MedicalTest\ViewAllMedicalTestGroup.cshtml" />
+    <Content Include="Views\MedicalTest\ViewMedicalTestGroup.cshtml" />
     <Content Include="Views\Invoice\GenerateLaboratoryReport.cshtml" />
     <Content Include="Views\WebCam\ChangePhoto.cshtml" />
     <Content Include="Views\WebCam\Index.cshtml" />
@@ -701,6 +703,9 @@
     <Content Include="Views\Drugs\ViewDrug.cshtml" />
     <Content Include="Views\Drugs\ViewAllDrug.cshtml" />
     <Content Include="Views\DrugTax\_Index.cshtml" />
+    <Content Include="Views\LabTax\_Index.cshtml" />
+    <Content Include="Views\MedicalTest\ViewMedicalTest.cshtml" />
+    <Content Include="Views\MedicalTest\ViewAllMedicalTest.cshtml" />
     <None Include="Views\Patient\_ViewPatientHistory.cshtml" />
     <Content Include="Views\Reports\ViewSurgeryNotes.cshtml" />
     <Content Include="Views\Reports\ViewAllSurgeryNotes.cshtml" />

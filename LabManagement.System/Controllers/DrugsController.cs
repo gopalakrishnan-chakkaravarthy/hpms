@@ -27,14 +27,14 @@ namespace LabManagement.System.Controllers
             getDrug.OLDORDERCOUNT = getDrug.ORDERCOUNT;
             var taxDdl = taxService.GetTaxList();
             ViewBag.TaxDdl = taxDdl.GetDropDownList("Key", "Value");
-            ViewBag.transactionType = transactionType;
+            ViewBag.TransactionType = transactionType;
             return View(getDrug);
         }
 
         public ActionResult ViewAllDrug(string transactionType = "")
         {
             var getAll = _objIHospitalMaster.GetAllDrug();
-            ViewBag.transactionType = transactionType;
+            ViewBag.TransactionType = transactionType;
             return View(getAll);
         }
 

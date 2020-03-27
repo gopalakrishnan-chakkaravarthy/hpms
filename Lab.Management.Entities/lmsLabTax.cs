@@ -15,26 +15,18 @@ namespace Lab.Management.Entities
 using System;
     using System.Collections.Generic;
     
-public partial class lmsLaboratoryBillingDetail
+public partial class lmsLabTax
 {
 
-    public int BILLDETAILID { get; set; }
-
-    public Nullable<int> BILLID { get; set; }
+    public int LTAXID { get; set; }
 
     public Nullable<int> TESTID { get; set; }
 
-    public Nullable<double> ITEMCOST { get; set; }
-
-    public Nullable<System.DateTime> CREATEDATE { get; set; }
-
-    public string TESTRESULT { get; set; }
-
-    public Nullable<double> TAXAMOUNT { get; set; }
+    public Nullable<int> TAXID { get; set; }
 
 
 
-    public virtual lmsLaboratoryBilling lmsLaboratoryBilling { get; set; }
+    public virtual lmsTaxMaster lmsTaxMaster { get; set; }
 
     public virtual lmsMedicalTest lmsMedicalTest { get; set; }
 

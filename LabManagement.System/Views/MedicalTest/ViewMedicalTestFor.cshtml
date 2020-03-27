@@ -1,10 +1,12 @@
 ﻿@using Lab.Management.Entities;
+@using LabManagement.System.Common;
 
 @model lmsMedicalTestFor
 @{
     ViewBag.Title = "View Medical Test For";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var message = ViewBag.Message as string;
+    var transactionType = ViewBag.TransactionType as string;
+    var message = transactionType.GetTransactionMessage();
 }
 
 @if (!string.IsNullOrEmpty(message))
@@ -19,11 +21,11 @@
 }
 
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
-    @using (Html.BeginForm("EditMedicalTestFor", "HospitalMaster", new { @id = "IdEdit", @name = "EditForm" }))
+    @using (Html.BeginForm("EditMedicalTestFor", "MedicalTest", new { @id = "IdEdit", @name = "EditForm" }))
     {
         <div class="row">
             <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i> View Test For</h4>
-            <hr/>
+            <hr />
         </div>
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
@@ -34,11 +36,11 @@
                 @Html.HiddenFor(x => x.TESTFORID)
             </div>
         </div>
-        <hr/>
+        <hr />
         <div class="row">
 
             <div class="col-sm-8 col-md-8 col-lg-8">
-                <a href="@Url.Action("ViewAllMedicalTestFor", "HospitalMaster" )" class="btn btn-warning">
+                <a href="@Url.Action("ViewAllMedicalTestFor", "MedicalTest" )" class="btn btn-warning">
                     <i class="glyphicon glyphicon-arrow-left">
                         Back
                     </i>
@@ -49,7 +51,7 @@
                 </button>
                 @if (Model.TESTFORID > 0)
                 {
-                    <a href="@Url.Action("DeleteMedicalTestFor", "HospitalMaster" , new { id=@Model.TESTFORID })" class="btn btn-danger">
+                    <a href="@Url.Action("DeleteMedicalTestFor", "MedicalTest" , new { id=@Model.TESTFORID })" class="btn btn-danger">
                         <i class="glyphicon glyphicon-trash">
                             Delete
                         </i>
@@ -58,7 +60,7 @@
             </div>
         </div>
         <div class="row">
-            <hr/>
+            <hr />
         </div>
     }
 </div>

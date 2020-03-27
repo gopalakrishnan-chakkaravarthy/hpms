@@ -30,6 +30,8 @@ public partial class lmsMedicalBillingDetail
 
     public Nullable<System.DateTime> CREATEDATE { get; set; }
 
+    public Nullable<double> TAXAMOUNT { get; set; }
+
 
 
     public virtual lmsDrug lmsDrug { get; set; }

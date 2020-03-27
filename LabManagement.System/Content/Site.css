@@ -56,8 +56,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .roundCornerDiv .row {
     margin-left: 0px;
-    margin-bottom:1.6rem;
-    margin-top:1.4rem;
+    margin-bottom: 1.6rem;
+    margin-top: 1.4rem;
 }
 
 .roundCornerDiv::-webkit-scrollbar {
@@ -405,9 +405,10 @@ input[type="checkbox"] + label {
     font-weight: bold !important;
 }
 
-.lms-font-big{
-    font-size:2rem !important;
+.lms-font-big {
+    font-size: 2rem !important;
 }
+
 fieldset.lms-fs-border {
     border: 1px groove #ddd !important;
     padding: 0 1.4em 1.4em 1.4em !important;
@@ -421,9 +422,10 @@ legend.lms-fs-border {
     padding: 0 10px; /* To give a bit of padding on the left and right */
     border-bottom: none;
 }
-.lms-tax-btn{
-    padding-bottom:3rem !important;
-}
-.btn-drug-tax{
 
+.lms-btn-bottom-margin {
+    margin-bottom: 2rem !important;
+}
+
+.btn-drug-tax {
 }

@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-sm-10 col-md-10 col-lg-10 text-center">
                 @Html.Partial("_HospitalDetail")
-                <p><h4 class="text-info"><i class="glyphicon glyphicon-print"></i>Lab Bill</h4></p>
+                <p><h4 class="text-info">Lab Bill</h4></p>
             </div>
         </div>
         <div class="row">
@@ -42,20 +42,33 @@
                         <tr>
                             <td class="text-left text-strong">Particulars</td>
                             <td class="text-right text-strong">Price</td>
+                            <td class="text-right text-strong">
+                                Tax
+                            </td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var bill in Model.lmsLaboratoryBillingDetails)
                         {
-                            <tr>
-                                <td class="text-left ">
-                                    @bill.lmsMedicalTest.TESTNAME
-                                </td>
-                             
-                                <td class="text-right">
-                                    @bill.ITEMCOST
-                                </td>
-                            </tr>
+                        <tr>
+                            <td class="text-left ">
+                                @bill.lmsMedicalTest.TESTNAME
+                            </td>
+
+                            <td class="text-right">
+                                @bill.ITEMCOST
+                            </td>
+                            <td class="text-right">
+                                @if (bill.TAXAMOUNT.HasValue && bill.TAXAMOUNT.Value > 0)
+                                {
+                                    <div>@bill.TAXAMOUNT</div>
+                                }
+                                else
+                                {
+                                    <div>N/A</div>
+                                }
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>

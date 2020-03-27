@@ -118,6 +118,9 @@
         <EntityTypeShape EntityType="LabManagementModel.lmsDrugsTax" Width="1.5" PointX="24.625" PointY="16.875" />
         <AssociationConnector Association="LabManagementModel.FK__lmsDrugsT__DRUGI__7FB5F314" />
         <AssociationConnector Association="LabManagementModel.FK__lmsDrugsT__TAXID__00AA174D" />
+        <EntityTypeShape EntityType="LabManagementModel.lmsLabTax" Width="1.5" PointX="24.625" PointY="8.25" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsLabTax__TAXID__047AA831" />
+        <AssociationConnector Association="LabManagementModel.FK__lmsLabTax__TESTI__038683F8" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

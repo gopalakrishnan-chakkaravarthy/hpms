@@ -1,6 +1,8 @@
 ﻿using Lab.Management.Common;
 using Lab.Management.Engine.Enum;
 using Lab.Management.Engine.Service;
+using Lab.Management.Engine.Service.Drugs;
+using Lab.Management.Engine.Service.MedicalTest;
 using Lab.Management.Entities;
 using LabManagement.System.Common;
 using LabManagement.System.Models;
@@ -17,14 +19,21 @@ namespace LabManagement.System.Controllers
         private readonly IPatient _objIPatient;
         private readonly IHospitalMaster _objIHospitalMaster;
         private readonly IAdminOperations _adminOperations;
+        private readonly IDrugTaxService drugTaxService;
+        private readonly ILabTaxService labTaxService;
         public InvoiceController(IInvoice objIInvoice, IPatient objIPatient,
-            IHospitalMaster objIHospitalMaster, IAdminOperations adminOperations)
+            IHospitalMaster objIHospitalMaster, 
+            IAdminOperations adminOperations,
+            IDrugTaxService drugTaxService,
+            ILabTaxService labTaxService)
         {
             _objIInvoice = objIInvoice;
             _objIPatient = objIPatient;
             _objIHospitalMaster = objIHospitalMaster;
             _adminOperations = adminOperations;
-        }
+            this.drugTaxService=drugTaxService;
+            this.labTaxService = labTaxService;
+    }
 
         public ActionResult ViewMedicalBill(int MedicalBillId, string viewMessage = "")
         {
@@ -44,7 +53,8 @@ namespace LabManagement.System.Controllers
             medicalBilling.CONTACT = objDrugBill.CONTACT;
             medicalBilling.BILLDATE = DateTime.Now;
             medicalBilling.CREATEDDATE = DateTime.Now;
-            medicalBilling.BILLAMOUNT = objDrugBillDetails.Select(x => x.COST).Sum();
+            var totalTax = objDrugBillDetails.Select(x => x.TAXAMOUNT).Sum();
+            medicalBilling.BILLAMOUNT = objDrugBillDetails.Select(x => x.COST).Sum()+ totalTax;
             medicalBilling.BILLBY = LoginId.ToString();
             objDrugBillDetails.ForEach(x =>
             {
@@ -52,7 +62,8 @@ namespace LabManagement.System.Controllers
                 {
                     DRUGID = x.DRUGID,
                     QUANTITY = x.QUANTITY,
-                    ITEMCOST = x.COST
+                    ITEMCOST = x.COST,
+                    TAXAMOUNT=x.TAXAMOUNT
                 });
             });
 
@@ -75,11 +86,13 @@ namespace LabManagement.System.Controllers
         public ActionResult GetDrugDetailById(int drugId, int? quantity)
         {
             var drugInfo = _objIHospitalMaster.GetDrugDetailsById(drugId);
-            var resultIfo = new DrugPrice()
+            var allTaxes = drugTaxService.GetTaxesPercentByDrugId(drugId);
+            var resultIfo = new DrugPrice(allTaxes)
             {
                 DRUGNAME = drugInfo.DRUGNAME,
                 SELLINGPRICE = Math.Round((drugInfo.SELLINGPRICE.Value * (quantity == null || quantity == 0 ? 1 : quantity.Value)), 2)
             };
+            resultIfo.CalculateTax();
             return Json(resultIfo, JsonRequestBehavior.AllowGet);
         }
 
@@ -135,24 +148,26 @@ namespace LabManagement.System.Controllers
 
         public ActionResult SaveMedicalTestBillInfo(TestBill objTestBill, List<TestBillDetails> objTestBillDetails)
         {
-            var medicalBilling = _objIInvoice.GetLaboratoryBillingDetailsById(0);
-            medicalBilling.BILLNAME = objTestBill.BILLNAME;
-            medicalBilling.CONTACT = objTestBill.CONTACT;
-            medicalBilling.BILLDATE = DateTime.Now;
-            medicalBilling.CREATEDDATE = DateTime.Now;
-            medicalBilling.BILLBY = LoginId.ToString();
-            medicalBilling.BILLAMOUNT = objTestBillDetails.Select(x => x.COST).Sum();
+            var laboratoryBilling = _objIInvoice.GetLaboratoryBillingDetailsById(0);
+            laboratoryBilling.BILLNAME = objTestBill.BILLNAME;
+            laboratoryBilling.CONTACT = objTestBill.CONTACT;
+            laboratoryBilling.BILLDATE = DateTime.Now;
+            laboratoryBilling.CREATEDDATE = DateTime.Now;
+            laboratoryBilling.BILLBY = LoginId.ToString();
+            var totalTax = objTestBillDetails.Select(x => x.TAXAMOUNT).Sum();
+            laboratoryBilling.BILLAMOUNT = objTestBillDetails.Select(x => x.COST).Sum() + totalTax;
             objTestBillDetails.ForEach(x =>
             {
-                medicalBilling.lmsLaboratoryBillingDetails.Add(new lmsLaboratoryBillingDetail
+                laboratoryBilling.lmsLaboratoryBillingDetails.Add(new lmsLaboratoryBillingDetail
                 {
                     TESTID = x.TESTID,
                     ITEMCOST = x.COST,
-                    TESTRESULT = x.TESTRESULT
+                    TESTRESULT = x.TESTRESULT,
+                    TAXAMOUNT=x.TAXAMOUNT
                 });
             });
 
-            var saveLaboratoryBillingDetails = _objIInvoice.SaveLaboratoryBilling(medicalBilling);
+            var saveLaboratoryBillingDetails = _objIInvoice.SaveLaboratoryBilling(laboratoryBilling);
             return Json(saveLaboratoryBillingDetails, JsonRequestBehavior.AllowGet);
         }
 
@@ -160,11 +175,13 @@ namespace LabManagement.System.Controllers
         {
             var testInfo = _objIHospitalMaster.GetMedicalTestDetailsById(testId);
             var quantity = 1;
-            var resultIfo = new TestPrice()
+            var allTaxes = labTaxService.GetTaxesPercentByTestId(testId);
+            var resultIfo = new TestPrice(allTaxes)
             {
                 TESTNAME = testInfo.TESTNAME,
                 SELLINGPRICE = Math.Round((testInfo.SELLIGPRICE.Value * quantity), 2)
             };
+            resultIfo.CalculateTax();
             return Json(resultIfo, JsonRequestBehavior.AllowGet);
         }
 
