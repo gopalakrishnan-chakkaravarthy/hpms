@@ -253,7 +253,6 @@
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(prescriptionDetails),
                     success: function (data) {
-                        debugger;
                         window.location.href = '@Url.Action("ViewBooking","Patient")' + "?viewMessage=Prescription saved successfully";
                     },
                     failure: function (errMsg) {
