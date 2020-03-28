@@ -43,7 +43,7 @@ namespace LabManagement.System.Controllers
         {
             objDrugMaster.MANUFACTUREDATE = Request["MANUFACTUREDATE"] == null ? DateTime.Now : Request["MANUFACTUREDATE"].ToLmsSystemDate();
             objDrugMaster.EXPIRYDATE = Request["EXPIRYDATE"] == null ? DateTime.Now : Request["EXPIRYDATE"].ToLmsSystemDate();
-            objDrugMaster.ORDERCOUNT = GetTotalDrugOrder(objDrugMaster.OLDORDERCOUNT, objDrugMaster.ORDERCOUNT);
+           // objDrugMaster.ORDERCOUNT = GetTotalDrugOrder(objDrugMaster.OLDORDERCOUNT, objDrugMaster.ORDERCOUNT);
             var qrCodeData = $"{objDrugMaster.DRUGNAME}-{objDrugMaster.EXPIRYDATE}";
             objDrugMaster.QrCodeContent = qrCodeData;
             objDrugMaster.QrCodeBase64 = qrCodeData.GenerateQrCode();
@@ -62,7 +62,16 @@ namespace LabManagement.System.Controllers
             if (orderCount.HasValue)
             {
                 var orderValue = orderCount.Value > 0 ? orderCount.Value : 0;
-                var newOrderValue = (newOrder.HasValue ? newOrder.Value : 0) + orderValue;
+                var newOrderValue = newOrder.HasValue ? newOrder.Value : 0;
+                if (orderValue!= newOrderValue)
+                {
+                    newOrderValue = newOrderValue + orderValue;
+                }
+                else
+                {
+                    newOrderValue = orderValue;
+                }
+                 
                 totalOrder = newOrderValue;
             }
             return totalOrder;
