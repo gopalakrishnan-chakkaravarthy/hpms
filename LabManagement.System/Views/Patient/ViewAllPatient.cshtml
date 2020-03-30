@@ -8,104 +8,139 @@
     var userInfo = Session["UserInfo"] as usp_ValidateUser_Result;
     var hiddenClass = userInfo.GetDisplayCssByRole();
 }
-    <div class="roundCornerDiv">
-        @if (!string.IsNullOrEmpty(message))
-        {
-            <div class="row">
-                <div class="col-sm-8 col-md-8 col-lg-8">
-                    <div class="alert alert-info">
-                        @message
-                    </div>
-                </div>
-            </div>
-        }
-        @Html.Partial("_FilterLayout")
-        @if (Model.Count() <= 0)
-        {
-            <div class="row">
-                <div class="col-sm-8 col-md-8 col-lg-8">
-                    <div class="alert alert-danger">
-                        No Data Found
-                    </div>
-                </div>
-            </div>
-        }
+<div class="roundCornerDiv">
+    @if (!string.IsNullOrEmpty(message))
+    {
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8">
-                <a href="@Url.Action("ViewPatient", new { PatientId = 0 })" class="btn btn-primary">
-                    <i class="glyphicon glyphicon-plus"></i>New
-                </a>
+                <div class="alert alert-info">
+                    @message
+                </div>
             </div>
         </div>
-        <hr />
-        @if (Model.Count() > 0)
-        {
-            <div class="row">
-                <div class="col-sm-10 col-lg-10 col-md-10">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="glyphicon glyphicon-th-large"></i> In Patient List
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                @{
-                                    <table id="allDetails" class=" dataTable table table-striped table-bordered dataTable no-footer">
-                                        <thead>
+    }
+    @Html.Partial("_FilterLayout")
+    @if (Model.Count() <= 0)
+    {
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <div class="alert alert-danger">
+                    No Data Found
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <a href="@Url.Action("ViewPatient", new { PatientId = 0 })" class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>New
+            </a>
+        </div>
+    </div>
+    <hr />
+    @if (Model.Count() > 0)
+    {
+        <div class="row">
+            <div class="col-sm-10 col-lg-10 col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="glyphicon glyphicon-th-large"></i> In Patient List
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            @{
+                                <table id="allDetails" class=" dataTable table table-striped table-bordered dataTable no-footer">
+                                    <thead>
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>Patient Name</td>
+                                            <td>DOB</td>
+                                            <td>Gender</td>
+                                            <td>Contact</td>
+                                            <td class="@hiddenClass">History</td>
+                                            <td class="@hiddenClass">Edit</td>
+                                            <td class="@hiddenClass">Delete</td>
+                                            <td>Book Appointment</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var obj in Model)
+                                        {
                                             <tr>
-                                                <td>ID</td>
-                                                <td>Patient Name</td>
-                                                <td>DOB</td>
-                                                <td>Gender</td>
-                                                <td>Contact</td>
-                                                <td class="@hiddenClass">Edit</td>
-                                                <td class="@hiddenClass">Delete</td>
-                                                <td>Book Appointment</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var obj in Model)
-                                            {
-                                                <tr>
-                                                    <td>
-                                                        @obj.CUSTOMID
-                                                    </td>
-                                                    <td>
-                                                        @obj.PATIENTNAME
-                                                    </td>
-                                                    <td>@obj.DOB.ToUstDate()</td>
-                                                    <td>@obj.GENDER</td>
-                                                    <td>@obj.CONTACT</td>
-                                                    <td class="@hiddenClass">
-                                                        <a href="@Url.Action("ViewPatient", new { PatientId = @obj.PATIENTID })" class="btn btn-success">
-                                                            <i class="glyphicon glyphicon-pencil"></i>
-                                                            Edit
-                                                        </a>
-                                                    </td>
-                                                    <td class="@hiddenClass">
-                                                        <a href="@Url.Action("DeletePatient", new { PatientId = @obj.PATIENTID })" class="btn btn-danger">
-                                                            <i class="glyphicon glyphicon-trash"></i>
-                                                            Delete
-                                                        </a>
-                                                    </td>
+                                                <td>
+                                                    @obj.CUSTOMID
+                                                </td>
+                                                <td>
+                                                    @obj.PATIENTNAME
+                                                </td>
+                                                <td>@obj.DOB.ToUstDate()</td>
+                                                <td>@obj.GENDER</td>
+                                                <td>@obj.CONTACT</td>
+                                                <td class="@hiddenClass">
+                                                    <button class="btn btn-history btn-success" id="loadHistory" data-prop="@obj.PATIENTID">
+                                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                                        History
+                                                    </button>
+                                                </td>
+                                                <td class="@hiddenClass">
+                                                    <a href="@Url.Action("ViewPatient", new { PatientId = @obj.PATIENTID })" class="btn btn-success">
+                                                        <i class="glyphicon glyphicon-pencil"></i>
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                                <td class="@hiddenClass">
+                                                    <a href="@Url.Action("DeletePatient", new { PatientId = @obj.PATIENTID })" class="btn btn-danger">
+                                                        <i class="glyphicon glyphicon-trash"></i>
+                                                        Delete
+                                                    </a>
+                                                </td>
 
-                                                    <td>
-                                                        <a href="@Url.Action("ViewBooking", new {id=0,viewMessage="", patientId = @obj.PATIENTID })" class="btn btn-primary">
-                                                            <i class="glyphicon glyphicon-edit"></i>New Appointment
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                }
-                            </div>
+                                                <td>
+                                                    <a href="@Url.Action("ViewBooking", new {id=0,viewMessage="", patientId = @obj.PATIENTID })" class="btn btn-primary">
+                                                        <i class="glyphicon glyphicon-edit"></i>New Appointment
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-        }
+    }
+</div>
+
+<div class="modal fade" id="patientHistoryModal" role="dialog">
+    <div class="modal-dialog modal-lg hpms-presc-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Patient History</h4>
+            </div>
+            <div class="modal-body">
+                <div id='historyModalContent'></div>
+            </div>
+        </div>
     </div>
+</div>
+
+<div class="modal fade" id="PrescriptionModal" role="dialog">
+    <div class="modal-dialog modal-lg hpms-presc-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Patient Prescription</h4>
+            </div>
+            <div class="modal-body">
+                <div id='PrescModalContent'></div>
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts {
     <script type="text/javascript">
 
@@ -114,12 +149,92 @@
             $('#filterByBtn').on('click', function () {
                 var filterDdlValue = $('#filterDdl option:selected').val();
                 var filterValue = $('#filterByText').val();
-                if (filterDdlValue !== ''|| filterValue !== '') {
-                    window.location.href = "ViewAllPatient?queryFilterAttribute=" + filterDdlValue+"&filterValue="+filterValue;
+                if (filterDdlValue !== '' || filterValue !== '') {
+                    window.location.href = "ViewAllPatient?queryFilterAttribute=" + filterDdlValue + "&filterValue=" + filterValue;
                     return;
                 }
                 alert("Please enter filter data");
             });
+            var options = { "backdrop": "static", keyboard: true };
+            var historyUrl = '/Patient/ViewPatientHistory';
+            var bookingId, patientId;
+            initViewPrescription();
+            $(".btn-history").on('click', (function () {
+                var prop = $(this).attr('data-prop');
+                $.ajax({
+                    type: "GET",
+                    url: historyUrl,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "id": prop },
+                    datatype: "json",
+                    success: function (data) {
+                        $('#historyModalContent').html(data);
+                        $('#patientHistoryModal').modal(options);
+                        $('#patientHistoryModal').modal('show');
+                        initViewPrescription();
+                        $('#allHistoryDetails').DataTable();
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+
+            }));
+            var printPrescriptionUrl = '/Patient/PrintPatientPrescription';
+            function initViewPrescription() {
+                $(".patient-presc").on('click', (function () {
+                    var bookingId = $(this).attr('data-prop');
+                    $.ajax({
+                        type: "GET",
+                        url: printPrescriptionUrl,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "id": bookingId },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#PrescModalContent').html(data);
+                            $('#PrescriptionModal').modal(options);
+                            $('#PrescriptionModal').modal('show');
+                            $('#btnPrint').on('click', function () {
+                                var hideShowelements = [];
+
+                                hideShowelements.push('btnPrint');
+                                PrintCanvasDiv(hideShowelements, 'canvasElement');
+                            });
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+
+                }));
+            }
+            var prescriptionUrl = '/Patient/ViewPrescription';
+            $(".btn-Prescription").on('click', (function () {
+                var prop = $(this).attr('data-prop');
+                var ids = prop.split('_');
+                bookingId = ids[0];//Booking Id
+                patientId = ids[1]; //Patient Id
+                $.ajax({
+                    type: "GET",
+                    url: prescriptionUrl,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "id": bookingId },
+                    datatype: "json",
+                    success: function (data) {
+                        $('#PrescModalContent').html(data);
+                        $('#PrescriptionModal').modal(options);
+                        $('#PrescriptionModal').modal('show');
+                        loadPrescScript();
+                        cloneDropDown();
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+
+            }));
         });
     </script>
 }

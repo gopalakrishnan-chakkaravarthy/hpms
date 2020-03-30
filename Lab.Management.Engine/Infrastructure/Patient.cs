@@ -67,8 +67,12 @@ namespace Lab.Management.Engine.Infrastructure
         {
             try
             {
+                if(queryFilterAttribute== QueryFilterAttribute.none|| string.IsNullOrEmpty(filterValue))
+                {
+                    return new List<lmsPatientRegistration>();
+                }
                 var resultDetails = _objLabManagementEntities.lmsPatientRegistrations.Select(x => x);
-                if (queryFilterAttribute != QueryFilterAttribute.none && !string.IsNullOrEmpty(filterValue))
+                if (!string.IsNullOrEmpty(filterValue))
                 {
                     var predicate = GetWhereClass(queryFilterAttribute, filterValue);
                     resultDetails = resultDetails.Where(predicate);

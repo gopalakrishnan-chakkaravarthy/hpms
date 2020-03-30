@@ -63,17 +63,9 @@
                         <label>@Html.RadioButtonFor(x => x.Sex, 1, new { required = "required" })Male</label>
                     </div>
                     <div class="radio">
-                        <label>@Html.RadioButtonFor(x => x.Sex, 2, new { required = "required" })FeMale</label>
+                        <label>@Html.RadioButtonFor(x => x.Sex, 2, new { required = "required" })Female</label>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                Date of Birth
-            </div>
-            <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.DOB, new { @Id = "DOB", @class = "form-control", required = "required" })
             </div>
         </div>
         <div class="row">
@@ -86,10 +78,18 @@
         </div>
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
-                Patient Address
+                Patient Id/OP Number
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextAreaFor(m => m.PATIENTADDRESS, new { @class = "form-control", required = "required" })
+                @Html.TextBoxFor(m => m.CUSTOMID, new { @class = "form-control", required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Date of Birth
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextBoxFor(m => m.DOB, new { @Id = "DOB", @class = "form-control" })
             </div>
         </div>
 
@@ -103,20 +103,22 @@
         </div>
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
+                Patient Address
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextAreaFor(m => m.PATIENTADDRESS, new { @class = "form-control", required = "required" })
+            </div>
+        </div>
+
+        <div class="row hidden">
+            <div class="col-sm-3 col-md-3 col-lg-3">
                 Email
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.TextBoxFor(m => m.PATIENTEMAILID, new { @class = "form-control" })
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                Patient Id
-            </div>
-            <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.CUSTOMID, new { @class = "form-control", required = "required" })
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <a href="@Url.Action("ViewAllPatient", "Patient")" class="btn btn-warning">
