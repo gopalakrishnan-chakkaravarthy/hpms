@@ -36,13 +36,13 @@
             </a>
         </div>
     </div>
-    <hr/>
+    <hr />
     <div class="row">
         <div class="col-sm-1 col-md-1 col-lg-1">
             Date:
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3">
-            <input type="text" id="DDATE" style="width:70%"/>
+            <input type="text" id="DDATE" style="width:70%" />
             <button type="button" id="filterDate" class="btn btn-success">
                 <i class="glyphicon glyphicon-filter"></i>
             </button>
@@ -61,6 +61,7 @@
                                     <td>Gender</td>
                                     <td>Appointment Date</td>
                                     <td> Disease</td>
+                                    <td> Diagnosis Note</td>
                                     <td>Status</td>
                                     <td>Consulting Doctor</td>
                                     <td>Edit</td>
@@ -81,6 +82,7 @@
                                         <td>@obj.lmsPatientRegistration.GENDER</td>
                                         <td>@obj.APPOINTMENTDATE.ToUstDate()</td>
                                         <td>@obj.lmsDiseaseMaster.DISEASENAME</td>
+                                        <td>@obj.GENERALINSTRUCTION</td>
                                         <td>@obj.BOOKINGSTATUS</td>
                                         <td>@obj.DOCTORTOCONSULT</td>
 
@@ -115,7 +117,7 @@
                                             @{
                                                 var patientBookingId = Convert.ToString(obj.BOOKINGID) + '_' + Convert.ToString(obj.PATIENTID);
 
-                                                <button class="btn btn-Prescription btn-info"  data-prop="@patientBookingId">
+                                                <button class="btn btn-Prescription btn-info" data-prop="@patientBookingId">
                                                     <i class="glyphicon glyphicon-eye-open"></i>
                                                     Generate Prescription
                                                 </button>

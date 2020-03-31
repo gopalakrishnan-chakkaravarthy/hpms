@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <hr/>
+        <hr />
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Patient Name
@@ -43,6 +43,15 @@
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.DropDownListFor(x => x.DISEASEID, Model.DiseaseDdl, new { @class = "form-control selectpicker", required = "required" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                Diagnosis Note
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5">
+                @Html.TextAreaFor(m => m.GENERALINSTRUCTION, new { @class = "form-control" , required = "required" })
             </div>
         </div>
         <div class="row">
@@ -67,7 +76,7 @@
                 Consulting Doctor
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.DOCTORTOCONSULT, new { @class = "form-control", required = "required" })
+                @Html.TextBoxFor(m => m.DOCTORTOCONSULT, new { @class = "form-control" })
             </div>
         </div>
 
@@ -76,7 +85,7 @@
                 Consulting Fee
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextBoxFor(m => m.CONSULTINGFEE, new { @class = "form-control", required = "required" })
+                @Html.TextBoxFor(m => m.CONSULTINGFEE, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
@@ -85,14 +94,6 @@
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
                 @Html.TextBoxFor(m => m.DISCHARGEDATE, new { @Id = "DISCHARGEDATE", @class = "form-control" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                General Instructions Post Consulting
-            </div>
-            <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextAreaFor(m => m.GENERALINSTRUCTION, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
@@ -125,7 +126,7 @@
             </div>
         </div>
         <div class="row">
-            <hr/>
+            <hr />
         </div>
     }
 </div>

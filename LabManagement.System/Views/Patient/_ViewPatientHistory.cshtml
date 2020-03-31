@@ -44,6 +44,7 @@
                                             <td>Patient Name</td>
                                             <td>Appointment Date</td>
                                             <td>Disease</td>
+                                            <td>Diagnosis Note</td>
                                             <td>Consulted Doctor</td>
                                             <td>Prescription</td>
                                         </tr>
@@ -51,20 +52,21 @@
                                     <tbody>
                                         @foreach (var obj in Model)
                                         {
-                                            <tr>
-                                                <td>
-                                                    @obj.lmsPatientRegistration.PATIENTNAME
-                                                </td>
-                                                <td>@obj.APPOINTMENTDATE.ToUstDate()</td>
-                                                <td>@obj.lmsDiseaseMaster.DISEASENAME</td>
-                                                <td>@obj.DOCTORTOCONSULT</td>
-                                                <td>
-                                                    <button class="btn btn-success patient-presc" id="viewPrintPrescription" data-prop="@obj.BOOKINGID">
-                                                        <i class="glyphicon glyphicon-eye-open"></i>
-                                                        View Prescription
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>
+                                                @obj.lmsPatientRegistration.PATIENTNAME
+                                            </td>
+                                            <td>@obj.APPOINTMENTDATE.ToUstDate()</td>
+                                            <td>@obj.lmsDiseaseMaster.DISEASENAME</td>
+                                            <td>@obj.GENERALINSTRUCTION</td>
+                                            <td>@obj.DOCTORTOCONSULT</td>
+                                            <td>
+                                                <button class="btn btn-success patient-presc" id="viewPrintPrescription" data-prop="@obj.BOOKINGID">
+                                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                                    View Prescription
+                                                </button>
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
