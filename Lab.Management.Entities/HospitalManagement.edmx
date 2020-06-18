@@ -644,12 +644,12 @@
           <Property Name="NAME" Type="nvarchar" MaxLength="150" />
           <Property Name="AGE" Type="int" />
           <Property Name="IPNO" Type="nvarchar" MaxLength="50" />
-          <Property Name="NAMEOFSURGERY" Type="nvarchar" MaxLength="1000" />
-          <Property Name="INDICATION" Type="nvarchar" MaxLength="3000" />
+          <Property Name="NAMEOFSURGERY" Type="nvarchar" MaxLength="3000" />
+          <Property Name="INDICATION" Type="nvarchar(max)" />
           <Property Name="DB" Type="nvarchar" MaxLength="1000" />
           <Property Name="ANAES" Type="nvarchar" MaxLength="1000" />
           <Property Name="AB" Type="nvarchar" MaxLength="1000" />
-          <Property Name="SNPROCEDURE" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SNPROCEDURE" Type="nvarchar(max)" />
           <Property Name="TREATMENT" Type="nvarchar(max)" />
           <Property Name="CREDATEDDATE" Type="datetime" />
         </EntityType>
@@ -3286,12 +3286,12 @@
           <Property Name="NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true"/>
           <Property Name="AGE" Type="Int32"/>
           <Property Name="IPNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true"/>
-          <Property Name="NAMEOFSURGERY" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
-          <Property Name="INDICATION" Type="String" MaxLength="3000" FixedLength="false" Unicode="true"/>
+          <Property Name="NAMEOFSURGERY" Type="String" MaxLength="3000" FixedLength="false" Unicode="true"/>
+          <Property Name="INDICATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <Property Name="DB" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
           <Property Name="ANAES" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
           <Property Name="AB" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
-          <Property Name="SNPROCEDURE" Type="String" MaxLength="1000" FixedLength="false" Unicode="true"/>
+          <Property Name="SNPROCEDURE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <Property Name="TREATMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true"/>
           <Property Name="CREDATEDDATE" Type="DateTime" Precision="3"/>
         </EntityType>
