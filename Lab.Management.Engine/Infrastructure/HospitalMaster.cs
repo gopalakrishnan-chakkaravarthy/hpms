@@ -1,4 +1,7 @@
 ﻿using Lab.Management.Common;
+using Lab.Management.Engine.Enum;
+using Lab.Management.Engine.Models;
+using Lab.Management.Engine.QueryBuilder;
 using Lab.Management.Engine.Service;
 using Lab.Management.Engine.Utils;
 using Lab.Management.Entities;
@@ -6,8 +9,10 @@ using Lab.Management.Logger;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Lab.Management.Engine.Infrastructure
 {
@@ -44,11 +49,27 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
-        public IList<lmsDrug> GetAllDrug()
+        public IList<lmsDrug> GetAllDrug(QueryFilterAttribute queryFilterAttribute, string filterValue)
         {
             try
             {
+           
+                if (queryFilterAttribute == QueryFilterAttribute.none )
+                {
+                    return new List<lmsDrug>();
+                }
                 var resultDetails = _objLabManagementEntities.lmsDrugs.Select(x => x);
+                if (queryFilterAttribute == QueryFilterAttribute.allDrugs)
+                {
+                    return resultDetails.ToList();
+                }
+                if (!string.IsNullOrEmpty(filterValue))
+                {
+                    var predicate = GetWhereClass(queryFilterAttribute, filterValue);
+                    resultDetails = resultDetails.Where(predicate);
+                    return resultDetails.ToList();
+                }
+
                 return resultDetails.OrderByDescending(x => x.DRUGID).ToList();
             }
             catch (Exception ex)
@@ -108,7 +129,16 @@ namespace Lab.Management.Engine.Infrastructure
 
             return resultFlag;
         }
-
+        public IList<QueryFilterModel> GetDrugFilterList()
+        {
+            var filterList = new List<QueryFilterModel>() {
+            new QueryFilterModel { Text="Medicine Name",Value=QueryFilterAttribute.drugName},
+            new QueryFilterModel { Text="Expired Drugs",Value=QueryFilterAttribute.expiredDrugs},
+            new QueryFilterModel { Text="Rack Number",Value=QueryFilterAttribute.rackNumber},
+            new QueryFilterModel { Text="Load All Medicines",Value=QueryFilterAttribute.allDrugs}
+            };
+            return filterList;
+        }
         public lmsMedicalTest GetMedicalTestDetailsById(int MTestId)
         {
             try
@@ -757,6 +787,24 @@ namespace Lab.Management.Engine.Infrastructure
             }
 
             return resultFlag;
+        }
+        private Expression<Func<lmsDrug, bool>> GetWhereClass(QueryFilterAttribute filterBy, string value)
+        {
+            var predicate = PredicateBuilder.True<lmsDrug>();
+            switch (filterBy)
+            {
+                case QueryFilterAttribute.drugName:
+                    return predicate.And(x => x.DRUGNAME.Contains(value));
+
+                case QueryFilterAttribute.expiredDrugs:
+                    var todayDate = DateTime.Now.Date;
+                    return predicate.And(x => x.EXPIRYDATE.HasValue && EntityFunctions.TruncateTime(x.EXPIRYDATE.Value) < todayDate);
+
+                case QueryFilterAttribute.rackNumber:
+
+                    return predicate.And(x => x.RackNumber.Contains(value));
+            }
+            return predicate;
         }
     }
 }

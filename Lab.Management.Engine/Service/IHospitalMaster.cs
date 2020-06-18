@@ -1,4 +1,6 @@
-﻿using Lab.Management.Engine.Utils;
+﻿using Lab.Management.Engine.Enum;
+using Lab.Management.Engine.Models;
+using Lab.Management.Engine.Utils;
 using Lab.Management.Entities;
 using System.Collections.Generic;
 
@@ -8,11 +10,12 @@ namespace Lab.Management.Engine.Service
     {
         lmsDrug GetDrugDetailsById(int DrugId);
 
-        IList<lmsDrug> GetAllDrug();
+        IList<lmsDrug> GetAllDrug(QueryFilterAttribute queryFilterAttribute, string filterValue);
 
         int SaveDrug(lmsDrug objDrugMaster);
 
         int DeleteDrug(int DrugId);
+        IList<QueryFilterModel> GetDrugFilterList();
 
         lmsMedicalTest GetMedicalTestDetailsById(int MTestId);
 
@@ -83,5 +86,6 @@ namespace Lab.Management.Engine.Service
         int SaveMedicalTestGroup(lmsMedicalTestGroup objSaveData);
 
         int DeleteMedicalTestGroup(int Id);
+      
     }
 }

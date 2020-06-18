@@ -284,14 +284,14 @@ namespace Lab.Management.Engine.Infrastructure
             }
             return resultFlag;
         }
-        public IList<PatientFilterModel> GetFilterList()
+        public IList<QueryFilterModel> GetFilterList()
         {
-            var filterList = new List<PatientFilterModel>() {
-            new PatientFilterModel { Text="Name",Value=QueryFilterAttribute.firstname},
-            new PatientFilterModel { Text="Id",Value=QueryFilterAttribute.customId},
-            new PatientFilterModel { Text="Date of Birth",Value=QueryFilterAttribute.dob},
-            new PatientFilterModel { Text="Mobile",Value=QueryFilterAttribute.mobileno},
-            new PatientFilterModel { Text="Email",Value=QueryFilterAttribute.email}
+            var filterList = new List<QueryFilterModel>() {
+            new QueryFilterModel { Text="Name",Value=QueryFilterAttribute.firstname},
+            new QueryFilterModel { Text="Id",Value=QueryFilterAttribute.customId},
+            new QueryFilterModel { Text="Date of Birth",Value=QueryFilterAttribute.dob},
+            new QueryFilterModel { Text="Mobile",Value=QueryFilterAttribute.mobileno},
+            new QueryFilterModel { Text="Email",Value=QueryFilterAttribute.email}
             };
             return filterList;
         }

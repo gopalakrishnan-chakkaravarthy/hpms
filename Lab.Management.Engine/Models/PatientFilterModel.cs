@@ -2,7 +2,7 @@
 
 namespace Lab.Management.Engine.Models
 {
-    public  class PatientFilterModel
+    public  class QueryFilterModel
     {
         public string Text { get; set; }
         public QueryFilterAttribute Value { get; set; }

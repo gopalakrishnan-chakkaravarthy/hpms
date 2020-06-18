@@ -35,6 +35,6 @@ namespace Lab.Management.Engine.Service
         int SavePatientPrescription(List<lmsPatientPrescription> objPatientMaster);
 
         int DeletePatientPrescription(int bookingId);
-        IList<PatientFilterModel> GetFilterList();
+        IList<QueryFilterModel> GetFilterList();
     }
 }

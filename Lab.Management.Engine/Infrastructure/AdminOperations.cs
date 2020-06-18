@@ -597,17 +597,23 @@ namespace Lab.Management.Engine.Infrastructure
 
             try
             {
-                objAdminResult.ExpiryDrugs = _objLabManagementEntities.usp_GetExpiryDrugsByDays(10).ToList();
+                objAdminResult.ExpiryDrugs = _objLabManagementEntities.usp_GetExpiryDrugsByDays(1).ToList();
                 objAdminResult.DrugStocks = _objLabManagementEntities.usp_GetDrugStocks().ToList();
                 objAdminResult.IpRegistration = _objLabManagementEntities.usp_GetInPatientDetails(filterDate).ToList();
                 objAdminResult.OpRegistration = _objLabManagementEntities.usp_GetOutPatients(filterDate).ToList();
                 objAdminResult.ProfitLoss = _objLabManagementEntities.usp_GetMedicalProfitLoss(filterDate).ToList();
                 objAdminResult.MedicalBillByDate = _objLabManagementEntities.usp_GetMedicalBillsByDate(filterDate).ToList();
-
-                objAdminResult.AvailableDrugsCount = objAdminResult.DrugStocks.Sum(x => x.AvailableStock.HasValue ? x.AvailableStock.Value : 0);
+                if(objAdminResult.DrugStocks.Any())
+                {
+                    objAdminResult.AvailableDrugsCount = objAdminResult.DrugStocks.Sum(x => x.AvailableStock.HasValue ? x.AvailableStock.Value : 0);
+                }         
                 objAdminResult.TotalTodayIpRegistration = objAdminResult.IpRegistration.Count();
                 objAdminResult.TotalTodayOpRegistration = objAdminResult.OpRegistration.Count();
-                objAdminResult.NetPharmachyProfitLLoss = objAdminResult.ProfitLoss.Sum(x => x.NETPROFITPERDRUG.HasValue ? x.NETPROFITPERDRUG.Value : 0);
+                if (objAdminResult.ProfitLoss.Any())
+                {
+                    objAdminResult.NetPharmachyProfitLLoss = objAdminResult.ProfitLoss.Sum(x => x.NETPROFITPERDRUG.HasValue ? x.NETPROFITPERDRUG.Value : 0);
+                }
+              
             }
             catch (Exception ex)
             {

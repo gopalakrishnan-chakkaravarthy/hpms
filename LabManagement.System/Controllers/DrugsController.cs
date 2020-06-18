@@ -7,6 +7,7 @@ using LabManagement.System.Enums;
 using LabManagement.System.Common;
 using System;
 using System.Web.Mvc;
+using Lab.Management.Engine.Enum;
 
 namespace LabManagement.System.Controllers
 {
@@ -31,9 +32,11 @@ namespace LabManagement.System.Controllers
             return View(getDrug);
         }
 
-        public ActionResult ViewAllDrug(string transactionType = "")
+        public ActionResult ViewAllDrug(QueryFilterAttribute queryFilterAttribute = QueryFilterAttribute.none, string filterValue = "", string transactionType = "")
         {
-            var getAll = _objIHospitalMaster.GetAllDrug();
+            var getAll = _objIHospitalMaster.GetAllDrug(queryFilterAttribute, filterValue);
+            var filterList = _objIHospitalMaster.GetDrugFilterList();
+            ViewBag.FilterList = new SelectList(filterList, "Value", "Text");
             ViewBag.TransactionType = transactionType;
             return View(getAll);
         }

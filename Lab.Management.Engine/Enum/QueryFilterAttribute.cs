@@ -12,10 +12,12 @@
         onlineppatientid = 7,
         patientid = 8,
         prescriptionid = 9,
-        drugname = 10,
-        racknumber = 11,
+        drugName = 10,
+        rackNumber = 11,
         billId = 12,
         appointmentdate = 13,
-        customId=14
+        customId = 14,
+        expiredDrugs=15,
+        allDrugs = 16
     }
 }
