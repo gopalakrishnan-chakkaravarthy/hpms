@@ -67,7 +67,7 @@
     </div>
     <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-4">
-            <select class="selectpicker " data-live-search="true" id="Iddrugddl" style="display:block !important;">
+            <select class="selectpicker select-drug-ddl" data-live-search="true" id="Iddrugddl" style="display:block !important;">
                 @foreach (var dropdown in drugddl)
                 {
                     <option data-tokens="@dropdown.Text" value="@dropdown.Value">@dropdown.Text</option>

@@ -1,4 +1,6 @@
 ﻿@using Lab.Management.Entities;
+
+@using LabManagement.System.Common
 @model lmsPatientBooking
 @{
     ViewBag.Title = "View Patient Booking";
@@ -51,7 +53,7 @@
                 Diagnosis Note
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.TextAreaFor(m => m.GENERALINSTRUCTION, new { @class = "form-control" , required = "required" })
+                @Html.TextAreaFor(m => m.GENERALINSTRUCTION, new { @class = "form-control", required = "required" })
             </div>
         </div>
         <div class="row">
@@ -97,23 +99,31 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="col-sm-10 col-md-10 col-lg-10">
                 <a href="@Url.Action("ViewAllBooking", "Patient")" class="btn btn-warning">
                     <i class="glyphicon glyphicon-arrow-left">
                         Back
                     </i>
                 </a>
-                @if (Model.BOOKINGID > 0)
-                {
-                    <button type="button" class="btn btn-info" id="loadprescription">
-                        <i class="glyphicon glyphicon-record"></i>
-                        Prescription
-                    </button>
-                }
+
                 <button type="submit" class="btn btn-primary">
                     <i class="glyphicon glyphicon-floppy-disk"></i>
                     Save
                 </button>
+                @if (Model.BOOKINGID > 0)
+                {
+                    <button type="button" class="btn btn-info" id="loadprescription">
+                        <i class="glyphicon glyphicon-th"></i>
+                        Generate Prescription
+                    </button>
+                }
+                @if (Model.lmsPatientPrescriptions.HasPrescription(Model.BOOKINGID))
+                {
+                    <button type="button" class="btn btn-info patient-presc" data-prop="@Model.BOOKINGID">
+                        <i class="glyphicon glyphicon-book"></i>
+                        View Prescription
+                    </button>
+                }
                 @if (Model.PATIENTID > 0)
                 {
                     <a href="@Url.Action("DeleteBooking", "Patient", new { id = @Model.BOOKINGID })" class="btn btn-danger">
@@ -176,6 +186,7 @@
 
             }));
             function cloneDropDown() {
+                $(".select-drug-ddl").selectpicker();
                  clonedDosage = $("#Iddosageddl").clone();
                  clonedFrequency = $("#Idfrequencydl").clone();
             }
@@ -202,7 +213,7 @@
             });
 
             $('#btnSave').on('click', function () {
-                saveDrugBills();
+                savePrescriptionData();
             });
 
             }
@@ -219,7 +230,7 @@
 
                 });
             }
-            function saveDrugBills() {
+            function savePrescriptionData() {
                 prescriptionDetails = [];
                 var drugControlId ='';
                 $("#tableDrug tr").each(function (e) {
@@ -291,6 +302,35 @@
                     }
                 });
             }
+            var printPrescriptionUrl = '/Patient/PrintPatientPrescription';
+            $(".patient-presc").on('click', (function () {
+                debugger;
+                 var options = { "backdrop": "static", keyboard: true };
+                    var bookingId = $(this).attr('data-prop');
+                    $.ajax({
+                        type: "GET",
+                        url: printPrescriptionUrl,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "id": bookingId },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#myModalContent').html(data);
+                            $('#precModal').modal(options);
+                            $('#precModal').modal('show');
+                            $('#btnPrint').on('click', function () {
+                                var hideShowelements = [];
+
+                                hideShowelements.push('btnPrint');
+                                PrintCanvasDiv(hideShowelements, 'canvasElement');
+                            });
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+
+                }));
+            
         //Prescription add and remove code ends
         });
     </script>

@@ -96,8 +96,8 @@
 
                                             @if (obj.lmsPatientPrescriptions.HasPrescription(obj.BOOKINGID))
                                             {
-                                                <button class="btn btn-success patient-presc" data-prop="@obj.BOOKINGID">
-                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                <button class="btn btn-info patient-presc" data-prop="@obj.BOOKINGID">
+                                                    <i class="glyphicon glyphicon-book"></i>
                                                     View Prescription
                                                 </button>
                                             }
@@ -108,7 +108,7 @@
                                         </td>
 
                                         <td class="@hiddenClass">
-                                            <button class="btn btn-history btn-success" id="loadHistory" data-prop="@obj.PATIENTID">
+                                            <button class="btn btn-history btn-info" id="loadHistory" data-prop="@obj.PATIENTID">
                                                 <i class="glyphicon glyphicon-eye-open"></i>
                                                 History
                                             </button>
@@ -118,7 +118,7 @@
                                                 var patientBookingId = Convert.ToString(obj.BOOKINGID) + '_' + Convert.ToString(obj.PATIENTID);
 
                                                 <button class="btn btn-Prescription btn-info" data-prop="@patientBookingId">
-                                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                                    <i class="glyphicon glyphicon-th"></i>
                                                     Generate Prescription
                                                 </button>
                                             }
@@ -274,6 +274,7 @@
             var patientId = $('#PATIENTID').val();
             var prescriptionDetails = [], clonedDosage, clonedFrequency, alreadyAddedDrugs = [];
             function cloneDropDown() {
+                $(".select-drug-ddl").selectpicker();
                  clonedDosage = $("#Iddosageddl").clone();
                  clonedFrequency = $("#Idfrequencydl").clone();
             }
