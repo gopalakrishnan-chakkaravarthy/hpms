@@ -5,7 +5,7 @@
 }
 /*Sets font family for all controls*/
 body, div, input[type], textarea, button, a, p, ul, li, span, label, h1, h2, h3, h4, h5, h6 {
-    font-family: "Times New Roman" !important;
+    font-family: "Times New Roman" ;
     border-radius: 0 !important;
 }
 
