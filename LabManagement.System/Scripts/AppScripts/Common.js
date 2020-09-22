@@ -55,7 +55,7 @@ function ImagetoPrint(source) {
     return "<html><head><script>function step1(){\n" +
         "setTimeout('step2()', 10);}\n" +
         "function step2(){window.print();window.close()}\n" +
-        "</scri" + "pt></head><body onload='step1()'>\n" +
+        "</script>     <link rel='stylesheet' href='Content/Site.css' /><link rel='stylesheet' href='Content/Content/css/bootstrap.css'/></head><body onload='step1()'>\n" +
         "<img src='" + source + "' /></body></html>";
 }
 function PrintImage(source) {

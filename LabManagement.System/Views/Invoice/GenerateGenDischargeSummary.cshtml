@@ -1,205 +1,204 @@
 ﻿@using Lab.Management.Entities;
 @using LabManagement.System.Common;
 @model lmsGeneralDischargeSummary
-@{
-    ViewBag.Title = "Generate General Discharge Summary";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var message = ViewBag.Message as string;
-}
+@{ ViewBag.Title = "Generate General Discharge Summary";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                var message = ViewBag.Message as string; }
 
 @if (!string.IsNullOrEmpty(message))
 {
-    <div class="row">
-        <div class="col-sm-8 col-md-8 col-lg-8">
-            <div class="alert alert-info">
-                @message
-            </div>
+<div class="row">
+    <div class="col-sm-8 col-md-8 col-lg-8">
+        <div class="alert alert-info">
+            @message
         </div>
     </div>
-}
+</div>}
 
 
 <div class="col-sm-10 col-md-10 col-lg-10 roundCornerDivReport">
 
     <div id="canvasElement">
-        <div class="row">
-            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
-                @Html.Partial("_HospitalDetail")
-                <p><h4 class="text-info"><i class="glyphicon glyphicon-print"></i>Discharge Summary</h4></p>
+        <div id="canvasPrintDiv">
+            <div class="row">
+                <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                    @Html.Partial("_HospitalDetail")
+                    <p><h4 class="text-info"><i class="glyphicon glyphicon-print"></i>Discharge Summary</h4></p>
+                </div>
             </div>
-        </div>
 
 
-        <div class="col-sm-10 col-md-10 col-lg-10">
-            <table class="table table-striped  dataTable no-footer">
-                <tr>
-                    <td class=" text-left  text-strong">  Name</td>
-                    <td class=" text-left"><p> @Model.lmsPatientRegistration.PATIENTNAME</p></td>
-
-                    @if (@Model.lmsPatientRegistration.AGE.HasValue)
-                    {
-                        <td class=" text-left  text-strong">Age</td>
-                        <td class=" text-left"><p> @Model.lmsPatientRegistration.AGE.Value</p></td>
-                    }
-                    <td class=" text-left  text-strong">IPNO</td>
-                    <td class=" text-left"><p>@string.Format("IP{0}", Model.lmsPatientRegistration.PATIENTID)</p></td>
-                </tr>
-                <tr>
-                    <td class=" text-left  text-strong"> Address</td>
-                    <td class=" text-left"><p> @Model.lmsPatientRegistration.PATIENTADDRESS</p></td>
-                    <td class=" text-left"></td>
-                    <td class=" text-left"></td>
-                    <td class=" text-left text-strong"><p>@string.Format("DOA : {0}", Model.lmsPatientRegistration.CREATEDDATE.ParseIstDate()) </p></td>
-                    <td class=" text-left  text-strong">
-                       
-                        <p>@string.Format("DOD : {0}", Model.DOD.ParseIstDate()) </p>
-
-                    </td>
-                </tr>
-                @if (@Model.DIAGNOSIS.stringIsNotNull())
-                {
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <table class="table table-striped  dataTable no-footer">
                     <tr>
+                        <td class=" text-left  text-strong">  Name</td>
+                        <td class=" text-left"><p> @Model.lmsPatientRegistration.PATIENTNAME</p></td>
 
+                        @if (@Model.lmsPatientRegistration.AGE.HasValue)
+                        {
+            <td class=" text-left  text-strong">Age</td>
+                            <td class=" text-left"><p> @Model.lmsPatientRegistration.AGE.Value</p></td>
+}
+                        <td class=" text-left  text-strong">IPNO</td>
+                        <td class=" text-left"><p>@string.Format("IP{0}", Model.lmsPatientRegistration.PATIENTID)</p></td>
+                    </tr>
+                    <tr>
+                        <td class=" text-left  text-strong"> Address</td>
+                        <td class=" text-left"><p> @Model.lmsPatientRegistration.PATIENTADDRESS</p></td>
+                        <td class=" text-left"></td>
+                        <td class=" text-left"></td>
+                        <td class=" text-left text-strong"><p>@string.Format("DOA : {0}", Model.lmsPatientRegistration.CREATEDDATE.ParseIstDate()) </p></td>
                         <td class=" text-left  text-strong">
-                            Diagnosis
+
+                            <p>@string.Format("DOD : {0}", Model.DOD.ParseIstDate()) </p>
+
                         </td>
-                        <td class="text-left">
-                            <p> @Model.DIAGNOSIS</p>
-                        </td>
-
-
-
                     </tr>
-                }
-                @if (@Model.INVESTIGATION.stringIsNotNull())
-                {
-                    <tr>
+                    @if (@Model.DIAGNOSIS.stringIsNotNull())
+                    {
+        <tr>
 
-                        <td class=" text-center text-strong" colspan="6">
-
-                            <h3>Investigation</h3>
-
-                        </td>
-
-
-
-                    </tr>
-                }
-                @if (@Model.INVESTIGATION.stringIsNotNull())
-                {
-                    <tr>
+            <td class=" text-left  text-strong">
+                Diagnosis
+            </td>
+            <td class="text-left">
+                <p> @Model.DIAGNOSIS</p>
+            </td>
 
 
-                        <td class="text-left" colspan="5">
+
+        </tr>
+}
+                    @if (@Model.INVESTIGATION.stringIsNotNull())
+                    {
+        <tr>
+
+            <td class=" text-center text-strong" colspan="6">
+
+                <h3>Investigation</h3>
+
+            </td>
 
 
-                            @Html.TextAreaFor(m => m.INVESTIGATION, new { disabled = "disabled", @style = "height:100px;" })
-                        </td>
+
+        </tr>
+}
+                    @if (@Model.INVESTIGATION.stringIsNotNull())
+                    {
+        <tr>
 
 
-                    </tr>
-                }
-                @if (@Model.PASTHISTORY.stringIsNotNull())
-                {
-                    <tr>
+            <td class="text-left" colspan="5">
 
-                        <td class=" text-left text-strong">
-                            Past History
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.PASTHISTORY</p>
-                        </td>
 
-                    </tr>
-                }
-                @if (@Model.FAMILYHISTORY.stringIsNotNull())
-                {
-                    <tr>
+                @Html.TextAreaFor(m => m.INVESTIGATION, new { disabled = "disabled", @style = "height:100px;" })
+            </td>
 
-                        <td class=" text-left text-strong">
-                            Family History
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.FAMILYHISTORY</p>
-                        </td>
 
-                    </tr>
-                }
-                @if (@Model.TREATMENT.stringIsNotNull())
-                {
-                    <tr>
+        </tr>
+}
+                    @if (@Model.PASTHISTORY.stringIsNotNull())
+                    {
+        <tr>
 
-                        <td class=" text-left text-strong">
-                            Treatment
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.TREATMENT</p>
-                        </td>
+            <td class=" text-left text-strong">
+                Past History
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.PASTHISTORY</p>
+            </td>
 
-                    </tr>
-                }
-                @if (@Model.PATIENTDISCHARGEDON.dateTimeIsNotNull())
-                {
-                    <tr>
+        </tr>
+}
+                    @if (@Model.FAMILYHISTORY.stringIsNotNull())
+                    {
+        <tr>
 
-                        <td class=" text-left text-strong">
-                            Patient is discharged on
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.PATIENTDISCHARGEDON.ParseIstDate()</p>
-                        </td>
+            <td class=" text-left text-strong">
+                Family History
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.FAMILYHISTORY</p>
+            </td>
 
-                    </tr>
-                }
-                @if (@Model.CONDITIONONDISCHARGE.stringIsNotNull())
-                {
-                    <tr>
+        </tr>
+}
+                    @if (@Model.TREATMENT.stringIsNotNull())
+                    {
+        <tr>
 
-                        <td class=" text-left text-strong">
-                            Condition on Discharge
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.CONDITIONONDISCHARGE</p>
-                        </td>
+            <td class=" text-left text-strong">
+                Treatment
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.TREATMENT</p>
+            </td>
 
-                    </tr>
-                }
-                @if (@Model.ADVISE.stringIsNotNull())
-                {
-                    <tr>
-                        <td class=" text-left text-strong">
-                            Advise
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.ADVISE</p>
-                        </td>
+        </tr>
+}
+                    @if (@Model.PATIENTDISCHARGEDON.dateTimeIsNotNull())
+                    {
+        <tr>
 
-                    </tr>
-                }
+            <td class=" text-left text-strong">
+                Patient is discharged on
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.PATIENTDISCHARGEDON.ParseIstDate()</p>
+            </td>
 
-            </table>
-        </div>
+        </tr>
+}
+                    @if (@Model.CONDITIONONDISCHARGE.stringIsNotNull())
+                    {
+        <tr>
 
-        <div class="row">
-            <div class="col-sm-10 col-md-10 col-lg-10 text-center" id="appendElements">
-                <a href="@Url.Action("ViewGenDischargeSummary", "Invoice", new { ReportId = Model.SUMMARYID})" id="btnBack" class="btn btn-warning">
-                    <i class="glyphicon glyphicon-arrow-left">
-                        Back
-                    </i>
-                </a>
-                <button type="button" class="btn btn-primary" id="btnPrint">
-                    <i class="glyphicon glyphicon-print">
-                        Print
-                    </i>
-                </button>
+            <td class=" text-left text-strong">
+                Condition on Discharge
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.CONDITIONONDISCHARGE</p>
+            </td>
 
+        </tr>
+}
+                    @if (@Model.ADVISE.stringIsNotNull())
+                    {
+        <tr>
+            <td class=" text-left text-strong">
+                Advise
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.ADVISE</p>
+            </td>
+
+        </tr>
+}
+
+                </table>
             </div>
-        </div>
-        <div class="row">
 
-            <hr />
-        </div>
+            <div class="row">
+                <div class="col-sm-10 col-md-10 col-lg-10 text-center" id="appendElements">
+                    <a href="@Url.Action("ViewGenDischargeSummary", "Invoice", new { ReportId = Model.SUMMARYID})" id="btnBack" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-arrow-left">
+                            Back
+                        </i>
+                    </a>
+                    <button type="button" class="btn btn-primary" id="btnPrint">
+                        <i class="glyphicon glyphicon-print">
+                            Print
+                        </i>
+                    </button>
 
+                </div>
+            </div>
+            <div class="row">
+
+                <hr />
+            </div>
+
+        </div>
     </div>
 </div>
 @section Scripts {

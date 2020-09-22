@@ -1,103 +1,100 @@
 ﻿@using Lab.Management.Entities;
 @using LabManagement.System.Common;
 @model lmsLaboratoryBilling
-@{
-    ViewBag.Title = "Generate Bill";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-
-}
+@{ ViewBag.Title = "Generate Bill";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <div class="col-sm-8 col-md-8 col-lg-8 roundCornerDiv">
     <div id="canvasElement">
-        <div class="row">
-            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
-                @Html.Partial("_HospitalDetail")
-                <p><h4 class="text-info">Lab Bill</h4></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 col-md-8 col-lg-8">
-                <table class="table no-footer">
-                    <tbody>
-                        <tr>
-                            <td class="text-strong">Name :</td>
-                            <td><span style="font-weight:normal">@Model.BILLNAME</span></td>
-                            <td class="text-strong">Contact :</td>
-                            <td>@Model.CONTACT</td>
-                        </tr>
-                        <tr>
-                            <td class="text-strong">Bill# :</td>
-                            <td><span style="font-weight:normal">@string.Format("LB{0} ", @Model.BILLID)</span></td>
-                            <td class="text-strong">Bill Date :</td>
-                            <td>@Model.BILLDATE.ParseIstDate()</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 col-md-8 col-lg-8">
-                <table class="table  dataTable no-footer">
-                    <thead>
-                        <tr>
-                            <td class="text-left text-strong">Particulars</td>
-                            <td class="text-right text-strong">Price</td>
-                            <td class="text-right text-strong">
-                                Tax
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var bill in Model.lmsLaboratoryBillingDetails)
-                        {
-                        <tr>
-                            <td class="text-left ">
-                                @bill.lmsMedicalTest.TESTNAME
-                            </td>
-
-                            <td class="text-right">
-                                @bill.ITEMCOST
-                            </td>
-                            <td class="text-right">
-                                @if (bill.TAXAMOUNT.HasValue && bill.TAXAMOUNT.Value > 0)
-                                {
-                                    <div>@bill.TAXAMOUNT</div>
-                                }
-                                else
-                                {
-                                    <div>N/A</div>
-                                }
-                            </td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-                <table class="table dataTable no-footer">
-                    <tbody>
-                        <tr>
-                            <td class="text-right ">
-                                <strong>Total: </strong> @Model.BILLAMOUNT
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div id="canvasPrintDiv">
+            <div class="row">
+                <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                    @Html.Partial("_HospitalDetail")
+                    <p><h4 class="text-info">Lab Bill</h4></p>
+                </div>
             </div>
             <div class="row">
-                <div class="col-sm-8 col-md-8 col-lg-8 text-center" id="appendElements">
-                    <a href="@Url.Action("ViewAllLaboratoryBilling", "Invoice")" class="btn btn-warning" id="btnBack">
-                        <i class="glyphicon glyphicon-arrow-left">
-                            Back
-                        </i>
-                    </a>
-                    <a href="@Url.Action("GenerateLaboratoryReport", "Invoice", new { LaboratoryBillingId = Model.BILLID })" class="btn btn-info" id="btnBack">
-                        <i class="glyphicon glyphicon-record">
-                            View Report
-                        </i>
-                    </a>
-                    <button type="button" class="btn btn-primary" id="btnPrint">
-                        <i class="glyphicon glyphicon-print"></i>
-                        Print
-                    </button>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <table class="table no-footer">
+                        <tbody>
+                            <tr>
+                                <td class="text-strong">Name :</td>
+                                <td><span style="font-weight:normal">@Model.BILLNAME</span></td>
+                                <td class="text-strong">Contact :</td>
+                                <td>@Model.CONTACT</td>
+                            </tr>
+                            <tr>
+                                <td class="text-strong">Bill# :</td>
+                                <td><span style="font-weight:normal">@string.Format("LB{0} ", @Model.BILLID)</span></td>
+                                <td class="text-strong">Bill Date :</td>
+                                <td>@Model.BILLDATE.ParseIstDate()</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <table class="table  dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <td class="text-left text-strong">Particulars</td>
+                                <td class="text-right text-strong">Price</td>
+                                <td class="text-right text-strong">
+                                    Tax
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var bill in Model.lmsLaboratoryBillingDetails)
+                            {
+                <tr>
+                    <td class="text-left ">
+                        @bill.lmsMedicalTest.TESTNAME
+                    </td>
+
+                    <td class="text-right">
+                        @bill.ITEMCOST
+                    </td>
+                    <td class="text-right">
+                        @if (bill.TAXAMOUNT.HasValue && bill.TAXAMOUNT.Value > 0)
+                        {
+        <div>@bill.TAXAMOUNT</div> }
+                        else
+                        {
+        <div>N/A</div>}
+                    </td>
+                </tr>
+}
+                        </tbody>
+                    </table>
+                    <table class="table dataTable no-footer">
+                        <tbody>
+                            <tr>
+                                <td class="text-right ">
+                                    <strong>Total: </strong> @Model.BILLAMOUNT
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-md-8 col-lg-8 text-center" id="appendElements">
+                        <a href="@Url.Action("ViewAllLaboratoryBilling", "Invoice")" class="btn btn-warning" id="btnBack">
+                            <i class="glyphicon glyphicon-arrow-left">
+                                Back
+                            </i>
+                        </a>
+                        <a href="@Url.Action("GenerateLaboratoryReport", "Invoice", new { LaboratoryBillingId = Model.BILLID })" class="btn btn-info" id="btnBack">
+                            <i class="glyphicon glyphicon-record">
+                                View Report
+                            </i>
+                        </a>
+                        <button type="button" class="btn btn-primary" id="btnPrint">
+                            <i class="glyphicon glyphicon-print"></i>
+                            Print
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

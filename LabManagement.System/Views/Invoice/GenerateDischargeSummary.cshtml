@@ -23,521 +23,485 @@
 <div class="col-sm-10 col-md-10 col-lg-10 roundCornerDivReport">
 
     <div id="canvasElement">
-        <div class="row">
-            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
-                @Html.Partial("_HospitalDetail")
-                <p><h4 class="text-info"><i class="glyphicon glyphicon-print"></i>Obstetric Discharge Summary</h4></p>
+        <div id="canvasPrintDiv">
+            <div class="row">
+                <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+                    @Html.Partial("_HospitalDetail")
+                    <p><h4 class="text-info"><i class="glyphicon glyphicon-print"></i>Obstetric Discharge Summary</h4></p>
+                </div>
             </div>
-        </div>
 
 
-        <div class="col-sm-10 col-md-10 col-lg-10">
-            <table class="table table-striped ">
-                <tr>
-                    <td class=" text-left text-strong">  Name</td>
-                    <td class=" text-left"><p> @Model.lmsPatientRegistration.PATIENTNAME</p></td>
-
-                    @if (@Model.lmsPatientRegistration.AGE.HasValue)
-                    {
-                        <td class=" text-left text-strong">Age</td>
-                        <td class=" text-left"><p> @Model.lmsPatientRegistration.AGE.Value</p></td>
-                    }
-                    <td class=" text-left text-strong">IPNO</td>
-                    <td class=" text-left"><p>@string.Format("IP{0}", Model.lmsPatientRegistration.PATIENTID)</p></td>
-                </tr>
-                <tr>
-                    <td class=" text-left   text-nowrap">
-                        <p>
-                            <strong>DOA :</strong>@Model.lmsPatientRegistration.REGISTEREDATE.ParseIstDate()
-                        </p>
-                        <p>
-                            <strong>DODEL :</strong> @Model.DODEL.IstDateFormat()
-                        </p>
-                        <p>
-                            <strong>DOD :</strong>@Model.DOD.IstDateFormat()
-                        </p>
-                        <p>
-                            <strong>DIAGNOSIS :</strong>@Model.DIAGONOSIS
-                        </p>
-
-                    </td>
-
-                    <td class=" text-left"></td>
-                    <td class=" text-left"></td>
-                    <td class=" text-left"></td>
-                    <td class=" text-left  text-strong">  Address</td>
-                    <td class=" text-left text-justify"><p style="font-size:10px;"> @Model.lmsPatientRegistration.PATIENTADDRESS</p></td>
-                </tr>
-                <tr>
-                    @if (@Model.PHNO.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            PH.No
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.PHNO</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.Investigation.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Investigation
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.Investigation</p>
-                        </td>
-
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.OBSTEITICCODE.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Obstetric Code
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.OBSTEITICCODE</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.URINES.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Urine S
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.URINES</p>
-                        </td>
-                    }
-
-
-                </tr>
-                <tr>
-                    @if (@Model.MODEOFDELIVERY.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Mode of Delivery
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.MODEOFDELIVERY</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.URINED.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Urine D
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.URINED</p>
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.DDATE.dateTimeIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Date
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.DDATE.Value</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.BLOODHBPERCENT.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Blood Hb%
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.BLOODHBPERCENT</p>
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.DTIME.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Time
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.DTIME</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.GPRH.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Gp&Rh
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.GPRH</p>
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.SEX.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Sex
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.SEX</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.BT.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            BT
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.BT</p>
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.PWEIGHT.doubleIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Weight
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.PWEIGHT.Value kg</p>
-                        </td>
-
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.CT.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            CT
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.CT</p>
-                        </td>
-                    }
-                </tr>
-                @if (Model.IsTwin())
-                {
+            <div class="col-sm-10 col-md-10 col-lg-10">
+                <table class="table table-striped ">
                     <tr>
-                        <td colspan="6" class="text-center text-muted">
-**********  <i>2nd Baby Details</i> *********
+                        <td class=" text-left text-strong">  Name</td>
+                        <td class=" text-left"><p> @Model.lmsPatientRegistration.PATIENTNAME</p></td>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        @if (@Model.DDATE2.HasValue)
+                        @if (@Model.lmsPatientRegistration.AGE.HasValue)
                         {
-                        <td class=" text-left  text-strong">
-                            Date
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.DDATE2.ParseIstDate()</p>
+            <td class=" text-left text-strong">Age</td>
+                            <td class=" text-left"><p> @Model.lmsPatientRegistration.AGE.Value</p></td>}
+                        <td class=" text-left text-strong">IPNO</td>
+                        <td class=" text-left"><p>@string.Format("IP{0}", Model.lmsPatientRegistration.PATIENTID)</p></td>
+                    </tr>
+                    <tr>
+                        <td class=" text-left   text-nowrap">
+                            <p>
+                                <strong>DOA :</strong>@Model.lmsPatientRegistration.REGISTEREDATE.ParseIstDate()
+                            </p>
+                            <p>
+                                <strong>DODEL :</strong> @Model.DODEL.IstDateFormat()
+                            </p>
+                            <p>
+                                <strong>DOD :</strong>@Model.DOD.IstDateFormat()
+                            </p>
+                            <p>
+                                <strong>DIAGNOSIS :</strong>@Model.DIAGONOSIS
+                            </p>
+
                         </td>
 
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                        }
-                        @if (@Model.DTIME2.stringIsNotNull())
+                        <td class=" text-left"></td>
+                        <td class=" text-left"></td>
+                        <td class=" text-left"></td>
+                        <td class=" text-left  text-strong">  Address</td>
+                        <td class=" text-left text-justify"><p style="font-size:10px;"> @Model.lmsPatientRegistration.PATIENTADDRESS</p></td>
+                    </tr>
+                    <tr>
+                        @if (@Model.PHNO.stringIsNotNull())
                         {
-                        <td class=" text-left  text-strong">
-                            Time
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.DTIME2</p>
-                        </td>
-                        }
-                    </tr>
-                    <tr>
-                        @if (@Model.SEX2.stringIsNotNull())
+            <td class=" text-left  text-strong">
+                PH.No
+            </td>
+                            <td class="text-left">
+                                <p> @Model.PHNO</p>
+                            </td>
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.Investigation.stringIsNotNull())
                         {
-                        <td class=" text-left  text-strong">
-                            Sex
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.SEX2</p>
-                        </td>
-
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                        }
-                        @if (@Model.PWEIGHT2.doubleIsNotNull())
+            <td class=" text-left  text-strong">
+                Investigation
+            </td>
+                            <td class="text-left">
+                                <p> @Model.Investigation</p>
+                            </td>}
+                    </tr>
+                    <tr>
+                        @if (@Model.OBSTEITICCODE.stringIsNotNull())
                         {
-                        <td class=" text-left  text-strong">
-                            Weight
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.PWEIGHT2.Value kg</p>
-                        </td>
-                        }
+            <td class=" text-left  text-strong">
+                Obstetric Code
+            </td>
+                            <td class="text-left">
+                                <p> @Model.OBSTEITICCODE</p>
+                            </td>
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.URINES.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Urine S
+            </td>
+                            <td class="text-left">
+                                <p> @Model.URINES</p>
+                            </td>}
+
+
                     </tr>
                     <tr>
-                        <td colspan="6" class="text-center text-muted">
-                        *************************************
+                        @if (@Model.MODEOFDELIVERY.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Mode of Delivery
+            </td>
+                            <td class="text-left">
+                                <p> @Model.MODEOFDELIVERY</p>
+                            </td>
 
-                        </td>
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.URINED.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Urine D
+            </td>
+                            <td class="text-left">
+                                <p> @Model.URINED</p>
+                            </td>}
                     </tr>
-                }
+                    <tr>
+                        @if (@Model.DDATE.dateTimeIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Date
+            </td>
+                            <td class="text-left">
+                                <p> @Model.DDATE.Value</p>
+                            </td>
 
-                <tr>
-                    @if (@Model.HBSAG.stringIsNotNull())
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.BLOODHBPERCENT.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Blood Hb%
+            </td>
+                            <td class="text-left">
+                                <p> @Model.BLOODHBPERCENT</p>
+                            </td>}
+                    </tr>
+                    <tr>
+                        @if (@Model.DTIME.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Time
+            </td>
+                            <td class="text-left">
+                                <p> @Model.DTIME</p>
+                            </td>
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.GPRH.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Gp&Rh
+            </td>
+                            <td class="text-left">
+                                <p> @Model.GPRH</p>
+                            </td>}
+                    </tr>
+                    <tr>
+                        @if (@Model.SEX.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Sex
+            </td>
+                            <td class="text-left">
+                                <p> @Model.SEX</p>
+                            </td>
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.BT.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                BT
+            </td>
+                            <td class="text-left">
+                                <p> @Model.BT</p>
+                            </td>}
+                    </tr>
+                    <tr>
+                        @if (@Model.PWEIGHT.doubleIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Weight
+            </td>
+                            <td class="text-left">
+                                <p> @Model.PWEIGHT.Value kg</p>
+                            </td>
+
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.CT.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                CT
+            </td>
+                            <td class="text-left">
+                                <p> @Model.CT</p>
+                            </td>}
+                    </tr>
+                    @if (Model.IsTwin())
                     {
-                        <td class=" text-left  text-strong">
-                            HbsAg
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.HBSAG</p>
-                        </td>
+        <tr>
+            <td colspan="6" class="text-center text-muted">
+                **********  <i>2nd Baby Details</i> *********
 
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.PLATELET.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Platelet
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.PLATELET</p>
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.PATIENTADMITTEDWITH.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Patient is Admitted with c/o
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.PATIENTADMITTEDWITH</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-
-                    @if (@Model.PRESENTHISTORY.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Present History
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.PRESENTHISTORY</p>
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.OBSTETRICHISTORY.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Obstetric History
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.OBSTETRICHISTORY</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.HIGHRISK.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            High Risk
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.HIGHRISK</p>
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.BLOODUREA.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Blood Urea
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.BLOODUREA</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.MODEOFDELIVERY.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Mode of Delivery
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.MODEOFDELIVERY</p>
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.BLOOGSUGAR.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Blood Sugar
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.BLOOGSUGAR</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                    }
-                    @if (@Model.POSTOP_POSTNATALPERIOD.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Post op/Post natal Period
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.MODEOFDELIVERY</p>
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    @if (@Model.SRCREATININE.stringIsNotNull())
-                    {
-                        <td class=" text-left  text-strong">
-                            Sr.Creatinine
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.SRCREATININE</p>
-                        </td>
-
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
+            </td>
+        </tr>
+                        <tr>
+                            @if (@Model.DDATE2.HasValue)
+                            {
+            <td class=" text-left  text-strong">
+                Date
+            </td>
+                                <td class="text-left">
+                                    <p> @Model.DDATE2.ParseIstDate()</p>
+                                </td>
 
 
-                        <td class=" text-left  text-strong"></td>
-                        <td class="text-left"></td>
-                    }
+                                                    <td class="text-left"></td>
+                                                                        <td class="text-left"></td>}
+                            @if (@Model.DTIME2.stringIsNotNull())
+                            {
+            <td class=" text-left  text-strong">
+                Time
+            </td>
+                                <td class="text-left">
+                                    <p> @Model.DTIME2</p>
+                                </td>}
+                        </tr>
+                                        <tr>
+                                            @if (@Model.SEX2.stringIsNotNull())
+                                            {
+                            <td class=" text-left  text-strong">
+                                Sex
+                            </td>
+                                                <td class="text-left">
+                                                    <p> @Model.SEX2</p>
+                                                </td>
 
-                </tr>
-                <tr>
 
-                    @if (@Model.VDRL.stringIsNotNull())
-                    {
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                        <td class=" text-left  text-strong">
-                            VDRL
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.VDRL</p>
-                        </td>
-                    }
+                                                                    <td class="text-left"></td>
+                                                                                        <td class="text-left"></td>}
+                                            @if (@Model.PWEIGHT2.doubleIsNotNull())
+                                            {
+                            <td class=" text-left  text-strong">
+                                Weight
+                            </td>
+                                                <td class="text-left">
+                                                    <p> @Model.PWEIGHT2.Value kg</p>
+                                                </td>}
+                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" class="text-center text-muted">
+                                                                *************************************
 
-                </tr>
-                <tr>
+                                                            </td>
+                                                        </tr>}
 
-                    @if (@Model.HIV.stringIsNotNull())
-                    {
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                        <td class="text-left"></td>
-                        <td class=" text-left  text-strong">
-                            HIV
-                        </td>
-                        <td class="text-left">
-                            <p> @Model.HIV</p>
-                        </td>
-                    }
+                    <tr>
+                        @if (@Model.HBSAG.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                HbsAg
+            </td>
+                            <td class="text-left">
+                                <p> @Model.HBSAG</p>
+                            </td>
 
-                </tr>
-                @if (@Model.TREATMENT.stringIsNotNull())
-                {
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.PLATELET.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Platelet
+            </td>
+                            <td class="text-left">
+                                <p> @Model.PLATELET</p>
+                            </td>}
+                    </tr>
+                    <tr>
+                        @if (@Model.PATIENTADMITTEDWITH.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Patient is Admitted with c/o
+            </td>
+                            <td class="text-left">
+                                <p> @Model.PATIENTADMITTEDWITH</p>
+                            </td>
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+
+                        @if (@Model.PRESENTHISTORY.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Present History
+            </td>
+                            <td class="text-left">
+                                <p> @Model.PRESENTHISTORY</p>
+                            </td>}
+                    </tr>
+                    <tr>
+                        @if (@Model.OBSTETRICHISTORY.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Obstetric History
+            </td>
+                            <td class="text-left">
+                                <p> @Model.OBSTETRICHISTORY</p>
+                            </td>
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.HIGHRISK.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                High Risk
+            </td>
+                            <td class="text-left">
+                                <p> @Model.HIGHRISK</p>
+                            </td>}
+                    </tr>
+                    <tr>
+                        @if (@Model.BLOODUREA.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Blood Urea
+            </td>
+                            <td class="text-left">
+                                <p> @Model.BLOODUREA</p>
+                            </td>
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.MODEOFDELIVERY.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Mode of Delivery
+            </td>
+                            <td class="text-left">
+                                <p> @Model.MODEOFDELIVERY</p>
+                            </td>}
+                    </tr>
+                    <tr>
+                        @if (@Model.BLOOGSUGAR.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Blood Sugar
+            </td>
+                            <td class="text-left">
+                                <p> @Model.BLOOGSUGAR</p>
+                            </td>
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>}
+                        @if (@Model.POSTOP_POSTNATALPERIOD.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Post op/Post natal Period
+            </td>
+                            <td class="text-left">
+                                <p> @Model.MODEOFDELIVERY</p>
+                            </td>}
+                    </tr>
+                    <tr>
+                        @if (@Model.SRCREATININE.stringIsNotNull())
+                        {
+            <td class=" text-left  text-strong">
+                Sr.Creatinine
+            </td>
+                            <td class="text-left">
+                                <p> @Model.SRCREATININE</p>
+                            </td>
+
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>
+
+
+                                                                            <td class=" text-left  text-strong"></td>
+                                                                                            <td class="text-left"></td>}
+
+                    </tr>
                     <tr>
 
-                        <td class=" text-left  text-strong">
-                            Treatment
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.TREATMENT</p>
-                        </td>
+                        @if (@Model.VDRL.stringIsNotNull())
+                        {
+            <td class="text-left"></td>
+                            <td class="text-left"></td>
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>
+                                                                            <td class=" text-left  text-strong">
+                                                                                VDRL
+                                                                            </td>
+                                                                                            <td class="text-left">
+                                                                                                <p> @Model.VDRL</p>
+                                                                                            </td>}
 
                     </tr>
-                }
-                @if (@Model.CONDITIONOFBABY.stringIsNotNull())
-                {
                     <tr>
-                        <td class=" text-left  text-strong">
-                            Condition of Baby
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.CONDITIONOFBABY</p>
-                        </td>
+
+                        @if (@Model.HIV.stringIsNotNull())
+                        {
+            <td class="text-left"></td>
+                            <td class="text-left"></td>
+                                            <td class="text-left"></td>
+                                                            <td class="text-left"></td>
+                                                                            <td class=" text-left  text-strong">
+                                                                                HIV
+                                                                            </td>
+                                                                                            <td class="text-left">
+                                                                                                <p> @Model.HIV</p>
+                                                                                            </td>}
 
                     </tr>
-                }
-                @if (@Model.DISCHARGEADVICE.stringIsNotNull())
-                {
-                    <tr>
-                        <td class=" text-left  text-strong">
-                            Discharge Advise
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.DISCHARGEADVICE</p>
-                        </td>
+                    @if (@Model.TREATMENT.stringIsNotNull())
+                    {
+        <tr>
 
-                    </tr>
-                }
-                @if (@Model.COMMENTS.stringIsNotNull())
-                {
-                    <tr>
-                        <td class=" text-left  text-strong">
-                            Comments
-                        </td>
-                        <td colspan="5" class="text-left">
-                            <p>@Model.COMMENTS</p>
-                        </td>
+            <td class=" text-left  text-strong">
+                Treatment
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.TREATMENT</p>
+            </td>
 
-                    </tr>
-                }
-            </table>
-        </div>
+        </tr>}
+                    @if (@Model.CONDITIONOFBABY.stringIsNotNull())
+                    {
+        <tr>
+            <td class=" text-left  text-strong">
+                Condition of Baby
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.CONDITIONOFBABY</p>
+            </td>
 
-        <div class="row">
-            <div class="col-sm-10 col-md-10 col-lg-10 text-center" id="appendElements">
-                <a href="@Url.Action("ViewDischargeSummary", "Invoice", new { ReportId = Model.SUMMARYID})" id="btnBack" class="btn btn-warning">
-                    <i class="glyphicon glyphicon-arrow-left">
-                        Back
-                    </i>
-                </a>
-                <button type="button" class="btn btn-primary" id="btnPrint">
-                    <i class="glyphicon glyphicon-print">
-                        Print
-                    </i>
-                </button>
+        </tr>}
+                    @if (@Model.DISCHARGEADVICE.stringIsNotNull())
+                    {
+        <tr>
+            <td class=" text-left  text-strong">
+                Discharge Advise
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.DISCHARGEADVICE</p>
+            </td>
 
+        </tr>}
+                    @if (@Model.COMMENTS.stringIsNotNull())
+                    {
+        <tr>
+            <td class=" text-left  text-strong">
+                Comments
+            </td>
+            <td colspan="5" class="text-left">
+                <p>@Model.COMMENTS</p>
+            </td>
+
+        </tr>}
+                </table>
             </div>
-        </div>
-        <div class="row">
 
-            <hr />
-        </div>
+            <div class="row">
+                <div class="col-sm-10 col-md-10 col-lg-10 text-center" id="appendElements">
+                    <a href="@Url.Action("ViewDischargeSummary", "Invoice", new { ReportId = Model.SUMMARYID})" id="btnBack" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-arrow-left">
+                            Back
+                        </i>
+                    </a>
+                    <button type="button" class="btn btn-primary" id="btnPrint">
+                        <i class="glyphicon glyphicon-print">
+                            Print
+                        </i>
+                    </button>
 
+                </div>
+            </div>
+            <div class="row">
+
+                <hr />
+            </div>
+
+        </div>
     </div>
 </div>
 @section Scripts {

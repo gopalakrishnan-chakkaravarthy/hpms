@@ -10,170 +10,169 @@
 
 <div class="col-sm-12 col-md-12 col-lg-12 roundCornerDiv">
     <div id="canvasElement">
-        <div class="row">
-            <div class="col-sm-10 col-md-10 col-lg-10 text-center">
-                @Html.Partial("_HospitalDetail")
-                <p><h4 class="text-info">Surgery Note</h4></p>
+        <div id="canvasPrintDiv">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                    @Html.Partial("_HospitalDetail")
+                    <p><h4 class="text-info">Surgery Note</h4></p>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                Name :
-            </div>
-            <div class="col-sm-2 col-md-2 col-lg-2 lms-font-nomal">
-                @Model.NAME
-            </div>
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                Age :
-            </div>
-            <div class="col-sm-2 col-md-2 col-lg-2 lms-font-nomal">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2  display-auto-width  hpms-print-font">
+                    Name :
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2  display-auto-width hpms-print-font lms-font-nomal">
+                    @Model.NAME
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2 display-auto-width  hpms-print-font">
+                    Age :
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2  display-auto-width hpms-print-font  lms-font-nomal">
 
-                @if (Model.AGE != null)
-                {
-                    <div>@Model.AGE</div>
-                }
-                else
-                {
-                    <div>--</div>
-                }
+                    @if (Model.AGE != null)
+                    {
+                        <div>@Model.AGE</div>
+                    }
+                    else
+                    {
+                        <div>--</div>
+                    }
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2 display-auto-width  hpms-print-font">
+                    I.P.NO :
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2  display-auto-width hpms-print-font lms-font-nomal ">
+                    @if (Model.IPNO.stringIsNotNull())
+                    {
+                        <div>@Model.IPNO</div>
+                    }
+                    else
+                    {
+                        <div>--</div>
+                    }
+                </div>
             </div>
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                I.P.NO :
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 hpms-print-font lms-font-big text-center">
+                    @if (Model.NAMEOFSURGERY.stringIsNotNull())
+                    {
+                        <p> <i> Name of Surgery</i> </p><strong>@Model.NAMEOFSURGERY</strong>
+                    }
+                    else
+                    {
+                        <div>--</div>
+                    }
+                </div>
             </div>
-            <div class="col-sm-2 col-md-2 col-lg-2 lms-font-nomal">
-                @if (Model.IPNO.stringIsNotNull())
-                {
-                    <div>@Model.IPNO</div>
-                }
-                else
-                {
-                    <div>--</div>
-                }
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2 display-auto-width  hpms-print-font">
+                    Indication :
+                </div>
+                <div class="col-sm-10 col-md-10 col-lg-10 display-auto-width hpms-print-font">
+                    @if (Model.INDICATION.stringIsNotNull())
+                    {
+                        <p class="text-justify">
+                            @Html.Raw(Model.INDICATION)
+                        </p>
+                    }
+                    else
+                    {
+                        <div>--</div>
+                    }
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2 text-nowrap">
-                Name of Surgery :
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2 display-auto-width  hpms-print-font">
+                    D/B DR :
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 display-auto-width hpms-print-font">
+                    @if (Model.DB.stringIsNotNull())
+                    {
+                        <div>@Model.DB</div>
+                    }
+                    else
+                    {
+                        <div>--</div>
+                    }
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2 display-auto-width  hpms-print-font">
+                    ANAES :
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 display-auto-width hpms-print-font">
+                    @if (Model.ANAES.stringIsNotNull())
+                    {
+                        <div>@Model.ANAES</div>
+                    }
+                    else
+                    {
+                        <div>--</div>
+                    }
+                </div>
             </div>
-            <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal lms-font-big">
-                @if (Model.NAMEOFSURGERY.stringIsNotNull())
-                {
-                    <strong>@Model.NAMEOFSURGERY</strong>
-                }
-                else
-                {
-                    <div>--</div>
-                }
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2 display-auto-width  hpms-print-font">
+                    A/B S/N :
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 display-auto-width hpms-print-font">
+                    @if (Model.AB.stringIsNotNull())
+                    {
+                        <div>@Model.AB</div>
+                    }
+                    else
+                    {
+                        <div>--</div>
+                    }
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                Indication :
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2 display-auto-width  hpms-print-font">
+                    Procedure :
+                </div>
+                <div class="col-sm-10 col-md-10 col-lg-10 display-auto-width hpms-print-font">
+                    @if (Model.SNPROCEDURE.stringIsNotNull())
+                    {
+                        <p class="text-justify">
+                            @Html.Raw(Model.SNPROCEDURE)
+                        </p>
+                    }
+                    else
+                    {
+                        <div>--</div>
+                    }
+                </div>
             </div>
-            <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal">
-                @if (Model.INDICATION.stringIsNotNull())
-                {
-                    <p class="text-justify">
-                        @Html.Raw(Model.INDICATION)
-                    </p>
-                }
-                else
-                {
-                    <div>--</div>
-                }
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2 display-auto-width  hpms-print-font">
+                    Treatment :
+                </div>
+                <div class="col-sm-10 col-md-10 col-lg-10 display-auto-width hpms-print-font">
+                    @if (Model.TREATMENT.stringIsNotNull())
+                    {
+                        <p class="text-justify">
+                            @Html.Raw(Model.TREATMENT)
+                        </p>
+                    }
+                    else
+                    {
+                        <div>--</div>
+                    }
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                D/B DR :
-            </div>
-            <div class="col-sm-4 col-md-4 col-lg-4 lms-font-nomal">
-                @if (Model.DB.stringIsNotNull())
-                {
-                    <div>@Model.DB</div>
-                }
-                else
-                {
-                    <div>--</div>
-                }
-            </div>
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                ANAES :
-            </div>
-            <div class="col-sm-4 col-md-4 col-lg-4 lms-font-nomal">
-                @if (Model.ANAES.stringIsNotNull())
-                {
-                    <div>@Model.ANAES</div>
-                }
-                else
-                {
-                    <div>--</div>
-                }
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                A/B S/N :
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 lms-font-nomal">
-                @if (Model.AB.stringIsNotNull())
-                {
-                    <div>@Model.AB</div>
-                }
-                else
-                {
-                    <div>--</div>
-                }
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                Procedure :
-            </div>
-            <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal">
-                @if (Model.SNPROCEDURE.stringIsNotNull())
-                {
-                    <p class="text-justify">
-                        @Html.Raw(Model.SNPROCEDURE)
-                    </p>
-                }
-                else
-                {
-                    <div>--</div>
-                }
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                Treatment :
-            </div>
-            <div class="col-sm-10 col-md-10 col-lg-10 lms-font-nomal">
-                @if (Model.TREATMENT.stringIsNotNull())
-                {
-                    <p class="text-justify">
-                        @Html.Raw(Model.TREATMENT)
-                    </p>
-                }
-                else
-                {
-                    <div>--</div>
-                }
-            </div>
-        </div>
 
-        <hr/>
-        <div class="row">
-            <div class="col-sm-8 col-md-8 col-lg-8 text-center" id="appendElements">
-                <a href="@Url.Action("ViewAllSurgeryNotes", "Reports")" class="btn btn-warning" id="btnBack">
-                    <i class="glyphicon glyphicon-arrow-left">
-                        Back
-                    </i>
-                </a>
-                <button type="button" class="btn btn-primary" id="btnPrint">
-                    <i class="glyphicon glyphicon-print"></i>
-                    Print
-                </button>
+            <hr />
+            <div class="row">
+                <div class="col-sm-8 col-md-8 col-lg-8 text-center" id="appendElements">
+                    <a href="@Url.Action("ViewAllSurgeryNotes", "Reports")" class="btn btn-warning" id="btnBack">
+                        <i class="glyphicon glyphicon-arrow-left">
+                            Back
+                        </i>
+                    </a>
+                    <button type="button" class="btn btn-primary" id="btnPrint">
+                        <i class="glyphicon glyphicon-print"></i>
+                        Print
+                    </button>
+                </div>
             </div>
         </div>
     </div>

@@ -56,10 +56,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .roundCornerDiv .row {
     margin-left: 0px;
-    margin-bottom: 1.6rem;
-    margin-top: 1.4rem;
+    margin-bottom: 6rem;
 }
-
+#canvasPrintDiv .row {
+    margin-left: 0px;
+    margin-bottom: 6rem;
+}
 .roundCornerDiv::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
@@ -428,4 +430,13 @@ legend.lms-fs-border {
 }
 
 .btn-drug-tax {
+}
+.hpms-border-bottom{
+    border-bottom:1px solid black;
+}
+.display-auto-width{
+    width:auto !important;
+}
+.hpms-print-font{
+    font-size:3rem !important;
 }
