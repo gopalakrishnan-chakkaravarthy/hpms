@@ -108,6 +108,7 @@
 </div>
 
 @section Scripts {
+    <script type="text/javascript" src="~/Content/js/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -131,7 +132,7 @@
                 var trtmnt='@Model.TREATMENT'
                 var treatMent = trtmnt !== undefined && trtmnt !== null ? trtmnt : '';
                 iframeFormElement.contentDocument.body.innerHTML = index == 0 ? labourNotes : treatMent;
-                
+
             }
             setTimeout(function () {
                 SetEditorForEdit();

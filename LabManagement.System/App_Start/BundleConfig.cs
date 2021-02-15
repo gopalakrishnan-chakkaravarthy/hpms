@@ -8,7 +8,7 @@ namespace LabManagement.System
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/Ajquery").Include(
-                        "~/Scripts/jquery-1.8.2.js"));
+                        "~/Scripts/jquery-1.8.2.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/Bbootstrap").Include(
                       "~/Content/js/bootstrap.js"));
 
@@ -33,8 +33,6 @@ namespace LabManagement.System
                 "~/Content/js/jscam.js"));
             bundles.Add(new ScriptBundle("~/bundles/Mjscamcanvasonly").Include(
                 "~/Content/js/jscam_canvas_only.swf"));
-            bundles.Add(new ScriptBundle("~/bundles/cckeditor").Include(
-                    "~/Content/js/ckeditor/ckeditor.js"));
             bundles.Add(new ScriptBundle("~/bundles/NCommon").Include(
               "~/Scripts/AppScripts/Common.js"));
 
@@ -49,7 +47,7 @@ namespace LabManagement.System
                 "~/Content/css/bootstrap-wysihtml5.css",
                 "~/Content/css/ckEditorStyle.css"
                 ));
-            BundleTable.EnableOptimizations = false;
+            // BundleTable.EnableOptimizations = false;
         }
     }
 }
