@@ -27,13 +27,17 @@
             Select Patient
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
-            @Html.DropDownListFor(x => x.SelectedPatient, Model.PatientDdl, new { @id = "Idpatientddl", @class = "form-control selectpicker", required = "required" })
+
+            <select id="Idpatientddl" name="Idpatientddl" class="form-control selectpicker">
+            </select>
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             Select Template
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             @Html.DropDownListFor(x => x.SelectedTemplate, Model.TemplateDdl, new { @id = "IdTemplateDdl", @class = "form-control selectpicker", required = "required" })
+            @Html.HiddenFor(x => x.REPORTID)
+            @Html.Hidden("hdnEditorContent", @TemlpateContent)
         </div>
     </div>
 
@@ -43,8 +47,6 @@
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             @Html.TextBoxFor(m => m.PATIENTNAME, new { @class = "form-control", @Id = "patientName", required = "required" })
-            @Html.HiddenFor(x => x.REPORTID)
-            @Html.Hidden("hdnEditorContent", @TemlpateContent)
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             Contact
@@ -83,11 +85,22 @@
     <script type="text/javascript" src="~/Content/js/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            setTimeout(loadPatientList(), 500);
+            function loadPatientList() {
+                 var dropdown = $('#Idpatientddl');
+                dropdown.empty();
+                var ddlData = @Html.Raw(Model.PatientList);
+                if (ddlData !== 'undefined' && ddlData !== null) {
+                    $.each(ddlData, function (key, entry) {
+                        dropdown.append($('<option></option>').attr('value', entry.PATIENTID).text(entry.PATIENTNAME));
+                    })
+                 }
+            }
             var SelectedPatient = '';
             $('#Idpatientddl').on('change', function () {
-                var patientddl = $('#Idpatientddl option:selected').text();
+                var patientName = $('#Idpatientddl option:selected').text();
                 SelectedPatient = $('#Idpatientddl option:selected').val();
-                $('#patientName').val(patientddl);
+                $('#patientName').val(patientName);
 
             });
             $('#IdTemplateDdl').on('change', function () {

@@ -38,7 +38,7 @@ namespace LabManagement.System.Controllers
             return View(getPatient);
         }
 
-        public ActionResult ViewAllPatient(QueryFilterAttribute queryFilterAttribute=QueryFilterAttribute.none,string filterValue="", string viewMessage = "")
+        public ActionResult ViewAllPatient(QueryFilterAttribute queryFilterAttribute = QueryFilterAttribute.none, string filterValue = "", string viewMessage = "")
         {
             var getAll = _objIPatient.GetAllPatient(queryFilterAttribute, filterValue, "IN", true);
             var filterList = _objIPatient.GetFilterList();
@@ -93,7 +93,7 @@ namespace LabManagement.System.Controllers
             var patientDdl = _objIPatient.GetPatientDdl();
             var bookingStatus = DropDownExtension.GetBookingStatus();
             bookingDetail.DiseaseDdl = new SelectList(diseaseDdl, "DISEASEID", "DISEASENAME");
-            bookingDetail.PatientDdl = new SelectList(patientDdl, "PATIENTID", "PATIENTNAME");
+            bookingDetail.PatientList = patientDdl.ConverToJsonString();
             bookingDetail.BookingStatusDdl = new SelectList(bookingStatus, "Value", "Key");
             ViewBag.Message = viewMessage;
             return View(bookingDetail);

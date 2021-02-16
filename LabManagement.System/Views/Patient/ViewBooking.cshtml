@@ -27,16 +27,16 @@
             </div>
         </div>
 
-        <hr />
+        <hr/>
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Patient Name
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5">
-                @Html.DropDownListFor(x => x.PATIENTID, Model.PatientDdl, new { @class = "form-control selectpicker", required = "required" })
-
+                <select id="PATIENTIDDDL" name="PATIENTIDDDL" class="form-control selectpicker">
+                </select>
                 @Html.HiddenFor(x => x.BOOKINGID)
-                @Html.HiddenFor(x => x.PATIENTID)
+                @Html.HiddenFor(x => x.PATIENTID, Model.PATIENTID)
             </div>
         </div>
         <div class="row">
@@ -136,7 +136,7 @@
             </div>
         </div>
         <div class="row">
-            <hr />
+            <hr/>
         </div>
     }
 </div>
@@ -157,6 +157,23 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+            setTimeout(loadPatientList(), 500);
+             function loadPatientList() {
+                 var dropdown = $('#PATIENTIDDDL');
+                dropdown.empty();
+                var ddlData = @Html.Raw(Model.PatientList);
+                if (ddlData !== 'undefined' && ddlData !== null) {
+                    $.each(ddlData, function (key, entry) {
+                        dropdown.append($('<option></option>').attr('value', entry.PATIENTID).text(entry.PATIENTNAME));
+                    })
+                 }
+                 $('#PATIENTIDDDL').on('change', function () {
+                     var patientId = $('#PATIENTIDDDL option:selected').val();
+                     $('#PATIENTID').val(patientId);
+
+                 });
+            }
+
             $('#APPOINTMENTDATE').datepicker({ format: 'dd/mm/yyyy' });
             $('#DISCHARGEDATE').datepicker({ format: 'dd/mm/yyyy' });
             var bookingId=$('#BOOKINGID').val();
@@ -217,6 +234,7 @@
             });
 
             }
+
             function listenDelete() {
               $(".btn-sm").on('click', function () {
                     var btnId = this.id;
@@ -330,7 +348,7 @@
                     });
 
                 }));
-            
+
         //Prescription add and remove code ends
         });
     </script>

@@ -22,7 +22,7 @@ namespace LabManagement.System.Controllers
         private readonly IDrugTaxService drugTaxService;
         private readonly ILabTaxService labTaxService;
         public InvoiceController(IInvoice objIInvoice, IPatient objIPatient,
-            IHospitalMaster objIHospitalMaster, 
+            IHospitalMaster objIHospitalMaster,
             IAdminOperations adminOperations,
             IDrugTaxService drugTaxService,
             ILabTaxService labTaxService)
@@ -31,9 +31,9 @@ namespace LabManagement.System.Controllers
             _objIPatient = objIPatient;
             _objIHospitalMaster = objIHospitalMaster;
             _adminOperations = adminOperations;
-            this.drugTaxService=drugTaxService;
+            this.drugTaxService = drugTaxService;
             this.labTaxService = labTaxService;
-    }
+        }
 
         public ActionResult ViewMedicalBill(int MedicalBillId, string viewMessage = "")
         {
@@ -54,7 +54,7 @@ namespace LabManagement.System.Controllers
             medicalBilling.BILLDATE = DateTime.Now;
             medicalBilling.CREATEDDATE = DateTime.Now;
             var totalTax = objDrugBillDetails.Select(x => x.TAXAMOUNT).Sum();
-            medicalBilling.BILLAMOUNT = objDrugBillDetails.Select(x => x.COST).Sum()+ totalTax;
+            medicalBilling.BILLAMOUNT = objDrugBillDetails.Select(x => x.COST).Sum() + totalTax;
             medicalBilling.BILLBY = LoginId.ToString();
             objDrugBillDetails.ForEach(x =>
             {
@@ -63,7 +63,7 @@ namespace LabManagement.System.Controllers
                     DRUGID = x.DRUGID,
                     QUANTITY = x.QUANTITY,
                     ITEMCOST = x.COST,
-                    TAXAMOUNT=x.TAXAMOUNT
+                    TAXAMOUNT = x.TAXAMOUNT
                 });
             });
 
@@ -163,7 +163,7 @@ namespace LabManagement.System.Controllers
                     TESTID = x.TESTID,
                     ITEMCOST = x.COST,
                     TESTRESULT = x.TESTRESULT,
-                    TAXAMOUNT=x.TAXAMOUNT
+                    TAXAMOUNT = x.TAXAMOUNT
                 });
             });
 
@@ -338,10 +338,10 @@ namespace LabManagement.System.Controllers
             var deletUltraSonagramReportTwo = _objIInvoice.DeleteUltraSonagramReportTwo(ReportId);
             return RedirectToAction("ViewAllUltraSonagramReportTwo", new { viewMessage = "UltraSonagramReportTwo Detail Deleted Successfully" });
         }
-      
+
         public ActionResult ViewInvestigationReport(int ReportId, string viewMessage = "")
         {
-            var patientList = _objIPatient.GetAllPatient(QueryFilterAttribute.none,"","IN");
+            var patientList = _objIPatient.GetAllPatient(QueryFilterAttribute.none, "", "IN");
             ViewBag.PatientList = patientList.GetInPatientDropdowList();
             var getInvestigationReport = _objIInvoice.GetInvestigationReportDetailsById(ReportId);
             ViewBag.Message = viewMessage;
@@ -534,7 +534,7 @@ namespace LabManagement.System.Controllers
             }
 
             var getReportSummary = _objIInvoice.GetPatientReportStoreById(reportId);
-            getReportSummary.PatientDdl = PatientList.GetDropDownList("PATIENTID", "PATIENTNAME");
+            getReportSummary.PatientList = PatientList.ConverToJsonString();
             getReportSummary.TemplateDdl = templateDdl.GetDropDownList("TEMPLATEID", "TEMPLATENAME");
             ViewBag.TemlpateContent = getReportSummary.REPORTDETAIL ?? getReportSummary.REPORTDETAIL;
             if (reportId > 0 && getReportSummary.PATIENTID.HasValue)
