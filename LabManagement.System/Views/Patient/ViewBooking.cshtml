@@ -162,9 +162,13 @@
                  var dropdown = $('#PATIENTIDDDL');
                 dropdown.empty();
                 var ddlData = @Html.Raw(Model.PatientList);
-                if (ddlData !== 'undefined' && ddlData !== null) {
+                 if (ddlData !== 'undefined' && ddlData !== null) {
+                     var id = $('#PATIENTID').val();
+                     var patientId = parseInt(id);
                     $.each(ddlData, function (key, entry) {
-                        dropdown.append($('<option></option>').attr('value', entry.PATIENTID).text(entry.PATIENTNAME));
+                        var listPatientId = parseInt(entry.PATIENTID);
+                        var optionText = patientId > 0 && listPatientId === patientId ? '<option selected="true" ></option>' : '<option></option>';
+                        dropdown.append($(optionText).attr('value', entry.PATIENTID).text(entry.PATIENTNAME));
                     })
                  }
                  $('#PATIENTIDDDL').on('change', function () {
