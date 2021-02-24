@@ -5,7 +5,7 @@
 }
 /*Sets font family for all controls*/
 body, div, input[type], textarea, button, a, p, ul, li, span, label, h1, h2, h3, h4, h5, h6 {
-    font-family: "Times New Roman" ;
+    font-family: "Times New Roman";
     border-radius: 0 !important;
 }
 
@@ -59,6 +59,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 0px;
     margin-bottom: 6rem;
 }
+
 .roundCornerDiv::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
@@ -428,12 +429,19 @@ legend.lms-fs-border {
 
 .btn-drug-tax {
 }
-.hpms-border-bottom{
-    border-bottom:1px solid black;
+
+.hpms-border-bottom {
+    border-bottom: 1px solid black;
 }
-.display-auto-width{
-    width:auto !important;
+
+.display-auto-width {
+    width: auto !important;
 }
-.hpms-print-font{
-    font-size:3rem !important;
+
+.hpms-print-font {
+    font-size: 3rem !important;
+}
+/*Over ride select js css to set height on search with more records*/
+.bootstrap-select > .dropdown-menu, .open {
+    max-height: 15rem !important
 }
