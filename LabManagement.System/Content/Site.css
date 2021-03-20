@@ -443,5 +443,20 @@ legend.lms-fs-border {
 }
 /*Over ride select js css to set height on search with more records*/
 .bootstrap-select > .dropdown-menu, .open {
-    max-height: 15rem !important
+    max-height: 30rem !important
+}
+
+.hpms-report-table > tbody > tr > td {
+    vertical-align: top;
+    padding-right: 1rem;
+    border: none !important
+}
+
+    .hpms-report-table > tbody > tr > td.text-strong {
+        color: #3a87ad;
+    }
+
+.hpms-bold {
+    color: #3a87ad;
+    font-weight: bold;
 }

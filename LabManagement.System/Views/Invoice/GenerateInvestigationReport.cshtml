@@ -7,9 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
 
-
 }
-
 
 @if (!string.IsNullOrEmpty(message))
 {
@@ -22,13 +20,12 @@
     </div>
 }
 
-
 <div class="col-sm-10 col-md-10 col-lg-10 roundCornerDiv">
     <div id="canvasElement">
         <div id="canvasPrintDiv">
 
             <div class="row">
-                <hr />
+                <hr/>
             </div>
             <div class="row">
                 <div class="col-sm-10 col-md-10 col-lg-10 text-center">
@@ -38,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-8 col-md-8 col-lg-8" style="margin-left: 16%;" id="prntTableDiv">
-                    <table class="table table-striped  dataTable no-footer">
+                    <table class="table hpms-report-table  dataTable no-footer">
                         <tr>
                             <td class=" text-left  text-strong">
                                 Name
@@ -68,8 +65,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.ALBUMIN</p>
                                 </td>
-
-
                             </tr>
                         }
                         @if (@Model.URINESUGAR.stringIsNotNull())
@@ -81,7 +76,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.URINESUGAR</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.PUSCELL.stringIsNotNull())
@@ -93,7 +87,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.PUSCELL</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.RBC.stringIsNotNull())
@@ -105,7 +98,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.RBC</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.EPTHELIALCELL.stringIsNotNull())
@@ -128,7 +120,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.BLOODHAEMOGLOBIN</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.GROUPINGRHTYPING.stringIsNotNull())
@@ -140,7 +131,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.GROUPINGRHTYPING</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.BT.stringIsNotNull())
@@ -152,7 +142,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.BT</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.CT.stringIsNotNull())
@@ -164,7 +153,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.CT</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.PLATELET.stringIsNotNull())
@@ -176,7 +164,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.PLATELET</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.BLOODUREA.stringIsNotNull())
@@ -188,7 +175,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.BLOODUREA</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.SUGAR.stringIsNotNull())
@@ -200,7 +186,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.SUGAR</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.SRCREATININE.stringIsNotNull())
@@ -212,7 +197,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.SRCREATININE</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.SRFREET3.stringIsNotNull())
@@ -224,7 +208,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.SRFREET3</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.SRFREET4.stringIsNotNull())
@@ -236,7 +219,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.SRFREET4</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.TSH.stringIsNotNull())
@@ -248,7 +230,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.TSH</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.VDRL.stringIsNotNull())
@@ -260,7 +241,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.VDRL</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.HIV.stringIsNotNull())
@@ -272,7 +252,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.HIV</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.HBSAG.stringIsNotNull())
@@ -284,7 +263,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.HBSAG</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.HCV.stringIsNotNull())
@@ -296,7 +274,6 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.HCV</p>
                                 </td>
-
                             </tr>
                         }
                         @if (@Model.COMMENTS.stringIsNotNull())
@@ -308,10 +285,8 @@
                                 <td colspan="2" class=" text-left">
                                     <p>@Model.COMMENTS</p>
                                 </td>
-
                             </tr>
                         }
-
                     </table>
                 </div>
             </div>
@@ -325,7 +300,6 @@
                         <p>
                             @Html.Raw(Model.ADDITIONALREPORT)
                         </p>
-
                     </div>
                 </div>
             }
@@ -347,9 +321,8 @@
             </div>
             <div class="row">
 
-                <hr />
+                <hr/>
             </div>
-
         </div>
     </div>
 </div>
@@ -366,10 +339,5 @@
             });
 
         });
-
     </script>
 }
-
-
-
-

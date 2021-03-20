@@ -78,19 +78,6 @@
                                 }
                                 <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Diagnosis Types </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="@Url.Action("ViewAllDisease", "Admin")"> Dashboard</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="@Url.Action("ViewDisease", "Admin", new { DiseaseId = 0 })"> New</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Define Template</a>
                                     <ul class="dropdown-menu">
                                         <li>
@@ -99,6 +86,19 @@
                                         <li class="divider"></li>
                                         <li>
                                             <a href="@Url.Action("ViewTemplate", "Admin", new { templateId = 0 })"> New</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Diagnosis Types </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("ViewAllDisease", "Admin")"> Dashboard</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="@Url.Action("ViewDisease", "Admin", new { DiseaseId = 0 })"> New</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -187,6 +187,15 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Report Editor</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="@Url.Action("ViewAllPatientReportStore", "Invoice")">Dashboard</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="@Url.Action("ViewPatientReportStore", "Invoice", new { reportId = 0 })">New </a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Surgery Notes</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="@Url.Action("ViewAllSurgeryNotes", "Reports")">Dashboard</a></li>
@@ -210,15 +219,6 @@
                                         <li><a href="@Url.Action("ViewAllLabourNotes", "Reports")">Dashboard</a></li>
                                         <li class="divider"></li>
                                         <li><a href="@Url.Action("ViewLabourNotes", "Reports", new { id = 0 })">New </a></li>
-                                    </ul>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient Report Editor</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="@Url.Action("ViewAllPatientReportStore", "Invoice")">Dashboard</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="@Url.Action("ViewPatientReportStore", "Invoice", new { reportId = 0 })">New </a></li>
                                     </ul>
                                 </li>
                                 <li class="divider"></li>
