@@ -771,6 +771,11 @@ namespace Lab.Management.Engine.Infrastructure
             var resultId = 0;
             try
             {
+                if (lmsPatientReportStore.PATIENTID.HasValue && lmsPatientReportStore.PATIENTID.Value <= 0)
+                {
+                    lmsPatientReportStore.PATIENTID = null;
+                }
+
                 if (lmsPatientReportStore.REPORTID > 0)
                 {
                     _objLabManagementEntities.lmsPatientReportStores.Attach(lmsPatientReportStore);
