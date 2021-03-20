@@ -13,10 +13,14 @@ namespace Lab.Management.Engine.Infrastructure
     {
         private LabManagementEntities _objLabManagementEntities;
         private readonly IAppLogger _objIAppLogger;
-        public Invoice(LabManagementEntities objLabManagementEntities, IAppLogger objIAppLogger)
+        private readonly IHospitalMaster _objIHospitalMaster;
+
+        public Invoice(LabManagementEntities objLabManagementEntities, IAppLogger objIAppLogger,
+            IHospitalMaster objIHospitalMaster)
         {
             _objLabManagementEntities = objLabManagementEntities;
             _objIAppLogger = objIAppLogger;
+            this._objIHospitalMaster = objIHospitalMaster;
         }
 
         public lmsMedicalBilling GetMedicalBillDetailsById(int BillId)
@@ -82,18 +86,39 @@ namespace Lab.Management.Engine.Infrastructure
         public int DeleteMedicalBill(int BillId)
         {
             var resultFlag = 0;
-            try
+            using (var transaction = _objLabManagementEntities.Database.BeginTransaction())
             {
-                var billObject = _objLabManagementEntities.lmsMedicalBillings.FirstOrDefault(x => x.BILLID == BillId);
-                var medicalbilldetails = _objLabManagementEntities.lmsMedicalBillingDetails.Where(x => x.BILLID == BillId);
-                _objLabManagementEntities.lmsMedicalBillingDetails.RemoveRange(medicalbilldetails);
-                _objLabManagementEntities.lmsMedicalBillings.Remove(billObject);
-                _objLabManagementEntities.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                resultFlag = -1;
-                _objIAppLogger.LogError(ex);
+                try
+                {
+                    var medicalBillDetail = GetMedicalBillDetailsById(BillId);
+                    if (medicalBillDetail != null)
+                    {
+                        if (medicalBillDetail.lmsMedicalBillingDetails.Any())
+                        {
+                            medicalBillDetail.lmsMedicalBillingDetails.ToList().ForEach(x =>
+                            {
+                                var drugInfo = _objIHospitalMaster.GetDrugDetailsById(x.DRUGID.GetValueOrDefault());
+                                if (drugInfo != null)
+                                {
+                                    drugInfo.ORDERCOUNT = drugInfo.ORDERCOUNT.GetValueOrDefault() + x.QUANTITY.GetValueOrDefault();
+                                    _objIHospitalMaster.SaveDrug(drugInfo);
+                                }
+                            });
+                        }
+                    }
+                    var billObject = _objLabManagementEntities.lmsMedicalBillings.FirstOrDefault(x => x.BILLID == BillId);
+                    var medicalbilldetails = _objLabManagementEntities.lmsMedicalBillingDetails.Where(x => x.BILLID == BillId);
+                    _objLabManagementEntities.lmsMedicalBillingDetails.RemoveRange(medicalbilldetails);
+                    _objLabManagementEntities.lmsMedicalBillings.Remove(billObject);
+                    _objLabManagementEntities.SaveChanges();
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    resultFlag = -1;
+                    _objIAppLogger.LogError(ex);
+                    transaction.Rollback();
+                }
             }
 
             return resultFlag;
@@ -771,6 +796,11 @@ namespace Lab.Management.Engine.Infrastructure
             var resultId = 0;
             try
             {
+                if (lmsPatientReportStore.PATIENTID.HasValue && lmsPatientReportStore.PATIENTID.Value <= 0)
+                {
+                    lmsPatientReportStore.PATIENTID = null;
+                }
+
                 if (lmsPatientReportStore.REPORTID > 0)
                 {
                     _objLabManagementEntities.lmsPatientReportStores.Attach(lmsPatientReportStore);
