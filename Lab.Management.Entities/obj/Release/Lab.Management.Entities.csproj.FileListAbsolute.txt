@@ -58,3 +58,17 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Relea
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csprojAssemblyReference.cache
+D:\Source\.Net\hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll.config
+D:\Source\.Net\hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.dll
+D:\Source\.Net\hpms\Lab.Management.Entities\bin\Release\Lab.Management.Entities.pdb
+D:\Source\.Net\hpms\Lab.Management.Entities\bin\Release\EntityFramework.dll
+D:\Source\.Net\hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.dll
+D:\Source\.Net\hpms\Lab.Management.Entities\bin\Release\System.Web.Mvc.dll
+D:\Source\.Net\hpms\Lab.Management.Entities\bin\Release\EntityFramework.xml
+D:\Source\.Net\hpms\Lab.Management.Entities\bin\Release\EntityFramework.SqlServer.xml
+D:\Source\.Net\hpms\Lab.Management.Entities\bin\Release\System.Web.Mvc.xml
+D:\Source\.Net\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.AssemblyReference.cache
+D:\Source\.Net\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CoreCompileInputs.cache
+D:\Source\.Net\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.csproj.CopyComplete
+D:\Source\.Net\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.dll
+D:\Source\.Net\hpms\Lab.Management.Entities\obj\Release\Lab.Management.Entities.pdb

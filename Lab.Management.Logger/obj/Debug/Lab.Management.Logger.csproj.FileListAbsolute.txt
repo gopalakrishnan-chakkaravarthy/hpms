@@ -14,3 +14,11 @@ E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.Core
 E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CopyComplete
 E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.dll
 E:\hpms-master\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.pdb
+D:\Source\.Net\hpms\Lab.Management.Logger\bin\Debug\Lab.Management.Logger.dll
+D:\Source\.Net\hpms\Lab.Management.Logger\bin\Debug\Lab.Management.Logger.pdb
+D:\Source\.Net\hpms\Lab.Management.Logger\bin\Debug\log4net.dll
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.AssemblyReference.cache
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CoreCompileInputs.cache
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.csproj.CopyComplete
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.dll
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Debug\Lab.Management.Logger.pdb

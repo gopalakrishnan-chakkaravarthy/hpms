@@ -32,3 +32,11 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Release
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.csprojAssemblyReference.cache
+D:\Source\.Net\hpms\Lab.Management.Common\bin\Release\Lab.Management.Common.dll
+D:\Source\.Net\hpms\Lab.Management.Common\bin\Release\Lab.Management.Common.pdb
+D:\Source\.Net\hpms\Lab.Management.Common\bin\Release\AutoMapper.dll
+D:\Source\.Net\hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.csproj.AssemblyReference.cache
+D:\Source\.Net\hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.csproj.CoreCompileInputs.cache
+D:\Source\.Net\hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.csproj.CopyComplete
+D:\Source\.Net\hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.dll
+D:\Source\.Net\hpms\Lab.Management.Common\obj\Release\Lab.Management.Common.pdb

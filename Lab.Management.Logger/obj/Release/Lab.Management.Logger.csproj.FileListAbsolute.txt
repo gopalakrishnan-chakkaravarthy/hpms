@@ -31,3 +31,11 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csprojAssemblyReference.cache
+D:\Source\.Net\hpms\Lab.Management.Logger\bin\Release\Lab.Management.Logger.dll
+D:\Source\.Net\hpms\Lab.Management.Logger\bin\Release\Lab.Management.Logger.pdb
+D:\Source\.Net\hpms\Lab.Management.Logger\bin\Release\log4net.dll
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.AssemblyReference.cache
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CoreCompileInputs.cache
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.csproj.CopyComplete
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.dll
+D:\Source\.Net\hpms\Lab.Management.Logger\obj\Release\Lab.Management.Logger.pdb

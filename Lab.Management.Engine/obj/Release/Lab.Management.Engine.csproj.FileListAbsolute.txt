@@ -106,3 +106,26 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Engine.pdb
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\AutoMapper.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\EntityFramework.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Common.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Entities.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Logger.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\StructureMap.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\System.Web.Mvc.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\log4net.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Common.pdb
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Entities.pdb
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Entities.dll.config
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\Lab.Management.Logger.pdb
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\EntityFramework.xml
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\EntityFramework.SqlServer.xml
+D:\Source\.Net\hpms\Lab.Management.Engine\bin\Release\System.Web.Mvc.xml
+D:\Source\.Net\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.AssemblyReference.cache
+D:\Source\.Net\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CoreCompileInputs.cache
+D:\Source\.Net\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.csproj.CopyComplete
+D:\Source\.Net\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.dll
+D:\Source\.Net\hpms\Lab.Management.Engine\obj\Release\Lab.Management.Engine.pdb

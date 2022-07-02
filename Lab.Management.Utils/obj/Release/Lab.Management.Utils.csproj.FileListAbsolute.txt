@@ -64,3 +64,39 @@ E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CopyComplete
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.dll
 E:\Working Directory\HPMS\Source\Vinayaga-hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.pdb
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Utils.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Utils.pdb
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\AForge.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\AForge.Video.DirectShow.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\AForge.Video.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Excel.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Common.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Engine.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Entities.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\System.Web.Mvc.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\zxing.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\zxing.presentation.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\StructureMap.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\EntityFramework.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Logger.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\log4net.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Common.pdb
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Engine.pdb
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Entities.pdb
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Entities.dll.config
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\AForge.xml
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\AForge.Video.xml
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\AForge.Video.DirectShow.xml
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Excel.pdb
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\System.Web.Mvc.xml
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\zxing.pdb
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\zxing.xml
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\zxing.presentation.pdb
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\zxing.presentation.xml
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\EntityFramework.xml
+D:\Source\.Net\hpms\Lab.Management.Utils\bin\Release\Lab.Management.Logger.pdb
+D:\Source\.Net\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.AssemblyReference.cache
+D:\Source\.Net\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CoreCompileInputs.cache
+D:\Source\.Net\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.csproj.CopyComplete
+D:\Source\.Net\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.dll
+D:\Source\.Net\hpms\Lab.Management.Utils\obj\Release\Lab.Management.Utils.pdb
