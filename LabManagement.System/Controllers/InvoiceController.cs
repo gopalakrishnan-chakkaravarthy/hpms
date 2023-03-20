@@ -38,9 +38,9 @@ namespace LabManagement.System.Controllers
         public ActionResult ViewMedicalBill(int MedicalBillId, string viewMessage = "")
         {
             var DrugList = _objIHospitalMaster.GetDrugsDdl();
-            var PatientList = _objIPatient.GetPatientDdl();
+            // var PatientList = _objIPatient.GetPatientDdl();
             ViewBag.DrugList = DrugList.GetDropDownList("DRUGID", "DRUGNAME"); // new SelectList(DrugList, "DRUGID", "DRUGNAME");
-            ViewBag.PatientList = PatientList.GetDropDownList("PATIENTID", "PATIENTNAME");
+            //ViewBag.PatientList = PatientList.GetDropDownList("PATIENTID", "PATIENTNAME");
             var getMedicalBill = _objIInvoice.GetMedicalBillDetailsById(MedicalBillId);
             ViewBag.Message = viewMessage;
             return View(getMedicalBill);

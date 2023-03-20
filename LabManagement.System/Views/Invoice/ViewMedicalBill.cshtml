@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var message = ViewBag.Message as string;
     var drugddl = ViewBag.DrugList as IEnumerable<SelectListItem>;
-    var patientddl = ViewBag.PatientList as IEnumerable<SelectListItem>;
+    //var patientddl = ViewBag.PatientList as IEnumerable<SelectListItem>;
 }
 @if (!string.IsNullOrEmpty(message))
 {
@@ -23,7 +23,7 @@
         <hr/>
     </div>
     <div class="col-sm-10 col-md-10 col-lg-10">
-        <div class="row">
+        @*<div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Select Patient Name
             </div>
@@ -36,7 +36,7 @@
                 </select>
             </div>
         </div>
-        <hr/>
+        <hr/>*@
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 Bill Name
@@ -148,16 +148,16 @@
 
             $('#btnSave').removeAttr('disabled');
             var alreadyAddedDrugs = [];
-            $('#Idpatientddl').on('change', function () {
-                var patientddl = $('#Idpatientddl option:selected').text();
-                var indexStart = patientddl.indexOf('-') + 1;
-                var indexEnd = patientddl.lastIndexOf('(');
-                if (indexStart > -1 && indexEnd > -1) {
-                  patientddl = patientddl.substring(indexStart, indexEnd);
-                }
-                $('#BILLNAME').val(patientddl);
+            //$('#Idpatientddl').on('change', function () {
+            //    var patientddl = $('#Idpatientddl option:selected').text();
+            //    var indexStart = patientddl.indexOf('-') + 1;
+            //    var indexEnd = patientddl.lastIndexOf('(');
+            //    if (indexStart > -1 && indexEnd > -1) {
+            //      patientddl = patientddl.substring(indexStart, indexEnd);
+            //    }
+            //    $('#BILLNAME').val(patientddl);
 
-            });
+            //});
 
             var drugDetails = [];
 

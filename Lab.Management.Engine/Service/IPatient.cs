@@ -7,13 +7,13 @@ namespace Lab.Management.Engine.Service
 {
     public interface IPatient
     {
-        IList<usp_GetPatientDdlForBilling_Result> GetPatientDdl();
+        IEnumerable<usp_GetPatientDdlForBilling_Result> GetPatientDdl();
 
         int GetPatientIdByQrCode(string qrCode);
 
         lmsPatientRegistration GetPatientDetailsById(int PatientId);
 
-        IList<lmsPatientRegistration> GetAllPatient( QueryFilterAttribute queryFilterAttribute, string filterValue, string patientType, bool includeAll = false);
+        IEnumerable<lmsPatientRegistration> GetAllPatient( QueryFilterAttribute queryFilterAttribute, string filterValue, string patientType, bool includeAll = false);
 
         int SavePatient(lmsPatientRegistration objPatientMaster);
 
@@ -21,7 +21,7 @@ namespace Lab.Management.Engine.Service
 
         lmsPatientBooking GetPatientBookingById(int id);
 
-        IList<lmsPatientBooking> GetAllPatientBooking(string date = "",
+        IEnumerable<lmsPatientBooking> GetAllPatientBooking(string date = "",
             int patientId = 0, string status = "CONFIRMED", bool isHistory = false);
 
         int SavePatientBooking(lmsPatientBooking objPatientMaster);
@@ -30,11 +30,11 @@ namespace Lab.Management.Engine.Service
 
         lmsPatientPrescription GetPatientPrescriptionById(int bookingId);
 
-        IList<lmsPatientPrescription> GetAllPatientPrescription(int bookingId);
+        IEnumerable<lmsPatientPrescription> GetAllPatientPrescription(int bookingId);
 
         int SavePatientPrescription(List<lmsPatientPrescription> objPatientMaster);
 
         int DeletePatientPrescription(int bookingId);
-        IList<QueryFilterModel> GetFilterList();
+        IEnumerable<QueryFilterModel> GetFilterList();
     }
 }

@@ -95,7 +95,7 @@ namespace LabManagement.System.Common
             return Math.Round(expiryDate);
         }
 
-        public static SelectList GetInPatientDropdowList(this IList<lmsPatientRegistration> inValue, object seletedValue = null)
+        public static SelectList GetInPatientDropdowList(this IEnumerable<lmsPatientRegistration> inValue, object seletedValue = null)
         {
             inValue.ToList().ForEach(x =>
             {
@@ -105,7 +105,7 @@ namespace LabManagement.System.Common
             return dropDownList;
         }
 
-        public static SelectList GetDropDownList<T>(this IList<T> inList, string dataValueField, string dataTextField)
+        public static SelectList GetDropDownList<T>(this IEnumerable<T> inList, string dataValueField, string dataTextField)
         {
             return new SelectList(inList, dataValueField, dataTextField);
         }

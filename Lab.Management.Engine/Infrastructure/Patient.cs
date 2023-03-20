@@ -39,9 +39,11 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
-        public IList<usp_GetPatientDdlForBilling_Result> GetPatientDdl()
+        public IEnumerable<usp_GetPatientDdlForBilling_Result> GetPatientDdl()
         {
-            return _objLabManagementEntities.usp_GetPatientDdlForBilling().ToList();
+            var patientList= _objLabManagementEntities.usp_GetPatientDdlForBilling().ToList();
+            var countda = patientList.Count();
+            return patientList;
         }
 
         public lmsPatientRegistration GetPatientDetailsById(int PatientId)
@@ -63,7 +65,7 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
-        public IList<lmsPatientRegistration> GetAllPatient(QueryFilterAttribute queryFilterAttribute, string filterValue, string patientType, bool includeAll = false)
+        public IEnumerable<lmsPatientRegistration> GetAllPatient(QueryFilterAttribute queryFilterAttribute, string filterValue, string patientType, bool includeAll = false)
         {
             try
             {
@@ -146,7 +148,7 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
-        public IList<lmsPatientBooking> GetAllPatientBooking(string date = "",
+        public IEnumerable<lmsPatientBooking> GetAllPatientBooking(string date = "",
             int patientId = 0, string status = "CONFIRMED", bool isHistory = false)
         {
             try
@@ -229,7 +231,7 @@ namespace Lab.Management.Engine.Infrastructure
             }
         }
 
-        public IList<lmsPatientPrescription> GetAllPatientPrescription(int bookingId)
+        public IEnumerable<lmsPatientPrescription> GetAllPatientPrescription(int bookingId)
         {
             try
             {
@@ -284,7 +286,7 @@ namespace Lab.Management.Engine.Infrastructure
             }
             return resultFlag;
         }
-        public IList<QueryFilterModel> GetFilterList()
+        public IEnumerable<QueryFilterModel> GetFilterList()
         {
             var filterList = new List<QueryFilterModel>() {
             new QueryFilterModel { Text="Name",Value=QueryFilterAttribute.firstname},
