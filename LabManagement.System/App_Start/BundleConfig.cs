@@ -8,9 +8,9 @@ namespace LabManagement.System
         public static void RegisterBundles(BundleCollection bundles)
         {
 #if DEBUG
-            RegisterReleaseBundles(bundles);
+            RegisterDebugBundle(bundles);
 #else
-               RegisterReleaseBundles(bundles);
+            RegisterDebugBundle(bundles);
 #endif
         }
 
@@ -87,7 +87,7 @@ namespace LabManagement.System
                   "~/Content/js/canvas2image.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jjspdf").Include(
-             "~/Content/js/jspdf.min.js"));
+             "~/Content/js/jspdf.debug.js", "~/Content/js/jspdf.plugin.autotable.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Kjquerywebcam").Include(
                 "~/Content/js/jquery.webcam.js"));

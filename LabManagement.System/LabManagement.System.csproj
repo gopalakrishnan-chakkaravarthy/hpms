@@ -487,7 +487,9 @@
     <Content Include="Content\js\jquery.webcam.js" />
     <Content Include="Content\js\jscam.swf" />
     <Content Include="Content\js\jscam_canvas_only.swf" />
+    <Content Include="Content\js\jspdf.debug.js" />
     <Content Include="Content\js\jspdf.min.js" />
+    <Content Include="Content\js\jspdf.plugin.autotable.js" />
     <Content Include="Content\js\jspdf.plugin.autotable.min.js" />
     <Content Include="Content\js\responsive.bootstrap.min.js" />
     <Content Include="Content\plugins\dataTables\dataTables.bootstrap.css" />
