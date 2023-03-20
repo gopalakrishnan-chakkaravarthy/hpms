@@ -487,6 +487,8 @@
     <Content Include="Content\js\jquery.webcam.js" />
     <Content Include="Content\js\jscam.swf" />
     <Content Include="Content\js\jscam_canvas_only.swf" />
+    <Content Include="Content\js\jspdf.min.js" />
+    <Content Include="Content\js\jspdf.plugin.autotable.min.js" />
     <Content Include="Content\js\responsive.bootstrap.min.js" />
     <Content Include="Content\plugins\dataTables\dataTables.bootstrap.css" />
     <Content Include="Content\plugins\dataTables\dataTables.bootstrap.js" />
@@ -589,6 +591,7 @@
     <None Include="Properties\PublishProfiles\vinayagapolyclinic.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\vpchpms - Web Deploy.pubxml" />
     <Content Include="Scripts\AppScripts\Common.js" />
+    <Content Include="Scripts\AppScripts\pdfexport\bill-pdf.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -694,7 +697,7 @@
     <Content Include="Views\Patient\ViewBooking.cshtml" />
     <Content Include="Views\Patient\_ViewPrescription.cshtml" />
     <Content Include="Views\Patient\_PrintPatientPrescription.cshtml" />
-	<Content Include="Views\Patient\_ViewPatientHistory.cshtml" />
+    <Content Include="Views\Patient\_ViewPatientHistory.cshtml" />
     <Content Include="Views\Invoice\ViewPatientReportStore.cshtml" />
     <Content Include="Views\Invoice\ViewAllPatientReportStore.cshtml" />
     <Content Include="Views\Admin\ViewAllDrugDosage.cshtml" />
@@ -707,7 +710,6 @@
     <Content Include="Views\LabTax\_Index.cshtml" />
     <Content Include="Views\MedicalTest\ViewMedicalTest.cshtml" />
     <Content Include="Views\MedicalTest\ViewAllMedicalTest.cshtml" />
-   
     <Content Include="Views\Reports\ViewSurgeryNotes.cshtml" />
     <Content Include="Views\Reports\ViewAllSurgeryNotes.cshtml" />
     <Content Include="Views\Reports\GenerateSurgeryNotes.cshtml" />
@@ -724,6 +726,7 @@
     <Content Include="Views\Shared\_FilterLayout.cshtml" />
     <Content Include="Views\Tax\ViewTax.cshtml" />
     <Content Include="Views\Tax\Index.cshtml" />
+    <Content Include="Views\Shared\_ThermalPrint.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

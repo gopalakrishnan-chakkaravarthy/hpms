@@ -1,4 +1,5 @@
-﻿using Lab.Management.Engine.Service;
+﻿using Lab.Management.Engine.Models;
+using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
 using Lab.Management.Logger;
 using System;
@@ -56,6 +57,28 @@ namespace Lab.Management.Engine.Infrastructure
                 _objIAppLogger.LogError(ex);
                 return null;
             }
+        }
+        public IEnumerable<BillPrintModel> GetDetailListByBillId(int billId)
+        {
+            var billData = _objLabManagementEntities.lmsMedicalBillings.FirstOrDefault(x => x.BILLID == billId);
+            var billPrintList = new List<BillPrintModel>();
+            if (billData != null)
+            {
+                foreach (var item in billData.lmsMedicalBillingDetails)
+                {
+                    billPrintList.Add(new BillPrintModel
+                    {
+                        Id = item.BILLDETAILID,
+                        ItemName = item.lmsDrug.DRUGNAME,
+                        Quantity = item.QUANTITY,
+                        UnitPrice = item.ITEMCOST
+
+                    });
+                }
+            }
+
+            return billPrintList;
+
         }
 
         public int SaveMedicalBill(lmsMedicalBilling objlmsMedicalBillings)

@@ -1,5 +1,6 @@
 ﻿@using Lab.Management.Entities;
 @using LabManagement.System.Common;
+@using Lab.Management.Common;
 @model lmsMedicalBilling
 @{
     ViewBag.Title = "Generate Bill";
@@ -102,10 +103,11 @@
                                 Back
                             </i>
                         </a>
-                        <button type="button" class="btn btn-primary" id="btnPrint">
-                            <i class="glyphicon glyphicon-print"></i>
-                            Print
+                        <button type="button" class="btn btn-primary" id="btnDownload">
+                            <i class="glyphicon glyphicon-download"></i>
+                            Download and Share
                         </button>
+
 
                     </div>
                 </div>
@@ -120,13 +122,42 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#btnPrint').on('click', function () {
-                var hideShowelements = [];
-                hideShowelements.push('btnBack');
-                hideShowelements.push('btnPrint');
-                PrintCanvasDiv(hideShowelements, 'canvasElement');
-            });
 
+            $('#btnDownload').on('click', function () {
+                downloadBill();
+            });
+            function downloadBill() {
+                 var headerSection = {
+                    name: '@ConfigurationWrapper.StringSettings(ConfigKey.HospitalName)',
+                    address: '@ConfigurationWrapper.StringSettings(ConfigKey.HospitalAddress)',
+                    contact: '@ConfigurationWrapper.StringSettings(ConfigKey.HospitalContact)',
+                    email: '@ConfigurationWrapper.StringSettings(ConfigKey.HospitalEmail)'
+                };
+                var patientDetails = {
+                    name: '@Model.BILLNAME',
+                    billNo: '@string.Format("MB{0} ", @Model.BILLID)',
+                    contact: '@Model.CONTACT',
+                    billDate: '@Model.BILLDATE.ParseIstDate()', billTotal: '@Model.BILLAMOUNT'
+                };
+                var medicalBillColumns = [
+                    { title: "Particulars", dataKey: "ItemName" },
+                    { title: "Quantity", dataKey: "Quantity" },
+                    { title: "UnitPrice", dataKey: "UnitPrice" }
+                ];
+                var detailUrl = "@Url.Action("GetDetailListByBillId", "Invoice")" + '?medicalBillId=' + '@Model.BILLID' ;
+                     $.ajax({
+                    url: detailUrl,
+                    type: "GET",
+                         success: function (result) {
+                       var printJson = result;
+                       var fileNameWithoutExtension = '@Model.BILLNAME' + '_' + '@Model.BILLDATE.ParseIstDate()';
+                       generatePDF(headerSection, patientDetails, medicalBillColumns, printJson, fileNameWithoutExtension);
+                    },
+                    error: function (result) {
+                        alert("Failed");
+                    }
+                });
+            }
         });
 
     </script>

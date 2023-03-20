@@ -8,7 +8,7 @@ namespace LabManagement.System
         public static void RegisterBundles(BundleCollection bundles)
         {
 #if DEBUG
-            RegisterDebugBundle(bundles);
+            RegisterReleaseBundles(bundles);
 #else
                RegisterReleaseBundles(bundles);
 #endif
@@ -36,6 +36,8 @@ namespace LabManagement.System
                   "~/Content/js/base64.js"));
             bundles.Add(new ScriptBundle("~/bundles/Icanvas2image").Include(
                   "~/Content/js/canvas2image.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jjspdf").Include(
+                  "~/Content/js/jspdf.min.js", "~/Content/js/jspdf.plugin.autotable.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/Kjquerywebcam").Include(
                 "~/Content/js/jquery.webcam.js"));
             bundles.Add(new ScriptBundle("~/bundles/Ljscam").Include(
@@ -44,6 +46,8 @@ namespace LabManagement.System
                 "~/Content/js/jscam_canvas_only.swf"));
             bundles.Add(new ScriptBundle("~/bundles/NCommon").Include(
               "~/Scripts/AppScripts/Common.js"));
+            bundles.Add(new ScriptBundle("~/bundles/OBillPdf").Include(
+            "~/Scripts/AppScripts/pdfexport/bill-pdf.js"));
 
             bundles.Add(new StyleBundle("~/Content/cssBndl").Include("~/Content/Site.css",
                 "~/Content/css/bootstrap.css",
@@ -81,6 +85,10 @@ namespace LabManagement.System
                   "~/Content/js/base64.js"));
             bundles.Add(new ScriptBundle("~/bundles/Icanvas2image").Include(
                   "~/Content/js/canvas2image.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jjspdf").Include(
+             "~/Content/js/jspdf.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/Kjquerywebcam").Include(
                 "~/Content/js/jquery.webcam.js"));
             bundles.Add(new ScriptBundle("~/bundles/Ljscam").Include(
@@ -91,6 +99,9 @@ namespace LabManagement.System
                     "~/Content/js/ckeditor/ckeditor.js"));
             bundles.Add(new ScriptBundle("~/bundles/NCommon").Include(
               "~/Scripts/AppScripts/Common.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/OBillPdf").Include(
+           "~/Scripts/AppScripts/pdfexport/bill-pdf.js"));
 
             bundles.Add(new StyleBundle("~/Content/cssBndl").Include("~/Content/Site.css",
                 "~/Content/css/bootstrap.css",

@@ -1,5 +1,6 @@
 ﻿@using Lab.Management.Entities;
 @using LabManagement.System.Common;
+@using Lab.Management.Common;
 @model IList<lmsMedicalBilling>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -69,7 +70,7 @@
                                             <td>Mobile Number</td>
                                             <td>Date</td>
                                             <td>Bill Amount</td>
-                                            <td>View</td>
+                                            <td> View/Download and Share</td>
                                             <td class="@hiddenClass">Delete</td>
 
                                         </tr>
@@ -88,11 +89,11 @@
                                                 <td>@obj.BILLDATE.ParseIstDate()</td>
                                                 <td>@obj.BILLAMOUNT</td>
                                                 <td>
-                                                    <a href="@Url.Action("GenerateBill", new { MedicalBillId = @obj.BILLID })" class="btn btn-success">
-                                                        <i class="glyphicon glyphicon-pencil"></i>
-                                                        View Bill
+                                                    <button type="button" class="btn btn-primary" id="btnDownload" onclick="downloadBill('@obj.BILLNAME','@obj.BILLID','@obj.CONTACT','@obj.BILLDATE.ParseIstDate()','@obj.BILLAMOUNT')">
+                                                        <i class="glyphicon glyphicon-download"></i>
+                                                        View/Download and Share
 
-                                                    </a>
+                                                    </button>
 
                                                 </td>
                                                 <td class="@hiddenClass">
@@ -190,6 +191,38 @@
             });
         });
 
+        function downloadBill(name, billNo, contact, billDate, billTotal) {
+                 var headerSection = {
+                    name: '@ConfigurationWrapper.StringSettings(ConfigKey.HospitalName)',
+                    address: '@ConfigurationWrapper.StringSettings(ConfigKey.HospitalAddress)',
+                    contact: '@ConfigurationWrapper.StringSettings(ConfigKey.HospitalContact)',
+                    email: '@ConfigurationWrapper.StringSettings(ConfigKey.HospitalEmail)'
+                };
+                var patientDetails = {
+                    name: name,
+                    billNo: 'MB' + billNo,
+                    contact: contact,
+                    billDate:billDate, billTotal:billTotal
+                };
+                var medicalBillColumns = [
+                    { title: "Particulars", dataKey: "ItemName" },
+                    { title: "Quantity", dataKey: "Quantity" },
+                    { title: "UnitPrice", dataKey: "UnitPrice" }
+                ];
+                var detailUrl = "@Url.Action("GetDetailListByBillId", "Invoice")" + '?medicalBillId=' +billNo ;
+                     $.ajax({
+                    url: detailUrl,
+                    type: "GET",
+                         success: function (result) {
+                       var printJson = result;
+                       var fileNameWithoutExtension = name + '_' + billDate;
+                       generatePDF(headerSection, patientDetails, medicalBillColumns, printJson, fileNameWithoutExtension);
+                    },
+                    error: function (result) {
+                        alert("Failed");
+                    }
+                });
+            }
     </script>
 }
 

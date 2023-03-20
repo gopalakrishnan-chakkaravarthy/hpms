@@ -71,6 +71,7 @@
     <Compile Include="Infrastructure\SurgeryReports\OtherCaseSheets.cs" />
     <Compile Include="Infrastructure\SurgeryReports\SurgeryNotes.cs" />
     <Compile Include="Infrastructure\Tax\TaxService.cs" />
+    <Compile Include="Models\BillPrintModel.cs" />
     <Compile Include="Models\DropDown.cs" />
     <Compile Include="Models\DrugTaxRequest.cs" />
     <Compile Include="Models\DrugTaxResponse.cs" />

@@ -78,7 +78,7 @@ namespace Lab.Management.Engine.Infrastructure
                     resultDetails = resultDetails.Where(predicate);
                     return resultDetails.ToList();
                 }
-                return includeAll ? resultDetails.Take(100).OrderByDescending(x => x.PATIENTID).ToList() : resultDetails.Take(100).Where(x => x.PATIENTTYPE == patientType).OrderByDescending(x => x.PATIENTID).ToList();
+                return includeAll ? resultDetails.OrderByDescending(x => x.PATIENTNAME).ToList() : resultDetails.Take(100).Where(x => x.PATIENTTYPE == patientType).OrderByDescending(x => x.PATIENTNAME).ToList();
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace Lab.Management.Engine.Infrastructure
                 }
                 _objLabManagementEntities.lmsPatientRegistrations.Add(objlmsPatientRegistrations);
                 _objLabManagementEntities.SaveChanges();
-                resultId = _objLabManagementEntities.lmsPatientRegistrations.LastOrDefault().PATIENTID;
+                resultId = objlmsPatientRegistrations.PATIENTID;
             }
             catch (Exception ex)
             {

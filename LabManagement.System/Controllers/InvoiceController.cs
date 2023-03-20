@@ -45,7 +45,11 @@ namespace LabManagement.System.Controllers
             ViewBag.Message = viewMessage;
             return View(getMedicalBill);
         }
-
+        public ActionResult GetDetailListByBillId(int medicalBillId)
+        {
+            var getMedicalBill = _objIInvoice.GetDetailListByBillId(medicalBillId);
+            return Json(getMedicalBill, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult SaveBillInfo(DrugBill objDrugBill, List<DrugBillDetails> objDrugBillDetails)
         {
             var medicalBilling = _objIInvoice.GetMedicalBillDetailsById(0);

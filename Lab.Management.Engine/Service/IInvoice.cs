@@ -1,4 +1,5 @@
-﻿using Lab.Management.Entities;
+﻿using Lab.Management.Engine.Models;
+using Lab.Management.Entities;
 using System.Collections.Generic;
 
 namespace Lab.Management.Engine.Service
@@ -6,6 +7,8 @@ namespace Lab.Management.Engine.Service
     public interface IInvoice
     {
         lmsMedicalBilling GetMedicalBillDetailsById(int BillId);
+
+        IEnumerable<BillPrintModel> GetDetailListByBillId(int billId);
 
         IList<lmsMedicalBilling> GetAllMedicalBill(int patientId = 0, string filterDate = "");
 

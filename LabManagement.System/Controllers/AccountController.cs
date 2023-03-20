@@ -29,7 +29,7 @@ namespace LabManagement.System.Controllers
                 return LoadDefaultView();
             }
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return View(new LoginModel());
         }
 
         public ActionResult LoadDefaultView()
