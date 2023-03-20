@@ -64,17 +64,17 @@
 
     doc
         .setFont("times")
-        .setFontSize(10)
+        .setFontSize(9)
         .text(50, 55, headerSection.address);
 
     doc
         .setFont("times")
-        .setFontSize(10)
+        .setFontSize(9)
         .text(50, 70, headerSection.contact);
 
     doc
         .setFont("times")
-        .setFontSize(10)
+        .setFontSize(9)
         .text(50, 85, headerSection.email);
 
     doc.autoTable(columns, data, { margin: { top: 110 } });
