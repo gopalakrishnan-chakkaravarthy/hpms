@@ -41,8 +41,7 @@ namespace Lab.Management.Engine.Infrastructure
 
         public IEnumerable<usp_GetPatientDdlForBilling_Result> GetPatientDdl()
         {
-            var patientList= _objLabManagementEntities.usp_GetPatientDdlForBilling().ToList();
-            var countda = patientList.Count();
+            var patientList = _objLabManagementEntities.usp_GetPatientDdlForBilling().ToList();
             return patientList;
         }
 
@@ -69,18 +68,21 @@ namespace Lab.Management.Engine.Infrastructure
         {
             try
             {
-                if(queryFilterAttribute== QueryFilterAttribute.none|| string.IsNullOrEmpty(filterValue))
+                if (queryFilterAttribute == QueryFilterAttribute.none || string.IsNullOrEmpty(filterValue))
                 {
                     return new List<lmsPatientRegistration>();
                 }
-                var resultDetails = _objLabManagementEntities.lmsPatientRegistrations.Select(x => x);
+                var filterLastThreeMonths = DateTime.Now.AddMonths(-3);
+                var resultDetails = _objLabManagementEntities.lmsPatientRegistrations.
+                    Where(bt => bt.CREATEDDATE.HasValue && EntityFunctions.TruncateTime(bt.CREATEDDATE.Value) == filterLastThreeMonths.Date).Select(x => x);
                 if (!string.IsNullOrEmpty(filterValue))
                 {
                     var predicate = GetWhereClass(queryFilterAttribute, filterValue);
                     resultDetails = resultDetails.Where(predicate);
                     return resultDetails.ToList();
                 }
-                return includeAll ? resultDetails.OrderByDescending(x => x.PATIENTNAME).ToList() : resultDetails.Take(100).Where(x => x.PATIENTTYPE == patientType).OrderByDescending(x => x.PATIENTNAME).ToList();
+                var finalResult = includeAll ? resultDetails : resultDetails.Where(x => x.PATIENTTYPE == patientType);
+                return finalResult.OrderByDescending(x => x.PATIENTNAME).ToList();
             }
             catch (Exception ex)
             {

@@ -231,9 +231,9 @@ namespace LabManagement.System.Controllers
 
         public ActionResult ViewDischargeSummary(int ReportId, string viewMessage = "")
         {
-            var PatientList = _objIPatient.GetPatientDdl();
             var getDischargeSummary = _objIInvoice.GetDischargeSummaryDetailsById(ReportId);
-            getDischargeSummary.PatientDdl = PatientList.GetDropDownList("PATIENTID", "PATIENTNAME");
+            // var PatientList = _objIPatient.GetPatientDdl();
+            //    getDischargeSummary.PatientDdl = PatientList.GetDropDownList("PATIENTID", "PATIENTNAME");
             if (ReportId > 0 && getDischargeSummary.PATIENTID.HasValue)
             {
                 getDischargeSummary.SelectedPatient = getDischargeSummary.PATIENTID.Value;

@@ -84,10 +84,15 @@
                                                         <input type="checkbox" value="@obj.BILLID" />
                                                     </div>
                                                 </td>
-                                                <td>@obj.BILLNAME</td>
+                                                <td>                                                    
+                                                    <a href="@Url.Action("GenerateBill", new { MedicalBillId = @obj.BILLID })" >
+                                                        @obj.BILLNAME
+                                                    </a>
+                                                </td>
                                                 <td>@obj.CONTACT</td>
                                                 <td>@obj.BILLDATE.ParseIstDate()</td>
                                                 <td>@obj.BILLAMOUNT</td>
+
                                                 <td>
                                                     <button type="button" class="btn btn-primary" id="btnDownload" onclick="downloadBill('@obj.BILLNAME','@obj.BILLID','@obj.CONTACT','@obj.BILLDATE.ParseIstDate()','@obj.BILLAMOUNT')">
                                                         <i class="glyphicon glyphicon-download"></i>
