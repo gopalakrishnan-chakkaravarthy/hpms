@@ -526,18 +526,7 @@ namespace LabManagement.System.Controllers
 
         public ActionResult ViewPatientReportStore(int reportId, string viewMessage = "")
         {
-          var templateDdl = new List<lmsTemplateMaster>
-            {
-                new lmsTemplateMaster{TEMPLATEID=-1,TEMPLATENAME="--Select--"}
-            };
-            var storedTemplateDdl = _adminOperations.GetAllTemplate();
-            if (storedTemplateDdl.Any())
-            {
-                templateDdl.AddRange(storedTemplateDdl);
-            }
-
             var getReportSummary = _objIInvoice.GetPatientReportStoreById(reportId);
-            getReportSummary.TemplateDdl = templateDdl.GetDropDownList("TEMPLATEID", "TEMPLATENAME");
             ViewBag.TemlpateContent = getReportSummary.REPORTDETAIL ?? getReportSummary.REPORTDETAIL;
             if (reportId > 0 && getReportSummary.PATIENTID.HasValue)
             {

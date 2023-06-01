@@ -1,9 +1,13 @@
 ﻿using Lab.Management.Common;
+using Lab.Management.Engine.Infrastructure;
 using Lab.Management.Engine.Service;
 using Lab.Management.Entities;
 using Lab.Management.Entities.Model;
 using Lab.Management.Utils.QrCode;
+using LabManagement.System.Common;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace LabManagement.System.Controllers
@@ -214,6 +218,16 @@ namespace LabManagement.System.Controllers
             ViewBag.TemlpateContent = string.IsNullOrEmpty(getTemplate.TEMPLATEDETAILS) ? "" : getTemplate.TEMPLATEDETAILS;
             ViewBag.Message = viewMessage;
             return View(getTemplate);
+        }
+        public ActionResult GetTemplateList()
+        {
+            SelectList templateDdl = null;
+            var storedTemplateDdl = _objIAdminOperations.GetAllTemplate();
+            if (storedTemplateDdl.Any())
+            {
+                templateDdl = storedTemplateDdl.GetDropDownList("TEMPLATEID", "TEMPLATENAME");
+            }
+            return Json(templateDdl, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetTemplateHtml(int templateId, string viewMessage = "")

@@ -20,7 +20,7 @@
 <div class="col-sm-12 col-md-12 col-lg-12">
     <div class="row">
         <h4 class="text-success"><i class="glyphicon glyphicon-hand-right"> </i>  Patient Report Editor</h4>
-        <hr/>
+        <hr />
     </div>
     <div class="row">
         <div class="col-sm-2 col-md-2 col-lg-2">
@@ -35,7 +35,9 @@
             Select Template
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
-            @Html.DropDownListFor(x => x.SelectedTemplate, Model.TemplateDdl, new { @id = "IdTemplateDdl", @class = "form-control selectpicker", required = "required" })
+            <select id="IdTemplateDdl" name="IdTemplateDdl" class="form-control selectpicker">
+            </select>
+            @*@Html.DropDownListFor(x => x.SelectedTemplate, Model.TemplateDdl, new { @id = "IdTemplateDdl", @class = "form-control selectpicker", required = "required" })*@
             @Html.HiddenFor(x => x.REPORTID)
             @Html.Hidden("hdnEditorContent", @TemlpateContent)
         </div>
@@ -74,19 +76,78 @@
             }
         </div>
     </div>
-    <hr/>
+    <hr />
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
             @Html.TextArea("templateDetails", new { @height = "400px", @class = "ckeditor", @Id = "templateDetails", required = "required" })
         </div>
     </div>
+    <!-- The overlay -->
+    <div id="myNav" class="overlay">
+
+        <!-- Overlay content -->
+        <div class="overlay-content">
+            <a href="#">Loading Report...Please wait</a>
+        </div>
+
+    </div>
 </div>
+<style type="text/css">
+    /* The Overlay (background) */
+    .overlay {
+        /* Height & width depends on how you want to reveal the overlay (see JS below) */
+        height: 100%;
+        width: 0;
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        background-color: rgb(0,0,0); /* Black fallback color */
+        background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+        overflow-x: hidden; /* Disable horizontal scroll */
+        transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+    }
+
+    /* Position the content inside the overlay */
+    .overlay-content {
+        position: relative;
+        top: 25%; /* 25% from the top */
+        width: 100%; /* 100% width */
+        text-align: center; /* Centered text/links */
+        margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+    }
+
+    /* The navigation links inside the overlay */
+    .overlay a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 10rem;
+        color: #818181;
+        display: block; /* Display block instead of inline */
+        transition: 0.3s; /* Transition effects on hover (color) */
+    }
+
+        /* When you mouse over the navigation links, change their color */
+        .overlay a:hover, .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+    /* Position the close button (top right corner) */
+    .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 14px;
+    }
+</style>
 @section Scripts {
     <script type="text/javascript" src="~/Content/js/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            GetPatientListOnLoad();
-            var SelectedPatient = '';
+            openNav();
+            GetTemplateListOnLoad();
+            var selectedTemplateId = '@Model.SelectedTemplate';
+            var SelectedPatient ='@Model.SelectedPatient';
             $('#Idpatientddl').on('change', function () {
                 var patientName = $('#Idpatientddl option:selected').text();
                 SelectedPatient = $('#Idpatientddl option:selected').val();
@@ -94,6 +155,7 @@
 
             });
             $('#IdTemplateDdl').on('change', function () {
+                openNav();
                 var templateId = $('#IdTemplateDdl option:selected').val();
                 setTemplateHtml(templateId);
             });
@@ -141,10 +203,34 @@
                     url: getTemplate,
                     type: "GET",
                     success: function (result) {
-                        SetEditorOnEdit(true,result);
+                        setTimeout(SetEditorOnEdit(true, result), 1000);
+                        setTimeout(closeNav(), 1000);
                     },
                     error: function (errorResult) {
                         alert("Error in loading template content");
+                    }
+                });
+            }
+
+            function GetTemplateListOnLoad() {
+                var apiUrl = "@Url.Action("GetTemplateList", "Admin")";
+                $.ajax({
+                    url: apiUrl,
+                    type: "GET",
+                    success: function (ddlData) {
+                        var dropdown = $('#IdTemplateDdl');
+                        dropdown.empty();
+                        if (ddlData !== 'undefined' && ddlData !== null) {
+                            $.each(ddlData, function (key, entry) {
+                               dropdown.append($('<option></option>').attr('value', entry.Value).text(entry.Text));
+                            });
+                        }
+                        dropdown.selectpicker('refresh');
+                        dropdown.selectpicker('val', selectedTemplateId);
+                        GetPatientListOnLoad();
+                    },
+                    error: function (errorResult) {
+                        alert("Error in loading patient list");
                     }
                 });
             }
@@ -154,7 +240,7 @@
                     url: apiUrl,
                     type: "GET",
                     success: function (ddlData) {
-                        var dropdown = $('#Idpatientddl');                      
+                        var dropdown = $('#Idpatientddl');
                         dropdown.empty();
                         if (ddlData !== 'undefined' && ddlData !== null) {
                             $.each(ddlData, function (key, entry) {
@@ -162,7 +248,9 @@
                             });
                         }
                         dropdown.selectpicker('refresh');
-                        SetEditorOnEdit(false);
+                        dropdown.selectpicker('val', selectedTemplateId);
+                        setTimeout(SetEditorOnEdit(false), 1000);
+                        setTimeout(closeNav(), 1000);
                     },
                     error: function (errorResult) {
                         alert("Error in loading patient list");
@@ -206,6 +294,15 @@
                         alert('failure' + errMsg);
                     }
                 });
+            }
+            /* Open when someone clicks on the span element */
+            function openNav() {
+                document.getElementById("myNav").style.width = "100%";
+            }
+
+            /* Close when someone clicks on the "x" symbol inside the overlay */
+            function closeNav() {
+                document.getElementById("myNav").style.width = "0%";
             }
         });
     </script>
