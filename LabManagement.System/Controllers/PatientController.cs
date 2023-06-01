@@ -99,6 +99,12 @@ namespace LabManagement.System.Controllers
             return View(bookingDetail);
         }
 
+        public ActionResult GetPatientList()
+        {
+            var PatientList = _objIPatient.GetPatientDdl();
+            var patientDdl = PatientList.GetDropDownList("PATIENTID", "PATIENTNAME");
+            return Json(patientDdl, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult ViewAllBooking(string viewMessage = "", string filterDate = "")
         {
             var bookingDate = (filterDate.stringIsNotNull() ? filterDate.ToLmsSystemDate() : DateTime.Now).ToShortDateString();
