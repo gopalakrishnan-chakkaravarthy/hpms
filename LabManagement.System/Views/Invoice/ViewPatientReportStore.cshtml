@@ -161,24 +161,28 @@
             });
 
             function SetEditorOnEdit(fromAjax,templateContent) {
-                var templateEditContent = '';
-                if (fromAjax) {
-                    templateEditContent = templateContent;
-                }
-                else {
-                      templateEditContent =  $('#hdnEditorContent').val();;
-                }
+                try {
+                    var templateEditContent = '';
+                    if (fromAjax) {
+                        templateEditContent = templateContent;
+                    }
+                    else {
+                        templateEditContent = $('#hdnEditorContent').val();;
+                    }
 
-                var htmliFrame = $('iframe')[0];
-                if (htmliFrame === undefined)
-                    return;
-                var closestElement = ($(htmliFrame)[0]);
-                if (closestElement === undefined)
-                    return;
-                var iframeFormElement = $(closestElement)[0];
-                if (iframeFormElement === undefined)
-                    return;
-                iframeFormElement.contentDocument.body.innerHTML = templateEditContent;
+                    var htmliFrame = $('iframe')[0];
+                    if (htmliFrame === undefined)
+                        return;
+                    var closestElement = ($(htmliFrame)[0]);
+                    if (closestElement === undefined)
+                        return;
+                    var iframeFormElement = $(closestElement)[0];
+                    if (iframeFormElement === undefined)
+                        return;
+                    iframeFormElement.contentDocument.body.innerHTML = templateEditContent;
+                } catch () {
+
+                }
             }
             $('#btnSave').on('click', function () {
                 SaveTemplate();
