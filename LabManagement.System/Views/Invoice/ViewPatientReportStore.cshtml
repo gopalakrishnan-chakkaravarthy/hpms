@@ -174,20 +174,24 @@
 
                     var htmliFrame = $('iframe')[0];
                     if (htmliFrame === undefined) {
-                        SetEditorOnEdit(fromAjax, templateContent);
+                        return;
                     }
                     var closestElement = ($(htmliFrame)[0]);
                     if (closestElement === undefined) {
-                        SetEditorOnEdit(fromAjax, templateContent);
+                        return;
                     }
                     var iframeFormElement = $(closestElement)[0];
                     if (iframeFormElement === undefined) {
-                        SetEditorOnEdit(fromAjax, templateContent);
+                        return;
                     }
-                    if (iframeFormElement.contentDocument.body === null || iframeFormElement.contentDocument.body === undefined) {
-                        SetEditorOnEdit(fromAjax, templateContent);
-                    }
-                    iframeFormElement.contentDocument.body.innerHTML = templateEditContent;
+                    setTimeout(function () {
+                        if (iframeFormElement.contentDocument.body === null || iframeFormElement.contentDocument.body === undefined) {
+                            SetEditorOnEdit(fromAjax, templateContent);
+                            return;
+                        }
+                        iframeFormElement.contentDocument.body.innerHTML = templateEditContent;
+                    }, 2500);
+                    setTimeout(closeNav(), 1000);
                 } catch (e) {
 
                 }
@@ -217,7 +221,6 @@
                     success: function (result) {
                         debugger;
                         setTimeout(SetEditorOnEdit(true, result), 1000);
-                        setTimeout(closeNav(), 1000);
                     },
                     error: function (errorResult) {
                         alert("Error in loading template content");
@@ -263,7 +266,6 @@
                         dropdown.selectpicker('refresh');
                         dropdown.selectpicker('val', selectedTemplateId);
                         setTimeout(SetEditorOnEdit(false), 1000);
-                        setTimeout(closeNav(), 1000);
                     },
                     error: function (errorResult) {
                         alert("Error in loading patient list");
