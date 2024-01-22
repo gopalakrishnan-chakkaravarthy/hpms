@@ -163,29 +163,37 @@
             function SetEditorOnEdit(fromAjax,templateContent) {
                 try {
                     var templateEditContent = '';
+                    //From Ajax is true set the content from ajax call 
                     if (fromAjax) {
                         templateEditContent = templateContent;
                     }
                     else {
+                        //Set the editor content on load on page load
                         templateEditContent = $('#hdnEditorContent').val();;
                     }
 
                     var htmliFrame = $('iframe')[0];
-                    if (htmliFrame === undefined)
-                        return;
+                    if (htmliFrame === undefined) {
+                        SetEditorOnEdit(fromAjax, templateContent);
+                    }
                     var closestElement = ($(htmliFrame)[0]);
-                    if (closestElement === undefined)
-                        return;
+                    if (closestElement === undefined) {
+                        SetEditorOnEdit(fromAjax, templateContent);
+                    }
                     var iframeFormElement = $(closestElement)[0];
-                    if (iframeFormElement === undefined)
-                        return;
+                    if (iframeFormElement === undefined) {
+                        SetEditorOnEdit(fromAjax, templateContent);
+                    }
+                    if (iframeFormElement.contentDocument.body === null || iframeFormElement.contentDocument.body === undefined) {
+                        SetEditorOnEdit(fromAjax, templateContent);
+                    }
                     iframeFormElement.contentDocument.body.innerHTML = templateEditContent;
-                } catch () {
+                } catch (e) {
 
                 }
             }
             $('#btnSave').on('click', function () {
-                SaveTemplate();
+                SavePatientReport();
             });
             var emptyString = "";
             function GetEditorContent() {
@@ -207,6 +215,7 @@
                     url: getTemplate,
                     type: "GET",
                     success: function (result) {
+                        debugger;
                         setTimeout(SetEditorOnEdit(true, result), 1000);
                         setTimeout(closeNav(), 1000);
                     },
@@ -261,7 +270,7 @@
                     }
                 });
             }
-            function SaveTemplate() {
+            function SavePatientReport() {
                 var templateDetails = GetEditorContent();
 
                 if (templateDetails === '' || templateDetails === undefined
