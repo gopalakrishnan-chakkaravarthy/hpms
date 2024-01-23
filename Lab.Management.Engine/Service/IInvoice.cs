@@ -17,6 +17,7 @@ namespace Lab.Management.Engine.Service
         int DeleteMedicalBill(int BillId);
 
         lmsLaboratoryBilling GetLaboratoryBillingDetailsById(int BillId);
+        IEnumerable<BillPrintModel> GetLaboratoryDetailListByBillId(int billId);
 
         IList<lmsLaboratoryBilling> GetAllLaboratoryBilling(string filterDate = "");
 

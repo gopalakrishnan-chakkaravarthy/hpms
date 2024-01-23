@@ -167,6 +167,28 @@ namespace Lab.Management.Engine.Infrastructure
                 return null;
             }
         }
+        public IEnumerable<BillPrintModel> GetLaboratoryDetailListByBillId(int billId)
+        {
+            var billData = _objLabManagementEntities.lmsLaboratoryBillings.FirstOrDefault(x => x.BILLID == billId);
+            var billPrintList = new List<BillPrintModel>();
+            if (billData != null)
+            {
+                foreach (var item in billData.lmsLaboratoryBillingDetails)
+                {
+                    billPrintList.Add(new BillPrintModel
+                    {
+                        Id = item.BILLDETAILID,
+                        ItemName = item?.lmsMedicalTest?.TESTNAME,
+                        TestResult = item.TESTRESULT,
+                        UnitPrice = item.ITEMCOST
+
+                    });
+                }
+            }
+
+            return billPrintList;
+
+        }
 
         public IList<lmsLaboratoryBilling> GetAllLaboratoryBilling(string filterDate = "")
         {

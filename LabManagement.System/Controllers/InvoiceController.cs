@@ -50,6 +50,11 @@ namespace LabManagement.System.Controllers
             var getMedicalBill = _objIInvoice.GetDetailListByBillId(medicalBillId);
             return Json(getMedicalBill, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult GetLaboratoryDetailListByBillId(int labBillId)
+        {
+            var getMedicalBill = _objIInvoice.GetLaboratoryDetailListByBillId(labBillId);
+            return Json(getMedicalBill, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult SaveBillInfo(DrugBill objDrugBill, List<DrugBillDetails> objDrugBillDetails)
         {
             var medicalBilling = _objIInvoice.GetMedicalBillDetailsById(0);
