@@ -38,9 +38,9 @@
                 var dTaxId = ids[0];
                 var drugId = ids[1];
                  $.ajax({
-                    url: '@Url.Action("Remove", "DrugTax")',
+                    url: '@Url.Action("Remove", "MedicinesTax")',
                     type: "GET",
-                    data: { "dTaxId": dTaxId, "drugId": drugId },
+                     data: { "dTaxId": dTaxId, "medicineId": drugId },
                      success: function (data) {
                            $('#drugTaxGrid').html(data);
                     },

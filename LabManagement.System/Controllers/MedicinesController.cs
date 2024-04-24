@@ -11,20 +11,20 @@ using Lab.Management.Engine.Enum;
 
 namespace LabManagement.System.Controllers
 {
-    public class DrugsController : Controller
+    public class MedicinesController : Controller
     {
         private readonly IHospitalMaster _objIHospitalMaster;
         private readonly ITaxService taxService;
-        public DrugsController(IHospitalMaster objIHospitalMaster,
+        public MedicinesController(IHospitalMaster objIHospitalMaster,
             ITaxService taxService)
         {
             _objIHospitalMaster = objIHospitalMaster;
             this.taxService = taxService;
         }
 
-        public ActionResult ViewDrug(int DrugId, string transactionType="")
+        public ActionResult ViewMedicine(int medicineId, string transactionType="")
         {
-            var getDrug = _objIHospitalMaster.GetDrugDetailsById(DrugId);
+            var getDrug = _objIHospitalMaster.GetDrugDetailsById(medicineId);
             getDrug.OLDORDERCOUNT = getDrug.ORDERCOUNT;
             var taxDdl = taxService.GetTaxList();
             ViewBag.TaxDdl = taxDdl.GetDropDownList("Key", "Value");
@@ -32,7 +32,7 @@ namespace LabManagement.System.Controllers
             return View(getDrug);
         }
 
-        public ActionResult ViewAllDrug(QueryFilterAttribute queryFilterAttribute = QueryFilterAttribute.none, string filterValue = "", string transactionType = "")
+        public ActionResult ViewAllMedicines(QueryFilterAttribute queryFilterAttribute = QueryFilterAttribute.none, string filterValue = "", string transactionType = "")
         {
             var getAll = _objIHospitalMaster.GetAllDrug(queryFilterAttribute, filterValue);
             var filterList = _objIHospitalMaster.GetDrugFilterList();
@@ -51,13 +51,13 @@ namespace LabManagement.System.Controllers
             objDrugMaster.QrCodeContent = qrCodeData;
             objDrugMaster.QrCodeBase64 = qrCodeData.GenerateQrCode();
             var saveDrugDetails = _objIHospitalMaster.SaveDrug(objDrugMaster);
-            return RedirectToAction("ViewDrug", new { DrugId = saveDrugDetails, transactionType = nameof(TransactionType.Save) });
+            return RedirectToAction("ViewMedicine", new { DrugId = saveDrugDetails, transactionType = nameof(TransactionType.Save) });
         }
 
-        public ActionResult DeleteDrug(int DrugId)
+        public ActionResult DeleteMedicine(int medicineId)
         {
-             _objIHospitalMaster.DeleteDrug(DrugId);
-            return RedirectToAction("ViewAllDrug", new { transactionType = nameof(TransactionType.Remove) });
+             _objIHospitalMaster.DeleteDrug(medicineId);
+            return RedirectToAction("ViewAllMedicines", new { transactionType = nameof(TransactionType.Remove) });
         }
         private int GetTotalDrugOrder(int? orderCount, int?newOrder)
         {

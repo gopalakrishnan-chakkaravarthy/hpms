@@ -5,17 +5,17 @@ using System.Web.Mvc;
 
 namespace LabManagement.System.Controllers
 {
-    public class DrugTaxController : BaseController
+    public class MedicinesTaxController : BaseController
     {
         private IDrugTaxService drugTaxService;
-        public DrugTaxController(IDrugTaxService drugTaxService)
+        public MedicinesTaxController(IDrugTaxService drugTaxService)
         {
             this.drugTaxService = drugTaxService;
         }
 
-        public ActionResult Index(int drugId)
+        public ActionResult Index(int medicineId)
         {
-            var result = drugTaxService.GetTaxForDrugs(drugId);
+            var result = drugTaxService.GetTaxForDrugs(medicineId);
             return PartialView("_Index", result);
 
         }
@@ -27,22 +27,22 @@ namespace LabManagement.System.Controllers
 
         }
         [HttpGet]
-        public ActionResult Remove(int dTaxId, int drugId)
+        public ActionResult Remove(int dTaxId, int medicineId)
         {
             drugTaxService.Remove(dTaxId);
-            return RedirectToAction("Index", new {  drugId });
+            return RedirectToAction("Index", new { medicineId });
 
         }
         [HttpGet]
-        public ActionResult IsExists(int drugId, int taxId)
+        public ActionResult IsExists(int medicineId, int taxId)
         {
-            var isExist = drugTaxService.IsExists(drugId, taxId);
+            var isExist = drugTaxService.IsExists(medicineId, taxId);
             return Json(isExist, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public ActionResult HasDataExists(int drugId)
+        public ActionResult HasDataExists(int medicineId)
         {
-            var taxData = drugTaxService.GetTaxForDrugs(drugId);
+            var taxData = drugTaxService.GetTaxForDrugs(medicineId);
             var hasDataExists = taxData.Any();
             return Json(hasDataExists, JsonRequestBehavior.AllowGet);
         }

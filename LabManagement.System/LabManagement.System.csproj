@@ -158,8 +158,8 @@
     <Compile Include="Controllers\AdminDashboardController.cs" />
     <Compile Include="Controllers\AppErrorController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\DrugsController.cs" />
-    <Compile Include="Controllers\DrugTaxController.cs" />
+    <Compile Include="Controllers\MedicinesController.cs" />
+    <Compile Include="Controllers\MedicinesTaxController.cs" />
     <Compile Include="Controllers\HospitalMasterController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\LabTaxController.cs" />
@@ -706,9 +706,9 @@
     <Content Include="Views\Admin\ViewAllDrugFrequency.cshtml" />
     <Content Include="Views\Admin\ViewDrugDosage.cshtml" />
     <Content Include="Views\Admin\ViewDrugFrequency.cshtml" />
-    <Content Include="Views\Drugs\ViewDrug.cshtml" />
-    <Content Include="Views\Drugs\ViewAllDrug.cshtml" />
-    <Content Include="Views\DrugTax\_Index.cshtml" />
+    <Content Include="Views\Medicines\ViewMedicine.cshtml" />
+    <Content Include="Views\Medicines\ViewAllMedicines.cshtml" />
+    <Content Include="Views\MedicinesTax\_Index.cshtml" />
     <Content Include="Views\LabTax\_Index.cshtml" />
     <Content Include="Views\MedicalTest\ViewMedicalTest.cshtml" />
     <Content Include="Views\MedicalTest\ViewAllMedicalTest.cshtml" />

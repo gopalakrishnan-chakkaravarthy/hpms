@@ -161,9 +161,9 @@
             }));
             function validateTaxExists(drugId, taxId) {
                  $.ajax({
-                    url: '@Url.Action("IsExists", "DrugTax")',
+                    url: '@Url.Action("IsExists", "MedicinesTax")',
                     type: "GET",
-                    data: { "drugId": drugId, "taxId": taxId },
+                     data: { "medicineId": drugId, "taxId": taxId },
                      success: function (result) {
                          $("#btnAddTax").removeAttr("disabled");
                          if (result === false) {
@@ -185,7 +185,7 @@
                 var postData = { "DrugId":drugId,"TaxId":taxId};
                     $.ajax({
                     type: "POST",
-                    url: "@Url.Action("Edit","DrugTax")",
+                    url: "@Url.Action("Edit","MedicinesTax")",
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(postData),
                     success: function (data) {
@@ -203,9 +203,9 @@
                     return;
                 }
                  $.ajax({
-                    url: '@Url.Action("HasDataExists", "DrugTax")',
+                    url: '@Url.Action("HasDataExists", "MedicinesTax")',
                     type: "GET",
-                    data: { "drugId": drugId },
+                     data: { "medicineId": drugId },
                      success: function (result) {
                           if (result === true) {
                              loadTaxGridDataOnInit(drugId);
@@ -219,9 +219,9 @@
             }
             function loadTaxGridDataOnInit(drugId) {
                  $.ajax({
-                    url: '@Url.Action("Index", "DrugTax")',
+                    url: '@Url.Action("Index", "MedicinesTax")',
                     type: "GET",
-                    data: { "drugId": drugId },
+                     data: { "medicineId": drugId },
                      success: function (data) {
                            $('#drugTaxGrid').html(data);
                     },
