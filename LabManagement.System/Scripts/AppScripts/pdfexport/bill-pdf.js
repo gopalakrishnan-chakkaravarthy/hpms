@@ -1,14 +1,4 @@
-﻿function generatePDF(headerSection,patientBillDetails,columns,data,fileNameWithoutExtension) {
-    //const columns = [
-    //    { title: "Particulars", dataKey: "discription" },
-    //    { title: "Quantity", dataKey: "quantity" },
-    //    { title: "UnitPrice", dataKey: "unitprice" }
-    //];
-    //data =  [
-    //    { description: "Item Description", quantity: "1", unitprice: "450.00" },
-    //    { description: "Item 2", quantity: "10", unitprice: "4500.00" },
-
-    //]
+﻿function generatePDF(headerSection, patientBillDetails, columns, data, fileNameWithoutExtension) {
     const doc = new jsPDF("p", "pt");
 
     // text is placed using x, y coordinates
@@ -76,13 +66,18 @@
         .setFont("times")
         .setFontSize(9)
         .text(50, 85, headerSection.email);
-
+    if (headerSection.gst !== undefined && headerSection.gst !== null) {
+        doc
+            .setFont("times")
+            .setFontSize(9)
+            .text(50, 95,'GST # :'+ headerSection.gst);
+    }
     doc.autoTable(columns, data, { margin: { top: 110 } });
 
     doc.setLineWidth(1);
     doc.line(560, 725, 40, 725);
 
-    doc.save(fileNameWithoutExtension +'.pdf');
+    doc.save(fileNameWithoutExtension + '.pdf');
 
 
 }
