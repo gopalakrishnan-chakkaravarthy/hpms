@@ -161,6 +161,8 @@
                                         <li><a href="@Url.Action("ViewAllMedicalBill", "Invoice")">Dashboard</a></li>
                                         <li class="divider"></li>
                                         <li><a href="@Url.Action("ViewMedicalBill", "Invoice", new { MedicalBillId =0 })">New Bill</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="@Url.Action("SalesReport", "PharmacyReport")">Sales Report</a></li>
                                     </ul>
                                 </li>
                                 <li class="divider"></li>
@@ -298,7 +300,7 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="@Url.Action("ViewAllMedicines", "Medicines")">Dashboard</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="@Url.Action("ViewMedicine", "Medicines", new { DrugId = 0 })">New </a></li>
+                                            <li><a href="@Url.Action("ViewMedicine", "Medicines", new { medicineId = 0 })">New </a></li>
                                         </ul>
                                     </li>
                                     <li class="divider"></li>

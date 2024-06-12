@@ -101,7 +101,7 @@ namespace LabManagement.System.Controllers
                 DRUGNAME = drugInfo.DRUGNAME,
                 SELLINGPRICE = Math.Round((drugInfo.SELLINGPRICE.Value * (quantity == null || quantity == 0 ? 1 : quantity.Value)), 2)
             };
-            resultIfo.CalculateTax();
+            resultIfo.SELLINGPRICE = resultIfo.CalculateNetPriceAfterGst();
             return Json(resultIfo, JsonRequestBehavior.AllowGet);
         }
 

@@ -71,6 +71,7 @@
         PatientUploadPath
         , TemplateUploadPath,
         ManagementNameOne,
-        ManagementNameOneTwo
+        ManagementNameOneTwo,
+        HospitalGST
     }
 }

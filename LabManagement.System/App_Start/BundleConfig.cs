@@ -48,6 +48,8 @@ namespace LabManagement.System
               "~/Scripts/AppScripts/Common.js"));
             bundles.Add(new ScriptBundle("~/bundles/OBillPdf").Include(
             "~/Scripts/AppScripts/pdfexport/bill-pdf.js"));
+            bundles.Add(new ScriptBundle("~/bundles/PExcleExport").Include(
+           "~/Scripts/jquery.table2excel.js"));
 
             bundles.Add(new StyleBundle("~/Content/cssBndl").Include("~/Content/Site.css",
                 "~/Content/css/bootstrap.css",
@@ -97,11 +99,16 @@ namespace LabManagement.System
                 "~/Content/js/jscam_canvas_only.swf"));
             bundles.Add(new ScriptBundle("~/bundles/cckeditor").Include(
                     "~/Content/js/ckeditor/ckeditor.js"));
+            bundles.Add(new ScriptBundle("~/bundles/PExcleExport").Include(
+          "~/Scripts/jquery.table2excel.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/NCommon").Include(
               "~/Scripts/AppScripts/Common.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/OBillPdf").Include(
            "~/Scripts/AppScripts/pdfexport/bill-pdf.js"));
+            bundles.Add(new ScriptBundle("~/bundles/PExcleExport").Include(
+          "~/Scripts/jquery.table2excel.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/cssBndl").Include("~/Content/Site.css",
                 "~/Content/css/bootstrap.css",

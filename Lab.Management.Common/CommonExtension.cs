@@ -3,6 +3,7 @@ using System.Globalization;
 
 namespace Lab.Management.Common
 {
+
     public static class CommonExtensions
     {
         public static string ToUstDate(this DateTime? dtValue)

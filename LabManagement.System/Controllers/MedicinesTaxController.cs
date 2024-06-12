@@ -23,7 +23,7 @@ namespace LabManagement.System.Controllers
         public ActionResult Edit(DrugTaxRequest drugTaxRequest)
         {
             drugTaxService.Save(drugTaxRequest);
-            return RedirectToAction("Index", new { drugId = drugTaxRequest.DrugId });
+            return RedirectToAction("Index", new { medicineId = drugTaxRequest.DrugId });
 
         }
         [HttpGet]

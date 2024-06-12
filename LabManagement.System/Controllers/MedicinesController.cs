@@ -51,7 +51,7 @@ namespace LabManagement.System.Controllers
             objDrugMaster.QrCodeContent = qrCodeData;
             objDrugMaster.QrCodeBase64 = qrCodeData.GenerateQrCode();
             var saveDrugDetails = _objIHospitalMaster.SaveDrug(objDrugMaster);
-            return RedirectToAction("ViewMedicine", new { DrugId = saveDrugDetails, transactionType = nameof(TransactionType.Save) });
+            return RedirectToAction("ViewMedicine", new { medicineId = saveDrugDetails, transactionType = nameof(TransactionType.Save) });
         }
 
         public ActionResult DeleteMedicine(int medicineId)

@@ -213,7 +213,8 @@
                 var medicalBillColumns = [
                     { title: "Particulars", dataKey: "ItemName" },
                     { title: "Quantity", dataKey: "Quantity" },
-                    { title: "UnitPrice", dataKey: "UnitPrice" }
+                    { title: "UnitPrice", dataKey: "UnitPrice" },
+                    { title: "GST", dataKey: "Gst" }
                 ];
                 var detailUrl = "@Url.Action("GetDetailListByBillId", "Invoice")" + '?medicalBillId=' +billNo ;
                      $.ajax({

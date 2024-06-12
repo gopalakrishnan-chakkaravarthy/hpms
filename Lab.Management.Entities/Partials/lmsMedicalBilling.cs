@@ -7,5 +7,7 @@ namespace Lab.Management.Entities
     {
         public int SelectedPatient { get; set; }
         public IEnumerable<SelectListItem> PatientDdl { get; set; }
+        public double Gst { get; set; }
     }
+    
 }

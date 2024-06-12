@@ -6,8 +6,8 @@
         public string ItemName { get; set; }
         public string TestResult { get; set; }
         public int? Quantity { get; set; }
-
         public double? UnitPrice { get; set; }
+        public double? Gst { get; set; }
 
     }
 }

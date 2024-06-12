@@ -1,7 +1,9 @@
 ﻿using Lab.Management.Engine.Models;
 using Lab.Management.Engine.Service;
+using Lab.Management.Engine.Service.Drugs;
 using Lab.Management.Entities;
 using Lab.Management.Logger;
+using Lab.Management.Common;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,13 +17,15 @@ namespace Lab.Management.Engine.Infrastructure
         private LabManagementEntities _objLabManagementEntities;
         private readonly IAppLogger _objIAppLogger;
         private readonly IHospitalMaster _objIHospitalMaster;
-
+        private readonly IDrugTaxService drugTaxService;
         public Invoice(LabManagementEntities objLabManagementEntities, IAppLogger objIAppLogger,
+            IDrugTaxService drugTaxService,
             IHospitalMaster objIHospitalMaster)
         {
             _objLabManagementEntities = objLabManagementEntities;
             _objIAppLogger = objIAppLogger;
             this._objIHospitalMaster = objIHospitalMaster;
+            this.drugTaxService = drugTaxService;
         }
 
         public lmsMedicalBilling GetMedicalBillDetailsById(int BillId)
@@ -41,7 +45,47 @@ namespace Lab.Management.Engine.Infrastructure
                 return null;
             }
         }
+        public IList<lmsMedicalBilling> GetAllMedicalSalesReport(string filterFromDate = "", string filterToDate = "")
+        {
+            var queryFromDate = Convert.ToDateTime(filterFromDate).Date;
+            var queryToDate = Convert.ToDateTime(filterToDate).Date;
+            var resultDetails = _objLabManagementEntities.lmsMedicalBillings.Where(bt => bt.CREATEDDATE.HasValue
+            && (EntityFunctions.TruncateTime(bt.CREATEDDATE.Value) >= queryFromDate
+            && EntityFunctions.TruncateTime(bt.CREATEDDATE.Value) <= queryToDate)).Include("lmsDrug");
+            var responseData = resultDetails.Any() ? resultDetails.OrderByDescending(x => x.BILLID).ToList()
+                     : new List<lmsMedicalBilling>();
+            foreach (var item in responseData)
+            {
 
+                foreach (var details in item.lmsMedicalBillingDetails)
+                {
+                    var allTaxes = drugTaxService.GetTaxesPercentByDrugId(details.DRUGID.GetValueOrDefault());
+                    if (!details.TAXAMOUNT.HasValue || details.TAXAMOUNT.GetValueOrDefault() == 0)
+                    {
+                        var quantity = details.QUANTITY.GetValueOrDefault();
+                        //set Default tax for all not gst bills
+                        if (allTaxes == null || !allTaxes.Any())
+                        {
+                            allTaxes = new List<double?>() { 9, 9 };//9% CGST & 9 % SGST
+                        }
+                        var resultIfo = new DrugPrice(allTaxes)
+                        {
+                            DRUGNAME = details.lmsDrug.DRUGNAME,
+                            SELLINGPRICE = Math.Round(details.lmsDrug.SELLINGPRICE.Value * (quantity == 0 ? 1 : quantity), 2)
+                        };
+                        details.ITEMCOST = resultIfo.CalculateNetPriceAfterGst();
+                        details.TAXAMOUNT = resultIfo.TAXAMOUNT;
+                    }
+
+                }
+                var subTotal = item.lmsMedicalBillingDetails.Sum(x => x.ITEMCOST.GetValueOrDefault());
+                var subTax = item.lmsMedicalBillingDetails.Sum(x => x.TAXAMOUNT.GetValueOrDefault());
+                item.BILLAMOUNT = Math.Round(subTotal, 2);
+                item.Gst = Math.Round(subTax, 2);
+
+            }
+            return responseData;
+        }
         public IList<lmsMedicalBilling> GetAllMedicalBill(int patientId = 0, string filterDate = "")
         {
             try
@@ -71,7 +115,8 @@ namespace Lab.Management.Engine.Infrastructure
                         Id = item.BILLDETAILID,
                         ItemName = item.lmsDrug.DRUGNAME,
                         Quantity = item.QUANTITY,
-                        UnitPrice = item.ITEMCOST
+                        UnitPrice = item.ITEMCOST,
+                        Gst = item.TAXAMOUNT
 
                     });
                 }
@@ -180,7 +225,8 @@ namespace Lab.Management.Engine.Infrastructure
                         Id = item.BILLDETAILID,
                         ItemName = item?.lmsMedicalTest?.TESTNAME,
                         TestResult = item.TESTRESULT,
-                        UnitPrice = item.ITEMCOST
+                        UnitPrice = item.ITEMCOST,
+                        Gst = item.TAXAMOUNT
 
                     });
                 }

@@ -19,7 +19,7 @@
         </div>
     </div>
 }
-@using (Html.BeginForm("EditDrug", "Drugs", new { @id = "IdEdit", @name = "EditForm" }))
+@using (Html.BeginForm("EditDrug", "Medicines", new { @id = "IdEdit", @name = "EditForm" }))
 {
     <h4 class="text-success">
         <i class="glyphicon glyphicon-hand-right"> </i>
@@ -123,7 +123,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 pull-right">
-                <a href="@Url.Action("ViewAllDrug", "Drugs")" class="btn btn-warning">
+                <a href="@Url.Action("ViewAllMedicines", "Medicines")" class="btn btn-warning">
                     <i class="glyphicon glyphicon-arrow-left">
                         Back
                     </i>
@@ -135,7 +135,7 @@
                 </button>
                 @if (Model.DRUGID > 0)
                 {
-                    <a href="@Url.Action("DeleteDrug", "Drugs", new { DrugId=Model.DRUGID})" class="btn btn-danger">
+                    <a href="@Url.Action("DeleteMedicine", "Medicines", new { medicineId=Model.DRUGID})" class="btn btn-danger">
                         <i class="glyphicon glyphicon-trash"></i>
                         Delete
                     </a>

@@ -39,5 +39,11 @@ public partial class lmsMedicalBillingDetail
     public virtual lmsMedicalBilling lmsMedicalBilling { get; set; }
 
 }
+    public partial class lmsMedicalBillingDetail
+    {
+        public double NetPrice { get; set; }
+        public int SGST { get; set; }
+        public int CGST { get; set; }
+    }
 
 }

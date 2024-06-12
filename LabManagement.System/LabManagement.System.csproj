@@ -149,10 +149,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Common\BaseTaxCalculator.cs" />
-    <Compile Include="Common\DrugBill.cs" />
     <Compile Include="Common\Extensions.cs" />
-    <Compile Include="Common\TestPrice.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminDashboardController.cs" />
@@ -165,6 +162,7 @@
     <Compile Include="Controllers\LabTaxController.cs" />
     <Compile Include="Controllers\MedicalTestController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\PharmacyReportController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\TaxController.cs" />
     <Compile Include="Controllers\WebCamController.cs" />
@@ -595,6 +593,8 @@
     <Content Include="Scripts\AppScripts\Common.js" />
     <Content Include="Scripts\AppScripts\pdfexport\bill-pdf.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery.table2excel.js" />
+    <Content Include="Scripts\jquery.table2excel.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -729,6 +729,7 @@
     <Content Include="Views\Tax\ViewTax.cshtml" />
     <Content Include="Views\Tax\Index.cshtml" />
     <Content Include="Views\Shared\_ThermalPrint.cshtml" />
+    <Content Include="Views\PharmacyReport\SalesReport.cshtml" />
     <None Include="Web.ShyamClini.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
