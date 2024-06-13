@@ -79,6 +79,7 @@
     <Compile Include="Models\LabTaxResponse.cs" />
     <Compile Include="Models\PatientFilterModel.cs" />
     <Compile Include="Models\PrescriptionModel.cs" />
+    <Compile Include="Models\SalesReportResponse.cs" />
     <Compile Include="QueryBuilder\PredicateBuilder.cs" />
     <Compile Include="Reporsitory\Generic\GenericRepository.cs" />
     <Compile Include="Reporsitory\Interface\IDrugDetailsRepository.cs" />

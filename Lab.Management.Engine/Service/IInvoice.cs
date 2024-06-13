@@ -9,7 +9,7 @@ namespace Lab.Management.Engine.Service
         lmsMedicalBilling GetMedicalBillDetailsById(int BillId);
 
         IEnumerable<BillPrintModel> GetDetailListByBillId(int billId);
-        IList<lmsMedicalBilling> GetAllMedicalSalesReport(string filterFromDate = "", string filterToDate = "");
+        IEnumerable<SalesReportResponse> GetAllMedicalSalesReport(string filterFromDate = "", string filterToDate = "");
         IList<lmsMedicalBilling> GetAllMedicalBill(int patientId = 0, string filterDate = "");
 
         int SaveMedicalBill(lmsMedicalBilling objlmsMedicalBilling);

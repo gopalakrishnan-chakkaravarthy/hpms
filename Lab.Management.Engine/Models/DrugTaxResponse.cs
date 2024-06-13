@@ -6,5 +6,8 @@
         public int DrugId { get; set; }
         public string Name { get; set; }
 
+        public string TaxName { get; set; }
+        public double? TaxPercentage { get; set; }
+
     }
 }

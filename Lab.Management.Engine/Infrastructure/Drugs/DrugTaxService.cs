@@ -29,7 +29,7 @@ namespace Lab.Management.Engine.Infrastructure.Drugs
         public IEnumerable<DrugTaxResponse> GetTaxForDrugs(int drugId)
         {
             var allDrugTax = drugTaxRepository.GetAll().Where(x => x.DRUGID == drugId
-            
+
             );
             if (!allDrugTax.Any())
             {
@@ -37,7 +37,15 @@ namespace Lab.Management.Engine.Infrastructure.Drugs
             }
             var result = allDrugTax.ToList().Select(x =>
 
-                new DrugTaxResponse { DTaxId = x.DTAXID, DrugId = x.DRUGID.Value, Name = $"{x.lmsTaxMaster.TAXNAME} - {x.lmsTaxMaster.PERCENTAGE}" }
+                new DrugTaxResponse
+                {
+                    DTaxId = x.DTAXID,
+                    DrugId = x.DRUGID.Value,
+                    Name = $"{x.lmsTaxMaster.TAXNAME} - {x.lmsTaxMaster.PERCENTAGE}",
+                    TaxName = x.lmsTaxMaster.TAXNAME,
+                    TaxPercentage = x.lmsTaxMaster.PERCENTAGE.GetValueOrDefault()
+
+                }
             );
             return result;
         }
@@ -57,7 +65,7 @@ namespace Lab.Management.Engine.Infrastructure.Drugs
             return true;
         }
 
-        public bool Save(DrugTaxRequest drugTaxRequest )
+        public bool Save(DrugTaxRequest drugTaxRequest)
         {
             var entity = new lmsDrugsTax { DRUGID = drugTaxRequest.DrugId, TAXID = drugTaxRequest.TaxId };
             drugTaxRepository.Add(entity);
