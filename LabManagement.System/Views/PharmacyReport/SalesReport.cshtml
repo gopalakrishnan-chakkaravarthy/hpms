@@ -54,14 +54,15 @@
                                 <table id="allDetails" class=" table table-striped table-bordered nowrap">
                                     <thead>
                                         <tr>
-                                            <td>Bill No</td>
-                                            <td>Name</td>
-                                            <td>Mobile Number</td>
-                                            <td>Particulars</td>
-                                            <td>Quantity</td>
-                                            <td>Unit Price</td>
-                                            <td>Tax(%)</td>
-                                            <td>Sales Date</td>
+                                            <td style="font-weight:bold">Bill No</td>
+                                            <td style="font-weight:bold">Name</td>
+                                            <td style="font-weight:bold">Sales Date</td>
+                                            <td style="font-weight:bold">Mobile Number</td>
+                                            <td style="font-weight:bold">Particulars</td>
+                                            <td style="font-weight:bold">Quantity</td>
+                                            <td style="font-weight:bold">Unit Price</td>
+                                            <td style="font-weight:bold">Tax(%)</td>
+                                            <td style="font-weight:bold">Total Amount</td>
 
                                         </tr>
                                     </thead>
@@ -73,15 +74,23 @@
                                                 <td>
                                                     @obj.BILLNAME
                                                 </td>
+                                                <td>@obj.BILLDATE.ParseIstDate()</td>
                                                 <td>@obj.CONTACT</td>
                                                 <td>@obj.MedicineName</td>
                                                 <td>@obj.QUANTITY</td>
                                                 <td>@obj.ITEMCOST</td>
                                                 <td>@string.Format("{0} ({1} )", obj.TAXAMOUNT, obj.GSTName)</td>
-                                                <td>@obj.BILLDATE.ParseIstDate()</td>
+                                                <td>@obj.BILLAMOUNTWITHTAX.GetValueOrDefault()</td>
 
                                             </tr>
                                         }
+                                        <tr>
+                                            <td style="text-align:left;font-weight:bold"> Sub Total</td>
+                                            <td colspan="8" style="text-align:right;font-weight:bold">
+                                                @Math.Round(Model.Sum(x => x.ITEMCOST.GetValueOrDefault() + x.TAXAMOUNT.GetValueOrDefault()), 2)
+                                            </td>
+
+                                        </tr>
                                     </tbody>
                                 </table>
                             }

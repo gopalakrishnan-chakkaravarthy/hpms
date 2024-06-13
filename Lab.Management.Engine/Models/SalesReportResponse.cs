@@ -16,6 +16,13 @@ namespace Lab.Management.Engine.Models
 
         public Nullable<double> ITEMCOST { get; set; }
 
+        public Nullable<double> BILLAMOUNTWITHTAX
+        {
+            get
+            {
+                return ITEMCOST.GetValueOrDefault() + TAXAMOUNT.GetValueOrDefault();
+            }
+        }
         public double? TAXAMOUNT { get; set; }
 
         public string GSTName { get; set; }
