@@ -117,9 +117,7 @@ namespace Lab.Management.Engine.Infrastructure
             var resultFlag = 0;
             try
             {
-                var DrugObject = _objLabManagementEntities.lmsDrugs.FirstOrDefault(x => x.DRUGID == DrugId);
-                _objLabManagementEntities.lmsDrugs.Remove(DrugObject);
-                _objLabManagementEntities.SaveChanges();
+                _objLabManagementEntities.usp_DeleteDrugs(DrugId.ToString());
             }
             catch (Exception ex)
             {

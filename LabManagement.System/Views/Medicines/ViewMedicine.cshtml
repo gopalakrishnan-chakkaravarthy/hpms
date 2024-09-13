@@ -81,8 +81,8 @@
                         @Html.TextBoxFor(m => m.VENDORPHONE, new { @class = "form-control", required = "required" })<br><br>
                         <label for="VENDORADDRESS">Vendor Address </label>
                         @Html.TextBoxFor(m => m.VENDORADDRESS, new { @class = "form-control" })<br><br>
-                        <label for="VENDORNOTES">Additional notes</label>
-                        @Html.TextBoxFor(m => m.VENDORNOTES, new { @class = "form-control" })<br><br>
+                        <label for="VENDORNOTES">Batch# & Order Date</label>
+                        @Html.TextAreaFor(m => m.VENDORNOTES, new { @class = "form-control" })<br><br>
                     </div>
                 </fieldset>
 
@@ -196,7 +196,7 @@
                     }
                 });
             }
-            
+
             function hasGridDataExists() {
                 var drugId = '@Model.DRUGID';
                 if (drugId == 0 || drugId == '0') {
