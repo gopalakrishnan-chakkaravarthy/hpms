@@ -12,72 +12,73 @@
 namespace Lab.Management.Entities
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class lmsDrug
-{
 
-    public lmsDrug()
+    public partial class lmsDrug
     {
 
-        this.lmsMedicalBillings = new HashSet<lmsMedicalBilling>();
+        public lmsDrug()
+        {
 
-        this.lmsMedicalBillingDetails = new HashSet<lmsMedicalBillingDetail>();
+            this.lmsMedicalBillings = new HashSet<lmsMedicalBilling>();
 
-        this.lmsPatientPrescriptions = new HashSet<lmsPatientPrescription>();
+            this.lmsMedicalBillingDetails = new HashSet<lmsMedicalBillingDetail>();
 
-        this.lmsDrugDetails = new HashSet<lmsDrugDetail>();
+            this.lmsPatientPrescriptions = new HashSet<lmsPatientPrescription>();
+
+            this.lmsDrugDetails = new HashSet<lmsDrugDetail>();
+
+        }
+
+
+        public int DRUGID { get; set; }
+
+        public string DRUGNAME { get; set; }
+
+        public Nullable<System.DateTime> ORDERDATE { get; set; }
+
+        public Nullable<System.DateTime> MANUFACTUREDATE { get; set; }
+
+        public Nullable<System.DateTime> EXPIRYDATE { get; set; }
+
+        public Nullable<bool> ISEXPIRED { get; set; }
+
+        public Nullable<double> BUYINGPRICE { get; set; }
+
+        public Nullable<double> SELLINGPRICE { get; set; }
+
+        public Nullable<System.DateTime> CREATEDATE { get; set; }
+
+        public Nullable<int> ORDERCOUNT { get; set; }
+
+        public Nullable<int> AVAILABLEORDER { get; set; }
+        public Nullable<bool> ISDELETED { get; set; }
+
+        public string RackNumber { get; set; }
+
+        public string QrCodeContent { get; set; }
+
+        public string QrCodeBase64 { get; set; }
+
+        public string VENDORNAME { get; set; }
+
+        public string VENDORADDRESS { get; set; }
+
+        public string VENDORPHONE { get; set; }
+
+        public string VENDORNOTES { get; set; }
+
+
+
+        public virtual ICollection<lmsMedicalBilling> lmsMedicalBillings { get; set; }
+
+        public virtual ICollection<lmsMedicalBillingDetail> lmsMedicalBillingDetails { get; set; }
+
+        public virtual ICollection<lmsPatientPrescription> lmsPatientPrescriptions { get; set; }
+
+        public virtual ICollection<lmsDrugDetail> lmsDrugDetails { get; set; }
 
     }
-
-
-    public int DRUGID { get; set; }
-
-    public string DRUGNAME { get; set; }
-
-    public Nullable<System.DateTime> ORDERDATE { get; set; }
-
-    public Nullable<System.DateTime> MANUFACTUREDATE { get; set; }
-
-    public Nullable<System.DateTime> EXPIRYDATE { get; set; }
-
-    public Nullable<bool> ISEXPIRED { get; set; }
-
-    public Nullable<double> BUYINGPRICE { get; set; }
-
-    public Nullable<double> SELLINGPRICE { get; set; }
-
-    public Nullable<System.DateTime> CREATEDATE { get; set; }
-
-    public Nullable<int> ORDERCOUNT { get; set; }
-
-    public Nullable<int> AVAILABLEORDER { get; set; }
-
-    public string RackNumber { get; set; }
-
-    public string QrCodeContent { get; set; }
-
-    public string QrCodeBase64 { get; set; }
-
-    public string VENDORNAME { get; set; }
-
-    public string VENDORADDRESS { get; set; }
-
-    public string VENDORPHONE { get; set; }
-
-    public string VENDORNOTES { get; set; }
-
-
-
-    public virtual ICollection<lmsMedicalBilling> lmsMedicalBillings { get; set; }
-
-    public virtual ICollection<lmsMedicalBillingDetail> lmsMedicalBillingDetails { get; set; }
-
-    public virtual ICollection<lmsPatientPrescription> lmsPatientPrescriptions { get; set; }
-
-    public virtual ICollection<lmsDrugDetail> lmsDrugDetails { get; set; }
-
-}
 
 }

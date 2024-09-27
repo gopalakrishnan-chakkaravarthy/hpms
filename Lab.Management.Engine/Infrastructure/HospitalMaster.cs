@@ -53,12 +53,12 @@ namespace Lab.Management.Engine.Infrastructure
         {
             try
             {
-           
-                if (queryFilterAttribute == QueryFilterAttribute.none )
+
+                if (queryFilterAttribute == QueryFilterAttribute.none)
                 {
                     return new List<lmsDrug>();
                 }
-                var resultDetails = _objLabManagementEntities.lmsDrugs.Select(x => x);
+                var resultDetails = _objLabManagementEntities.lmsDrugs.Where(x => x.ISDELETED == null || !x.ISDELETED.HasValue).Select(x => x);
                 if (queryFilterAttribute == QueryFilterAttribute.allDrugs)
                 {
                     return resultDetails.ToList();

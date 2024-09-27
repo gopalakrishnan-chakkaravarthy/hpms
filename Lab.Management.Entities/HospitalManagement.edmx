@@ -129,6 +129,7 @@
           <Property Name="CREATEDATE" Type="datetime" />
           <Property Name="ORDERCOUNT" Type="int" />
           <Property Name="AVAILABLEORDER" Type="int" />
+          <Property Name="ISDELETED" Type="bit" />
           <Property Name="RackNumber" Type="varchar" MaxLength="20" />
           <Property Name="QrCodeContent" Type="nvarchar(max)" />
           <Property Name="QrCodeBase64" Type="nvarchar(max)" />
@@ -1694,6 +1695,7 @@
           <Property Name="MANUFACTUREDATE" Type="DateTime" Precision="3"/>
           <Property Name="EXPIRYDATE" Type="DateTime" Precision="3"/>
           <Property Name="ISEXPIRED" Type="Boolean"/>
+          <Property Name="ISDELETED" Type="Boolean" />
           <Property Name="BUYINGPRICE" Type="Double"/>
           <Property Name="SELLINGPRICE" Type="Double"/>
           <Property Name="CREATEDATE" Type="DateTime" Precision="3"/>
@@ -3505,6 +3507,7 @@
                 <ScalarProperty Name="MANUFACTUREDATE" ColumnName="MANUFACTUREDATE"/>
                 <ScalarProperty Name="EXPIRYDATE" ColumnName="EXPIRYDATE"/>
                 <ScalarProperty Name="ISEXPIRED" ColumnName="ISEXPIRED"/>
+                <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
                 <ScalarProperty Name="BUYINGPRICE" ColumnName="BUYINGPRICE"/>
                 <ScalarProperty Name="SELLINGPRICE" ColumnName="SELLINGPRICE"/>
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE"/>
